@@ -63,8 +63,8 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
             "the_time_out", "konfirmasi_anggota_tim", "nama_pasien", "prosedur", "lokasi_insisi_dibuat", "antibiotik_diberikan", "cek_nama_antibiotik",
             "cek_dosis_antibiotik", "nama_antibiotik", "dosis_antibiotik", "antisipasi_kejadian_kritis", "review_dokter", "review_tim", "cvc_dipasang",
             "review_tim_perawat", "foto_rongsen_ditayangkan", "nip_operator", "nip_dokter", "nip_perawat", "the_sign_out", "nama_prosedur", "instrumen_kasa",
-            "spesimen", "adakah_masalah", "operator_dokter_bedah", "hal_yang_diperhatikan", "tgl_tindakan", "verifikasi", "nip_perawat", "nip_dokter", 
-            "tglCeklisAsli"
+            "spesimen", "adakah_masalah", "operator_dokter_bedah", "hal_yang_diperhatikan", "tgl_tindakan", "verifikasi", "nip_perawat", "nip_dokter",
+            "tglCeklisAsli", "nmPerawatC1", "nmDokterC1", "nmOperatorC2", "nmDokterC2", "nmPerawatC2", "nmPerawatC3", "nmDokterC3"
         }) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -76,7 +76,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
         tbCeklis.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbCeklis.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 57; i++) {
+        for (i = 0; i < 64; i++) {
             TableColumn column = tbCeklis.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setMinWidth(0);
@@ -240,6 +240,27 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             } else if (i == 56) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 57) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 58) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 59) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 60) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 61) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 62) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 63) {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }
@@ -2559,7 +2580,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
                     + "inner join ceklis_keselamatan_operasi2 c2 on c2.waktu_simpan=c1.waktu_simpan inner join ceklis_keselamatan_operasi3 c3 on c3.waktu_simpan=c1.waktu_simpan "
                     + "inner join reg_periksa rp on rp.no_rawat=c1.no_rawat inner join pasien p on p.no_rkm_medis=rp.no_rkm_medis inner join pegawai pg1 on pg1.nik=c1.nip_perawat "
                     + "inner join pegawai pg2 on pg2.nik=c1.nip_dokter inner join pegawai pg3 on pg3.nik=c2.nip_operator inner join pegawai pg4 on pg4.nik=c2.nip_dokter "
-                    + "inner join pegawai pg5 on pg5.nik=c2.nip_perawat inner join pegawai pg6 on pg6.nik=c3.nip_perawat inner join pegawai pg7 on pg6.nik=c3.nip_dokter WHERE "
+                    + "inner join pegawai pg5 on pg5.nik=c2.nip_perawat inner join pegawai pg6 on pg6.nik=c3.nip_perawat inner join pegawai pg7 on pg7.nik=c3.nip_dokter WHERE "
                     + "date(c1.waktu_simpan) between ? and ? and c1.no_rawat LIKE ? or "
                     + "date(c1.waktu_simpan) between ? and ? and p.no_rkm_medis LIKE ? or "
                     + "date(c1.waktu_simpan) between ? and ? and p.nm_pasien LIKE ? or "
@@ -2598,6 +2619,9 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
                 ps.setString(25, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
                 ps.setString(26, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
                 ps.setString(27, "%" + TCari.getText() + "%");
+                ps.setString(28, Valid.SetTgl(DTPCari1.getSelectedItem() + ""));
+                ps.setString(29, Valid.SetTgl(DTPCari2.getSelectedItem() + ""));
+                ps.setString(30, "%" + TCari.getText() + "%");
                 rs = ps.executeQuery();                
                 while (rs.next()) {
                     tabMode.addRow(new String[]{
@@ -2657,7 +2681,14 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
                         rs.getString("verifikasi"),
                         rs.getString("nip_perawat"),
                         rs.getString("nip_dokter"),
-                        rs.getString("tglCeklisAsli")
+                        rs.getString("tglCeklisAsli"),                        
+                        rs.getString("nmPerawatC1"),
+                        rs.getString("nmDokterC1"),
+                        rs.getString("nmOperatorC2"),
+                        rs.getString("nmDokterC2"),
+                        rs.getString("nmPerawatC2"),
+                        rs.getString("nmPerawatC3"),
+                        rs.getString("nmDokterC3")
                     });
                 }                
             } catch (Exception e) {
@@ -2744,52 +2775,80 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
     }
 
     private void getData() {
+        wktSimpan = "";
+        chkSayaSir.setSelected(false);
+        chkSayaOp.setSelected(false);
+        chkSayaSirkuit1.setSelected(false);
+        chkSayaSirkuit2.setSelected(false);
+        
         if (tbCeklis.getSelectedRow() != -1) {
+            wktSimpan = tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 0).toString();
             TNoRw.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 1).toString());
             TNoRM.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 2).toString());
             TPasien.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 3).toString());
-            TrgRawat.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 21).toString());
-//            Tdiagnosa.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 6).toString());
-//            Trencana.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 7).toString());
-//            TnipDokterAnes1.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 24).toString());
-//            TnmDokterAnes1.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 8).toString());
-//            TnipDokterAnes2.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 25).toString());
-//            TnmDokterAnes2.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 9).toString());
-//            Tkesadaran.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 10).toString());
-//            Ttensi.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 11).toString());
-//            Tsuhu.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 12).toString());
-//            Tnadi.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 13).toString());
-//            Trespi.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 14).toString());
-//            cmbIdentifikasi.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 31).toString());
-//            Tinfus.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 32).toString());            
-//            cmbLokasi1.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 33).toString());
-//            Tkateter.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 34).toString());            
-//            cmbProsedur1.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 35).toString());
-//            Tcukur.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 36).toString());            
-//            cmbSurat.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 37).toString());
-//            Tlavemen.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 38).toString());
-//            cmbGigi.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 39).toString());
-//            cmbBaju.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 40).toString());            
-//            cmbPenandaan.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 41).toString());
-//            cmbSuperAnastesi.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 42).toString());
-//            cmbSuperTindakan.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 43).toString());
-//            cmbSuperTransfusi.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 44).toString());
-//            cmbAntibiotik.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 45).toString());
-//            Tantibiotik.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 46).toString());
-//            cmbJam.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 47).toString().substring(0, 2));
-//            cmbMnt.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 47).toString().substring(3, 5));
-//            cmbDtk.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 47).toString().substring(6, 8));
-//            TreviewA.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 48).toString());
-//            cmbEkg.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 49).toString());
-//            TintepretasiEkg.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 50).toString());
-//            cmbIntepretasiRo.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 51).toString());
-//            cmbPersiapanDarah.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 52).toString());
-//            cmbPersiapanPuasa.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 53).toString());
-//            Valid.SetTgl(TtglTindakan, tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 54).toString());
-//            TnipPerawatSir.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 55).toString());
-//            TnmPerawatSir.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 18).toString());
-//            TnipPerawatOp.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 56).toString());
-//            TnmPerawatOp.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 19).toString());
+            TrgRawat.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 6).toString());
+            cmbJam1.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 8).toString().substring(0, 2));
+            cmbMnt1.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 8).toString().substring(3, 5));
+            cmbDtk1.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 8).toString().substring(6, 8));
+            cmbIdentifikasi.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 9).toString());
+            cmbLokasi1.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 10).toString());            
+            cmbProsedur1.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 11).toString());
+            cmbSurat.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 12).toString());
+            cmbLokasi2.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 13).toString());
+            cmbMesin.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 14).toString());
+            cmbPulse.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 15).toString());
+            cmbApakahPasien.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 16).toString());            
+            cmbKesulitan.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 17).toString());
+            cmbDan.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 18).toString());
+            cmbResiko.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 19).toString());
+            cmb500.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 20).toString());
+            cmbDua.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 21).toString());
+            cmbRencana.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 22).toString());
+            TnipPerawatSir.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 23).toString());
+            TnmPerawatSir.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 57).toString());
+            TnipDokterAnes1.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 24).toString());
+            TnmDokterAnes1.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 58).toString());
+            
+            cmbJam2.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 26).toString().substring(0, 2));
+            cmbMnt2.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 26).toString().substring(3, 5));
+            cmbDtk2.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 26).toString().substring(6, 8));            
+            cmbKonfirmasi.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 27).toString());
+            cmbNama.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 28).toString());
+            cmbProsedur2.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 29).toString());
+            cmbLokasiDimana.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 30).toString());
+            cmbApakahAntibiotik.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 31).toString());
+            cmbNamaAntibiotik.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 32).toString());
+            cmbDosisAntibiotik.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 33).toString());
+            TnmAntibiotik.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 34).toString());
+            TdosisAntibiotik.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 35).toString());
+            Tantisipasi.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 36).toString());
+            TreviewA.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 37).toString());
+            TreviewB.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 38).toString());
+            Tjika.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 39).toString());
+            TreviewC.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 40).toString());
+            cmbApakahFoto.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 41).toString());
+            TnipPerawatOp.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 42).toString());
+            TnmPerawatOp.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 59).toString());
+            TnipDokterAnes2.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 43).toString());
+            TnmDokterAnes2.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 60).toString());
+            TnipPerawatSirkuit1.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 44).toString());
+            TnmPerawatSirkuit1.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 61).toString());
+            
+            cmbJam3.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 45).toString().substring(0, 2));
+            cmbMnt3.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 45).toString().substring(3, 5));
+            cmbDtk3.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 45).toString().substring(6, 8));
+            cmbNamaProsedur.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 46).toString());
+            cmbInstrumen.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 47).toString());
+            cmbSpesimen.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 48).toString());
+            cmbAdakah.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 49).toString());
+            cmb2Operator.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 50).toString());
+            ThalYang.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 51).toString());
+            Valid.SetTgl(TtglTindakan, tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 56).toString());
+            Tverifikasi.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 53).toString());
+            TnipPerawatSirkuit2.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 54).toString());            
+            TnmPerawatSirkuit2.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 62).toString());            
+            TnipDokterAnes3.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 55).toString());
+            TnmDokterAnes3.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 63).toString());
         }
     }
     

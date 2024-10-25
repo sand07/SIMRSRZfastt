@@ -6104,7 +6104,7 @@ public class DlgCPPT extends javax.swing.JDialog {
                 akses.setform("DlgCPPT");
                 DlgCatatanResep form = new DlgCatatanResep(null, false);
                 form.isCek();
-                form.setData(TNoRw.getText(), status);
+                form.setData(TNoRw.getText(), status, "IGD");
                 form.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);
@@ -6114,7 +6114,9 @@ public class DlgCPPT extends javax.swing.JDialog {
                 akses.setform("DlgCPPT");
                 DlgCatatanResep form = new DlgCatatanResep(null, false);
                 form.isCek();
-                form.setData(TNoRw.getText(), "ranap");
+                form.setData(TNoRw.getText(), "ranap", Sequel.cariIsi("select b.nm_bangsal from kamar_inap ki inner join kamar k on k.kd_kamar=ki.kd_kamar "
+                        + "inner join bangsal b on b.kd_bangsal=k.kd_bangsal where ki.no_rawat='" + TNoRw.getText() + "' "
+                        + "order by ki.tgl_masuk desc, ki.jam_masuk desc limit 1"));
                 form.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setVisible(true);

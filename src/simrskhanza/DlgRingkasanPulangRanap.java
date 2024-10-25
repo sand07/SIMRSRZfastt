@@ -3101,7 +3101,7 @@ public class DlgRingkasanPulangRanap extends javax.swing.JDialog {
         akses.setform("DlgRingkasanPulangRanap");
         DlgCatatanResep form = new DlgCatatanResep(null, false);
         form.isCek();
-        form.setData(TNoRW.getText(), "ranap");
+        form.setData(TNoRW.getText(), "ranap", TRuangrawat.getText());
         form.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
         form.setLocationRelativeTo(internalFrame1);
         form.setVisible(true);

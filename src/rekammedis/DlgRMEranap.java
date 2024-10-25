@@ -1029,7 +1029,7 @@ public class DlgRMEranap extends javax.swing.JDialog {
             akses.setform("DlgRMEranap");
             DlgCatatanResep form = new DlgCatatanResep(null, false);
             form.isCek();
-            form.setData(TNoRW.getText(), stts);
+            form.setData(TNoRW.getText(), stts, nmUnit.getText());
             form.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
             form.setLocationRelativeTo(internalFrame1);
             form.setVisible(true);
