@@ -1737,7 +1737,7 @@ public class RMPerencanaanPulang extends javax.swing.JDialog {
         akses.setform("RMPerencanaanPulang");
         DlgCatatanResep form = new DlgCatatanResep(null, false);
         form.isCek();
-        form.setData(TNoRw.getText(), "ranap", TrgRawat.getText());
+        form.setData(TNoRw.getText(), "ranap");
         form.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
         form.setLocationRelativeTo(internalFrame1);
         form.setVisible(true);

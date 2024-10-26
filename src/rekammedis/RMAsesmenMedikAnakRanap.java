@@ -4020,7 +4020,7 @@ public final class RMAsesmenMedikAnakRanap extends javax.swing.JDialog {
         akses.setform("RMAsesmenMedikAnakRanap");
         DlgCatatanResep form = new DlgCatatanResep(null, false);
         form.isCek();
-        form.setData(TNoRw.getText(), "ranap", TRuangan.getText());
+        form.setData(TNoRw.getText(), "ranap");
         form.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
         form.setLocationRelativeTo(internalFrame1);
         form.setVisible(true);

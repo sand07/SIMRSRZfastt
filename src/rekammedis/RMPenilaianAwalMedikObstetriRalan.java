@@ -6064,8 +6064,7 @@ public final class RMPenilaianAwalMedikObstetriRalan extends javax.swing.JDialog
             akses.setform("RMPenilaianAwalMedikObstetriRalan");
             DlgCatatanResep form = new DlgCatatanResep(null, false);
             form.isCek();
-            form.setData(TNoRw.getText(), "ralan", Sequel.cariIsi("select pl.nm_poli from reg_periksa rp "
-                    + "inner join poliklinik pl on pl.kd_poli=rp.kd_poli where rp.no_rawat='" + TNoRw.getText() + "'"));
+            form.setData(TNoRw.getText(), "ralan");
             form.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
             form.setLocationRelativeTo(internalFrame1);
             form.setVisible(true);

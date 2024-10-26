@@ -6971,8 +6971,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         }
                     }
                 } else if (i == 2) {
-                    BtnRMEActionPerformed(null);
-//                    MnBillingActionPerformed(null);
+                    if (akses.getadmin() == true || Sequel.cariInteger("select count(-1) from dokter where kd_dokter='" + akses.getkode() + "'") > 0) {
+                        BtnRMEActionPerformed(null);
+                    } else {
+                        MnBillingActionPerformed(null);
+                    }
                 } else if (i == 3) {
                     if (akses.getresep_pulang() == true) {
                         MnInputResepActionPerformed(null);
@@ -7029,8 +7032,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         }
                     }
                 } else if (i == 2) {
-                    BtnRMEActionPerformed(null);
-//                    MnBillingActionPerformed(null);
+                    if (akses.getadmin() == true || Sequel.cariInteger("select count(-1) from dokter where kd_dokter='" + akses.getkode() + "'") > 0) {
+                        BtnRMEActionPerformed(null);
+                    } else {
+                        MnBillingActionPerformed(null);
+                    }
                 } else if (i == 3) {
                     if (akses.getresep_pulang() == true) {
                         MnInputResepActionPerformed(null);
@@ -11276,7 +11282,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             akses.setform("DlgKamarInap");
             DlgCatatanResep form = new DlgCatatanResep(null, false);
             form.isCek();
-            form.setData(norawat.getText(), "ranap", ruangrawat.getText());
+            form.setData(norawat.getText(), "ranap");
             form.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
             form.setLocationRelativeTo(internalFrame1);
             form.setVisible(true);
