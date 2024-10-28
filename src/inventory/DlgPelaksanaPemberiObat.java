@@ -1308,15 +1308,14 @@ public class DlgPelaksanaPemberiObat extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(rootPane, "Petugas pelaksana pemberian obat utk. tgl. " + tgl_beri.getSelectedItem() + " An. Pasien " + TNmPasien.getText() + " di " + nmUnit.getText() + " sudah tersimpan..!!");
             } else {
                 try {
-                    Sequel.menyimpan("pelaksana_pemberian_obat",
-                            "'" + TNoRW.getText() + "','" + Sequel.cariIsi("select now()") + "','" + Valid.SetTgl(tgl_beri.getSelectedItem() + "") + "',"
-                            + "'" + nipPetugas1 + "', '" + nipPetugas2 + "', '" + nipPetugas3 + "', '" + nipPetugas4 + "', "
-                            + "'" + nipPetugas5 + "', '" + nipPetugas6 + "', '" + nipPetugas7 + "', '" + nipPetugas8 + "', "
-                            + "'" + nmUnit.getText() + "'", "Petugas Pelaksana Pemberian Obat");
-
-                    Valid.SetTgl(DTPCari1, Valid.SetTgl(tgl_beri.getSelectedItem() + ""));
-                    emptTeks();
-                    tampil();
+                    if (Sequel.menyimpantf("pelaksana_pemberian_obat", "?,?,?,?,?,?,?,?,?,?,?,?", "Petugas Pelaksana Pemberian Obat", 12, new String[]{
+                        TNoRW.getText(), Sequel.cariIsi("select now()"), Valid.SetTgl(tgl_beri.getSelectedItem() + ""),
+                        nipPetugas1, nipPetugas2, nipPetugas3, nipPetugas4, nipPetugas5, nipPetugas6, nipPetugas7, nipPetugas8, nmUnit.getText()
+                    }) == true) {
+                        Valid.SetTgl(DTPCari1, Valid.SetTgl(tgl_beri.getSelectedItem() + ""));
+                        emptTeks();
+                        tampil();
+                    }
                 } catch (Exception e) {
                     System.out.println("Simpan Petugas Pelaksana Pemberian Obat Pasien : " + e);
                 }

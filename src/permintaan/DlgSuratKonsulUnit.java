@@ -672,15 +672,16 @@ public class DlgSuratKonsulUnit extends javax.swing.JDialog {
             TPermintaan.requestFocus();
         } else {
             try {
-                Sequel.menyimpan("surat_konsul_unit_ranap", "'" + TNoRW.getText() + "','" + cmbUnitDari.getSelectedItem().toString() + "',"
-                        + "'" + cmbUnitKe.getSelectedItem().toString() + "','" + TPermintaan.getText() + "','" + Valid.SetTgl(TtglMinta.getSelectedItem() + "") + "',"
-                        + "'" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "',"
-                        + "'" + kddokter + "','','0000-00-00','00:00:00','-','" + Sequel.cariIsi("select now()") + "','Belum'", "Surat Konsul Antar Unit");
-
-                TCari.setText(TNoRW.getText());
-                tbKonsul.requestFocus();
-                emptTeks();
-                tampil();
+                if (Sequel.menyimpantf("surat_konsul_unit_ranap", "?,?,?,?,?,?,?,?,?,?,?,?,?", "Surat Konsul Antar Unit", 13, new String[]{
+                    TNoRW.getText(), cmbUnitDari.getSelectedItem().toString(), cmbUnitKe.getSelectedItem().toString(), TPermintaan.getText(),
+                    Valid.SetTgl(TtglMinta.getSelectedItem() + ""), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
+                    kddokter, "", "0000-00-00", "00:00:00", "-", Sequel.cariIsi("select now()"), "Belum"
+                }) == true) {
+                    TCari.setText(TNoRW.getText());
+                    tbKonsul.requestFocus();
+                    emptTeks();
+                    tampil();
+                }
             } catch (Exception e) {
                 System.out.println("Simpan Surat Konsul Antar Unit Rawat Inap : " + e);
             }

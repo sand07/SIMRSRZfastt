@@ -2678,15 +2678,15 @@ public class DlgCatatanTindakanKeperawatan extends javax.swing.JDialog {
             Valid.textKosong(TNoRW, "Pasien");
         } else {
             try {
-                Sequel.menyimpan("catatan_tindakan_keperawatan",
-                        "'" + TNoRW.getText() + "','" + cmbSift.getSelectedItem().toString() + "',"
-                        + "'" + Valid.SetTgl(Ttgl.getSelectedItem() + "") + "',"
-                        + "'" + cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem() + "',"
-                        + "'" + TnmTindakan.getText() + "','" + nip + "','" + Sequel.cariIsi("select now()") + "'", "Catatan Tindakan Keperawatan");
-
-                Sequel.simpanReplaceInto("master_catatan_tindakan_keperawatan", "'0','" + TnmTindakan.getText() + "'", "Data Master Catatan");
-                tampil();
-                emptTeks();
+                if (Sequel.menyimpantf("catatan_tindakan_keperawatan", "?,?,?,?,?,?,?", "Catatan Tindakan Keperawatan", 7, new String[]{
+                    TNoRW.getText(), cmbSift.getSelectedItem().toString(), Valid.SetTgl(Ttgl.getSelectedItem() + ""),
+                    cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(), TnmTindakan.getText(),
+                    nip, Sequel.cariIsi("select now()")
+                }) == true) {
+                    Sequel.simpanReplaceInto("master_catatan_tindakan_keperawatan", "'0','" + TnmTindakan.getText() + "'", "Data Master Catatan");
+                    tampil();
+                    emptTeks();
+                }
             } catch (Exception e) {
                 System.out.println("Simpan Catatan Tindakan Keperawatan : " + e);
             }

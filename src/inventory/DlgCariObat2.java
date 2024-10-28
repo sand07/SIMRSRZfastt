@@ -56,13 +56,13 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     private ResultSet rsobat, carikapasitas, rsstok, rsrekening, rs, rs1;
     private Jurnal jur = new Jurnal();
     private double x = 0, y = 0, embalase, kenaikan, tuslah, stokbarang, ttlhpp, ttljual, stokbarang2;
-    private int jml = 0, i = 0, urut = 0, cekCatRanap = 0, cekCatRalan = 0, conteng = 0;
+    private int jml = 0, i = 0, urut = 0, cekCatRanap = 0, cekCatRalan = 0, conteng = 0, cito = 0, iniResep = 0;
     private boolean[] pilih;
     private double[] jumlah, harga, eb, ts, stok, beli;
     private String[] kodebarang, namabarang, kodesatuan, letakbarang, namajenis, industri, aturan, kategori, golongan;
     private DlgBarang barang = new DlgBarang(null, false);
     private String Suspen_Piutang_Obat_Ranap = "", Obat_Ranap = "", HPP_Obat_Rawat_Inap = "", Persediaan_Obat_Rawat_Inap = "",
-            bangsal = "", status = "", stat = "", idObat = "", jenisResep = "";
+            bangsal = "", status = "", stat = "", idObat = "", jenisResep = "", resepPulang = "";
     private WarnaTable2 warna = new WarnaTable2();
     private DlgCariBangsal caribangsal = new DlgCariBangsal(null, false);
     public DlgAturanPakai aturanpakai = new DlgAturanPakai(null, false);
@@ -150,7 +150,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, warna);
         
         tabModeResepObat = new DefaultTableModel(null, new Object[]{
-            "P", "No.Rawat", "Nama Obat", "Tgl. Resep", "Jam Input", "Status", "ID", "Nama Dokter", "Jns. Resep"
+            "P", "No.Rawat", "Nama Obat", "Tgl. Resep", "Jam Input", "Status", "ID", "Nama Dokter", "Jns. Resep", "Resep"
         }) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -163,7 +163,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
             Class[] types = new Class[]{
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
-                java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class
             };
 
             @Override
@@ -176,14 +176,15 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
         tbResepRanap.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbResepRanap.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 9; i++) {
+        for (i = 0; i < 10; i++) {
             TableColumn column = tbResepRanap.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(20);
             } else if (i == 1) {
-                column.setPreferredWidth(105);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             } else if (i == 2) {
-                column.setPreferredWidth(400);
+                column.setPreferredWidth(350);
             } else if (i == 3) {
                 column.setPreferredWidth(75);
             } else if (i == 4) {
@@ -197,6 +198,8 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
                 column.setPreferredWidth(200);
             } else if (i == 8) {
                 column.setPreferredWidth(70);
+            } else if (i == 9) {
+                column.setPreferredWidth(98);
             }
         }
         tbResepRanap.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1607,15 +1610,44 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             } else if (conteng > 0) {
                 idObat = "";
                 jenisResep = "";
+                cito = 0;
+                iniResep = 0;
                 for (i = 0; i < tbResepRanap.getRowCount(); i++) {
                     if (tbResepRanap.getValueAt(i, 0).toString().equals("true")) {
                         if (idObat.equals("")) {
                             idObat = "'" + tbResepRanap.getValueAt(i, 6).toString() + "'";
                         } else {
                             idObat = idObat + ",'" + tbResepRanap.getValueAt(i, 6).toString() + "'";
-                        }
-                        jenisResep = "(RESEP : " + tbResepRanap.getValueAt(i, 8).toString() + ")";
+                        }                        
                     }
+                }
+                
+                //cek resep cito
+                for (i = 0; i < tbResepRanap.getRowCount(); i++) {
+                    if (tbResepRanap.getValueAt(i, 0).toString().equals("true")
+                            && tbResepRanap.getValueAt(i, 8).toString().equals("CITO")) {
+                        cito++;
+                    }
+                }
+
+                if (cito == 0) {
+                    jenisResep = "BIASA";
+                } else {
+                    jenisResep = "CITO";
+                }
+
+                //cek resep pulang
+                for (i = 0; i < tbResepRanap.getRowCount(); i++) {
+                    if (tbResepRanap.getValueAt(i, 0).toString().equals("true")
+                            && tbResepRanap.getValueAt(i, 9).toString().equals("Pulang")) {
+                        iniResep++;
+                    }
+                }
+                
+                if (iniResep == 0) {
+                    resepPulang = "Dalam Perawatan";
+                } else {
+                    resepPulang = "Pulang";
                 }
 
                 if (cmbKertas.getSelectedIndex() == 0) {
@@ -1627,7 +1659,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     param.put("kontakrs", akses.getkontakrs());
                     param.put("emailrs", akses.getemailrs());
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
-                    param.put("norawat", TNoRw.getText() + " " + jenisResep);
+                    param.put("norawat", TNoRw.getText());
+                    param.put("resep", jenisResep + " (" + resepPulang + ")");
                     param.put("pasien", TPasien.getText());
                     param.put("carabyr", Sequel.cariIsi("select pj.png_jawab from reg_periksa rp inner join penjab pj on pj.kd_pj=rp.kd_pj where rp.no_rawat='" + TNoRw.getText() + "'"));
                     param.put("ruangan", Sequel.cariIsi("select b.nm_bangsal from kamar_inap ki inner join kamar k on k.kd_kamar=ki.kd_kamar "
@@ -1642,7 +1675,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     
                 } else if (cmbKertas.getSelectedIndex() == 1) {
                     Map<String, Object> param = new HashMap<>();
-                    param.put("norawat", TNoRw.getText() + " " + jenisResep);
+                    param.put("norawat", TNoRw.getText());
+                    param.put("resep", jenisResep + " (" + resepPulang + ")");
                     param.put("pasien", Sequel.cariIsi("select concat(p.no_rkm_medis,' - ',p.nm_pasien) from reg_periksa rp "
                             + "inner join pasien p on p.no_rkm_medis=rp.no_rkm_medis where rp.no_rawat='" + TNoRw.getText() + "'"));
                     param.put("carabyr", Sequel.cariIsi("select pj.png_jawab from reg_periksa rp "
@@ -2375,13 +2409,13 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             if (ChkTgl.isSelected() == true) {
                 if (cmbStatus.getSelectedIndex() == 3) {
                     ps = koneksi.prepareStatement("SELECT c.no_rawat, c.nama_obat, c.status, c.noId, "
-                            + "date_format(c.tgl_perawatan,'%d-%m-%Y') tgl, c.jam_perawatan, d.nm_dokter, c.jenis_resep "
+                            + "date_format(c.tgl_perawatan,'%d-%m-%Y') tgl, c.jam_perawatan, d.nm_dokter, c.jenis_resep, c.resep_untuk "
                             + "FROM catatan_resep_ranap c inner join dokter d on d.kd_dokter=c.kd_dokter "
                             + "WHERE c.tgl_perawatan between '" + Valid.SetTgl(DTPTgl1.getSelectedItem() + "") + "' and '" + Valid.SetTgl(DTPTgl2.getSelectedItem() + "") + "' "
                             + "and c.no_rawat LIKE '%" + TNoRw.getText().trim() + "%' ORDER BY c.status, c.noId");
                 } else {
                     ps = koneksi.prepareStatement("SELECT c.no_rawat, c.nama_obat, c.STATUS, c.noId, "
-                            + "date_format(c.tgl_perawatan,'%d-%m-%Y') tgl, c.jam_perawatan, d.nm_dokter, c.jenis_resep "
+                            + "date_format(c.tgl_perawatan,'%d-%m-%Y') tgl, c.jam_perawatan, d.nm_dokter, c.jenis_resep, c.resep_untuk "
                             + "FROM catatan_resep_ranap c inner join dokter d on d.kd_dokter=c.kd_dokter "
                             + "where c.tgl_perawatan between '" + Valid.SetTgl(DTPTgl1.getSelectedItem() + "") + "' and '" + Valid.SetTgl(DTPTgl2.getSelectedItem() + "") + "' "
                             + "and c.no_rawat like '%" + TNoRw.getText().trim() + "%' and c.status like '%" + cmbStatus.getSelectedItem().toString() + "%' "
@@ -2390,13 +2424,13 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             } else {
                 if (cmbStatus.getSelectedIndex() == 3) {
                     ps = koneksi.prepareStatement("SELECT c.no_rawat, c.nama_obat, c.status, c.noId, "
-                            + "date_format(c.tgl_perawatan,'%d-%m-%Y') tgl, c.jam_perawatan, d.nm_dokter, c.jenis_resep "
+                            + "date_format(c.tgl_perawatan,'%d-%m-%Y') tgl, c.jam_perawatan, d.nm_dokter, c.jenis_resep, c.resep_untuk "
                             + "FROM catatan_resep_ranap c inner join dokter d on d.kd_dokter=c.kd_dokter "
                             + "WHERE c.no_rawat LIKE '%" + TNoRw.getText().trim() + "%' "
                             + "ORDER BY c.status, c.noId");
                 } else {
                     ps = koneksi.prepareStatement("SELECT c.no_rawat, c.nama_obat, c.STATUS, c.noId, "
-                            + "date_format(c.tgl_perawatan,'%d-%m-%Y') tgl, c.jam_perawatan, d.nm_dokter, c.jenis_resep "
+                            + "date_format(c.tgl_perawatan,'%d-%m-%Y') tgl, c.jam_perawatan, d.nm_dokter, c.jenis_resep, c.resep_untuk "
                             + "FROM catatan_resep_ranap c inner join dokter d on d.kd_dokter=c.kd_dokter "
                             + "where c.no_rawat like '%" + TNoRw.getText().trim() + "%' "
                             + "and c.status like '%" + cmbStatus.getSelectedItem().toString() + "%' "
@@ -2416,7 +2450,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         rs.getString("status"),
                         rs.getString("noId"),
                         rs.getString("nm_dokter"),
-                        rs.getString("jenis_resep")
+                        rs.getString("jenis_resep"),
+                        rs.getString("resep_untuk")
                     });
                 }
             } catch (Exception e) {

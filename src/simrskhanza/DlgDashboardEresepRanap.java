@@ -60,8 +60,8 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
     private Properties prop = new Properties();
     private PreparedStatement ps, ps1, ps2;
     private ResultSet rs, rs1, rs2;
-    private int i = 0, x = 0;
-    private String norawat = "", norm = "", idObat = "", jenisResep = "";
+    private int i = 0, x = 0, cito = 0, iniResep = 0;
+    private String norawat = "", norm = "", idObat = "", jenisResep = "", resepPulang = "";
     public Timer tEresep;
     private BackgroundMusic music;
 
@@ -77,7 +77,7 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
 
         tabMode = new DefaultTableModel(null, new Object[]{
             "No. Rawat", "No. RM", "Nama Pasien", "No. Telp/HP.", "Ruang Rawat",
-            "Cara Bayar", "Jlh. Item Obat", "Status", "cekResepCito"
+            "Cara Bayar", "Jlh. Item Obat", "Status", "cekResepCito", "Resep"
         }) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -89,7 +89,7 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
         tbPasien.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbPasien.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 9; i++) {
+        for (i = 0; i < 10; i++) {
             TableColumn column = tbPasien.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(120);
@@ -110,6 +110,8 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
             } else if (i == 8) {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
+            } else if (i == 9) {
+                column.setPreferredWidth(98);
             }
         }
 //        tbPasien.setDefaultRenderer(Object.class, new WarnaTable());
@@ -117,7 +119,7 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
         
         tabMode1 = new DefaultTableModel(null, new Object[]{
             "Cek", "no_id", "no_rawat", "No.", "Tgl. Resep", "Jam", "Deskripsi Obat/Alkes",
-            "Status", "Dokter Yang Meresepkan", "Jns. Resep"
+            "Status", "Dokter Yang Meresepkan", "Jns. Resep", "Resep"
         }) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -130,7 +132,7 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
             Class[] types = new Class[]{
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
-                java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             @Override
@@ -143,7 +145,7 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
         tbdaftarResep.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbdaftarResep.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 10; i++) {
+        for (i = 0; i < 11; i++) {
             TableColumn column = tbdaftarResep.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(30);
@@ -167,6 +169,8 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
                 column.setPreferredWidth(250);
             } else if (i == 9) {
                 column.setPreferredWidth(70);
+            } else if (i == 10) {
+                column.setPreferredWidth(98);
             }
         }
         tbdaftarResep.setDefaultRenderer(Object.class, new WarnaTable());
@@ -827,6 +831,8 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
             } else if (x > 1) {
                 idObat = "";
                 jenisResep = "";
+                cito = 0;
+                iniResep = 0;
                 for (i = 0; i < tbdaftarResep.getRowCount(); i++) {
                     if (tbdaftarResep.getValueAt(i, 0).toString().equals("true")) {
                         if (idObat.equals("")) {
@@ -834,12 +840,40 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
                         } else {
                             idObat = idObat + ",'" + tbdaftarResep.getValueAt(i, 1).toString() + "'";
                         }
-                        jenisResep = "(RESEP : " + tbdaftarResep.getValueAt(i, 9).toString() + ")";
                     }
                 }
 
+                //cek resep cito
+                for (i = 0; i < tbdaftarResep.getRowCount(); i++) {
+                    if (tbdaftarResep.getValueAt(i, 0).toString().equals("true")
+                            && tbdaftarResep.getValueAt(i, 9).toString().equals("CITO")) {
+                        cito++;
+                    }
+                }
+
+                if (cito == 0) {
+                    jenisResep = "BIASA";
+                } else {
+                    jenisResep = "CITO";
+                }
+
+                //cek resep pulang
+                for (i = 0; i < tbdaftarResep.getRowCount(); i++) {
+                    if (tbdaftarResep.getValueAt(i, 0).toString().equals("true")
+                            && tbdaftarResep.getValueAt(i, 10).toString().equals("Pulang")) {
+                        iniResep++;
+                    }
+                }
+                
+                if (iniResep == 0) {
+                    resepPulang = "Dalam Perawatan";
+                } else {
+                    resepPulang = "Pulang";
+                }
+
                 Map<String, Object> param = new HashMap<>();
-                param.put("norawat", norawat + " " + jenisResep);
+                param.put("norawat", norawat);
+                param.put("resep", jenisResep + " (" + resepPulang + ")");
                 param.put("pasien", Sequel.cariIsi("select concat(p.no_rkm_medis,' - ',p.nm_pasien) from reg_periksa rp "
                         + "inner join pasien p on p.no_rkm_medis=rp.no_rkm_medis where rp.no_rawat='" + norawat + "'"));
                 param.put("carabyr", Sequel.cariIsi("select pj.png_jawab from reg_periksa rp "
@@ -943,15 +977,44 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
             } else if (x > 0) {
                 idObat = "";
                 jenisResep = "";
+                cito = 0;
+                iniResep = 0;
                 for (i = 0; i < tbdaftarResep.getRowCount(); i++) {
                     if (tbdaftarResep.getValueAt(i, 0).toString().equals("true")) {
                         if (idObat.equals("")) {
                             idObat = "'" + tbdaftarResep.getValueAt(i, 1).toString() + "'";
                         } else {
                             idObat = idObat + ",'" + tbdaftarResep.getValueAt(i, 1).toString() + "'";
-                        }
-                        jenisResep = "(RESEP : " + tbdaftarResep.getValueAt(i, 9).toString() + ")";
+                        }                        
                     }
+                }
+                
+                //cek resep cito
+                for (i = 0; i < tbdaftarResep.getRowCount(); i++) {
+                    if (tbdaftarResep.getValueAt(i, 0).toString().equals("true")
+                            && tbdaftarResep.getValueAt(i, 9).toString().equals("CITO")) {
+                        cito++;
+                    }
+                }
+
+                if (cito == 0) {
+                    jenisResep = "BIASA";
+                } else {
+                    jenisResep = "CITO";
+                }
+
+                //cek resep pulang
+                for (i = 0; i < tbdaftarResep.getRowCount(); i++) {
+                    if (tbdaftarResep.getValueAt(i, 0).toString().equals("true")
+                            && tbdaftarResep.getValueAt(i, 10).toString().equals("Pulang")) {
+                        iniResep++;
+                    }
+                }
+                
+                if (iniResep == 0) {
+                    resepPulang = "Dalam Perawatan";
+                } else {
+                    resepPulang = "Pulang";
                 }
 
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -965,7 +1028,7 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
                 param.put("ruangan", Sequel.cariIsi("select b.nm_bangsal from kamar_inap ki inner join kamar k on k.kd_kamar=ki.kd_kamar "
                         + "inner join bangsal b on b.kd_bangsal=k.kd_bangsal where ki.no_rawat='" + norawat + "' "
-                        + "order by ki.tgl_masuk desc, ki.jam_masuk desc limit 1") + " " + jenisResep);
+                        + "order by ki.tgl_masuk desc, ki.jam_masuk desc limit 1") + " (Resep : " + jenisResep + " - " + resepPulang + ")");
                 
                 Valid.MyReport("rptResepRanap.jasper", "report", "::[ Resep Dokter Rawat Inap ]::",
                         "SELECT c.no_rawat, d.nm_dokter, CONCAT('Martapura, ',DATE_FORMAT(c.tgl_perawatan, '%d/%m/%Y')) tgl_resep, "
@@ -1066,6 +1129,8 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
             } else if (x > 0) {
                 idObat = "";
                 jenisResep = "";
+                cito = 0;
+                iniResep = 0;
                 for (i = 0; i < tbdaftarResep.getRowCount(); i++) {
                     if (tbdaftarResep.getValueAt(i, 0).toString().equals("true")) {
                         if (idObat.equals("")) {
@@ -1073,8 +1138,35 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
                         } else {
                             idObat = idObat + ",'" + tbdaftarResep.getValueAt(i, 1).toString() + "'";
                         }
-                        jenisResep = "(RESEP : " + tbdaftarResep.getValueAt(i, 9).toString() + ")";
                     }
+                }
+                
+                //cek resep cito
+                for (i = 0; i < tbdaftarResep.getRowCount(); i++) {
+                    if (tbdaftarResep.getValueAt(i, 0).toString().equals("true")
+                            && tbdaftarResep.getValueAt(i, 9).toString().equals("CITO")) {
+                        cito++;
+                    }
+                }
+
+                if (cito == 0) {
+                    jenisResep = "BIASA";
+                } else {
+                    jenisResep = "CITO";
+                }
+
+                //cek resep pulang
+                for (i = 0; i < tbdaftarResep.getRowCount(); i++) {
+                    if (tbdaftarResep.getValueAt(i, 0).toString().equals("true")
+                            && tbdaftarResep.getValueAt(i, 10).toString().equals("Pulang")) {
+                        iniResep++;
+                    }
+                }
+                
+                if (iniResep == 0) {
+                    resepPulang = "Dalam Perawatan";
+                } else {
+                    resepPulang = "Pulang";
                 }
 
                 Map<String, Object> param = new HashMap<>();
@@ -1085,7 +1177,8 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
                 param.put("kontakrs", akses.getkontakrs());
                 param.put("emailrs", akses.getemailrs());
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
-                param.put("norawat", norawat + " " + jenisResep);
+                param.put("norawat", norawat);
+                param.put("resep", jenisResep + " (" + resepPulang + ")");
                 param.put("pasien", Sequel.cariIsi("select concat(p.no_rkm_medis,' - ',p.nm_pasien) from reg_periksa rp "
                         + "inner join pasien p on p.no_rkm_medis=rp.no_rkm_medis where rp.no_rawat='" + norawat + "'"));
                 param.put("carabyr", Sequel.cariIsi("select pj.png_jawab from reg_periksa rp "
@@ -1410,7 +1503,7 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode1);
         try {
             ps1 = koneksi.prepareStatement("SELECT cr.noId, cr.no_rawat, DATE_FORMAT(cr.tgl_perawatan,'%d-%m-%Y') tgl, "
-                    + "cr.jam_perawatan, cr.nama_obat, cr.status, d.nm_dokter, cr.jenis_resep "
+                    + "cr.jam_perawatan, cr.nama_obat, cr.status, d.nm_dokter, cr.jenis_resep, cr.resep_untuk "
                     + "FROM catatan_resep_ranap cr INNER JOIN reg_periksa rp on rp.no_rawat=cr.no_rawat "
                     + "inner join dokter d on d.kd_dokter=cr.kd_dokter WHERE cr.no_rawat='" + norawat + "' "
                     + "ORDER BY cr.status, cr.noId desc, cr.tgl_perawatan DESC, cr.jam_perawatan DESC");
@@ -1428,7 +1521,8 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
                         rs1.getString("nama_obat"),
                         rs1.getString("status"),
                         rs1.getString("nm_dokter"),
-                        rs1.getString("jenis_resep")
+                        rs1.getString("jenis_resep"),
+                        rs1.getString("resep_untuk")
                     });
                     x++;
                 }

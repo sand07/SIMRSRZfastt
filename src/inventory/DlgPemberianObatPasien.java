@@ -2805,29 +2805,25 @@ public class DlgPemberianObatPasien extends javax.swing.JDialog {
             }
 
             try {
-                Sequel.menyimpan("pemberian_obat", "'" + TNoRW.getText() + "','" + nmObat.getText() + "',"
-                        + "'" + dosis.getText() + "','" + caraPemberian.getText() + "',"
-                        + "'" + cmbJam1.getSelectedItem() + ":" + cmbMnt1.getSelectedItem() + ":" + cmbDtk1.getSelectedItem() + "',"
-                        + "'" + jlhSisaObat.getText() + "','" + statusOK + "','" + Sequel.cariIsi("select now()") + "',"
-                        + "'" + kdobatFix + "','" + Valid.SetTgl(tgl_beri.getSelectedItem() + "") + "','" + nmUnit.getText() + "',"
-                        + "'" + Tjlh.getText() + "','" + cmbObat.getSelectedItem().toString() + "',"
-                        + "'" + cekjam1 + "','" + cekjam2 + "','" + cekjam3 + "','" + cekjam4 + "',"
-                        + "'" + cekjam5 + "','" + cekjam6 + "','" + cekjam7 + "','" + cekjam8 + "',"
-                        + "'" + cmbJam2.getSelectedItem() + ":" + cmbMnt2.getSelectedItem() + ":" + cmbDtk2.getSelectedItem() + "',"
-                        + "'" + cmbJam3.getSelectedItem() + ":" + cmbMnt3.getSelectedItem() + ":" + cmbDtk3.getSelectedItem() + "',"
-                        + "'" + cmbJam4.getSelectedItem() + ":" + cmbMnt4.getSelectedItem() + ":" + cmbDtk4.getSelectedItem() + "',"
-                        + "'" + cmbJam5.getSelectedItem() + ":" + cmbMnt5.getSelectedItem() + ":" + cmbDtk5.getSelectedItem() + "',"
-                        + "'" + cmbJam6.getSelectedItem() + ":" + cmbMnt6.getSelectedItem() + ":" + cmbDtk6.getSelectedItem() + "',"
-                        + "'" + cmbJam7.getSelectedItem() + ":" + cmbMnt7.getSelectedItem() + ":" + cmbDtk7.getSelectedItem() + "',"
-                        + "'" + cmbJam8.getSelectedItem() + ":" + cmbMnt8.getSelectedItem() + ":" + cmbDtk8.getSelectedItem() + "',"
-                        + "'" + Tket1.getText() + "','" + Tket2.getText() + "','" + Tket3.getText() + "','" + Tket4.getText() + "',"
-                        + "'" + Tket5.getText() + "','" + Tket6.getText() + "','" + Tket7.getText() + "','" + Tket8.getText() + "',"
-                        + "'" + cekDobel + "','" + nip1 + "','" + nip2 + "','" + cmbSift.getSelectedItem().toString() + "'", "Pemberian Obat");
-
-                tampil();
-                tampilDoubelCek();
-                if (status.equals("IGD (Ralan)") || status.equals("IGD (Ranap)") || status.equals("ralan")) {
-                    emptTeks();
+                if (Sequel.menyimpantf("pemberian_obat", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Pemberian Obat", 40, new String[]{
+                    TNoRW.getText(), nmObat.getText(), dosis.getText(), caraPemberian.getText(), cmbJam1.getSelectedItem() + ":" + cmbMnt1.getSelectedItem() + ":" + cmbDtk1.getSelectedItem(),
+                    jlhSisaObat.getText(), statusOK, Sequel.cariIsi("select now()"), kdobatFix, Valid.SetTgl(tgl_beri.getSelectedItem() + ""), nmUnit.getText(), Tjlh.getText(),
+                    cmbObat.getSelectedItem().toString(), cekjam1, cekjam2, cekjam3, cekjam4, cekjam5, cekjam6, cekjam7, cekjam8,
+                    cmbJam2.getSelectedItem() + ":" + cmbMnt2.getSelectedItem() + ":" + cmbDtk2.getSelectedItem(),
+                    cmbJam3.getSelectedItem() + ":" + cmbMnt3.getSelectedItem() + ":" + cmbDtk3.getSelectedItem(),
+                    cmbJam4.getSelectedItem() + ":" + cmbMnt4.getSelectedItem() + ":" + cmbDtk4.getSelectedItem(),
+                    cmbJam5.getSelectedItem() + ":" + cmbMnt5.getSelectedItem() + ":" + cmbDtk5.getSelectedItem(),
+                    cmbJam6.getSelectedItem() + ":" + cmbMnt6.getSelectedItem() + ":" + cmbDtk6.getSelectedItem(),
+                    cmbJam7.getSelectedItem() + ":" + cmbMnt7.getSelectedItem() + ":" + cmbDtk7.getSelectedItem(),
+                    cmbJam8.getSelectedItem() + ":" + cmbMnt8.getSelectedItem() + ":" + cmbDtk8.getSelectedItem(),
+                    Tket1.getText(), Tket2.getText(), Tket3.getText(), Tket4.getText(), Tket5.getText(), Tket6.getText(), Tket7.getText(), Tket8.getText(),
+                    cekDobel, nip1, nip2, cmbSift.getSelectedItem().toString()
+                }) == true) {
+                    tampil();
+                    tampilDoubelCek();
+                    if (status.equals("IGD (Ralan)") || status.equals("IGD (Ranap)") || status.equals("ralan")) {
+                        emptTeks();
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("Simpan Pemberian Obat Pasien : " + e);

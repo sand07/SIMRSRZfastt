@@ -1480,15 +1480,15 @@ public class RMProtokolKemoterapi extends javax.swing.JDialog {
                 Tsiklus.requestFocus();
             } else {
                 try {
-                    Sequel.menyimpan("protokol_kemoterapi", "'" + TnoRW.getText() + "','" + TnmProtokol.getText() + "',"
-                            + "'" + Tsiklus.getText() + "','" + Valid.SetTgl(TtglSiklus.getSelectedItem() + "") + "','" + Tdosis.getText() + "',"
-                            + "'" + Ttb.getText() + "','" + Tbb.getText() + "','" + Tlpt.getText() + "','" + Tdiagnosis.getText() + "',"
-                            + "'" + Tprogram.getText() + "','" + nipPerawat + "','" + nipDokter + "','" + Sequel.cariIsi("select now()") + "',"
-                            + "'" + TnoRM.getText() + "','" + Tket.getText() + "'", "Protokol Kemoterapi");
-
-                    TCari.setText(TnoRM.getText());
-                    tampil();
-                    emptTeks();
+                    if (Sequel.menyimpantf("protokol_kemoterapi", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Protokol Kemoterapi", 15, new String[]{
+                        TnoRW.getText(), TnmProtokol.getText(), Tsiklus.getText(), Valid.SetTgl(TtglSiklus.getSelectedItem() + ""), Tdosis.getText(),
+                        Ttb.getText(), Tbb.getText(), Tlpt.getText(), Tdiagnosis.getText(), Tprogram.getText(), nipPerawat, nipDokter,
+                        Sequel.cariIsi("select now()"), TnoRM.getText(), Tket.getText()
+                    }) == true) {
+                        TCari.setText(TnoRM.getText());
+                        tampil();
+                        emptTeks();
+                    }
                 } catch (Exception e) {
                     System.out.println("Simpan Protokol Kemoterapi Hematologi & Onkologi Medik : " + e);
                 }

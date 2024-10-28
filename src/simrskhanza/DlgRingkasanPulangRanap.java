@@ -82,7 +82,7 @@ public class DlgRingkasanPulangRanap extends javax.swing.JDialog {
             mata = "", telinga = "", hidung = "", mulut = "", poinDE = "", leher = "", bentuk_dada = "", retraksi_dada = "", inspeksi_jan = "",
             palpasi_jan = "", perkusi_jan = "", auskultasi_jan = "", inspeksi_par = "", palpasi_par = "", perkusi_par = "", auskultasi_par = "",
             poinF = "", inspeksi_per = "", palpasi_per = "", perkusi_per = "", auskultasi_per = "", poinG = "", umum = "", neurologis = "", poinH = "",
-            susunan = "", tanda = "", genitalia = "", anus = "";
+            susunan = "", tanda = "", genitalia = "", anus = "", nipPenyimpan = "";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private JsonNode root;
@@ -1857,7 +1857,7 @@ public class DlgRingkasanPulangRanap extends javax.swing.JDialog {
         chkTglKontrol.setBounds(730, 884, 130, 23);
 
         TglKontrol.setEditable(false);
-        TglKontrol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2024" }));
+        TglKontrol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-10-2024" }));
         TglKontrol.setDisplayFormat("dd-MM-yyyy");
         TglKontrol.setName("TglKontrol"); // NOI18N
         TglKontrol.setOpaque(false);
@@ -2551,6 +2551,7 @@ public class DlgRingkasanPulangRanap extends javax.swing.JDialog {
         } else {
             kontrolPoli = "";
             cekTgl = "";
+            nipPenyimpan = "";
             if (chkTglKontrol.isSelected() == false) {
                 kontrolPoli = "0000-00-00";
                 cekTgl = "tidak";
@@ -2570,28 +2571,33 @@ public class DlgRingkasanPulangRanap extends javax.swing.JDialog {
             } else {
                 TNmDokter.setText(TNmDokter.getText());
             }
+            
+            if (akses.getadmin() == true) {
+                nipPenyimpan = "-";
+            } else {
+                nipPenyimpan = akses.getkode();
+            }
 
             try {
-                Sequel.menyimpan("ringkasan_pulang_ranap", "'" + TNoRW.getText() + "','" + TAlasanDirawat.getText() + "','" + TRingkasanRiwayat.getText() + "',"
-                        + "'" + Valid.mysql_real_escape_stringERM(TPemeriksaanFisik.getText()) + "','" + Valid.mysql_real_escape_stringERM(TPemeriksaanPenunjang.getText()) + "',"
-                        + "'" + TTerapiPengobatan.getText() + "','" + TDiagUtama.getText() + "','" + TDiagSekunder.getText() + "','" + TKeadaanumum.getText() + "','" + TKesadaran.getText() + "',"
-                        + "'" + TTensi.getText() + "','" + TSuhu.getText() + "','" + TNadi.getText() + "','" + TFrekuensiNafas.getText() + "','" + TCatatan.getText() + "',"
-                        + "'" + TTerapiPulang.getText() + "','" + cmbLanjutan.getSelectedItem().toString() + "','" + kontrolPoli + "',"
-                        + "'" + TNmDokter.getText() + "','" + Tgcs.getText() + "','" + TTindakan.getText() + "','" + TDokterLuar.getText() + "',"
-                        + "'" + cekTgl + "','" + Tedukasi.getText() + "','" + TKlgPasien.getText() + "','" + akses.getkode() + "','" + THasil.getText() + "',"
-                        + "'" + cmbKondisiWP.getSelectedItem().toString() + "'", "Ringkasan Pulang Pasien Rawat Inap");
-
-                if (nmgedung.equals("AL-HAKIM/PARU")) {
-                    if (noreg.getText().length() == 16) {
-                        Sequel.simpanReplaceInto("nomor_reg_tb", "'" + TNoRM.getText() + "','" + noreg.getText() + "'", "No. Registrasi Pasien TB");
+                if (Sequel.menyimpantf("ringkasan_pulang_ranap", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Ringkasan Pulang Pasien Rawat Inap", 28, new String[]{
+                    TNoRW.getText(), TAlasanDirawat.getText(), TRingkasanRiwayat.getText(), Valid.mysql_real_escape_stringERM(TPemeriksaanFisik.getText()),
+                    Valid.mysql_real_escape_stringERM(TPemeriksaanPenunjang.getText()), TTerapiPengobatan.getText(), TDiagUtama.getText(),
+                    TDiagSekunder.getText(), TKeadaanumum.getText(), TKesadaran.getText(), TTensi.getText(), TSuhu.getText(), TNadi.getText(), TFrekuensiNafas.getText(),
+                    TCatatan.getText(), TTerapiPulang.getText(), cmbLanjutan.getSelectedItem().toString(), kontrolPoli, TNmDokter.getText(), Tgcs.getText(),
+                    TTindakan.getText(), TDokterLuar.getText(), cekTgl, Tedukasi.getText(), TKlgPasien.getText(), nipPenyimpan, THasil.getText(),
+                    cmbKondisiWP.getSelectedItem().toString()
+                }) == true) {
+                    if (nmgedung.equals("AL-HAKIM/PARU")) {
+                        if (noreg.getText().length() == 16) {
+                            Sequel.simpanReplaceInto("nomor_reg_tb", "'" + TNoRM.getText() + "','" + noreg.getText() + "'", "No. Registrasi Pasien TB");
+                        }
                     }
+
+                    TCari.setText(TNoRW.getText());
+                    emptTeks();
+                    tampil();
+                    TabRingkasan.setSelectedIndex(1);
                 }
-
-                TCari.setText(TNoRW.getText());
-                emptTeks();
-                tampil();
-                TabRingkasan.setSelectedIndex(1);
-
             } catch (Exception e) {
                 System.out.println("Simpan Ringkasan Pulang Pasien : " + e);
             }

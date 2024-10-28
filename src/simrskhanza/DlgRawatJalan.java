@@ -13924,43 +13924,42 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         prmrj = "0";
                     }
 
-                    Sequel.menyimpan("pemeriksaan_ralan", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Data", 21, new String[]{
+                    if (Sequel.menyimpantf("pemeriksaan_ralan", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Data", 21, new String[]{
                         TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
-                        TSuhu.getText(), TTensi.getText(), TNadi.getText(), TRespirasi.getText(), TTinggi.getText(),
-                        TBerat.getText(), TGCS.getText(), TKeluhan.getText(), TPemeriksaan.getText(), TAlergi.getText(),
-                        cmbImun.getSelectedItem().toString(), TDiagnosa.getText(), KdDok.getText(), TRncanaFolow.getText(),
-                        TRincianTindakan.getText(), TTerapi.getText(), prmrj, Tspo2.getText()
-                    });
+                        TSuhu.getText(), TTensi.getText(), TNadi.getText(), TRespirasi.getText(), TTinggi.getText(), TBerat.getText(), TGCS.getText(),
+                        TKeluhan.getText(), TPemeriksaan.getText(), TAlergi.getText(), cmbImun.getSelectedItem().toString(), TDiagnosa.getText(), KdDok.getText(),
+                        TRncanaFolow.getText(), TRincianTindakan.getText(), TTerapi.getText(), prmrj, Tspo2.getText()
+                    }) == true) {
+                        Sequel.mengedit("pasien", "no_rkm_medis='" + TNoRM.getText() + "'", "tinggi_badan='" + TTinggi.getText() + "'");
+                        Sequel.mengedit("reg_periksa", "no_rawat='" + TNoRw.getText() + "'", "stts='Sudah Diperiksa Dokter'");
 
-                    Sequel.mengedit("pasien", "no_rkm_medis='" + TNoRM.getText() + "'", "tinggi_badan='" + TTinggi.getText() + "'");
-                    Sequel.mengedit("reg_periksa", "no_rawat='" + TNoRw.getText() + "'", "stts='Sudah Diperiksa Dokter'");
-                    
-                    if (polinya.equals("THT") && !TnmPemeriksaanTHT.getText().equals("") && !ThasilPemeriksaanTHT.getText().equals("")) {
-                        Sequel.menyimpanIgnore("pemeriksaan_tht", "'" + TNoRw.getText() + "','" + TnmPemeriksaanTHT.getText() + "',"
-                                + "'" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "','" + ThasilPemeriksaanTHT.getText() + "',"
-                                + "'" + KdDok.getText() + "'", "Pemeriksaan THT");
-                    }
-
-                    if (ChkCopyPemeriksaanDR.isSelected() == true) {
-                        cekPemeriksaan = 0;
-                        cekPemeriksaan = Sequel.cariInteger("select count(-1) from pemeriksaan_ralan_petugas where no_rawat='" + TNoRw.getText() + "'");
-                        if (cekPemeriksaan == 0) {
-                            SimpanPemeriksaanPetugas();
-                        } else if (cekPemeriksaan > 0) {
-                            Sequel.queryu("delete from pemeriksaan_ralan_petugas where no_rawat='" + TNoRw.getText() + "'");
-                            SimpanPemeriksaanPetugas();
+                        if (polinya.equals("THT") && !TnmPemeriksaanTHT.getText().equals("") && !ThasilPemeriksaanTHT.getText().equals("")) {
+                            Sequel.menyimpanIgnore("pemeriksaan_tht", "'" + TNoRw.getText() + "','" + TnmPemeriksaanTHT.getText() + "',"
+                                    + "'" + Valid.SetTgl(DTPTgl.getSelectedItem() + "") + "','" + ThasilPemeriksaanTHT.getText() + "',"
+                                    + "'" + KdDok.getText() + "'", "Pemeriksaan THT");
                         }
-                    }
-                    emptText();
+
+                        if (ChkCopyPemeriksaanDR.isSelected() == true) {
+                            cekPemeriksaan = 0;
+                            cekPemeriksaan = Sequel.cariInteger("select count(-1) from pemeriksaan_ralan_petugas where no_rawat='" + TNoRw.getText() + "'");
+                            if (cekPemeriksaan == 0) {
+                                SimpanPemeriksaanPetugas();
+                            } else if (cekPemeriksaan > 0) {
+                                Sequel.queryu("delete from pemeriksaan_ralan_petugas where no_rawat='" + TNoRw.getText() + "'");
+                                SimpanPemeriksaanPetugas();
+                            }
+                        }
+                        emptText();
+                        tampilPemeriksaanDokter();
+                        TabPemeriksaanDokter.setSelectedIndex(1);
+                        tbPemeriksaanDr.requestFocus();
+                    }                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Data Pemeriksaan Kurang Lengkap...!!");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Maaf, dokter yang login tidak sama dg. dokter terjadwal dipoliklinik...!!");
             }
-            tampilPemeriksaanDokter();
-            TabPemeriksaanDokter.setSelectedIndex(1);
-            tbPemeriksaanDr.requestFocus();
         }
     }
 
