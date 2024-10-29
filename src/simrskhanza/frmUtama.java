@@ -887,6 +887,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnAsesmenKeperawatanPerioperatif = new widget.ButtonBig();
         btnPerencanaanPulang = new widget.ButtonBig();
         btnCeklisKeselamatanOperasi = new widget.ButtonBig();
+        btnPasienBlackList = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6008,6 +6009,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCeklisKeselamatanOperasi);
 
+        btnPasienBlackList.setForeground(new java.awt.Color(0, 0, 0));
+        btnPasienBlackList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_Male-User-Warning_49595.png"))); // NOI18N
+        btnPasienBlackList.setText("Pasien Black List");
+        btnPasienBlackList.setIconTextGap(0);
+        btnPasienBlackList.setName("btnPasienBlackList"); // NOI18N
+        btnPasienBlackList.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPasienBlackList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPasienBlackListActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPasienBlackList);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6016,7 +6030,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10/10/2024" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25/10/2024" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -11880,6 +11894,19 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnCeklisKeselamatanOperasiActionPerformed
 
+    private void btnPasienBlackListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasienBlackListActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPasienBlackList aplikasi = new DlgPasienBlackList(this, false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPasienBlackListActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -12141,6 +12168,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnOpname;
     private widget.ButtonBig btnPaketOperasi;
     private widget.ButtonBig btnPasien;
+    private widget.ButtonBig btnPasienBlackList;
     private widget.ButtonBig btnPasienCorona;
     private widget.ButtonBig btnPasienMati;
     private widget.ButtonBig btnPasienPonek;
@@ -13973,6 +14001,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         } else if (cmbMenu.getSelectedIndex() == 11) {
             jmlmenu = 0;
+            if (akses.getadmin()== true) {
+                Panelmenu.add(btnPasienBlackList);
+                jmlmenu++;
+            }
+            
             if (akses.getkemenkes_sitt()== true) {
                 Panelmenu.add(btnSpirometri);
                 jmlmenu++;
@@ -15916,6 +15949,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if (akses.getperusahaan_pasien() == true) {
             Panelmenu.add(btnPerusahaan);
+            jmlmenu++;
+        }
+        
+        if (akses.getadmin() == true) {
+            Panelmenu.add(btnPasienBlackList);
             jmlmenu++;
         }
 
@@ -18398,6 +18436,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if (akses.getperusahaan_pasien() == true) {
             if (btnPerusahaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())) {
                 Panelmenu.add(btnPerusahaan);
+                jmlmenu++;
+            }
+        }
+        
+        if (akses.getadmin()== true) {
+            if (btnPasienBlackList.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())) {
+                Panelmenu.add(btnPasienBlackList);
                 jmlmenu++;
             }
         }

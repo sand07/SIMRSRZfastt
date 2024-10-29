@@ -3,6 +3,7 @@ package simrskhanza;
 import fungsi.BackgroundMusic;
 import fungsi.WarnaTable;
 import fungsi.WarnaTableDasbordApotekRanap;
+import fungsi.WarnaTableResepRanap1;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -173,7 +174,7 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
                 column.setPreferredWidth(98);
             }
         }
-        tbdaftarResep.setDefaultRenderer(Object.class, new WarnaTable());
+        tbdaftarResep.setDefaultRenderer(Object.class, new WarnaTableResepRanap1());
 
         TCari.setDocument(new batasInput((byte) 100).getKata(TCari));
         if (koneksiDB.cariCepat().equals("aktif")) {

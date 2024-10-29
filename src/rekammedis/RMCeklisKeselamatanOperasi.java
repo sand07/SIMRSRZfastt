@@ -2159,65 +2159,66 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
             param.put("nmpasien", TPasien.getText());
             param.put("tgllahir", Sequel.cariIsi("select date_format(tgl_lahir,'%d-%m-%Y') from pasien where no_rkm_medis='" + TNoRM.getText() + "'"));
             
-//            param.put("diagnosa", Tdiagnosa.getText());
-//            param.put("rencana", Trencana.getText());
-//            param.put("dokterOperator", TnmDokterAnes1.getText());
-//            param.put("dokterAnastesi", TnmDokterAnes2.getText());
-//            param.put("kesadaran", Tkesadaran.getText());
-//            param.put("tensi", Ttensi.getText() + " mmHg");
-//            param.put("suhu", Tsuhu.getText() + " °C");
-//            param.put("nadi", Tnadi.getText() + " x/menit");
-//            param.put("respi", Trespi.getText() + " x/menit");
-//            
-//            if (cmbIdentifikasi.getSelectedIndex() == 1) {
-//                param.put("infus", cmbIdentifikasi.getSelectedItem().toString() + ", " + Tinfus.getText());
-//            } else {
-//                param.put("infus", cmbIdentifikasi.getSelectedItem().toString());
-//            }
-//            
-//            if (cmbLokasi1.getSelectedIndex() == 1) {
-//                param.put("kateter", cmbLokasi1.getSelectedItem().toString() + ", " + Tkateter.getText());
-//            } else {
-//                param.put("kateter", cmbLokasi1.getSelectedItem().toString());
-//            }
-//            
-//            if (cmbProsedur1.getSelectedIndex() == 1) {
-//                param.put("cukur", cmbProsedur1.getSelectedItem().toString() + ", " + Tcukur.getText());
-//            } else {
-//                param.put("cukur", cmbProsedur1.getSelectedItem().toString());
-//            }
-//            
-//            if (cmbSurat.getSelectedIndex() == 1) {
-//                param.put("lavemen", cmbSurat.getSelectedItem().toString() + ", " + Tlavemen.getText());
-//            } else {
-//                param.put("lavemen", cmbSurat.getSelectedItem().toString());
-//            }
-//
-//            param.put("gigi", cmbGigi.getSelectedItem().toString());
-//            param.put("baju", cmbBaju.getSelectedItem().toString());
-//            param.put("penandaan", cmbPenandaan.getSelectedItem().toString());
-//            param.put("superAnastesi", cmbSuperAnastesi.getSelectedItem().toString());
-//            param.put("superTindakan", cmbSuperTindakan.getSelectedItem().toString());
-//            param.put("superTransfusi", cmbSuperTransfusi.getSelectedItem().toString());
-//            
-//            if (cmbAntibiotik.getSelectedIndex() == 1) {
-//                param.put("antibiotik", cmbAntibiotik.getSelectedItem().toString() + ", " + Tantibiotik.getText() + " gr, Jam " + cmbJam.getSelectedItem().toString() + ":" + cmbMnt.getSelectedItem().toString() + " WITA");
-//            } else {
-//                param.put("antibiotik", cmbAntibiotik.getSelectedItem().toString());
-//            }
-//            
-//            param.put("pemeriksaan", TreviewA.getText() + "\n");
-//            param.put("ekg", cmbEkg.getSelectedItem().toString());
-//            param.put("intepretasiEkg", TintepretasiEkg.getText());
-//            param.put("intepretasiRo", cmbIntepretasiRo.getSelectedItem().toString());
-//            param.put("darah", cmbPersiapanDarah.getSelectedItem().toString());
-//            param.put("puasa", cmbPersiapanPuasa.getSelectedItem().toString());
-            param.put("tglsurat", "Martapura, " + Valid.SetTglINDONESIA(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 54).toString()));
-            param.put("perawatBangsal", "(" + TnmPerawatSir.getText() + ")");
-            param.put("perawatIbs", "(" + TnmPerawatOp.getText() + ")");
+            param.put("theSignIn", cmbJam1.getSelectedItem() + ":" + cmbMnt1.getSelectedItem() + " Wita");
+            param.put("identifikasi", cmbIdentifikasi.getSelectedItem().toString());
+            param.put("lokasiOperasi1", cmbLokasi1.getSelectedItem().toString());
+            param.put("prosedur1", cmbProsedur1.getSelectedItem().toString());
+            param.put("surat", cmbSurat.getSelectedItem().toString());
+            param.put("lokasiOperasi2", cmbLokasi2.getSelectedItem().toString());
+            param.put("mesin", cmbMesin.getSelectedItem().toString());
+            param.put("pulse", cmbPulse.getSelectedItem().toString());
+            param.put("apakahPasien", cmbApakahPasien.getSelectedItem().toString());
+            param.put("kesulitan", cmbKesulitan.getSelectedItem().toString());
+            param.put("dan", cmbDan.getSelectedItem().toString());
+            param.put("resiko", cmbResiko.getSelectedItem().toString());
+            param.put("500", cmb500.getSelectedItem().toString());
+            param.put("dua", cmbDua.getSelectedItem().toString());
+            param.put("rencana", cmbRencana.getSelectedItem().toString());
+            param.put("perawatSirkuler", "(" + TnmPerawatSir.getText() + ")");
+            param.put("dokterAnestesi1", "(" + TnmDokterAnes1.getText() + ")");
+            
+            param.put("theTimeOut", cmbJam2.getSelectedItem() + ":" + cmbMnt2.getSelectedItem() + " Wita");
+            param.put("konfirmasi", cmbKonfirmasi.getSelectedItem().toString());
+            param.put("namaPasien", cmbNama.getSelectedItem().toString());
+            param.put("prosedur2", cmbProsedur2.getSelectedItem().toString());
+            param.put("lokasiDimana", cmbLokasiDimana.getSelectedItem().toString());
+            param.put("apakahAntibiotik", cmbApakahAntibiotik.getSelectedItem().toString());
+            param.put("cekNamaAntibiotik", cmbNamaAntibiotik.getSelectedItem().toString());
+            param.put("cekDosisAntibiotik", cmbDosisAntibiotik.getSelectedItem().toString());            
+            if (TnmAntibiotik.getText().equals("")) {
+                param.put("nmAntibiotik", "- Nama Antibiotik Yang Diberikan .........");
+            } else {
+                param.put("nmAntibiotik", "- Nama Antibiotik Yang Diberikan : " + TnmAntibiotik.getText());
+            }            
+            if (TdosisAntibiotik.getText().equals("")) {
+                param.put("dosisAntibiotik", "- Dosis Antibiotik Yang Diberikan .........");
+            } else {
+                param.put("dosisAntibiotik", "- Dosis Antibiotik Yang Diberikan : " + TdosisAntibiotik.getText());
+            }            
+            param.put("antisipasi", Tantisipasi.getText());
+            param.put("reviewDokter", TreviewA.getText());
+            param.put("reviewTimAnes", TreviewB.getText());
+            param.put("cvc", Tjika.getText());
+            param.put("reviewTimPerawat", TreviewC.getText());
+            param.put("apakahFoto", cmbApakahFoto.getSelectedItem().toString());
+            param.put("operator", "(" + TnmPerawatOp.getText() + ")");
+            param.put("dokterAnestesi2", "(" + TnmDokterAnes2.getText() + ")");
+            param.put("perawatSirkuit1", "(" + TnmPerawatSirkuit1.getText() + ")");
+            
+            param.put("theSignOut", cmbJam3.getSelectedItem() + ":" + cmbMnt3.getSelectedItem() + " Wita");
+            param.put("namaProsedur", cmbNamaProsedur.getSelectedItem().toString());
+            param.put("instrumen", cmbInstrumen.getSelectedItem().toString());
+            param.put("spesimen", cmbSpesimen.getSelectedItem().toString());
+            param.put("adakah", cmbAdakah.getSelectedItem().toString());
+            param.put("operatorDokterBedah", cmb2Operator.getSelectedItem().toString());
+            param.put("halYang", ThalYang.getText());
+            param.put("tglTindakan", Valid.SetTglINDONESIA(Valid.SetTgl(TtglTindakan.getSelectedItem() + "")));
+            param.put("verifikasi", Tverifikasi.getText());
+            param.put("perawatSirkuit2", "(" + TnmPerawatSirkuit2.getText() + ")");
+            param.put("dokterAnestesi3", "(" + TnmDokterAnes3.getText() + ")");
 
-            Valid.MyReport("rptCeklisPraOperasi.jasper", "report", "::[ Lembar Checklist Pra Operasi ]::",
-                "SELECT now() tanggal", param);
+//            Valid.MyReport("rptCeklisKeselamatanOperasi.jasper", "report", "::[ Lembar Checklist Keselamatan Operasi ]::",
+//                "SELECT now() tanggal", param);
 
             tampil();
             emptTeks();

@@ -141,7 +141,7 @@ public final class DlgReg extends javax.swing.JDialog {
     private String nosisrute = "", URUTNOREG = "", alamatperujuk = "-", URL = "", utc = "", noka = "", wktPanggil = "", wktAmbilNomor = "", panggilanFix = "",
             aktifjadwal = "", IPPRINTERTRACER = "", umur = "0", sttsumur = "Th", cekSEPboking = "", diagnosa_ok = "", noPangAkhir = "", noRwNew = "",
             tglDaftar = "", tglnoRW = "", sttsumur1 = "", validasiregistrasi = Sequel.cariIsi("select wajib_closing_kasir from set_validasi_registrasi"),
-            noakhirbpjs = "", noakhirumum = "", noakhirkhusus = "", noakhirranap = "", cekAntrianKhusus = "", link = "";
+            noakhirbpjs = "", noakhirumum = "", noakhirkhusus = "", noakhirranap = "", cekAntrianKhusus = "", link = "", nik = "", nokartu = "";
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private String[] urut = {"", "./suara/satu.mp3", "./suara/dua.mp3", "./suara/tiga.mp3", "./suara/empat.mp3",
         "./suara/lima.mp3", "./suara/enam.mp3", "./suara/tujuh.mp3", "./suara/delapan.mp3",
@@ -6252,6 +6252,7 @@ public final class DlgReg extends javax.swing.JDialog {
                 + "kd_poli='" + kdpoli.getText() + "' and no_rkm_medis=?", cekPasien, TNoRM.getText());
         cekSEP = Sequel.cariInteger("SELECT count(-1) FROM kelengkapan_booking_sep_bpjs k INNER JOIN booking_registrasi b on b.kd_booking=k.kd_booking WHERE "
                 + "k.status_cetak_sep='gagal' and b.tanggal_periksa <DATE(NOW())");
+        cekNoIdentitas();
 
         if (TNoReg.getText().trim().equals("")) {
             Valid.textKosong(TNoReg, "No.Regristrasi");
@@ -6291,6 +6292,10 @@ public final class DlgReg extends javax.swing.JDialog {
             emptTeks();
         } else if (cekUmur > Sequel.cariInteger("select batas_maksimal from set_batas_umur") || cekUmur < Sequel.cariInteger("select batas_minimal from set_batas_umur")) {
             JOptionPane.showMessageDialog(null, "Silahkan perbaiki dulu tgl. lahir pasien ini, karena umurnya " + umur + " " + sttsumur1);
+        } else if ((Sequel.cariInteger("select count(-1) from pasien_blacklist where no_rkm_medis='" + TNoRM.getText() + "'") > 0 && kdpoli.getText().equals("IRS"))
+                || (Sequel.cariInteger("select count(-1) from pasien_blacklist where no_ktp='" + nik + "'") > 0 && kdpoli.getText().equals("IRS"))
+                || (Sequel.cariInteger("select count(-1) from pasien_blacklist where no_peserta='" + nokartu + "'") > 0 && kdpoli.getText().equals("IRS"))) {
+            JOptionPane.showMessageDialog(null, Sequel.cariIsi("select pesan_notifikasi from pasien_blacklist where no_rkm_medis='" + TNoRM.getText() + "'") + "...!!");
         } else {
             //jika sep booking berhasil tersimpan
             if (cekSEP == 0) {
@@ -12511,5 +12516,10 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         } catch (SQLException e) {
             System.out.println("Notifikasi : " + e);
         }
+    }
+    
+    private void cekNoIdentitas() {        
+        nik = Sequel.cariIsi("select no_ktp from pasien where no_rkm_medis='" + TNoRM.getText() + "'");
+        nokartu = Sequel.cariIsi("select no_peserta from pasien where no_rkm_medis='" + TNoRM.getText() + "'");
     }
 }

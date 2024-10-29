@@ -11,6 +11,8 @@
  */
 package inventory;
 import fungsi.WarnaTable;
+import fungsi.WarnaTableResepRanap1;
+import fungsi.WarnaTableResepRanap2;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
@@ -117,7 +119,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
                 column.setPreferredWidth(98);
             }
         }
-        tbResepObat.setDefaultRenderer(Object.class, new WarnaTable());
+        tbResepObat.setDefaultRenderer(Object.class, new WarnaTableResepRanap1());
         
         tabModeFarmasi = new DefaultTableModel(null, new Object[]{
             "Nama Obat/Alkes", "Satuan", "Stok Apotek IGD (UMUM)", "Stok Apotek Sentral (BPJS)"
@@ -314,7 +316,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
             if (i == 0) {
                 column.setPreferredWidth(75);
             } else if (i == 1) {
-                column.setPreferredWidth(370);
+                column.setPreferredWidth(375);
             } else if (i == 2) {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -362,7 +364,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
             } else if (i == 3) {
                 column.setPreferredWidth(60);
             } else if (i == 4) {
-                column.setPreferredWidth(350);
+                column.setPreferredWidth(290);
             } else if (i == 5) {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -380,7 +382,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
                 column.setMaxWidth(0);
             }
         }
-        tbItemResep1.setDefaultRenderer(Object.class, new WarnaTable());
+        tbItemResep1.setDefaultRenderer(Object.class, new WarnaTableResepRanap2());
     }
 
     /**
@@ -427,6 +429,8 @@ public class DlgCatatanResep extends javax.swing.JDialog {
         chkRalan = new widget.RadioButton();
         jLabel68 = new widget.Label();
         cmbConteng = new widget.ComboBox();
+        jLabel13 = new widget.Label();
+        LCount2 = new widget.Label();
         BtnCopyResep = new widget.Button();
         BtnCloseIn8 = new widget.Button();
         jPanel5 = new javax.swing.JPanel();
@@ -629,7 +633,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
         jLabel30.setPreferredSize(new java.awt.Dimension(60, 23));
         internalFrame17.add(jLabel30);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-10-2024" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2024" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -643,7 +647,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
         jLabel31.setPreferredSize(new java.awt.Dimension(23, 23));
         internalFrame17.add(jLabel31);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-10-2024" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2024" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -829,6 +833,19 @@ public class DlgCatatanResep extends javax.swing.JDialog {
         });
         panelGlass6.add(cmbConteng);
 
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("Record :");
+        jLabel13.setName("jLabel13"); // NOI18N
+        jLabel13.setPreferredSize(new java.awt.Dimension(60, 23));
+        panelGlass6.add(jLabel13);
+
+        LCount2.setForeground(new java.awt.Color(0, 0, 0));
+        LCount2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount2.setText("0");
+        LCount2.setName("LCount2"); // NOI18N
+        LCount2.setPreferredSize(new java.awt.Dimension(40, 23));
+        panelGlass6.add(LCount2);
+
         BtnCopyResep.setForeground(new java.awt.Color(0, 0, 0));
         BtnCopyResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         BtnCopyResep.setMnemonic('R');
@@ -869,7 +886,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
         jPanel5.setPreferredSize(new java.awt.Dimension(816, 102));
         jPanel5.setLayout(new java.awt.GridLayout(1, 2));
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Pemberian Resep", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Pemberian Resep", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13))); // NOI18N
         jPanel6.setName("jPanel6"); // NOI18N
         jPanel6.setOpaque(false);
         jPanel6.setPreferredSize(new java.awt.Dimension(250, 102));
@@ -898,7 +915,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
 
         jPanel5.add(jPanel6);
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Daftar Item Resep Obat", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Daftar Item Resep Obat", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13))); // NOI18N
         jPanel7.setName("jPanel7"); // NOI18N
         jPanel7.setOpaque(false);
         jPanel7.setPreferredSize(new java.awt.Dimension(350, 102));
@@ -986,7 +1003,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
         panelGlass13.add(jLabel54);
         jLabel54.setBounds(0, 66, 105, 23);
 
-        DTPCariA.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-10-2024" }));
+        DTPCariA.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2024" }));
         DTPCariA.setDisplayFormat("dd-MM-yyyy");
         DTPCariA.setName("DTPCariA"); // NOI18N
         DTPCariA.setOpaque(false);
@@ -1002,7 +1019,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
         panelGlass13.add(jLabel55);
         jLabel55.setBounds(200, 66, 23, 23);
 
-        DTPCariB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-10-2024" }));
+        DTPCariB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2024" }));
         DTPCariB.setDisplayFormat("dd-MM-yyyy");
         DTPCariB.setName("DTPCariB"); // NOI18N
         DTPCariB.setOpaque(false);
@@ -1041,7 +1058,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
             }
         });
         panelGlass13.add(BtnCariObat);
-        BtnCariObat.setBounds(680, 70, 130, 23);
+        BtnCariObat.setBounds(680, 66, 130, 23);
 
         jLabel57.setForeground(new java.awt.Color(0, 0, 0));
         jLabel57.setText("Pasien : ");
@@ -2391,7 +2408,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPilihActionPerformed
 
     private void BtnResepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnResepActionPerformed
-        WindowRiwayatResep.setSize(970, internalFrame1.getHeight() - 40);
+        WindowRiwayatResep.setSize(957, internalFrame1.getHeight() - 40);
         WindowRiwayatResep.setLocationRelativeTo(internalFrame1);
         WindowRiwayatResep.setVisible(true);
         cmbConteng.setSelectedIndex(0);
@@ -2612,6 +2629,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
     private widget.Tanggal DTPCariB;
     private widget.Label LCount;
     private widget.Label LCount1;
+    private widget.Label LCount2;
     private javax.swing.JMenuItem MnCopyObat;
     private javax.swing.JMenuItem MnDiCopy;
     private javax.swing.JMenuItem MnDibatalkan;
@@ -2657,6 +2675,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
     private widget.Label jLabel10;
     private widget.Label jLabel11;
     private widget.Label jLabel12;
+    private widget.Label jLabel13;
     private widget.Label jLabel30;
     private widget.Label jLabel31;
     private widget.Label jLabel32;
@@ -3512,5 +3531,6 @@ public class DlgCatatanResep extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notifikasi : " + e);
         }
+        LCount2.setText("" + tabModeResepB.getRowCount());
     }
 }

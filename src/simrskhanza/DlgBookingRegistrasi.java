@@ -122,7 +122,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
     private String URUTNOREG = "", status = "", no_rawat = "", umur = "", sttsumur = "", no_peserta = "", user = "", 
             tglkkl = "0000-00-00", URL = "", utc = "", pembi = "", kdpnjg = "", SEPkontrol = "", tglPulangInap = "",
             flag = "", asesmen = "", jkel = "", cekPembi = "", cekFlag = "", cekKDpen = "", cekAses = "", cekRujukan = "",
-            link = "", cekKodePJ = "";
+            link = "", cekKodePJ = "", nik = "", nokartu = "";
     private LocalDate date1, date2;
     private final JProgressBar progressBar = new JProgressBar();
 
@@ -3821,6 +3821,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         Sequel.cariIsi("select kd_booking from booking_registrasi where kd_poli='" + KdPoli.getText() + "' and "
                 + "tanggal_periksa='" + Valid.SetTgl(TanggalPeriksa.getSelectedItem() + "") + "' and "
                 + "no_rkm_medis=?", cekKDboking, TNoRM.getText());
+        cekNoIdentitas();
         
         if (NoRujukan.getText().equals(Sequel.cariIsi("select k.no_rujukan from booking_registrasi b "
                 + "inner join kelengkapan_booking_sep_bpjs k on k.kd_booking=b.kd_booking where "
@@ -3891,6 +3892,10 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         } else if (cmbAntrianKhusus.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Apakah pasien tersebut termasuk antrian khusus/prioritas dipoliklinik..?, silahkan pilih dulu salah satu..!!");
             cmbAntrianKhusus.requestFocus();
+        } else if ((Sequel.cariInteger("select count(-1) from pasien_blacklist where no_rkm_medis='" + TNoRM.getText() + "'") > 0 && KdPoli.getText().equals("IRS"))
+                || (Sequel.cariInteger("select count(-1) from pasien_blacklist where no_ktp='" + nik + "'") > 0 && KdPoli.getText().equals("IRS"))
+                || (Sequel.cariInteger("select count(-1) from pasien_blacklist where no_peserta='" + nokartu + "'") > 0 && KdPoli.getText().equals("IRS"))) {
+            JOptionPane.showMessageDialog(null, Sequel.cariIsi("select pesan_notifikasi from pasien_blacklist where no_rkm_medis='" + TNoRM.getText() + "'") + "...!!");
         } else {
             if (kdpnj.getText().equals("B01") || (kdpnj.getText().equals("A03"))) {
 
@@ -6836,5 +6841,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         } catch (SQLException e) {
             System.out.println("Notifikasi : " + e);
         }
+    }
+    
+    private void cekNoIdentitas() {        
+        nik = Sequel.cariIsi("select no_ktp from pasien where no_rkm_medis='" + TNoRM.getText() + "'");
+        nokartu = Sequel.cariIsi("select no_peserta from pasien where no_rkm_medis='" + TNoRM.getText() + "'");
     }
 }

@@ -13,6 +13,7 @@ package inventory;
 
 import fungsi.WarnaTable;
 import fungsi.WarnaTable2;
+import fungsi.WarnaTableResepRanap2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -202,7 +203,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
                 column.setPreferredWidth(98);
             }
         }
-        tbResepRanap.setDefaultRenderer(Object.class, new WarnaTable());
+        tbResepRanap.setDefaultRenderer(Object.class, new WarnaTableResepRanap2());
         
         tabModeResepObat1 = new DefaultTableModel(null, new Object[]{
             "P", "No.Rawat", "Nama Obat", "Tgl. Resep", "Jam Input", "Status", "ID", "Nama Dokter"}) {
