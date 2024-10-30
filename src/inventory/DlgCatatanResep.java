@@ -205,7 +205,8 @@ public class DlgCatatanResep extends javax.swing.JDialog {
         tbItemObat.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabModeResep2 = new DefaultTableModel(null, new Object[]{
-            "Cek", "no_rawat", "Tgl. Resep", "jam_input", "Nama Item Obat", "status", "nm_dokter", "id", "Jns. Resep"
+            "Cek", "no_rawat", "Tgl. Resep", "jam_input", "Nama Item Obat", "status", "nm_dokter", "id", 
+            "Jns. Resep", "ini_resep"
         }) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -218,7 +219,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
             Class[] types = new Class[]{
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
-                java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class
             };
 
             @Override
@@ -230,7 +231,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
         tbItemResep.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbItemResep.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 9; i++) {
+        for (i = 0; i < 10; i++) {
             TableColumn column = tbItemResep.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(32);
@@ -254,6 +255,9 @@ public class DlgCatatanResep extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             } else if (i == 8) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 9) {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }
@@ -2171,7 +2175,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
 
                 x = JOptionPane.showConfirmDialog(null, "Resep terakhir pada tgl. " + Valid.SetTglINDONESIA(tglResep) + " apakah akan dicopy...?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
                 if (x == JOptionPane.YES_OPTION) {
-                    tampilItemResep(tglResep, TNoRM.getText(), kodepoli);
+                    tampilItemResepRalan(tglResep, TNoRM.getText(), kodepoli);
 
                     for (i = 0; i < tbItemResep.getRowCount(); i++) {
                         tbItemResep.setValueAt(Boolean.TRUE, i, 0);
@@ -3096,7 +3100,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
         Valid.tabelKosong(tabModeResep2);
         try {
             psR2 = koneksi.prepareStatement("select c.no_rawat, c.tgl_perawatan, c.jam_perawatan, c.nama_obat, c.status, "
-                    + "d.nm_dokter, c.noID, c.jenis_resep FROM catatan_resep_ranap c "
+                    + "d.nm_dokter, c.noID, c.jenis_resep, c.resep_untuk FROM catatan_resep_ranap c "
                     + "INNER JOIN reg_periksa r ON r.no_rawat = c.no_rawat "
                     + "INNER JOIN dokter d ON d.kd_dokter = c.kd_dokter	WHERE "
                     + "r.status_lanjut='ranap' AND c.tgl_perawatan='" + tglresep + "' AND c.no_rawat = '" + norw + "' ORDER BY c.noId");
@@ -3112,7 +3116,8 @@ public class DlgCatatanResep extends javax.swing.JDialog {
                         rsR2.getString(5),
                         rsR2.getString(6),
                         rsR2.getString(7),
-                        rsR2.getString(8)
+                        rsR2.getString(8),
+                        rsR2.getString(9)
                     });
                 }
             } catch (Exception e) {
@@ -3130,11 +3135,11 @@ public class DlgCatatanResep extends javax.swing.JDialog {
         }
     }
     
-    private void tampilItemResep(String tglresep, String norm, String kdpoli) {
+    private void tampilItemResepRalan(String tglresep, String norm, String kdpoli) {
         Valid.tabelKosong(tabModeResep2);
         try {
             psR2 = koneksi.prepareStatement("select c.no_rawat, c.tgl_perawatan, c.jam_perawatan, c.nama_obat, c.status, d.nm_dokter, "
-                    + "c.noID, '-' jenis_resep from catatan_resep c "
+                    + "c.noID, '-' jenis_resep, '-' resep_untuk from catatan_resep c "
                     + "inner join reg_periksa r on r.no_rawat = c.no_rawat inner join dokter d on d.kd_dokter = c.kd_dokter where "
                     + "c.tgl_perawatan='" + tglresep + "' and r.no_rkm_medis='" + norm + "' and r.kd_poli='" + kdpoli + "' order by c.noId");
             try {
@@ -3149,7 +3154,8 @@ public class DlgCatatanResep extends javax.swing.JDialog {
                         rsR2.getString(5),
                         rsR2.getString(6),
                         rsR2.getString(7),
-                        rsR2.getString(8)
+                        rsR2.getString(8),
+                        rsR2.getString(9)
                     });
                 }
             } catch (Exception e) {
@@ -3225,7 +3231,8 @@ public class DlgCatatanResep extends javax.swing.JDialog {
                                 + "'" + Sequel.cariIsi("select date(now())") + "',"
                                 + "'" + Sequel.cariIsi("SELECT TIME(NOW())") + "',"
                                 + "'" + tbItemResep.getValueAt(i, 4).toString() + "','BELUM','" + akses.getkode() + "',"
-                                + "'" + tbItemResep.getValueAt(i, 8).toString() + "'", "Copy Resep Sebelumnya");
+                                + "'" + tbItemResep.getValueAt(i, 8).toString() + "',"
+                                + "'" + tbItemResep.getValueAt(i, 9).toString() + "'", "Copy Resep Sebelumnya");
                     }
                 }
 
