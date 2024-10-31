@@ -560,14 +560,16 @@ public final class sekuel {
         }
     }
 
-    public void menyimpan2logo(String table, String value, String sama, JTextField AlmGb, JTextField AlmPhoto, JTextField AlmPhoto1, JTextField AlmPhoto2) {
+    public void menyimpan2logo(String table, String value, String sama, JTextField AlmGb,
+            JTextField AlmPhoto, JTextField AlmPhoto1, JTextField AlmPhoto2, JTextField AlmPhoto3) {
         try {
-            ps = connect.prepareStatement("insert into " + table + " values(" + value + ",?,?,?)");
+            ps = connect.prepareStatement("insert into " + table + " values(" + value + ",?,?,?,?)");
             try {
                 ps.setBinaryStream(1, new FileInputStream(AlmGb.getText()), new File(AlmGb.getText()).length());
                 ps.setBinaryStream(2, new FileInputStream(AlmPhoto.getText()), new File(AlmPhoto.getText()).length());
                 ps.setBinaryStream(3, new FileInputStream(AlmPhoto1.getText()), new File(AlmPhoto1.getText()).length());
                 ps.setBinaryStream(4, new FileInputStream(AlmPhoto2.getText()), new File(AlmPhoto2.getText()).length());
+                ps.setBinaryStream(5, new FileInputStream(AlmPhoto3.getText()), new File(AlmPhoto3.getText()).length());
                 ps.executeUpdate();
             } catch (Exception e) {
                 System.out.println("Notifikasi : " + e);

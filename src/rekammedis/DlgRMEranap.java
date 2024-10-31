@@ -113,6 +113,7 @@ public class DlgRMEranap extends javax.swing.JDialog {
         jLabel4 = new widget.Label();
         TtglMasuk = new widget.TextBox();
         internalFrame2 = new widget.InternalFrame();
+        TabRekamMedis = new javax.swing.JTabbedPane();
         scrollInput = new widget.ScrollPane();
         FormInput = new widget.PanelBiasa();
         BtnAsesmenRestrain = new widget.ButtonBig();
@@ -135,12 +136,6 @@ public class DlgRMEranap extends javax.swing.JDialog {
         BtnJadwalObat = new widget.ButtonBig();
         BtnTransferTindakan = new widget.ButtonBig();
         BtnPerencanaanPulang = new widget.ButtonBig();
-        BtnAsesmenPraSedasi = new widget.ButtonBig();
-        BtnAsesmenPreInduksi = new widget.ButtonBig();
-        BtnAsesmenKeperawatanPerioperatif = new widget.ButtonBig();
-        BtnCeklisPraOperasi = new widget.ButtonBig();
-        BtnCeklisKesiapanAnestesi = new widget.ButtonBig();
-        BtnCeklisKeselamatanOperasi = new widget.ButtonBig();
         BtnKonsul = new widget.ButtonBig();
         BtnJawabKonsul = new widget.ButtonBig();
         BtnPersetujuanTindakan = new widget.ButtonBig();
@@ -152,6 +147,14 @@ public class DlgRMEranap extends javax.swing.JDialog {
         BtnAsuhanGizi = new widget.ButtonBig();
         BtnMonevAsuhanGizi = new widget.ButtonBig();
         BtnAsesmenUlangGizi = new widget.ButtonBig();
+        scrollInput1 = new widget.ScrollPane();
+        FormInput1 = new widget.PanelBiasa();
+        BtnAsesmenPraSedasi = new widget.ButtonBig();
+        BtnAsesmenPreInduksi = new widget.ButtonBig();
+        BtnAsesmenKeperawatanPerioperatif = new widget.ButtonBig();
+        BtnCeklisPraOperasi = new widget.ButtonBig();
+        BtnCeklisKesiapanAnestesi = new widget.ButtonBig();
+        BtnCeklisKeselamatanOperasi = new widget.ButtonBig();
         internalFrame3 = new widget.InternalFrame();
         BtnRefres = new widget.Button();
         BtnKeluar = new widget.Button();
@@ -297,6 +300,11 @@ public class DlgRMEranap extends javax.swing.JDialog {
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setPreferredSize(new java.awt.Dimension(2800, 2800));
         internalFrame2.setLayout(new java.awt.BorderLayout());
+
+        TabRekamMedis.setBackground(new java.awt.Color(255, 255, 254));
+        TabRekamMedis.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        TabRekamMedis.setName("TabRekamMedis"); // NOI18N
+        TabRekamMedis.setPreferredSize(new java.awt.Dimension(270, 106));
 
         scrollInput.setName("scrollInput"); // NOI18N
         scrollInput.setPreferredSize(new java.awt.Dimension(102, 557));
@@ -571,84 +579,6 @@ public class DlgRMEranap extends javax.swing.JDialog {
         });
         FormInput.add(BtnPerencanaanPulang);
 
-        BtnAsesmenPraSedasi.setForeground(new java.awt.Color(0, 0, 0));
-        BtnAsesmenPraSedasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/anastesi2.png"))); // NOI18N
-        BtnAsesmenPraSedasi.setText("Asesmen Pra Sedasi");
-        BtnAsesmenPraSedasi.setIconTextGap(0);
-        BtnAsesmenPraSedasi.setName("BtnAsesmenPraSedasi"); // NOI18N
-        BtnAsesmenPraSedasi.setPreferredSize(new java.awt.Dimension(200, 90));
-        BtnAsesmenPraSedasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAsesmenPraSedasiActionPerformed(evt);
-            }
-        });
-        FormInput.add(BtnAsesmenPraSedasi);
-
-        BtnAsesmenPreInduksi.setForeground(new java.awt.Color(0, 0, 0));
-        BtnAsesmenPreInduksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/anastesi1.png"))); // NOI18N
-        BtnAsesmenPreInduksi.setText("Asesmen Pre Induksi");
-        BtnAsesmenPreInduksi.setIconTextGap(0);
-        BtnAsesmenPreInduksi.setName("BtnAsesmenPreInduksi"); // NOI18N
-        BtnAsesmenPreInduksi.setPreferredSize(new java.awt.Dimension(200, 90));
-        BtnAsesmenPreInduksi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAsesmenPreInduksiActionPerformed(evt);
-            }
-        });
-        FormInput.add(BtnAsesmenPreInduksi);
-
-        BtnAsesmenKeperawatanPerioperatif.setForeground(new java.awt.Color(0, 0, 0));
-        BtnAsesmenKeperawatanPerioperatif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_TextEdit_37595.png"))); // NOI18N
-        BtnAsesmenKeperawatanPerioperatif.setText("Assesmen Keprwtn. Perioperatif");
-        BtnAsesmenKeperawatanPerioperatif.setIconTextGap(0);
-        BtnAsesmenKeperawatanPerioperatif.setName("BtnAsesmenKeperawatanPerioperatif"); // NOI18N
-        BtnAsesmenKeperawatanPerioperatif.setPreferredSize(new java.awt.Dimension(200, 90));
-        BtnAsesmenKeperawatanPerioperatif.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAsesmenKeperawatanPerioperatifActionPerformed(evt);
-            }
-        });
-        FormInput.add(BtnAsesmenKeperawatanPerioperatif);
-
-        BtnCeklisPraOperasi.setForeground(new java.awt.Color(0, 0, 0));
-        BtnCeklisPraOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
-        BtnCeklisPraOperasi.setText("Checklist Pra Operasi");
-        BtnCeklisPraOperasi.setIconTextGap(0);
-        BtnCeklisPraOperasi.setName("BtnCeklisPraOperasi"); // NOI18N
-        BtnCeklisPraOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
-        BtnCeklisPraOperasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCeklisPraOperasiActionPerformed(evt);
-            }
-        });
-        FormInput.add(BtnCeklisPraOperasi);
-
-        BtnCeklisKesiapanAnestesi.setForeground(new java.awt.Color(0, 0, 0));
-        BtnCeklisKesiapanAnestesi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
-        BtnCeklisKesiapanAnestesi.setText("Checklist Kesiapan Anestesi");
-        BtnCeklisKesiapanAnestesi.setIconTextGap(0);
-        BtnCeklisKesiapanAnestesi.setName("BtnCeklisKesiapanAnestesi"); // NOI18N
-        BtnCeklisKesiapanAnestesi.setPreferredSize(new java.awt.Dimension(200, 90));
-        BtnCeklisKesiapanAnestesi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCeklisKesiapanAnestesiActionPerformed(evt);
-            }
-        });
-        FormInput.add(BtnCeklisKesiapanAnestesi);
-
-        BtnCeklisKeselamatanOperasi.setForeground(new java.awt.Color(0, 0, 0));
-        BtnCeklisKeselamatanOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
-        BtnCeklisKeselamatanOperasi.setText("Checklist Keselamatan Operasi");
-        BtnCeklisKeselamatanOperasi.setIconTextGap(0);
-        BtnCeklisKeselamatanOperasi.setName("BtnCeklisKeselamatanOperasi"); // NOI18N
-        BtnCeklisKeselamatanOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
-        BtnCeklisKeselamatanOperasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCeklisKeselamatanOperasiActionPerformed(evt);
-            }
-        });
-        FormInput.add(BtnCeklisKeselamatanOperasi);
-
         BtnKonsul.setForeground(new java.awt.Color(0, 0, 0));
         BtnKonsul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/email_open.png"))); // NOI18N
         BtnKonsul.setText("Permintaan Konsul Antar Unit");
@@ -794,7 +724,100 @@ public class DlgRMEranap extends javax.swing.JDialog {
 
         scrollInput.setViewportView(FormInput);
 
-        internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
+        TabRekamMedis.addTab("Ruang Rawat Inap", scrollInput);
+
+        scrollInput1.setName("scrollInput1"); // NOI18N
+        scrollInput1.setPreferredSize(new java.awt.Dimension(102, 557));
+
+        FormInput1.setBackground(new java.awt.Color(255, 255, 255));
+        FormInput1.setBorder(null);
+        FormInput1.setName("FormInput1"); // NOI18N
+        FormInput1.setPreferredSize(new java.awt.Dimension(870, 834));
+        FormInput1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 8, 25));
+
+        BtnAsesmenPraSedasi.setForeground(new java.awt.Color(0, 0, 0));
+        BtnAsesmenPraSedasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/anastesi2.png"))); // NOI18N
+        BtnAsesmenPraSedasi.setText("Asesmen Pra Sedasi");
+        BtnAsesmenPraSedasi.setIconTextGap(0);
+        BtnAsesmenPraSedasi.setName("BtnAsesmenPraSedasi"); // NOI18N
+        BtnAsesmenPraSedasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        BtnAsesmenPraSedasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAsesmenPraSedasiActionPerformed(evt);
+            }
+        });
+        FormInput1.add(BtnAsesmenPraSedasi);
+
+        BtnAsesmenPreInduksi.setForeground(new java.awt.Color(0, 0, 0));
+        BtnAsesmenPreInduksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/anastesi1.png"))); // NOI18N
+        BtnAsesmenPreInduksi.setText("Asesmen Pre Induksi");
+        BtnAsesmenPreInduksi.setIconTextGap(0);
+        BtnAsesmenPreInduksi.setName("BtnAsesmenPreInduksi"); // NOI18N
+        BtnAsesmenPreInduksi.setPreferredSize(new java.awt.Dimension(200, 90));
+        BtnAsesmenPreInduksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAsesmenPreInduksiActionPerformed(evt);
+            }
+        });
+        FormInput1.add(BtnAsesmenPreInduksi);
+
+        BtnAsesmenKeperawatanPerioperatif.setForeground(new java.awt.Color(0, 0, 0));
+        BtnAsesmenKeperawatanPerioperatif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_TextEdit_37595.png"))); // NOI18N
+        BtnAsesmenKeperawatanPerioperatif.setText("Assesmen Keprwtn. Perioperatif");
+        BtnAsesmenKeperawatanPerioperatif.setIconTextGap(0);
+        BtnAsesmenKeperawatanPerioperatif.setName("BtnAsesmenKeperawatanPerioperatif"); // NOI18N
+        BtnAsesmenKeperawatanPerioperatif.setPreferredSize(new java.awt.Dimension(200, 90));
+        BtnAsesmenKeperawatanPerioperatif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAsesmenKeperawatanPerioperatifActionPerformed(evt);
+            }
+        });
+        FormInput1.add(BtnAsesmenKeperawatanPerioperatif);
+
+        BtnCeklisPraOperasi.setForeground(new java.awt.Color(0, 0, 0));
+        BtnCeklisPraOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
+        BtnCeklisPraOperasi.setText("Checklist Pra Operasi");
+        BtnCeklisPraOperasi.setIconTextGap(0);
+        BtnCeklisPraOperasi.setName("BtnCeklisPraOperasi"); // NOI18N
+        BtnCeklisPraOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        BtnCeklisPraOperasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCeklisPraOperasiActionPerformed(evt);
+            }
+        });
+        FormInput1.add(BtnCeklisPraOperasi);
+
+        BtnCeklisKesiapanAnestesi.setForeground(new java.awt.Color(0, 0, 0));
+        BtnCeklisKesiapanAnestesi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
+        BtnCeklisKesiapanAnestesi.setText("Checklist Kesiapan Anestesi");
+        BtnCeklisKesiapanAnestesi.setIconTextGap(0);
+        BtnCeklisKesiapanAnestesi.setName("BtnCeklisKesiapanAnestesi"); // NOI18N
+        BtnCeklisKesiapanAnestesi.setPreferredSize(new java.awt.Dimension(200, 90));
+        BtnCeklisKesiapanAnestesi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCeklisKesiapanAnestesiActionPerformed(evt);
+            }
+        });
+        FormInput1.add(BtnCeklisKesiapanAnestesi);
+
+        BtnCeklisKeselamatanOperasi.setForeground(new java.awt.Color(0, 0, 0));
+        BtnCeklisKeselamatanOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
+        BtnCeklisKeselamatanOperasi.setText("Checklist Keselamatan Operasi");
+        BtnCeklisKeselamatanOperasi.setIconTextGap(0);
+        BtnCeklisKeselamatanOperasi.setName("BtnCeklisKeselamatanOperasi"); // NOI18N
+        BtnCeklisKeselamatanOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        BtnCeklisKeselamatanOperasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCeklisKeselamatanOperasiActionPerformed(evt);
+            }
+        });
+        FormInput1.add(BtnCeklisKeselamatanOperasi);
+
+        scrollInput1.setViewportView(FormInput1);
+
+        TabRekamMedis.addTab("Instalasi Bedah Sentral (IBS)", scrollInput1);
+
+        internalFrame2.add(TabRekamMedis, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(internalFrame2, java.awt.BorderLayout.CENTER);
 
@@ -1614,9 +1637,11 @@ public class DlgRMEranap extends javax.swing.JDialog {
     private widget.ButtonBig BtnTransferSerahTerima;
     private widget.ButtonBig BtnTransferTindakan;
     private widget.PanelBiasa FormInput;
+    private widget.PanelBiasa FormInput1;
     private widget.TextBox TNmPasien;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRW;
+    private javax.swing.JTabbedPane TabRekamMedis;
     private widget.TextBox TtglMasuk;
     private javax.swing.JDialog WindowDPJPranap;
     private widget.Button btnDPJP;
@@ -1633,6 +1658,7 @@ public class DlgRMEranap extends javax.swing.JDialog {
     private widget.TextBox nmUnit;
     private widget.TextBox nmdpjp;
     private widget.ScrollPane scrollInput;
+    private widget.ScrollPane scrollInput1;
     // End of variables declaration//GEN-END:variables
 
     private void isCek() {

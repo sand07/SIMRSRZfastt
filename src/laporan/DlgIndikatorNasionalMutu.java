@@ -1629,187 +1629,249 @@ public class DlgIndikatorNasionalMutu extends javax.swing.JDialog {
                     }
 
                     //cek angka jumlah
-                    if (rs.getString("tgl1").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=1 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl1 = "";
                     } else {
                         tgl1 = rs.getString("tgl1");
                     }
 
-                    if (rs.getString("tgl2").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=2 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl2 = "";
                     } else {
                         tgl2 = rs.getString("tgl2");
                     }
 
-                    if (rs.getString("tgl3").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=3 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl3 = "";
                     } else {
                         tgl3 = rs.getString("tgl3");
                     }
 
-                    if (rs.getString("tgl4").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=4 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl4 = "";
                     } else {
                         tgl4 = rs.getString("tgl4");
                     }
 
-                    if (rs.getString("tgl5").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=5 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl5 = "";
                     } else {
                         tgl5 = rs.getString("tgl5");
                     }
 
-                    if (rs.getString("tgl6").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=6 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl6 = "";
                     } else {
                         tgl6 = rs.getString("tgl6");
                     }
 
-                    if (rs.getString("tgl7").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=7 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl7 = "";
                     } else {
                         tgl7 = rs.getString("tgl7");
                     }
 
-                    if (rs.getString("tgl8").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=8 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl8 = "";
                     } else {
                         tgl8 = rs.getString("tgl8");
                     }
 
-                    if (rs.getString("tgl9").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=9 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl9 = "";
                     } else {
                         tgl9 = rs.getString("tgl9");
                     }
 
-                    if (rs.getString("tgl10").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=10 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl10 = "";
                     } else {
                         tgl10 = rs.getString("tgl10");
                     }
 
-                    if (rs.getString("tgl11").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=11 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl11 = "";
                     } else {
                         tgl11 = rs.getString("tgl11");
                     }
 
-                    if (rs.getString("tgl12").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=12 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl12 = "";
                     } else {
                         tgl12 = rs.getString("tgl12");
                     }
 
-                    if (rs.getString("tgl13").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=13 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl13 = "";
                     } else {
                         tgl13 = rs.getString("tgl13");
                     }
 
-                    if (rs.getString("tgl14").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=14 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl14 = "";
                     } else {
                         tgl14 = rs.getString("tgl14");
                     }
 
-                    if (rs.getString("tgl15").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=15 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl15 = "";
                     } else {
                         tgl15 = rs.getString("tgl15");
                     }
 
-                    if (rs.getString("tgl16").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=16 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl16 = "";
                     } else {
                         tgl16 = rs.getString("tgl16");
                     }
 
-                    if (rs.getString("tgl17").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=17 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl17 = "";
                     } else {
                         tgl17 = rs.getString("tgl17");
                     }
 
-                    if (rs.getString("tgl18").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=18 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl18 = "";
                     } else {
                         tgl18 = rs.getString("tgl18");
                     }
 
-                    if (rs.getString("tgl19").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=19 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl19 = "";
                     } else {
                         tgl19 = rs.getString("tgl19");
                     }
 
-                    if (rs.getString("tgl20").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=20 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl20 = "";
                     } else {
                         tgl20 = rs.getString("tgl20");
                     }
 
-                    if (rs.getString("tgl21").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=21 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl21 = "";
                     } else {
                         tgl21 = rs.getString("tgl21");
                     }
 
-                    if (rs.getString("tgl22").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=22 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl22 = "";
                     } else {
                         tgl22 = rs.getString("tgl22");
                     }
 
-                    if (rs.getString("tgl23").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=23 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl23 = "";
                     } else {
                         tgl23 = rs.getString("tgl23");
                     }
 
-                    if (rs.getString("tgl24").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=24 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl24 = "";
                     } else {
                         tgl24 = rs.getString("tgl24");
                     }
 
-                    if (rs.getString("tgl25").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=25 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl25 = "";
                     } else {
                         tgl25 = rs.getString("tgl25");
                     }
 
-                    if (rs.getString("tgl26").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=26 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl26 = "";
                     } else {
                         tgl26 = rs.getString("tgl26");
                     }
 
-                    if (rs.getString("tgl27").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=27 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl27 = "";
                     } else {
                         tgl27 = rs.getString("tgl27");
                     }
 
-                    if (rs.getString("tgl28").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=28 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl28 = "";
                     } else {
                         tgl28 = rs.getString("tgl28");
                     }
 
-                    if (rs.getString("tgl29").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=29 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl29 = "";
                     } else {
                         tgl29 = rs.getString("tgl29");
                     }
 
-                    if (rs.getString("tgl30").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=30 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl30 = "";
                     } else {
                         tgl30 = rs.getString("tgl30");
                     }
 
-                    if (rs.getString("tgl31").equals("0")) {
+                    if (Sequel.cariInteger("select count(-1) from indikator_nasional_mutu where day(tgl_catat)=31 and "
+                            + "MONTH(tgl_catat)='" + rs.getString("bln") + "' and YEAR(tgl_catat)='" + rs.getString("thn") + "' "
+                            + "and gedung='" + rs.getString("gedung") + "' and kd_numdemon='" + rs.getString("kd_numdemon") + "'") == 0) {
                         tgl31 = "";
                     } else {
                         tgl31 = rs.getString("tgl31");

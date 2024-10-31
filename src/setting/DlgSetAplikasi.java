@@ -60,9 +60,9 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
         this.setLocation(10,10);
         setSize(457,249);
 
-        Object[] row={"Nama RS","Alamat RS","Kota","Propinsi","Aktifkan?","Wallpaper","KontaK","Email","Logo RS Warna","Kode PPK BPJS",
-            "Kode PPK Inhealth","Logo RS Hitam Putih", "Logo Kabupaten"};
-        tabMode=new DefaultTableModel(null,row){
+        Object[] row = {"Nama RS", "Alamat RS", "Kota", "Propinsi", "Aktifkan?", "Wallpaper", "KontaK", "Email", "Logo RS Warna", "Kode PPK BPJS",
+            "Kode PPK Inhealth", "Logo RS Hitam Putih", "Logo Kabupaten", "Logo RS Warna Miring"};
+        tabMode = new DefaultTableModel(null, row) {
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
@@ -70,7 +70,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
         tbAdmin.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbAdmin.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 14; i++) {
             TableColumn column = tbAdmin.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(150);
@@ -81,7 +81,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
 
         tbAdmin.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabMode1 = new DefaultTableModel(null, new Object[]{"Tgl. Update","Jam Update","Versi","Keterangan","kode"}) {
+        tabMode1 = new DefaultTableModel(null, new Object[]{"Tgl. Update", "Jam Update", "Versi", "Keterangan", "kode"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
@@ -124,6 +124,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
     private javax.swing.JFileChooser jfc2 = new JFileChooser();
     private javax.swing.JFileChooser jfc3 = new JFileChooser();
     private javax.swing.JFileChooser jfc4 = new JFileChooser();
+    private javax.swing.JFileChooser jfc5 = new JFileChooser();
     private FileFilter jpgFilter = new FileNameExtensionFilter("Gambar JPEG", "jpg");
     private FileFilter gifFilter = new FileNameExtensionFilter("Gambar GIF", "gif");
     private FileFilter pngFilter = new FileNameExtensionFilter("Gambar PNG", "png");
@@ -191,6 +192,11 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
         PhotoLogo2 = new Painter();
         ELogo2 = new widget.TextBox();
         BtnCariLogo2 = new widget.Button();
+        label47 = new widget.Label();
+        scrollPane6 = new widget.ScrollPane();
+        PhotoLogo3 = new Painter();
+        ELogo3 = new widget.TextBox();
+        BtnCariLogo3 = new widget.Button();
         internalFrame2 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbAdmin = new widget.Table();
@@ -212,7 +218,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Aplikasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Aplikasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -493,7 +499,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
         jLabel23.setBounds(550, 325, 70, 23);
 
         tglUpdate.setEditable(false);
-        tglUpdate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-05-2022" }));
+        tglUpdate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-10-2024" }));
         tglUpdate.setDisplayFormat("dd-MM-yyyy");
         tglUpdate.setName("tglUpdate"); // NOI18N
         tglUpdate.setOpaque(false);
@@ -739,12 +745,65 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
         panelGlass1.add(BtnCariLogo2);
         BtnCariLogo2.setBounds(937, 150, 25, 23);
 
+        label47.setForeground(new java.awt.Color(0, 0, 0));
+        label47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label47.setText("Logo RS Warna (Miring)");
+        label47.setName("label47"); // NOI18N
+        label47.setPreferredSize(new java.awt.Dimension(35, 23));
+        panelGlass1.add(label47);
+        label47.setBounds(878, 10, 160, 23);
+
+        scrollPane6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane6.setName("scrollPane6"); // NOI18N
+
+        PhotoLogo3.setBackground(new java.awt.Color(245, 255, 235));
+        PhotoLogo3.setForeground(new java.awt.Color(235, 255, 235));
+        PhotoLogo3.setName("PhotoLogo3"); // NOI18N
+        PhotoLogo3.setPreferredSize(new java.awt.Dimension(85, 90));
+        scrollPane6.setViewportView(PhotoLogo3);
+
+        panelGlass1.add(scrollPane6);
+        scrollPane6.setBounds(885, 35, 150, 110);
+
+        ELogo3.setEditable(false);
+        ELogo3.setForeground(new java.awt.Color(0, 0, 0));
+        ELogo3.setText("- pilih logo RS warna miring -");
+        ELogo3.setName("ELogo3"); // NOI18N
+        ELogo3.setPreferredSize(new java.awt.Dimension(207, 23));
+        ELogo3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ELogo3KeyPressed(evt);
+            }
+        });
+        panelGlass1.add(ELogo3);
+        ELogo3.setBounds(765, 179, 171, 23);
+
+        BtnCariLogo3.setForeground(new java.awt.Color(0, 0, 0));
+        BtnCariLogo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnCariLogo3.setMnemonic('C');
+        BtnCariLogo3.setToolTipText("Alt+C");
+        BtnCariLogo3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        BtnCariLogo3.setName("BtnCariLogo3"); // NOI18N
+        BtnCariLogo3.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnCariLogo3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCariLogo3ActionPerformed(evt);
+            }
+        });
+        BtnCariLogo3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCariLogo3KeyPressed(evt);
+            }
+        });
+        panelGlass1.add(BtnCariLogo3);
+        BtnCariLogo3.setBounds(937, 179, 25, 23);
+
         internalFrame1.add(panelGlass1, java.awt.BorderLayout.PAGE_START);
 
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "::[ Setup Aplikasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        Scroll.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "::[ Setup Aplikasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
         Scroll.setPreferredSize(new java.awt.Dimension(452, 90));
@@ -765,7 +824,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
 
         internalFrame2.add(Scroll, java.awt.BorderLayout.PAGE_START);
 
-        Scroll1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "::[ Daftar Catatan Update ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        Scroll1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "::[ Daftar Catatan Update ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
         Scroll1.setPreferredSize(new java.awt.Dimension(452, 400));
@@ -962,10 +1021,14 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
         } else if (ELogo2.getText().trim().equals("") || (ELogo2.getText().trim().equals("- pilih logo kabupaten -"))) {
             YesNo.setSelectedItem("No");
             ELogo2.setText("./setting/logokab.jpg");
+        } else if (ELogo3.getText().trim().equals("") || (ELogo3.getText().trim().equals("- pilih logo RS warna miring -"))) {
+            YesNo.setSelectedItem("No");
+            ELogo3.setText("./setting/logorswarnamiring.jpg");
         } else if (tabMode.getRowCount() == 0) {
             Sequel.menyimpan2logo("setting", "'" + Nm.getText() + "','" + alamatrs.getText() + "','" + Kota.getText()
                     + "','" + Propinsi.getText() + "','" + Kontak.getText() + "','" + Email.getText()
-                    + "','" + YesNo.getSelectedItem() + "','" + kdPPK.getText() + "','" + kdPPK1.getText() + "'", "Setting", EGb, ELogo, ELogo1, ELogo2);
+                    + "','" + YesNo.getSelectedItem() + "','" + kdPPK.getText() + "','" + kdPPK1.getText() + "'", "Setting",
+                    EGb, ELogo, ELogo1, ELogo2, ELogo3);
             tampil();
         } else if (tabMode.getRowCount() > 0) {
             JOptionPane.showMessageDialog(null, "Maaf, Hanya diijinkan satu Set Aplikasi...!!!!");
@@ -1076,11 +1139,15 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
         } else if (ELogo2.getText().trim().equals("") || (ELogo2.getText().trim().equals("- pilih logo kabupaten -"))) {
             YesNo.setSelectedItem("No");
             ELogo2.setText("./setting/logokab.jpg");
+        } else if (ELogo3.getText().trim().equals("") || (ELogo3.getText().trim().equals("- pilih logo RS warna miring -"))) {
+            YesNo.setSelectedItem("No");
+            ELogo3.setText("./setting/logorswarnamiring.jpg");
         } else {
             Sequel.queryu("delete from setting ");
             Sequel.menyimpan2logo("setting", "'" + Nm.getText() + "','" + alamatrs.getText() + "','" + Kota.getText()
                     + "','" + Propinsi.getText() + "','" + Kontak.getText() + "','" + Email.getText()
-                    + "','" + YesNo.getSelectedItem() + "','" + kdPPK.getText() + "','" + kdPPK1.getText() + "'", "Setting", EGb, ELogo, ELogo1, ELogo2);            
+                    + "','" + YesNo.getSelectedItem() + "','" + kdPPK.getText() + "','" + kdPPK1.getText() + "'", "Setting",
+                    EGb, ELogo, ELogo1, ELogo2, ELogo3);
             emptTeks();
             tampil();
         }
@@ -1267,6 +1334,27 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnCariLogo2KeyPressed
 
+    private void ELogo3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ELogo3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ELogo3KeyPressed
+
+    private void BtnCariLogo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariLogo3ActionPerformed
+        jfc5.setAcceptAllFileFilterUsed(false);
+        jfc5.addChoosableFileFilter(jpgFilter);
+        jfc5.addChoosableFileFilter(gifFilter);
+        jfc5.addChoosableFileFilter(pngFilter);
+        jfc5.addChoosableFileFilter(bothFilter);
+        if (jfc5.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            String f = jfc5.getSelectedFile().toString();
+            ELogo3.setText(f);
+            ((Painter) PhotoLogo3).setImage(f);
+        }
+    }//GEN-LAST:event_BtnCariLogo3ActionPerformed
+
+    private void BtnCariLogo3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariLogo3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCariLogo3KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1291,6 +1379,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
     private widget.Button BtnCariLogo;
     private widget.Button BtnCariLogo1;
     private widget.Button BtnCariLogo2;
+    private widget.Button BtnCariLogo3;
     private widget.Button BtnEdit;
     private widget.Button BtnGanti1;
     private widget.Button BtnHapus;
@@ -1302,6 +1391,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
     private widget.TextBox ELogo;
     private widget.TextBox ELogo1;
     private widget.TextBox ELogo2;
+    private widget.TextBox ELogo3;
     private widget.TextBox Email;
     private widget.TextBox Kontak;
     private widget.TextBox Kota;
@@ -1310,6 +1400,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
     private java.awt.Canvas PhotoLogo;
     private java.awt.Canvas PhotoLogo1;
     private java.awt.Canvas PhotoLogo2;
+    private java.awt.Canvas PhotoLogo3;
     private widget.TextBox Propinsi;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
@@ -1338,12 +1429,14 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
     private widget.Label label44;
     private widget.Label label45;
     private widget.Label label46;
+    private widget.Label label47;
     private widget.panelGlass panelGlass1;
     private widget.panelisi panelisi1;
     private widget.ScrollPane scrollPane2;
     private widget.ScrollPane scrollPane3;
     private widget.ScrollPane scrollPane4;
     private widget.ScrollPane scrollPane5;
+    private widget.ScrollPane scrollPane6;
     private widget.Table tbAdmin;
     private widget.Table tbUpdate;
     private widget.Tanggal tglUpdate;
@@ -1352,7 +1445,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
 
     private void tampil() {
         String sql = "select nama_instansi, alamat_instansi, kabupaten, propinsi, aktifkan, wallpaper,kontak,"
-                + "email,logo,kode_ppk,kode_ppkinhealth, logo_hitam_putih, logo_kabupaten from setting";
+                + "email,logo,kode_ppk,kode_ppkinhealth, logo_hitam_putih, logo_kabupaten, logo_rs_warna_miring1 from setting";
         prosesCari(sql);
     }
 
@@ -1374,7 +1467,8 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
                     rs.getString(10),
                     rs.getString(11),
                     rs.getBlob(12),
-                    rs.getBlob(13)
+                    rs.getBlob(13),
+                    rs.getBlob(14)
                 };
                 tabMode.addRow(data);
             }
@@ -1396,7 +1490,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
             kdPPK1.setText(tbAdmin.getValueAt(tbAdmin.getSelectedRow(), 10).toString());
             try {
                 ResultSet hasil = koneksi.createStatement().executeQuery(
-                        "select wallpaper,logo,logo_hitam_putih,logo_kabupaten from setting");
+                        "select wallpaper, logo, logo_hitam_putih, logo_kabupaten, logo_rs_warna_miring1 from setting");
                 for (int I = 0; hasil.next(); I++) {
                     // wallpaper RS
                     ((Painter) PhotoGambar).setImage(gambar(tbAdmin.getValueAt(tbAdmin.getSelectedRow(), 0).toString()));
@@ -1425,6 +1519,13 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
                     ((Painter) PhotoLogo2).setImageIcon(new javax.swing.ImageIcon(
                             blob4.getBytes(1, (int) (blob4.length()))));
                     blob4.free();
+                    
+                    // logo RS warna miring
+                    ((Painter) PhotoLogo3).setImage(gambar(tbAdmin.getValueAt(tbAdmin.getSelectedRow(), 0).toString()));
+                    Blob blob5 = hasil.getBlob(5);
+                    ((Painter) PhotoLogo3).setImageIcon(new javax.swing.ImageIcon(
+                            blob5.getBytes(1, (int) (blob5.length()))));
+                    blob5.free();
                 }
             } catch (Exception ex) {
                 cetak(ex.toString());
@@ -1445,9 +1546,11 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
         ((Painter) PhotoLogo).setImage("");
         ((Painter) PhotoLogo1).setImage("");
         ((Painter) PhotoLogo2).setImage("");
+        ((Painter) PhotoLogo3).setImage("");
         ELogo.setText("- pilih logo RS warna -");
         ELogo1.setText("- pilih logo RS hitam putih -");
         ELogo2.setText("- pilih logo kabupaten -");
+        ELogo3.setText("- pilih logo RS warna miring -");
         YesNo.setSelectedItem("No");
         Nm.requestFocus();
     }

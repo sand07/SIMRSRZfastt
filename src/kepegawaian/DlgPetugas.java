@@ -1098,12 +1098,13 @@ public final class DlgPetugas extends javax.swing.JDialog {
                         + "',no_telp='" + TTlp.getText()
                         + "',user_id='" + TUserId.getText() + "'");
                 
-                Sequel.mengedit("rawat_inap_dr", "kd_dokter='" + tbPetugas.getValueAt(tbPetugas.getSelectedRow(), 0).toString() + "'", 
-                        "kd_dokter='" + TNip.getText() + "'");
-                Sequel.mengedit("rawat_inap_dr", "kd_dokter_mewakili='" + tbPetugas.getValueAt(tbPetugas.getSelectedRow(), 0).toString() + "'", 
-                        "kd_dokter_mewakili='" + TNip.getText() + "'");
-                Sequel.mengedit("ringkasan_pulang_ranap", "nip_penyimpan='" + tbPetugas.getValueAt(tbPetugas.getSelectedRow(), 0).toString() + "'", 
-                        "nip_penyimpan='" + TNip.getText() + "'");
+                Sequel.mengedit("rawat_inap_dr", "kd_dokter='" + tbPetugas.getValueAt(tbPetugas.getSelectedRow(), 0).toString() + "'", "kd_dokter='" + TNip.getText() + "'");
+                Sequel.mengedit("rawat_inap_dr", "kd_dokter_mewakili='" + tbPetugas.getValueAt(tbPetugas.getSelectedRow(), 0).toString() + "'", "kd_dokter_mewakili='" + TNip.getText() + "'");
+                Sequel.mengedit("ringkasan_pulang_ranap", "nip_penyimpan='" + tbPetugas.getValueAt(tbPetugas.getSelectedRow(), 0).toString() + "'", "nip_penyimpan='" + TNip.getText() + "'");
+                Sequel.mengedit("catatan_resep", "kd_dokter='" + tbPetugas.getValueAt(tbPetugas.getSelectedRow(), 0).toString() + "'", "kd_dokter='" + TNip.getText() + "'");
+                Sequel.mengedit("catatan_resep_histori", "kd_dokter='" + tbPetugas.getValueAt(tbPetugas.getSelectedRow(), 0).toString() + "'", "kd_dokter='" + TNip.getText() + "'");
+                Sequel.mengedit("catatan_resep_ranap", "kd_dokter='" + tbPetugas.getValueAt(tbPetugas.getSelectedRow(), 0).toString() + "'", "kd_dokter='" + TNip.getText() + "'");
+                Sequel.mengedit("catatan_resep_ranap_histori", "kd_dokter='" + tbPetugas.getValueAt(tbPetugas.getSelectedRow(), 0).toString() + "'", "kd_dokter='" + TNip.getText() + "'");
                 koneksi.setAutoCommit(true);
                 if (tabMode.getRowCount() != 0) {
                     tampil();

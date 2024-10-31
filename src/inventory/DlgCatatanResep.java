@@ -2160,9 +2160,8 @@ public class DlgCatatanResep extends javax.swing.JDialog {
 
         if (status.equals("IGD (Ralan)") || status.equals("IGD (Ranap)")
                 || jnsKunjungan.equals("Ralan") || status.equals("Ralan")) {
-            cekResep = Sequel.cariInteger("SELECT count(-1) cek FROM catatan_resep cr INNER JOIN reg_periksa rp ON rp.no_rawat=cr.no_rawat "
-                    + "WHERE rp.kd_poli='" + kodepoli + "' and rp.no_rkm_medis='" + TNoRM.getText() + "' "
-                    + "GROUP BY cr.tgl_perawatan, rp.no_rkm_medis ORDER BY cr.tgl_perawatan DESC LIMIT 1");
+            cekResep = Sequel.cariInteger("SELECT count(-1) FROM catatan_resep cr INNER JOIN reg_periksa rp ON rp.no_rawat=cr.no_rawat "
+                    + "WHERE rp.kd_poli='" + kodepoli + "' and rp.no_rkm_medis='" + TNoRM.getText() + "'");
 
             if (cekResep == 0) {
                 JOptionPane.showMessageDialog(null, "Maaf, tidak ada resep terakhir sesuai kunjungan yg. tersimpan didalam sistem...!!!!");
@@ -2731,7 +2730,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
         
         try {
             ps2 = koneksi.prepareStatement("select rp.no_rawat, p.no_rkm_medis, p.nm_pasien, date_format(p.tgl_lahir,'%d-%m-%Y') tgllhr, "
-                    + "if(p.jk='L','Laki-laki','Perempuan') jk, rp.tgl_registrasi, pj.png_jawab, rp.status_lanjut from reg_periksa rp "
+                    + "if(p.jk='L','Laki-laki','Perempuan') jk, rp.tgl_registrasi, pj.png_jawab, rp.status_lanjut, rp.kd_poli from reg_periksa rp "
                     + "inner join pasien p on p.no_rkm_medis=rp.no_rkm_medis inner join penjab pj on pj.kd_pj=rp.kd_pj "
                     + "where rp.no_rawat='" + norw + "'");
             try {
@@ -2743,6 +2742,7 @@ public class DlgCatatanResep extends javax.swing.JDialog {
                     Tjk.setText(rs2.getString("jk"));
                     Tcara_byr.setText(rs2.getString("png_jawab"));
                     jnsKunjungan = rs2.getString("status_lanjut");
+                    kodepoli = rs2.getString("kd_poli");                    
                     
                     if (status.equals("IGD (Ralan)") || status.equals("IGD (Ranap)")
                             || jnsKunjungan.equals("Ralan") || status.equals("ralan")) {

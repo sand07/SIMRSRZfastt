@@ -350,9 +350,9 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
                         }
                     } else if (pilihPerawat == 2) {
                         if (petugas.getTable().getSelectedRow() != -1) {
-                            TnipPerawatOp.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(), 0).toString());
-                            TnmPerawatOp.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(), 1).toString());
-                            BtnPerawatOp.requestFocus();
+                            TnipOperator.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(), 0).toString());
+                            TnmOperator.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(), 1).toString());
+                            BtnOperator.requestFocus();
                         }
                     } else if (pilihPerawat == 3) {
                         if (petugas.getTable().getSelectedRow() != -1) {
@@ -422,9 +422,9 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
         TnmPerawatSir = new widget.TextBox();
         BtnPerawatSir = new widget.Button();
         label21 = new widget.Label();
-        TnipPerawatOp = new widget.TextBox();
-        TnmPerawatOp = new widget.TextBox();
-        BtnPerawatOp = new widget.Button();
+        TnipOperator = new widget.TextBox();
+        TnmOperator = new widget.TextBox();
+        BtnOperator = new widget.Button();
         chkSayaSir = new widget.CekBox();
         chkSayaOp = new widget.CekBox();
         cmbJam1 = new widget.ComboBox();
@@ -739,7 +739,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
         FormInput.add(cmbSurat);
         cmbSurat.setBounds(385, 150, 65, 23);
 
-        TtglTindakan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-10-2024" }));
+        TtglTindakan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-10-2024" }));
         TtglTindakan.setDisplayFormat("dd-MM-yyyy");
         TtglTindakan.setName("TtglTindakan"); // NOI18N
         TtglTindakan.setOpaque(false);
@@ -782,38 +782,38 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
         BtnPerawatSir.setBounds(660, 430, 28, 23);
 
         label21.setForeground(new java.awt.Color(0, 0, 0));
-        label21.setText("Perawat Operator :");
+        label21.setText("Operator :");
         label21.setName("label21"); // NOI18N
         label21.setPreferredSize(new java.awt.Dimension(70, 23));
         FormInput.add(label21);
         label21.setBounds(0, 1101, 140, 23);
 
-        TnipPerawatOp.setEditable(false);
-        TnipPerawatOp.setForeground(new java.awt.Color(0, 0, 0));
-        TnipPerawatOp.setName("TnipPerawatOp"); // NOI18N
-        TnipPerawatOp.setPreferredSize(new java.awt.Dimension(80, 23));
-        FormInput.add(TnipPerawatOp);
-        TnipPerawatOp.setBounds(145, 1101, 150, 23);
+        TnipOperator.setEditable(false);
+        TnipOperator.setForeground(new java.awt.Color(0, 0, 0));
+        TnipOperator.setName("TnipOperator"); // NOI18N
+        TnipOperator.setPreferredSize(new java.awt.Dimension(80, 23));
+        FormInput.add(TnipOperator);
+        TnipOperator.setBounds(145, 1101, 150, 23);
 
-        TnmPerawatOp.setEditable(false);
-        TnmPerawatOp.setForeground(new java.awt.Color(0, 0, 0));
-        TnmPerawatOp.setName("TnmPerawatOp"); // NOI18N
-        TnmPerawatOp.setPreferredSize(new java.awt.Dimension(207, 23));
-        FormInput.add(TnmPerawatOp);
-        TnmPerawatOp.setBounds(298, 1101, 360, 23);
+        TnmOperator.setEditable(false);
+        TnmOperator.setForeground(new java.awt.Color(0, 0, 0));
+        TnmOperator.setName("TnmOperator"); // NOI18N
+        TnmOperator.setPreferredSize(new java.awt.Dimension(207, 23));
+        FormInput.add(TnmOperator);
+        TnmOperator.setBounds(298, 1101, 360, 23);
 
-        BtnPerawatOp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnPerawatOp.setMnemonic('2');
-        BtnPerawatOp.setToolTipText("Alt+2");
-        BtnPerawatOp.setName("BtnPerawatOp"); // NOI18N
-        BtnPerawatOp.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnPerawatOp.addActionListener(new java.awt.event.ActionListener() {
+        BtnOperator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnOperator.setMnemonic('2');
+        BtnOperator.setToolTipText("Alt+2");
+        BtnOperator.setName("BtnOperator"); // NOI18N
+        BtnOperator.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnOperator.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPerawatOpActionPerformed(evt);
+                BtnOperatorActionPerformed(evt);
             }
         });
-        FormInput.add(BtnPerawatOp);
-        BtnPerawatOp.setBounds(660, 1101, 28, 23);
+        FormInput.add(BtnOperator);
+        BtnOperator.setBounds(660, 1101, 28, 23);
 
         chkSayaSir.setBackground(new java.awt.Color(242, 242, 242));
         chkSayaSir.setForeground(new java.awt.Color(0, 0, 0));
@@ -937,7 +937,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
         cmbApakahPasien.setBounds(325, 262, 65, 23);
 
         jLabel91.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel91.setText("6. Kesulitan Bernafas Resiko Aspirasi :");
+        jLabel91.setText("6. Kesulitan Bernafas Resiko Aspirasi ? :");
         jLabel91.setName("jLabel91"); // NOI18N
         FormInput.add(jLabel91);
         jLabel91.setBounds(0, 290, 320, 23);
@@ -949,7 +949,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
         cmbKesulitan.setBounds(325, 290, 65, 23);
 
         jLabel92.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel92.setText("7. Dan Menggunakan Peralatan Bantuan :");
+        jLabel92.setText("7. Dan Menggunakan Peralatan Bantuan ? :");
         jLabel92.setName("jLabel92"); // NOI18N
         FormInput.add(jLabel92);
         jLabel92.setBounds(0, 318, 320, 23);
@@ -973,16 +973,16 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
         cmbResiko.setBounds(325, 346, 65, 23);
 
         jLabel94.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel94.setText("a. 500 ml (7 ml/kg 88) Pada Anak :");
+        jLabel94.setText("a. 500 ml (7 ml/kg 88) Pada Anak ? :");
         jLabel94.setName("jLabel94"); // NOI18N
         FormInput.add(jLabel94);
-        jLabel94.setBounds(390, 346, 180, 23);
+        jLabel94.setBounds(390, 346, 190, 23);
 
         cmb500.setForeground(new java.awt.Color(0, 0, 0));
         cmb500.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Ya", "Tidak" }));
         cmb500.setName("cmb500"); // NOI18N
         FormInput.add(cmb500);
-        cmb500.setBounds(575, 346, 65, 23);
+        cmb500.setBounds(585, 346, 65, 23);
 
         jLabel95.setForeground(new java.awt.Color(0, 0, 0));
         jLabel95.setText("9. Dua Akses Intravensi Akses Sentral Dan :");
@@ -997,7 +997,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
         cmbDua.setBounds(325, 374, 65, 23);
 
         jLabel96.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel96.setText("10. Rencana Terapi Cairan :");
+        jLabel96.setText("10. Rencana Terapi Cairan ? :");
         jLabel96.setName("jLabel96"); // NOI18N
         FormInput.add(jLabel96);
         jLabel96.setBounds(0, 402, 320, 23);
@@ -1743,7 +1743,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass12.add(jLabel19);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-10-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-10-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1757,7 +1757,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass12.add(jLabel21);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-10-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-10-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1871,7 +1871,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
                         + "'" + cmbApakahAntibiotik.getSelectedItem().toString() + "','" + cmbNamaAntibiotik.getSelectedItem().toString() + "',"
                         + "'" + cmbDosisAntibiotik.getSelectedItem().toString() + "','" + TnmAntibiotik.getText() + "','" + TdosisAntibiotik.getText() + "',"
                         + "'" + Tantisipasi.getText() + "','" + TreviewA.getText() + "','" + TreviewB.getText() + "','" + Tjika.getText() + "',"
-                        + "'" + TreviewC.getText() + "','" + cmbApakahFoto.getSelectedItem().toString() + "','" + TnipPerawatOp.getText() + "',"
+                        + "'" + TreviewC.getText() + "','" + cmbApakahFoto.getSelectedItem().toString() + "','" + TnipOperator.getText() + "',"
                         + "'" + TnipDokterAnes2.getText() + "','" + TnipPerawatSirkuit1.getText() + "','" + wktSimpan + "'", "The Time Out");
 
                 Sequel.simpanReplaceInto("ceklis_keselamatan_operasi3", "'" + TNoRw.getText() + "',"
@@ -1948,7 +1948,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
                                 + "cvc_dipasang='" + Tjika.getText() + "', "
                                 + "review_tim_perawat='" + TreviewC.getText() + "', "
                                 + "foto_rongsen_ditayangkan='" + cmbApakahFoto.getSelectedItem().toString() + "', "
-                                + "nip_operator='" + TnipPerawatOp.getText() + "', "
+                                + "nip_operator='" + TnipOperator.getText() + "', "
                                 + "nip_dokter='" + TnipDokterAnes2.getText() + "', "
                                 + "nip_perawat='" + TnipPerawatSirkuit1.getText() + "'");
                         
@@ -2085,7 +2085,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
         petugas.setVisible(true);
     }//GEN-LAST:event_BtnPerawatSirActionPerformed
 
-    private void BtnPerawatOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPerawatOpActionPerformed
+    private void BtnOperatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnOperatorActionPerformed
         pilihPerawat = 0;
         pilihPerawat = 2;
         akses.setform("RMCeklisKeselamatanOperasi");
@@ -2094,7 +2094,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
-    }//GEN-LAST:event_BtnPerawatOpActionPerformed
+    }//GEN-LAST:event_BtnOperatorActionPerformed
 
     private void chkSayaSirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSayaSirActionPerformed
         if (chkSayaSir.isSelected() == true) {
@@ -2114,15 +2114,15 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
     private void chkSayaOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSayaOpActionPerformed
         if (chkSayaOp.isSelected() == true) {
             if (akses.getadmin() == true) {
-                TnipPerawatOp.setText("-");
-                TnmPerawatOp.setText("-");
+                TnipOperator.setText("-");
+                TnmOperator.setText("-");
             } else {
-                TnipPerawatOp.setText(akses.getkode());
-                TnmPerawatOp.setText(Sequel.cariIsi("select nama from pegawai where nik='" + TnipPerawatOp.getText() + "'"));
+                TnipOperator.setText(akses.getkode());
+                TnmOperator.setText(Sequel.cariIsi("select nama from pegawai where nik='" + TnipOperator.getText() + "'"));
             }
         } else {
-            TnipPerawatOp.setText("-");
-            TnmPerawatOp.setText("-");
+            TnipOperator.setText("-");
+            TnmOperator.setText("-");
         }
     }//GEN-LAST:event_chkSayaOpActionPerformed
 
@@ -2154,7 +2154,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
         if (tbCeklis.getSelectedRow() > -1) {
             Map<String, Object> param = new HashMap<>();
             param.put("namars", akses.getnamars());
-            param.put("logo", Sequel.cariGambar("select logo from setting"));
+            param.put("logo", Sequel.cariGambar("select logo_rs_warna_miring1 from setting"));
             param.put("norm", TNoRM.getText());
             param.put("nmpasien", TPasien.getText());
             param.put("tgllahir", Sequel.cariIsi("select date_format(tgl_lahir,'%d-%m-%Y') from pasien where no_rkm_medis='" + TNoRM.getText() + "'"));
@@ -2201,7 +2201,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
             param.put("cvc", Tjika.getText());
             param.put("reviewTimPerawat", TreviewC.getText());
             param.put("apakahFoto", cmbApakahFoto.getSelectedItem().toString());
-            param.put("operator", "(" + TnmPerawatOp.getText() + ")");
+            param.put("operator", "(" + TnmOperator.getText() + ")");
             param.put("dokterAnestesi2", "(" + TnmDokterAnes2.getText() + ")");
             param.put("perawatSirkuit1", "(" + TnmPerawatSirkuit1.getText() + ")");
             
@@ -2217,8 +2217,8 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
             param.put("perawatSirkuit2", "(" + TnmPerawatSirkuit2.getText() + ")");
             param.put("dokterAnestesi3", "(" + TnmDokterAnes3.getText() + ")");
 
-//            Valid.MyReport("rptCeklisKeselamatanOperasi.jasper", "report", "::[ Lembar Checklist Keselamatan Operasi ]::",
-//                "SELECT now() tanggal", param);
+            Valid.MyReport("rptCeklisKeselamatanOperasi.jasper", "report", "::[ Lembar Checklist Keselamatan Operasi ]::",
+                "SELECT now() tanggal", param);
 
             tampil();
             emptTeks();
@@ -2419,7 +2419,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
     private widget.Button BtnGanti;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
-    private widget.Button BtnPerawatOp;
+    private widget.Button BtnOperator;
     private widget.Button BtnPerawatSir;
     private widget.Button BtnPerawatSirkuit1;
     private widget.Button BtnPerawatSirkuit2;
@@ -2443,7 +2443,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
     private widget.TextBox TnipDokterAnes1;
     private widget.TextBox TnipDokterAnes2;
     private widget.TextBox TnipDokterAnes3;
-    private widget.TextBox TnipPerawatOp;
+    private widget.TextBox TnipOperator;
     private widget.TextBox TnipPerawatSir;
     private widget.TextBox TnipPerawatSirkuit1;
     private widget.TextBox TnipPerawatSirkuit2;
@@ -2451,7 +2451,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
     private widget.TextBox TnmDokterAnes1;
     private widget.TextBox TnmDokterAnes2;
     private widget.TextBox TnmDokterAnes3;
-    private widget.TextBox TnmPerawatOp;
+    private widget.TextBox TnmOperator;
     private widget.TextBox TnmPerawatSir;
     private widget.TextBox TnmPerawatSirkuit1;
     private widget.TextBox TnmPerawatSirkuit2;
@@ -2749,8 +2749,8 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
         Tjika.setText("");
         TreviewC.setText("");
         cmbApakahFoto.setSelectedIndex(0);
-        TnipPerawatOp.setText("-");
-        TnmPerawatOp.setText("-");        
+        TnipOperator.setText("-");
+        TnmOperator.setText("-");        
         chkSayaOp.setSelected(false);
         TnipDokterAnes2.setText("-");
         TnmDokterAnes2.setText("-");
@@ -2828,8 +2828,8 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
             Tjika.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 39).toString());
             TreviewC.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 40).toString());
             cmbApakahFoto.setSelectedItem(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 41).toString());
-            TnipPerawatOp.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 42).toString());
-            TnmPerawatOp.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 59).toString());
+            TnipOperator.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 42).toString());
+            TnmOperator.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 59).toString());
             TnipDokterAnes2.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 43).toString());
             TnmDokterAnes2.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 60).toString());
             TnipPerawatSirkuit1.setText(tbCeklis.getValueAt(tbCeklis.getSelectedRow(), 44).toString());
@@ -2864,5 +2864,7 @@ public class RMCeklisKeselamatanOperasi extends javax.swing.JDialog {
         TNoRM.setText(norm);
         TPasien.setText(nmpasien);
         TrgRawat.setText(ruangan);
+        TCari.setText(norw);
+        Valid.SetTgl(DTPCari1, Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='" + norw + "'"));
     }
 }
