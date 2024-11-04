@@ -5750,7 +5750,6 @@ public class DlgCPPT extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(rootPane, "Data yang dipilih berhasil direstore/kembalikan..!!");
                     cmbSiftCppt.setSelectedItem(tbSampah.getValueAt(tbSampah.getSelectedRow(), 12).toString());
                     TCari.setText(tbSampah.getValueAt(tbSampah.getSelectedRow(), 1).toString());
-                    BtnCloseIn10ActionPerformed(null);
                     tampil();
                     emptTeks();
                     TabCPPT.setSelectedIndex(1);
@@ -5771,7 +5770,6 @@ public class DlgCPPT extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(rootPane, "Data yang dipilih berhasil direstore/kembalikan..!!");
                     cmbSiftCppt.setSelectedItem(tbRiwayat.getValueAt(tbRiwayat.getSelectedRow(), 12).toString());
                     TCari.setText(tbRiwayat.getValueAt(tbRiwayat.getSelectedRow(), 1).toString());
-                    BtnCloseIn10ActionPerformed(null);
                     tampil();
                     emptTeks();
                     TabCPPT.setSelectedIndex(1);
@@ -5879,9 +5877,6 @@ public class DlgCPPT extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnHapusSampahActionPerformed
 
     private void MnDataSampahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDataSampahActionPerformed
-        DTPCari3.setDate(new Date());
-        DTPCari4.setDate(new Date());
-        TCari2.setText("");
         TabHistory.setSelectedIndex(0);
         BtnCari2ActionPerformed(null);
         WindowDataSampah.setSize(1043, internalFrame1.getHeight() - 40);
@@ -7816,6 +7811,9 @@ public class DlgCPPT extends javax.swing.JDialog {
         nmKonfirDpjp.setText("-");
         TabPetugas.setSelectedIndex(0);
         chkDpjp.setSelected(false);
+        DTPCari3.setDate(new Date());
+        DTPCari4.setDate(new Date());
+        TCari2.setText("");
     }
 
     private void getData() {

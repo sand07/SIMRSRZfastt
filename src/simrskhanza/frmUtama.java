@@ -315,6 +315,7 @@ import rekammedis.DlgMasterIndikatorMutu;
 import rekammedis.DlgMasterJabatanKomite;
 import rekammedis.DlgMasterJenisDokumenJangMed;
 import rekammedis.DlgMasterKeluhanPsikologis;
+import rekammedis.DlgMasterMaterialOperasi;
 import rekammedis.DlgMasterNumdemonINM;
 import rekammedis.DlgMasterRencanaTritmenPsikologi;
 import rekammedis.DlgMonevAsuhanGizi;
@@ -888,6 +889,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPerencanaanPulang = new widget.ButtonBig();
         btnCeklisKeselamatanOperasi = new widget.ButtonBig();
         btnPasienBlackList = new widget.ButtonBig();
+        btnMasterCatatanMaterialOperasi = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6022,6 +6024,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPasienBlackList);
 
+        btnMasterCatatanMaterialOperasi.setForeground(new java.awt.Color(0, 0, 0));
+        btnMasterCatatanMaterialOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_address-book_285679.png"))); // NOI18N
+        btnMasterCatatanMaterialOperasi.setText("Master Catatan Material Operasi");
+        btnMasterCatatanMaterialOperasi.setIconTextGap(0);
+        btnMasterCatatanMaterialOperasi.setName("btnMasterCatatanMaterialOperasi"); // NOI18N
+        btnMasterCatatanMaterialOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterCatatanMaterialOperasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasterCatatanMaterialOperasiActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnMasterCatatanMaterialOperasi);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6030,7 +6045,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25/10/2024" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29/10/2024" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -11907,6 +11922,19 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPasienBlackListActionPerformed
 
+    private void btnMasterCatatanMaterialOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasterCatatanMaterialOperasiActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgMasterMaterialOperasi material = new DlgMasterMaterialOperasi(this, false);
+        material.isCek();
+        material.emptTeks();        
+        material.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        material.setLocationRelativeTo(PanelUtama);
+        material.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnMasterCatatanMaterialOperasiActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -12140,6 +12168,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnMapingVaksinSatuSehat;
     private widget.ButtonBig btnMasterAturanPakai;
     private widget.ButtonBig btnMasterCaraBayar;
+    private widget.ButtonBig btnMasterCatatanMaterialOperasi;
     private widget.ButtonBig btnMasterDTD;
     private widget.ButtonBig btnMasterDiagnosaGizi;
     private widget.ButtonBig btnMasterFaktorResikoJatuh;
@@ -12615,6 +12644,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }
         } else if (cmbMenu.getSelectedIndex() == 1) {
             jmlmenu = 0;
+            if (akses.getadmin() == true) {
+                Panelmenu.add(btnMasterCatatanMaterialOperasi);
+                jmlmenu++;
+            }
+            
             if (akses.getcppt() == true) {
                 Panelmenu.add(btnPerencanaanPulang);
                 jmlmenu++;
@@ -14378,6 +14412,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         jmlmenu = 0;
         Panelmenu.add(btnIndikatorNasionalMutu);
         jmlmenu++;
+
+        if (akses.getadmin() == true) {
+            Panelmenu.add(btnMasterCatatanMaterialOperasi);
+            jmlmenu++;
+        }
 
         if (akses.getadmin() == true) {
             Panelmenu.add(btnMasterNomorDokumen);
@@ -16265,6 +16304,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if (akses.getsatu_sehat()== true) {
             if (btnReferensiPasienSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())) {
                 Panelmenu.add(btnReferensiPasienSatuSehat);
+                jmlmenu++;
+            }
+        }
+        
+        if (akses.getadmin()== true) {
+            if (btnMasterCatatanMaterialOperasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())) {
+                Panelmenu.add(btnMasterCatatanMaterialOperasi);
                 jmlmenu++;
             }
         }

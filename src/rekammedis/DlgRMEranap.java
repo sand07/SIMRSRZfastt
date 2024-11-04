@@ -155,6 +155,7 @@ public class DlgRMEranap extends javax.swing.JDialog {
         BtnCeklisPraOperasi = new widget.ButtonBig();
         BtnCeklisKesiapanAnestesi = new widget.ButtonBig();
         BtnCeklisKeselamatanOperasi = new widget.ButtonBig();
+        BtnCatatanMaterial = new widget.ButtonBig();
         internalFrame3 = new widget.InternalFrame();
         BtnRefres = new widget.Button();
         BtnKeluar = new widget.Button();
@@ -812,6 +813,19 @@ public class DlgRMEranap extends javax.swing.JDialog {
             }
         });
         FormInput1.add(BtnCeklisKeselamatanOperasi);
+
+        BtnCatatanMaterial.setForeground(new java.awt.Color(0, 0, 0));
+        BtnCatatanMaterial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816018_tests.png"))); // NOI18N
+        BtnCatatanMaterial.setText("Cttn. Pemakaian Obat & Material");
+        BtnCatatanMaterial.setIconTextGap(0);
+        BtnCatatanMaterial.setName("BtnCatatanMaterial"); // NOI18N
+        BtnCatatanMaterial.setPreferredSize(new java.awt.Dimension(200, 90));
+        BtnCatatanMaterial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCatatanMaterialActionPerformed(evt);
+            }
+        });
+        FormInput1.add(BtnCatatanMaterial);
 
         scrollInput1.setViewportView(FormInput1);
 
@@ -1578,6 +1592,10 @@ public class DlgRMEranap extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnCeklisKeselamatanOperasiActionPerformed
 
+    private void BtnCatatanMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCatatanMaterialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCatatanMaterialActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1609,6 +1627,7 @@ public class DlgRMEranap extends javax.swing.JDialog {
     private widget.ButtonBig BtnAsuhanGizi;
     private widget.ButtonBig BtnCPPT;
     private widget.ButtonBig BtnCTK;
+    private widget.ButtonBig BtnCatatanMaterial;
     private widget.ButtonBig BtnCeklisKeselamatanOperasi;
     private widget.ButtonBig BtnCeklisKesiapanAnestesi;
     private widget.ButtonBig BtnCeklisPraOperasi;
@@ -1698,6 +1717,7 @@ public class DlgRMEranap extends javax.swing.JDialog {
         BtnAsesmenPreInduksi.setEnabled(akses.getresep_dokter());
         BtnAsesmenKeperawatanPerioperatif.setEnabled(akses.getkegiatan_operasi());
         BtnPerencanaanPulang.setEnabled(akses.getcppt());
+        BtnCatatanMaterial.setEnabled(akses.getkegiatan_operasi());
     }
     
     public void setData(String norw, String norm, String nmpasien,
