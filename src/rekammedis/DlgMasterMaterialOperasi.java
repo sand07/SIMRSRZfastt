@@ -48,7 +48,7 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         initComponents();
 
         tabMode=new DefaultTableModel(null,new String[]{
-            "Kode Infus", "Nama Infus & Alat", "Satuan"}) {
+            "Kode Infus", "Nama Infus & Alat", "Satuan", "Status"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
@@ -59,7 +59,7 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         tbInfus.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbInfus.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 4; i++) {
             TableColumn column = tbInfus.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(75);
@@ -67,12 +67,14 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
                 column.setPreferredWidth(450);
             } else if (i == 2) {
                 column.setPreferredWidth(70);
+            } else if (i == 3) {
+                column.setPreferredWidth(70);
             }
         }
         tbInfus.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabMode1=new DefaultTableModel(null,new String[]{
-            "Kode Obat", "Nama Obat Anestesi", "Satuan"}) {
+            "Kode Obat", "Nama Obat Anestesi", "Satuan", "Status"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
@@ -83,7 +85,7 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 4; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(75);
@@ -91,12 +93,14 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
                 column.setPreferredWidth(450);
             } else if (i == 2) {
                 column.setPreferredWidth(70);
+            } else if (i == 3) {
+                column.setPreferredWidth(70);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabMode2=new DefaultTableModel(null,new String[]{
-            "Kode Psiko", "Nama Psikotropika dan Narkotika", "Satuan"}) {
+            "Kode Psiko", "Nama Psikotropika dan Narkotika", "Satuan", "Status"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
@@ -107,7 +111,7 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         tbPsiko.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbPsiko.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 4; i++) {
             TableColumn column = tbPsiko.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(75);
@@ -115,12 +119,14 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
                 column.setPreferredWidth(450);
             } else if (i == 2) {
                 column.setPreferredWidth(70);
+            } else if (i == 3) {
+                column.setPreferredWidth(70);
             }
         }
         tbPsiko.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabMode3=new DefaultTableModel(null,new String[]{
-            "Kode Antibiotik", "Nama Antibiotik", "Satuan"}) {
+            "Kode Antibiotik", "Nama Antibiotik", "Satuan", "Status"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
@@ -131,7 +137,7 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         tbAntibiotik.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbAntibiotik.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 4; i++) {
             TableColumn column = tbAntibiotik.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(90);
@@ -139,12 +145,14 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
                 column.setPreferredWidth(450);
             } else if (i == 2) {
                 column.setPreferredWidth(70);
+            } else if (i == 3) {
+                column.setPreferredWidth(70);
             }
         }
         tbAntibiotik.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabMode4=new DefaultTableModel(null,new String[]{
-            "Kode Bahan", "Nama Bahan Habis Pakai", "Satuan"}) {
+            "Kode Bahan", "Nama Bahan Habis Pakai", "Satuan", "Status"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
@@ -155,7 +163,7 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         tbBahan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBahan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 4; i++) {
             TableColumn column = tbBahan.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(75);
@@ -163,12 +171,14 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
                 column.setPreferredWidth(450);
             } else if (i == 2) {
                 column.setPreferredWidth(70);
+            } else if (i == 3) {
+                column.setPreferredWidth(70);
             }
         }
         tbBahan.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabMode5=new DefaultTableModel(null,new String[]{
-            "Kode Benang", "Nama Benang", "Satuan"}) {
+            "Kode Benang", "Nama Benang", "Satuan", "Status"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
@@ -179,7 +189,7 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         tbBenang.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBenang.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 4; i++) {
             TableColumn column = tbBenang.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(75);
@@ -187,12 +197,14 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
                 column.setPreferredWidth(450);
             } else if (i == 2) {
                 column.setPreferredWidth(70);
+            } else if (i == 3) {
+                column.setPreferredWidth(70);
             }
         }
         tbBenang.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabMode6=new DefaultTableModel(null,new String[]{
-            "Kode Lain-lain", "Nama Lain-lain", "Satuan"}) {
+            "Kode Lain-lain", "Nama Lain-lain", "Satuan", "Status"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
@@ -203,13 +215,15 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         tbLain.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbLain.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 4; i++) {
             TableColumn column = tbLain.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(90);
             } else if (i == 1) {
                 column.setPreferredWidth(450);
             } else if (i == 2) {
+                column.setPreferredWidth(70);
+            } else if (i == 3) {
                 column.setPreferredWidth(70);
             }
         }
@@ -255,6 +269,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         TnmInfus = new widget.TextBox();
         jLabel10 = new widget.Label();
         cmbSatuanInfus = new widget.ComboBox();
+        jLabel27 = new widget.Label();
+        cmbStatusInfus = new widget.ComboBox();
         Scroll = new widget.ScrollPane();
         tbInfus = new widget.Table();
         internalFrame3 = new widget.InternalFrame();
@@ -265,6 +281,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         TnmObat = new widget.TextBox();
         jLabel12 = new widget.Label();
         cmbSatuanObat = new widget.ComboBox();
+        jLabel28 = new widget.Label();
+        cmbStatusObat = new widget.ComboBox();
         Scroll1 = new widget.ScrollPane();
         tbObat = new widget.Table();
         internalFrame4 = new widget.InternalFrame();
@@ -275,6 +293,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         TnmPsiko = new widget.TextBox();
         jLabel14 = new widget.Label();
         cmbSatuanPsiko = new widget.ComboBox();
+        jLabel29 = new widget.Label();
+        cmbStatusPsiko = new widget.ComboBox();
         Scroll2 = new widget.ScrollPane();
         tbPsiko = new widget.Table();
         internalFrame5 = new widget.InternalFrame();
@@ -285,6 +305,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         TnmAnti = new widget.TextBox();
         jLabel17 = new widget.Label();
         cmbSatuanAnti = new widget.ComboBox();
+        jLabel30 = new widget.Label();
+        cmbStatusAnti = new widget.ComboBox();
         Scroll3 = new widget.ScrollPane();
         tbAntibiotik = new widget.Table();
         internalFrame6 = new widget.InternalFrame();
@@ -295,6 +317,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         TnmBahan = new widget.TextBox();
         jLabel20 = new widget.Label();
         cmbSatuanBahan = new widget.ComboBox();
+        jLabel31 = new widget.Label();
+        cmbStatusBahan = new widget.ComboBox();
         Scroll4 = new widget.ScrollPane();
         tbBahan = new widget.Table();
         internalFrame7 = new widget.InternalFrame();
@@ -305,6 +329,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         TnmBenang = new widget.TextBox();
         jLabel23 = new widget.Label();
         cmbSatuanBenang = new widget.ComboBox();
+        jLabel32 = new widget.Label();
+        cmbStatusBenang = new widget.ComboBox();
         Scroll5 = new widget.ScrollPane();
         tbBenang = new widget.Table();
         internalFrame8 = new widget.InternalFrame();
@@ -315,6 +341,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         TnmLain = new widget.TextBox();
         jLabel26 = new widget.Label();
         cmbSatuanLain = new widget.ComboBox();
+        jLabel33 = new widget.Label();
+        cmbStatusLain = new widget.ComboBox();
         Scroll6 = new widget.ScrollPane();
         tbLain = new widget.Table();
         jPanel3 = new javax.swing.JPanel();
@@ -404,6 +432,19 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         panelGlass9.add(cmbSatuanInfus);
         cmbSatuanInfus.setBounds(745, 10, 55, 23);
 
+        jLabel27.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel27.setText("Status :");
+        jLabel27.setName("jLabel27"); // NOI18N
+        panelGlass9.add(jLabel27);
+        jLabel27.setBounds(803, 10, 60, 23);
+
+        cmbStatusInfus.setForeground(new java.awt.Color(0, 0, 0));
+        cmbStatusInfus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aktif", "Non Aktif" }));
+        cmbStatusInfus.setName("cmbStatusInfus"); // NOI18N
+        cmbStatusInfus.setPreferredSize(new java.awt.Dimension(55, 28));
+        panelGlass9.add(cmbStatusInfus);
+        cmbStatusInfus.setBounds(868, 10, 78, 23);
+
         internalFrame2.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 
         Scroll.setName("Scroll"); // NOI18N
@@ -477,6 +518,19 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         cmbSatuanObat.setPreferredSize(new java.awt.Dimension(55, 28));
         panelGlass11.add(cmbSatuanObat);
         cmbSatuanObat.setBounds(745, 10, 55, 23);
+
+        jLabel28.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel28.setText("Status :");
+        jLabel28.setName("jLabel28"); // NOI18N
+        panelGlass11.add(jLabel28);
+        jLabel28.setBounds(803, 10, 60, 23);
+
+        cmbStatusObat.setForeground(new java.awt.Color(0, 0, 0));
+        cmbStatusObat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aktif", "Non Aktif" }));
+        cmbStatusObat.setName("cmbStatusObat"); // NOI18N
+        cmbStatusObat.setPreferredSize(new java.awt.Dimension(55, 28));
+        panelGlass11.add(cmbStatusObat);
+        cmbStatusObat.setBounds(868, 10, 78, 23);
 
         internalFrame3.add(panelGlass11, java.awt.BorderLayout.PAGE_START);
 
@@ -552,6 +606,19 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         panelGlass12.add(cmbSatuanPsiko);
         cmbSatuanPsiko.setBounds(765, 10, 55, 23);
 
+        jLabel29.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel29.setText("Status :");
+        jLabel29.setName("jLabel29"); // NOI18N
+        panelGlass12.add(jLabel29);
+        jLabel29.setBounds(825, 10, 60, 23);
+
+        cmbStatusPsiko.setForeground(new java.awt.Color(0, 0, 0));
+        cmbStatusPsiko.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aktif", "Non Aktif" }));
+        cmbStatusPsiko.setName("cmbStatusPsiko"); // NOI18N
+        cmbStatusPsiko.setPreferredSize(new java.awt.Dimension(55, 28));
+        panelGlass12.add(cmbStatusPsiko);
+        cmbStatusPsiko.setBounds(890, 10, 78, 23);
+
         internalFrame4.add(panelGlass12, java.awt.BorderLayout.PAGE_START);
 
         Scroll2.setName("Scroll2"); // NOI18N
@@ -625,6 +692,19 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         cmbSatuanAnti.setPreferredSize(new java.awt.Dimension(55, 28));
         panelGlass13.add(cmbSatuanAnti);
         cmbSatuanAnti.setBounds(745, 10, 55, 23);
+
+        jLabel30.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel30.setText("Status :");
+        jLabel30.setName("jLabel30"); // NOI18N
+        panelGlass13.add(jLabel30);
+        jLabel30.setBounds(803, 10, 60, 23);
+
+        cmbStatusAnti.setForeground(new java.awt.Color(0, 0, 0));
+        cmbStatusAnti.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aktif", "Non Aktif" }));
+        cmbStatusAnti.setName("cmbStatusAnti"); // NOI18N
+        cmbStatusAnti.setPreferredSize(new java.awt.Dimension(55, 28));
+        panelGlass13.add(cmbStatusAnti);
+        cmbStatusAnti.setBounds(870, 10, 78, 23);
 
         internalFrame5.add(panelGlass13, java.awt.BorderLayout.PAGE_START);
 
@@ -700,6 +780,19 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         panelGlass14.add(cmbSatuanBahan);
         cmbSatuanBahan.setBounds(775, 10, 55, 23);
 
+        jLabel31.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel31.setText("Status :");
+        jLabel31.setName("jLabel31"); // NOI18N
+        panelGlass14.add(jLabel31);
+        jLabel31.setBounds(833, 10, 60, 23);
+
+        cmbStatusBahan.setForeground(new java.awt.Color(0, 0, 0));
+        cmbStatusBahan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aktif", "Non Aktif" }));
+        cmbStatusBahan.setName("cmbStatusBahan"); // NOI18N
+        cmbStatusBahan.setPreferredSize(new java.awt.Dimension(55, 28));
+        panelGlass14.add(cmbStatusBahan);
+        cmbStatusBahan.setBounds(900, 10, 78, 23);
+
         internalFrame6.add(panelGlass14, java.awt.BorderLayout.PAGE_START);
 
         Scroll4.setName("Scroll4"); // NOI18N
@@ -774,6 +867,19 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         panelGlass15.add(cmbSatuanBenang);
         cmbSatuanBenang.setBounds(735, 10, 55, 23);
 
+        jLabel32.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel32.setText("Status :");
+        jLabel32.setName("jLabel32"); // NOI18N
+        panelGlass15.add(jLabel32);
+        jLabel32.setBounds(792, 10, 60, 23);
+
+        cmbStatusBenang.setForeground(new java.awt.Color(0, 0, 0));
+        cmbStatusBenang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aktif", "Non Aktif" }));
+        cmbStatusBenang.setName("cmbStatusBenang"); // NOI18N
+        cmbStatusBenang.setPreferredSize(new java.awt.Dimension(55, 28));
+        panelGlass15.add(cmbStatusBenang);
+        cmbStatusBenang.setBounds(858, 10, 78, 23);
+
         internalFrame7.add(panelGlass15, java.awt.BorderLayout.PAGE_START);
 
         Scroll5.setName("Scroll5"); // NOI18N
@@ -847,6 +953,19 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
         cmbSatuanLain.setPreferredSize(new java.awt.Dimension(55, 28));
         panelGlass16.add(cmbSatuanLain);
         cmbSatuanLain.setBounds(735, 10, 55, 23);
+
+        jLabel33.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel33.setText("Status :");
+        jLabel33.setName("jLabel33"); // NOI18N
+        panelGlass16.add(jLabel33);
+        jLabel33.setBounds(792, 10, 60, 23);
+
+        cmbStatusLain.setForeground(new java.awt.Color(0, 0, 0));
+        cmbStatusLain.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aktif", "Non Aktif" }));
+        cmbStatusLain.setName("cmbStatusLain"); // NOI18N
+        cmbStatusLain.setPreferredSize(new java.awt.Dimension(55, 28));
+        panelGlass16.add(cmbStatusLain);
+        cmbStatusLain.setBounds(858, 10, 78, 23);
 
         internalFrame8.add(panelGlass16, java.awt.BorderLayout.PAGE_START);
 
@@ -1511,6 +1630,13 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
     private widget.ComboBox cmbSatuanLain;
     private widget.ComboBox cmbSatuanObat;
     private widget.ComboBox cmbSatuanPsiko;
+    private widget.ComboBox cmbStatusAnti;
+    private widget.ComboBox cmbStatusBahan;
+    private widget.ComboBox cmbStatusBenang;
+    private widget.ComboBox cmbStatusInfus;
+    private widget.ComboBox cmbStatusLain;
+    private widget.ComboBox cmbStatusObat;
+    private widget.ComboBox cmbStatusPsiko;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
@@ -1536,6 +1662,13 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
     private widget.Label jLabel24;
     private widget.Label jLabel25;
     private widget.Label jLabel26;
+    private widget.Label jLabel27;
+    private widget.Label jLabel28;
+    private widget.Label jLabel29;
+    private widget.Label jLabel30;
+    private widget.Label jLabel31;
+    private widget.Label jLabel32;
+    private widget.Label jLabel33;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
@@ -1575,7 +1708,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
                     tabMode.addRow(new String[]{                        
                         rs.getString("kd_infus"),
                         rs.getString("nama_infus"),
-                        rs.getString("satuan")
+                        rs.getString("satuan"),
+                        rs.getString("status")
                     });
                 }
             } catch (Exception e) {
@@ -1608,7 +1742,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
                     tabMode1.addRow(new String[]{                        
                         rs1.getString("kd_obat"),
                         rs1.getString("nama_obat"),
-                        rs1.getString("satuan")
+                        rs1.getString("satuan"),
+                        rs1.getString("status")
                     });
                 }
             } catch (Exception e) {
@@ -1641,7 +1776,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
                     tabMode2.addRow(new String[]{                        
                         rs2.getString("kd_narkotika"),
                         rs2.getString("nama_narkotika"),
-                        rs2.getString("satuan")
+                        rs2.getString("satuan"),
+                        rs2.getString("status")
                     });
                 }
             } catch (Exception e) {
@@ -1674,7 +1810,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
                     tabMode3.addRow(new String[]{                        
                         rs3.getString("kd_antibiotik"),
                         rs3.getString("nama_antibiotik"),
-                        rs3.getString("satuan")
+                        rs3.getString("satuan"),
+                        rs3.getString("status")
                     });
                 }
             } catch (Exception e) {
@@ -1707,7 +1844,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
                     tabMode4.addRow(new String[]{                        
                         rs4.getString("kd_bahan"),
                         rs4.getString("nama_bahan"),
-                        rs4.getString("satuan")
+                        rs4.getString("satuan"),
+                        rs4.getString("status")
                     });
                 }
             } catch (Exception e) {
@@ -1740,7 +1878,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
                     tabMode5.addRow(new String[]{                        
                         rs5.getString("kd_benang"),
                         rs5.getString("nama_benang"),
-                        rs5.getString("satuan")
+                        rs5.getString("satuan"),
+                        rs5.getString("status")
                     });
                 }
             } catch (Exception e) {
@@ -1773,7 +1912,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
                     tabMode6.addRow(new String[]{                        
                         rs6.getString("kd_lainlain"),
                         rs6.getString("nama_lainlain"),
-                        rs6.getString("satuan")
+                        rs6.getString("satuan"),
+                        rs6.getString("status")
                     });
                 }
             } catch (Exception e) {
@@ -1798,36 +1938,43 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
             TnmInfus.setText("");
             TnmInfus.requestFocus();
             cmbSatuanInfus.setSelectedIndex(0);
+            cmbStatusInfus.setSelectedIndex(0);
         } else if (TabMaterial.getSelectedIndex() == 1) {
             TkdObat.setText(Valid.autoNomer("master_obat_operasi", "OB", 3));
             TnmObat.setText("");
             TnmObat.requestFocus();
             cmbSatuanObat.setSelectedIndex(0);
+            cmbStatusObat.setSelectedIndex(0);
         } else if (TabMaterial.getSelectedIndex() == 2) {
             TkdPsiko.setText(Valid.autoNomer("master_narkotika_operasi", "PS", 3));
             TnmPsiko.setText("");
             TnmPsiko.requestFocus();
             cmbSatuanPsiko.setSelectedIndex(0);
+            cmbStatusPsiko.setSelectedIndex(0);
         } else if (TabMaterial.getSelectedIndex() == 3) {
             TkdAnti.setText(Valid.autoNomer("master_antibiotik_operasi", "AN", 3));
             TnmAnti.setText("");
             TnmAnti.requestFocus();
             cmbSatuanAnti.setSelectedIndex(0);
+            cmbStatusAnti.setSelectedIndex(0);
         } else if (TabMaterial.getSelectedIndex() == 4) {
             TkdBahan.setText(Valid.autoNomer("master_bahan_operasi", "BH", 3));
             TnmBahan.setText("");
             TnmBahan.requestFocus();
             cmbSatuanBahan.setSelectedIndex(0);
+            cmbStatusBahan.setSelectedIndex(0);
         } else if (TabMaterial.getSelectedIndex() == 5) {
             TkdBenang.setText(Valid.autoNomer("master_benang_operasi", "BN", 3));
             TnmBenang.setText("");
             TnmBenang.requestFocus();
             cmbSatuanBenang.setSelectedIndex(1);
+            cmbStatusBenang.setSelectedIndex(0);
         } else if (TabMaterial.getSelectedIndex() == 6) {
             TkdLain.setText(Valid.autoNomer("master_lainlain_operasi", "LN", 3));
             TnmLain.setText("");
             TnmLain.requestFocus();
             cmbSatuanLain.setSelectedIndex(0);
+            cmbStatusLain.setSelectedIndex(0);
         }
     }
 
@@ -1837,42 +1984,49 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
                 TkdInfus.setText(tbInfus.getValueAt(tbInfus.getSelectedRow(), 0).toString());
                 TnmInfus.setText(tbInfus.getValueAt(tbInfus.getSelectedRow(), 1).toString());
                 cmbSatuanInfus.setSelectedItem(tbInfus.getValueAt(tbInfus.getSelectedRow(), 2).toString());
+                cmbStatusInfus.setSelectedItem(tbInfus.getValueAt(tbInfus.getSelectedRow(), 3).toString());
             }
         } else if (TabMaterial.getSelectedIndex() == 1) {
             if (tbObat.getSelectedRow() != -1) {
                 TkdObat.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString());
                 TnmObat.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString());
                 cmbSatuanObat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString());
+                cmbStatusObat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 3).toString());
             }
         } else if (TabMaterial.getSelectedIndex() == 2) {
             if (tbPsiko.getSelectedRow() != -1) {
                 TkdPsiko.setText(tbPsiko.getValueAt(tbPsiko.getSelectedRow(), 0).toString());
                 TnmPsiko.setText(tbPsiko.getValueAt(tbPsiko.getSelectedRow(), 1).toString());
                 cmbSatuanPsiko.setSelectedItem(tbPsiko.getValueAt(tbPsiko.getSelectedRow(), 2).toString());
+                cmbStatusPsiko.setSelectedItem(tbPsiko.getValueAt(tbPsiko.getSelectedRow(), 3).toString());
             }
         } else if (TabMaterial.getSelectedIndex() == 3) {
             if (tbAntibiotik.getSelectedRow() != -1) {
                 TkdAnti.setText(tbAntibiotik.getValueAt(tbAntibiotik.getSelectedRow(), 0).toString());
                 TnmAnti.setText(tbAntibiotik.getValueAt(tbAntibiotik.getSelectedRow(), 1).toString());
                 cmbSatuanAnti.setSelectedItem(tbAntibiotik.getValueAt(tbAntibiotik.getSelectedRow(), 2).toString());
+                cmbStatusAnti.setSelectedItem(tbAntibiotik.getValueAt(tbAntibiotik.getSelectedRow(), 3).toString());
             }
         } else if (TabMaterial.getSelectedIndex() == 4) {
             if (tbBahan.getSelectedRow() != -1) {
                 TkdBahan.setText(tbBahan.getValueAt(tbBahan.getSelectedRow(), 0).toString());
                 TnmBahan.setText(tbBahan.getValueAt(tbBahan.getSelectedRow(), 1).toString());
                 cmbSatuanBahan.setSelectedItem(tbBahan.getValueAt(tbBahan.getSelectedRow(), 2).toString());
+                cmbStatusBahan.setSelectedItem(tbBahan.getValueAt(tbBahan.getSelectedRow(), 3).toString());
             }
         } else if (TabMaterial.getSelectedIndex() == 5) {
             if (tbBenang.getSelectedRow() != -1) {
                 TkdBenang.setText(tbBenang.getValueAt(tbBenang.getSelectedRow(), 0).toString());
                 TnmBenang.setText(tbBenang.getValueAt(tbBenang.getSelectedRow(), 1).toString());
                 cmbSatuanBenang.setSelectedItem(tbBenang.getValueAt(tbBenang.getSelectedRow(), 2).toString());
+                cmbStatusBenang.setSelectedItem(tbBenang.getValueAt(tbBenang.getSelectedRow(), 3).toString());
             }
         } else if (TabMaterial.getSelectedIndex() == 6) {
             if (tbLain.getSelectedRow() != -1) {
                 TkdLain.setText(tbLain.getValueAt(tbLain.getSelectedRow(), 0).toString());
                 TnmLain.setText(tbLain.getValueAt(tbLain.getSelectedRow(), 1).toString());
                 cmbSatuanLain.setSelectedItem(tbLain.getValueAt(tbLain.getSelectedRow(), 2).toString());
+                cmbStatusLain.setSelectedItem(tbLain.getValueAt(tbLain.getSelectedRow(), 3).toString());
             }
         }
     }
@@ -1883,8 +2037,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
     }
     
     private void simpanInfus() {
-        if (Sequel.menyimpantf("master_infus_operasi", "?,?,?", "Kode Infus dan Alat", 3, new String[]{
-            TkdInfus.getText(), TnmInfus.getText(), cmbSatuanInfus.getSelectedItem().toString()
+        if (Sequel.menyimpantf("master_infus_operasi", "?,?,?,?", "Kode Infus dan Alat", 4, new String[]{
+            TkdInfus.getText(), TnmInfus.getText(), cmbSatuanInfus.getSelectedItem().toString(), cmbStatusInfus.getSelectedItem().toString()
         }) == true) {
             emptTeks();
             BtnCariActionPerformed(null);
@@ -1892,8 +2046,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
     }
     
     private void simpanObat() {
-        if (Sequel.menyimpantf("master_obat_operasi", "?,?,?", "Kode Obat Anestesi", 3, new String[]{
-            TkdObat.getText(), TnmObat.getText(), cmbSatuanObat.getSelectedItem().toString()
+        if (Sequel.menyimpantf("master_obat_operasi", "?,?,?,?", "Kode Obat Anestesi", 4, new String[]{
+            TkdObat.getText(), TnmObat.getText(), cmbSatuanObat.getSelectedItem().toString(), cmbStatusObat.getSelectedItem().toString()
         }) == true) {
             emptTeks();
             BtnCariActionPerformed(null);
@@ -1901,8 +2055,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
     }
     
     private void simpanPsiko() {
-        if (Sequel.menyimpantf("master_narkotika_operasi", "?,?,?", "Kode Psikotropika & Narkotika", 3, new String[]{
-            TkdPsiko.getText(), TnmPsiko.getText(), cmbSatuanPsiko.getSelectedItem().toString()
+        if (Sequel.menyimpantf("master_narkotika_operasi", "?,?,?,?", "Kode Psikotropika & Narkotika", 4, new String[]{
+            TkdPsiko.getText(), TnmPsiko.getText(), cmbSatuanPsiko.getSelectedItem().toString(), cmbStatusPsiko.getSelectedItem().toString()
         }) == true) {
             emptTeks();
             BtnCariActionPerformed(null);
@@ -1910,8 +2064,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
     }
     
     private void simpanAntibiotik() {
-        if (Sequel.menyimpantf("master_antibiotik_operasi", "?,?,?", "Kode Antibiotik", 3, new String[]{
-            TkdAnti.getText(), TnmAnti.getText(), cmbSatuanAnti.getSelectedItem().toString()
+        if (Sequel.menyimpantf("master_antibiotik_operasi", "?,?,?,?", "Kode Antibiotik", 4, new String[]{
+            TkdAnti.getText(), TnmAnti.getText(), cmbSatuanAnti.getSelectedItem().toString(), cmbStatusAnti.getSelectedItem().toString()
         }) == true) {
             emptTeks();
             BtnCariActionPerformed(null);
@@ -1919,8 +2073,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
     }
     
     private void simpanBahan() {
-        if (Sequel.menyimpantf("master_bahan_operasi", "?,?,?", "Kode Bahan Habis Pakai", 3, new String[]{
-            TkdBahan.getText(), TnmBahan.getText(), cmbSatuanBahan.getSelectedItem().toString()
+        if (Sequel.menyimpantf("master_bahan_operasi", "?,?,?,?", "Kode Bahan Habis Pakai", 4, new String[]{
+            TkdBahan.getText(), TnmBahan.getText(), cmbSatuanBahan.getSelectedItem().toString(), cmbStatusBahan.getSelectedItem().toString()
         }) == true) {
             emptTeks();
             BtnCariActionPerformed(null);
@@ -1928,8 +2082,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
     }
     
     private void simpanBenang() {
-        if (Sequel.menyimpantf("master_benang_operasi", "?,?,?", "Kode Benang", 3, new String[]{
-            TkdBenang.getText(), TnmBenang.getText(), cmbSatuanBenang.getSelectedItem().toString()
+        if (Sequel.menyimpantf("master_benang_operasi", "?,?,?,?", "Kode Benang", 4, new String[]{
+            TkdBenang.getText(), TnmBenang.getText(), cmbSatuanBenang.getSelectedItem().toString(), cmbStatusBenang.getSelectedItem().toString()
         }) == true) {
             emptTeks();
             BtnCariActionPerformed(null);
@@ -1937,8 +2091,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
     }
     
     private void simpanLainlain() {
-        if (Sequel.menyimpantf("master_lainlain_operasi", "?,?,?", "Kode Lain-lain", 3, new String[]{
-            TkdLain.getText(), TnmLain.getText(), cmbSatuanLain.getSelectedItem().toString()
+        if (Sequel.menyimpantf("master_lainlain_operasi", "?,?,?,?", "Kode Lain-lain", 4, new String[]{
+            TkdLain.getText(), TnmLain.getText(), cmbSatuanLain.getSelectedItem().toString(), cmbStatusLain.getSelectedItem().toString()
         }) == true) {
             emptTeks();
             BtnCariActionPerformed(null);
@@ -1947,8 +2101,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
     
     private void gantiInfus() {
         if (tbInfus.getSelectedRow() > -1) {
-            if (Sequel.mengedittf("master_infus_operasi", "kd_infus=?", "nama_infus=?, satuan=?", 3, new String[]{
-                TnmInfus.getText(), cmbSatuanInfus.getSelectedItem().toString(),
+            if (Sequel.mengedittf("master_infus_operasi", "kd_infus=?", "nama_infus=?, satuan=?, status=?", 4, new String[]{
+                TnmInfus.getText(), cmbSatuanInfus.getSelectedItem().toString(), cmbStatusInfus.getSelectedItem().toString(),
                 tbInfus.getValueAt(tbInfus.getSelectedRow(), 0).toString()
             }) == true) {
                 emptTeks();
@@ -1961,8 +2115,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
     
     private void gantiObat() {
         if (tbObat.getSelectedRow() > -1) {
-            if (Sequel.mengedittf("master_obat_operasi", "kd_obat=?", "nama_obat=?, satuan=?", 3, new String[]{
-                TnmObat.getText(), cmbSatuanObat.getSelectedItem().toString(),
+            if (Sequel.mengedittf("master_obat_operasi", "kd_obat=?", "nama_obat=?, satuan=?, status=?", 4, new String[]{
+                TnmObat.getText(), cmbSatuanObat.getSelectedItem().toString(), cmbStatusObat.getSelectedItem().toString(),
                 tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString()
             }) == true) {
                 emptTeks();
@@ -1975,8 +2129,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
     
     private void gantiPsiko() {
         if (tbPsiko.getSelectedRow() > -1) {
-            if (Sequel.mengedittf("master_narkotika_operasi", "kd_narkotika=?", "nama_narkotika=?, satuan=?", 3, new String[]{
-                TnmPsiko.getText(), cmbSatuanPsiko.getSelectedItem().toString(),
+            if (Sequel.mengedittf("master_narkotika_operasi", "kd_narkotika=?", "nama_narkotika=?, satuan=?, status=?", 4, new String[]{
+                TnmPsiko.getText(), cmbSatuanPsiko.getSelectedItem().toString(), cmbStatusPsiko.getSelectedItem().toString(),
                 tbPsiko.getValueAt(tbPsiko.getSelectedRow(), 0).toString()
             }) == true) {
                 emptTeks();
@@ -1989,8 +2143,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
     
     private void gantiAntibiotik() {
         if (tbAntibiotik.getSelectedRow() > -1) {
-            if (Sequel.mengedittf("master_antibiotik_operasi", "kd_antibiotik=?", "nama_antibiotik=?, satuan=?", 3, new String[]{
-                TnmAnti.getText(), cmbSatuanAnti.getSelectedItem().toString(),
+            if (Sequel.mengedittf("master_antibiotik_operasi", "kd_antibiotik=?", "nama_antibiotik=?, satuan=?, status=?", 4, new String[]{
+                TnmAnti.getText(), cmbSatuanAnti.getSelectedItem().toString(), cmbStatusAnti.getSelectedItem().toString(),
                 tbAntibiotik.getValueAt(tbAntibiotik.getSelectedRow(), 0).toString()
             }) == true) {
                 emptTeks();
@@ -2003,8 +2157,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
     
     private void gantiBahan() {
         if (tbBahan.getSelectedRow() > -1) {
-            if (Sequel.mengedittf("master_bahan_operasi", "kd_bahan=?", "nama_bahan=?, satuan=?", 3, new String[]{
-                TnmBahan.getText(), cmbSatuanBahan.getSelectedItem().toString(),
+            if (Sequel.mengedittf("master_bahan_operasi", "kd_bahan=?", "nama_bahan=?, satuan=?, status=?", 4, new String[]{
+                TnmBahan.getText(), cmbSatuanBahan.getSelectedItem().toString(), cmbStatusBahan.getSelectedItem().toString(),
                 tbBahan.getValueAt(tbBahan.getSelectedRow(), 0).toString()
             }) == true) {
                 emptTeks();
@@ -2017,8 +2171,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
     
     private void gantiBenang() {
         if (tbBenang.getSelectedRow() > -1) {
-            if (Sequel.mengedittf("master_benang_operasi", "kd_benang=?", "nama_benang=?, satuan=?", 3, new String[]{
-                TnmBenang.getText(), cmbSatuanBenang.getSelectedItem().toString(),
+            if (Sequel.mengedittf("master_benang_operasi", "kd_benang=?", "nama_benang=?, satuan=?, status=?", 4, new String[]{
+                TnmBenang.getText(), cmbSatuanBenang.getSelectedItem().toString(), cmbStatusBenang.getSelectedItem().toString(),
                 tbBenang.getValueAt(tbBenang.getSelectedRow(), 0).toString()
             }) == true) {
                 emptTeks();
@@ -2031,8 +2185,8 @@ public class DlgMasterMaterialOperasi extends javax.swing.JDialog {
     
     private void gantiLainlain() {
         if (tbLain.getSelectedRow() > -1) {
-            if (Sequel.mengedittf("master_lainlain_operasi", "kd_lainlain=?", "nama_lainlain=?, satuan=?", 3, new String[]{
-                TnmLain.getText(), cmbSatuanLain.getSelectedItem().toString(),
+            if (Sequel.mengedittf("master_lainlain_operasi", "kd_lainlain=?", "nama_lainlain=?, satuan=?, status=?", 4, new String[]{
+                TnmLain.getText(), cmbSatuanLain.getSelectedItem().toString(), cmbStatusLain.getSelectedItem().toString(),
                 tbLain.getValueAt(tbLain.getSelectedRow(), 0).toString()
             }) == true) {
                 emptTeks();
