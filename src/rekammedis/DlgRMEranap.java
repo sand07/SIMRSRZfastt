@@ -1593,7 +1593,20 @@ public class DlgRMEranap extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCeklisKeselamatanOperasiActionPerformed
 
     private void BtnCatatanMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCatatanMaterialActionPerformed
-        // TODO add your handling code here:
+        if (TNoRW.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu salah satu datanya pada tabel...!!!");
+        } else {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            akses.setform("DlgRMEranap");
+            RMCatatanPemakaianObatMaterialOperasi form = new RMCatatanPemakaianObatMaterialOperasi(null, false);
+            form.emptTeks();
+            form.isCek();
+            form.setData(TNoRW.getText(), TNoRM.getText(), TNmPasien.getText(), nmUnit.getText());
+            form.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
     }//GEN-LAST:event_BtnCatatanMaterialActionPerformed
 
     /**
