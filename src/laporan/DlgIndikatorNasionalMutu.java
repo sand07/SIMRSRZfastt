@@ -46,7 +46,8 @@ public class DlgIndikatorNasionalMutu extends javax.swing.JDialog {
     private String kdIndikator = "", kdNumdenom = "", gedungDIpilih = "", tglDipilih = "", angkaBulan = "", cekBulan = "", total = "",
             tgl1 = "", tgl2 = "", tgl3 = "", tgl4 = "", tgl5 = "", tgl6 = "", tgl7 = "", tgl8 = "", tgl9 = "", tgl10 = "",
             tgl11 = "", tgl12 = "", tgl13 = "", tgl14 = "", tgl15 = "", tgl16 = "", tgl17 = "", tgl18 = "", tgl19 = "", tgl20 = "",
-            tgl21 = "", tgl22 = "", tgl23 = "", tgl24 = "", tgl25 = "", tgl26 = "", tgl27 = "", tgl28 = "", tgl29 = "", tgl30 = "", tgl31 = "";
+            tgl21 = "", tgl22 = "", tgl23 = "", tgl24 = "", tgl25 = "", tgl26 = "", tgl27 = "", tgl28 = "", tgl29 = "", tgl30 = "", tgl31 = "",
+            dialog_simpan = "";
     
     /** Creates new form DlgPemberianInfus
      * @param parent
@@ -260,6 +261,7 @@ public class DlgIndikatorNasionalMutu extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnMasterIndikator = new javax.swing.JMenuItem();
+        MnExportKeExcel = new javax.swing.JMenuItem();
         WindowHapus = new javax.swing.JDialog();
         internalFrame6 = new widget.InternalFrame();
         internalFrame7 = new widget.InternalFrame();
@@ -340,7 +342,7 @@ public class DlgIndikatorNasionalMutu extends javax.swing.JDialog {
         MnMasterIndikator.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnMasterIndikator.setIconTextGap(5);
         MnMasterIndikator.setName("MnMasterIndikator"); // NOI18N
-        MnMasterIndikator.setPreferredSize(new java.awt.Dimension(150, 26));
+        MnMasterIndikator.setPreferredSize(new java.awt.Dimension(170, 26));
         MnMasterIndikator.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnMasterIndikatorActionPerformed(evt);
@@ -348,12 +350,27 @@ public class DlgIndikatorNasionalMutu extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnMasterIndikator);
 
+        MnExportKeExcel.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnExportKeExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/export-excel.png"))); // NOI18N
+        MnExportKeExcel.setText("Export Data Ke Ms. Excel");
+        MnExportKeExcel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnExportKeExcel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnExportKeExcel.setIconTextGap(5);
+        MnExportKeExcel.setName("MnExportKeExcel"); // NOI18N
+        MnExportKeExcel.setPreferredSize(new java.awt.Dimension(170, 26));
+        MnExportKeExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnExportKeExcelActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnExportKeExcel);
+
         WindowHapus.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         WindowHapus.setName("WindowHapus"); // NOI18N
         WindowHapus.setUndecorated(true);
         WindowHapus.setResizable(false);
 
-        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3), "::[ Hapus Indikator Mutu Rumah Sakit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3), "::[ Hapus Indikator Mutu Rumah Sakit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
         internalFrame6.setName("internalFrame6"); // NOI18N
         internalFrame6.setWarnaBawah(new java.awt.Color(245, 250, 240));
         internalFrame6.setLayout(new java.awt.BorderLayout());
@@ -494,7 +511,7 @@ public class DlgIndikatorNasionalMutu extends javax.swing.JDialog {
         WindowGanti.setUndecorated(true);
         WindowGanti.setResizable(false);
 
-        internalFrame8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3), "::[ Ganti Indikator Mutu Rumah Sakit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        internalFrame8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3), "::[ Ganti Indikator Mutu Rumah Sakit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
         internalFrame8.setName("internalFrame8"); // NOI18N
         internalFrame8.setWarnaBawah(new java.awt.Color(245, 250, 240));
         internalFrame8.setLayout(new java.awt.BorderLayout());
@@ -540,7 +557,7 @@ public class DlgIndikatorNasionalMutu extends javax.swing.JDialog {
         internalFrame9.add(jLabel36);
         jLabel36.setBounds(0, 94, 150, 23);
 
-        TtglCatat1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2024" }));
+        TtglCatat1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-11-2024" }));
         TtglCatat1.setDisplayFormat("dd-MM-yyyy");
         TtglCatat1.setName("TtglCatat1"); // NOI18N
         TtglCatat1.setOpaque(false);
@@ -651,7 +668,7 @@ public class DlgIndikatorNasionalMutu extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3), "::[ Indikator Mutu Rumah Sakit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3), "::[ Indikator Mutu Rumah Sakit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -917,7 +934,7 @@ public class DlgIndikatorNasionalMutu extends javax.swing.JDialog {
         PanelInput.add(jLabel8);
         jLabel8.setBounds(0, 154, 120, 23);
 
-        TtglCatat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-10-2024" }));
+        TtglCatat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-11-2024" }));
         TtglCatat.setDisplayFormat("dd-MM-yyyy");
         TtglCatat.setName("TtglCatat"); // NOI18N
         TtglCatat.setOpaque(false);
@@ -969,7 +986,7 @@ public class DlgIndikatorNasionalMutu extends javax.swing.JDialog {
 
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
 
-        Scroll.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Judul", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(0, 0, 0))); // NOI18N
+        Scroll.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Judul", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13))); // NOI18N
         Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
@@ -1442,6 +1459,74 @@ public class DlgIndikatorNasionalMutu extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode3);
     }//GEN-LAST:event_cmbIndikatorActionPerformed
 
+    private void MnExportKeExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnExportKeExcelActionPerformed
+        if (tabMode.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Data indikator mutu rumah sakit belum ditampilkan pada tabel..!!");
+        } else if (Ttahun.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Tahun harus diisi dulu dengan benar..!!");
+            Ttahun.requestFocus();
+        } else if (cmbGedung1.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Silahkan pilih salah satu ruang perawatannya dulu..!!");
+            cmbGedung1.requestFocus();
+        } else {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Sequel.AutoComitFalse();
+            Sequel.queryu("delete from temporary");            
+            int row = tabMode.getRowCount();
+            for (int r = 0; r < row; r++) {
+                Sequel.menyimpan("temporary", "'0','"
+                        + tabMode.getValueAt(r, 1).toString() + "','"
+                        + tabMode.getValueAt(r, 2).toString() + "','"
+                        + tabMode.getValueAt(r, 3).toString() + "','"
+                        + tabMode.getValueAt(r, 4).toString() + "','"
+                        + tabMode.getValueAt(r, 5).toString() + "','"
+                        + tabMode.getValueAt(r, 6).toString() + "','"
+                        + tabMode.getValueAt(r, 7).toString() + "','"
+                        + tabMode.getValueAt(r, 8).toString() + "','"
+                        + tabMode.getValueAt(r, 9).toString() + "','"
+                        + tabMode.getValueAt(r, 10).toString() + "','"
+                        + tabMode.getValueAt(r, 11).toString() + "','"
+                        + tabMode.getValueAt(r, 12).toString() + "','"
+                        + tabMode.getValueAt(r, 13).toString() + "','"
+                        + tabMode.getValueAt(r, 14).toString() + "','"
+                        + tabMode.getValueAt(r, 15).toString() + "','"
+                        + tabMode.getValueAt(r, 16).toString() + "','"
+                        + tabMode.getValueAt(r, 17).toString() + "','"
+                        + tabMode.getValueAt(r, 18).toString() + "','"
+                        + tabMode.getValueAt(r, 19).toString() + "','"
+                        + tabMode.getValueAt(r, 20).toString() + "','"
+                        + tabMode.getValueAt(r, 21).toString() + "','"
+                        + tabMode.getValueAt(r, 22).toString() + "','"
+                        + tabMode.getValueAt(r, 23).toString() + "','"
+                        + tabMode.getValueAt(r, 24).toString() + "','"
+                        + tabMode.getValueAt(r, 25).toString() + "','"
+                        + tabMode.getValueAt(r, 26).toString() + "','"
+                        + tabMode.getValueAt(r, 27).toString() + "','"
+                        + tabMode.getValueAt(r, 28).toString() + "','"
+                        + tabMode.getValueAt(r, 29).toString() + "','"
+                        + tabMode.getValueAt(r, 30).toString() + "','"
+                        + tabMode.getValueAt(r, 31).toString() + "','"
+                        + tabMode.getValueAt(r, 32).toString() + "','"
+                        + tabMode.getValueAt(r, 33).toString() + "','"
+                        + tabMode.getValueAt(r, 34).toString() + "','"
+                        + tabMode.getValueAt(r, 35).toString() + "','',''", "Indikator Mutu Rumah Sakit");
+            }
+            Sequel.AutoComitTrue();
+            dialog_simpan = Valid.openDialog();
+            
+            Valid.MyReportToExcel("select temp1 'No.', temp2 Indikator, temp3 'Numerator Denominator', "
+                    + "temp4 'Tgl. 1', temp5 'Tgl. 2', temp6 'Tgl. 3', temp7 'Tgl. 4', temp8 'Tgl. 5', "
+                    + "temp9 'Tgl. 6', temp10 'Tgl. 7', temp11 'Tgl. 8', temp12 'Tgl. 9', temp13 'Tgl. 10', "
+                    + "temp14 'Tgl. 11', temp15 'Tgl. 12', temp16 'Tgl. 13', temp17 'Tgl. 14', temp18 'Tgl. 15', "
+                    + "temp19 'Tgl. 16', temp20 'Tgl. 17', temp21 'Tgl. 18', temp22 'Tgl. 19', temp23 'Tgl. 20', "
+                    + "temp24 'Tgl. 21', temp25 'Tgl. 22', temp26 'Tgl. 23', temp27 'Tgl. 24', temp28 'Tgl. 25', "
+                    + "temp29 'Tgl. 26', temp30 'Tgl. 27', temp31 'Tgl. 28', temp32 'Tgl. 29', temp33 'Tgl. 30', "
+                    + "temp34 'Tgl. 31', temp35 Total from temporary", dialog_simpan);
+            JOptionPane.showMessageDialog(null, "Data Indikator Mutu Rumah Sakit berhasil diexport menjadi file excel,..!!!");
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnExportKeExcelActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1474,6 +1559,7 @@ public class DlgIndikatorNasionalMutu extends javax.swing.JDialog {
     private widget.Button BtnNumdenom;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
+    private javax.swing.JMenuItem MnExportKeExcel;
     private javax.swing.JMenuItem MnMasterIndikator;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
