@@ -1513,15 +1513,15 @@ public class DlgIndikatorNasionalMutu extends javax.swing.JDialog {
             }
             Sequel.AutoComitTrue();
             dialog_simpan = Valid.openDialog();
-            
+
             Valid.MyReportToExcel("select temp1 'No.', temp2 Indikator, temp3 'Numerator Denominator', "
-                    + "temp4 'Tgl. 1', temp5 'Tgl. 2', temp6 'Tgl. 3', temp7 'Tgl. 4', temp8 'Tgl. 5', "
-                    + "temp9 'Tgl. 6', temp10 'Tgl. 7', temp11 'Tgl. 8', temp12 'Tgl. 9', temp13 'Tgl. 10', "
-                    + "temp14 'Tgl. 11', temp15 'Tgl. 12', temp16 'Tgl. 13', temp17 'Tgl. 14', temp18 'Tgl. 15', "
-                    + "temp19 'Tgl. 16', temp20 'Tgl. 17', temp21 'Tgl. 18', temp22 'Tgl. 19', temp23 'Tgl. 20', "
-                    + "temp24 'Tgl. 21', temp25 'Tgl. 22', temp26 'Tgl. 23', temp27 'Tgl. 24', temp28 'Tgl. 25', "
-                    + "temp29 'Tgl. 26', temp30 'Tgl. 27', temp31 'Tgl. 28', temp32 'Tgl. 29', temp33 'Tgl. 30', "
-                    + "temp34 'Tgl. 31', temp35 Total from temporary", dialog_simpan);
+                    + "CONVERT(temp4,int) 'Tgl. 1', CONVERT(temp5,int) 'Tgl. 2', CONVERT(temp6,int) 'Tgl. 3', CONVERT(temp7,int) 'Tgl. 4', CONVERT(temp8,int) 'Tgl. 5', "
+                    + "CONVERT(temp9,int) 'Tgl. 6', CONVERT(temp10,int) 'Tgl. 7', CONVERT(temp11,int) 'Tgl. 8', CONVERT(temp12,int) 'Tgl. 9', CONVERT(temp13,int) 'Tgl. 10', "
+                    + "CONVERT(temp14,int) 'Tgl. 11', CONVERT(temp15,int) 'Tgl. 12', CONVERT(temp16,int) 'Tgl. 13', CONVERT(temp17,int) 'Tgl. 14', CONVERT(temp18,int) 'Tgl. 15', "
+                    + "CONVERT(temp19,int) 'Tgl. 16', CONVERT(temp20,int) 'Tgl. 17', CONVERT(temp21,int) 'Tgl. 18', CONVERT(temp22,int) 'Tgl. 19', CONVERT(temp23,int) 'Tgl. 20', "
+                    + "CONVERT(temp24,int) 'Tgl. 21', CONVERT(temp25,int) 'Tgl. 22', CONVERT(temp26,int) 'Tgl. 23', CONVERT(temp27,int) 'Tgl. 24', CONVERT(temp28,int) 'Tgl. 25', "
+                    + "CONVERT(temp29,int) 'Tgl. 26', CONVERT(temp30,int) 'Tgl. 27', CONVERT(temp31,int) 'Tgl. 28', CONVERT(temp32,int) 'Tgl. 29', CONVERT(temp33,int) 'Tgl. 30', "
+                    + "CONVERT(temp34,int) 'Tgl. 31', temp35 Total from temporary", dialog_simpan);
             JOptionPane.showMessageDialog(null, "Data Indikator Mutu Rumah Sakit berhasil diexport menjadi file excel,..!!!");
             this.setCursor(Cursor.getDefaultCursor());
         }
