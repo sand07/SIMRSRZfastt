@@ -818,6 +818,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         jLabel64 = new widget.Label();
         internalFrame13 = new widget.InternalFrame();
         BtnSimpan6 = new widget.Button();
+        BtnHapusKode = new widget.Button();
         BtnGantikode = new widget.Button();
         BtnCloseIn6 = new widget.Button();
         panelGlass8 = new widget.panelisi();
@@ -2259,6 +2260,25 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         });
         internalFrame13.add(BtnSimpan6);
 
+        BtnHapusKode.setForeground(new java.awt.Color(0, 0, 0));
+        BtnHapusKode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnHapusKode.setMnemonic('H');
+        BtnHapusKode.setText("Hapus Kode INACBG");
+        BtnHapusKode.setToolTipText("Alt+H");
+        BtnHapusKode.setName("BtnHapusKode"); // NOI18N
+        BtnHapusKode.setPreferredSize(new java.awt.Dimension(154, 26));
+        BtnHapusKode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHapusKodeActionPerformed(evt);
+            }
+        });
+        BtnHapusKode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnHapusKodeKeyPressed(evt);
+            }
+        });
+        internalFrame13.add(BtnHapusKode);
+
         BtnGantikode.setForeground(new java.awt.Color(0, 0, 0));
         BtnGantikode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
         BtnGantikode.setMnemonic('S');
@@ -2364,7 +2384,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         });
 
         tglPiutang.setEditable(false);
-        tglPiutang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-08-2024" }));
+        tglPiutang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-09-2024" }));
         tglPiutang.setDisplayFormat("dd-MM-yyyy");
         tglPiutang.setName("tglPiutang"); // NOI18N
         tglPiutang.setOpaque(false);
@@ -2445,7 +2465,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-08-2024 22:12:36" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-09-2024 14:04:36" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -2557,7 +2577,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         jLabel23.setPreferredSize(new java.awt.Dimension(110, 23));
         panelGlass2.add(jLabel23);
 
-        tglNota.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-08-2024" }));
+        tglNota.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-09-2024" }));
         tglNota.setDisplayFormat("dd-MM-yyyy");
         tglNota.setName("tglNota"); // NOI18N
         tglNota.setOpaque(false);
@@ -4904,6 +4924,35 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         MnPanjarPasienActionPerformed(null);
     }//GEN-LAST:event_BtnPanjarActionPerformed
 
+    private void BtnHapusKodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusKodeActionPerformed
+        if (kdINACBG.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Kode INACBG belum terisi..!!");
+            kdINACBG.requestFocus();
+        } else if (Sequel.cariInteger("select count(-1) from pemasukan_lain where no_rawat='" + TNoRw.getText() + "'") > 0) {
+            JOptionPane.showMessageDialog(null, "Pembayaran selisih tarif naik kelas rawat sdh. dilakukan dikasir, kode inacbg tdk. bisa dihapus..!!");
+        } else {
+            x = JOptionPane.showConfirmDialog(rootPane, "Yakin kode INACBG yang sdh. ada mau dihapus..??", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+            if (x == JOptionPane.YES_OPTION) {
+                Sequel.mengedit("bridging_sep", "no_sep='" + NoSEP.getText() + "' and jnspelayanan='1'", "kode_inacbg=''");
+                Sequel.mengedit("bridging_sep_backup", "no_sep='" + NoSEP.getText() + "' and jnspelayanan='1'", "kode_inacbg=''");
+                
+                cekSEP();
+                cekINACBG();
+                hitungSelisih();
+            } else {
+                cekSEP();
+                cekINACBG();
+                hitungSelisih();
+            }
+        }
+    }//GEN-LAST:event_BtnHapusKodeActionPerformed
+
+    private void BtnHapusKodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKodeKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
+            BtnHapusActionPerformed(null);
+        }
+    }//GEN-LAST:event_BtnHapusKodeKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -4930,6 +4979,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnCloseIn6;
     private widget.Button BtnGantikode;
     private widget.Button BtnHapus;
+    private widget.Button BtnHapusKode;
     private widget.Button BtnHapusPotongan;
     private widget.Button BtnKeluar;
     private widget.Button BtnKeluar1;

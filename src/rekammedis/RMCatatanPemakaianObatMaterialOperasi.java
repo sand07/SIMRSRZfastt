@@ -39,11 +39,15 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
     private Properties prop = new Properties();
-    private PreparedStatement ps, ps1, ps2, ps3, ps4, ps5, ps6, ps7;
-    private ResultSet rs, rs1, rs2, rs3, rs4, rs5, rs6, rs7;
-    private int i = 0, x = 0;
+    private PreparedStatement ps, ps1, ps2, ps3, ps4, ps5, ps6, ps7,
+            psCek1, psCek2, psCek3, psCek4, psCek5, psCek6, psCek7;
+    private ResultSet rs, rs1, rs2, rs3, rs4, rs5, rs6, rs7,
+            rsCek1, rsCek2, rsCek3, rsCek4, rsCek5, rsCek6, rsCek7;
+    private int i = 0, x = 0, cekInfus = 0, cekObat = 0, cekPsiko = 0, cekAnti = 0, cekBahan = 0, cekBenang = 0, cekLain = 0,
+            dataInfus = 0, dataObat = 0, dataPsiko = 0, dataAnti = 0, dataBahan = 0, dataBenang = 0, dataLain = 0;
     private DlgCariPetugas petugas = new DlgCariPetugas(null, false);
-    private String wktSimpan = "", dataDipilih = "";
+    private String wktSimpan = "", dataDipilih = "", kodePilih1 = "", kodePilih2 = "", kodePilih3 = "", kodePilih4 = "", 
+            kodePilih5 = "", kodePilih6 = "", kodePilih7 = "";
     
     /** Creates new form DlgPemberianInfus
      * @param parent
@@ -53,7 +57,8 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         initComponents();
 
         tabMode = new DefaultTableModel(null, new String[]{
-            "waktu_simpan", "No. Rawat", "No. RM", "Nama Pasien", "Jns. Kelamin", "Tgl. Lahir", "Ruang Perawatan", "Tgl. Catatan"
+            "waktu_simpan", "No. Rawat", "No. RM", "Nama Pasien", "Jns. Kelamin", "Tgl. Lahir", "Ruang Perawatan", "Tgl. Catatan",
+            "nip_petugas", "nmPetugas", "tgl_catatan"
         }) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -65,7 +70,7 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         tbCatatan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbCatatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < 9; i++) {
             TableColumn column = tbCatatan.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setMinWidth(0);
@@ -84,6 +89,9 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
                 column.setPreferredWidth(220);
             } else if (i == 7) {
                 column.setPreferredWidth(80);
+            } else if (i == 8) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             } 
         }
         tbCatatan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -469,6 +477,13 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         BtnHapusBahan = new widget.Button();
         BtnHapusBenang = new widget.Button();
         BtnHapusLain = new widget.Button();
+        BtnDataInfus = new widget.Button();
+        BtnDataObat = new widget.Button();
+        BtnDataPsiko = new widget.Button();
+        BtnDataAnti = new widget.Button();
+        BtnDataBahan = new widget.Button();
+        BtnDataBenang = new widget.Button();
+        BtnDataLain = new widget.Button();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
@@ -502,7 +517,7 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         MnMasterMaterial.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnMasterMaterial.setIconTextGap(5);
         MnMasterMaterial.setName("MnMasterMaterial"); // NOI18N
-        MnMasterMaterial.setPreferredSize(new java.awt.Dimension(210, 26));
+        MnMasterMaterial.setPreferredSize(new java.awt.Dimension(195, 26));
         MnMasterMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnMasterMaterialActionPerformed(evt);
@@ -571,7 +586,7 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         FormInput.add(TrgRawat);
         TrgRawat.setBounds(145, 38, 430, 23);
 
-        TtglCatatan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2024" }));
+        TtglCatatan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-11-2024" }));
         TtglCatatan.setDisplayFormat("dd-MM-yyyy");
         TtglCatatan.setName("TtglCatatan"); // NOI18N
         TtglCatatan.setOpaque(false);
@@ -707,7 +722,7 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         FormInput.add(Scroll7);
         Scroll7.setBounds(145, 1333, 614, 240);
 
-        Scroll8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " VI. Lain-lain ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
+        Scroll8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, " VII. Lain-lain ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         Scroll8.setName("Scroll8"); // NOI18N
         Scroll8.setOpaque(true);
         Scroll8.setPreferredSize(new java.awt.Dimension(600, 402));
@@ -823,6 +838,111 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         });
         FormInput.add(BtnHapusLain);
         BtnHapusLain.setBounds(765, 1583, 130, 23);
+
+        BtnDataInfus.setForeground(new java.awt.Color(0, 0, 0));
+        BtnDataInfus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        BtnDataInfus.setMnemonic('D');
+        BtnDataInfus.setText("Data Infus & Alat");
+        BtnDataInfus.setToolTipText("Alt+D");
+        BtnDataInfus.setName("BtnDataInfus"); // NOI18N
+        BtnDataInfus.setPreferredSize(new java.awt.Dimension(185, 30));
+        BtnDataInfus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDataInfusActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnDataInfus);
+        BtnDataInfus.setBounds(765, 103, 150, 23);
+
+        BtnDataObat.setForeground(new java.awt.Color(0, 0, 0));
+        BtnDataObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        BtnDataObat.setMnemonic('D');
+        BtnDataObat.setText("Data Obat Anestesi");
+        BtnDataObat.setToolTipText("Alt+D");
+        BtnDataObat.setName("BtnDataObat"); // NOI18N
+        BtnDataObat.setPreferredSize(new java.awt.Dimension(185, 30));
+        BtnDataObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDataObatActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnDataObat);
+        BtnDataObat.setBounds(765, 347, 160, 23);
+
+        BtnDataPsiko.setForeground(new java.awt.Color(0, 0, 0));
+        BtnDataPsiko.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        BtnDataPsiko.setMnemonic('D');
+        BtnDataPsiko.setText("Data Gol. Psiko & Narkotika");
+        BtnDataPsiko.setToolTipText("Alt+D");
+        BtnDataPsiko.setName("BtnDataPsiko"); // NOI18N
+        BtnDataPsiko.setPreferredSize(new java.awt.Dimension(185, 30));
+        BtnDataPsiko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDataPsikoActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnDataPsiko);
+        BtnDataPsiko.setBounds(765, 840, 205, 23);
+
+        BtnDataAnti.setForeground(new java.awt.Color(0, 0, 0));
+        BtnDataAnti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        BtnDataAnti.setMnemonic('D');
+        BtnDataAnti.setText("Data Antibiotik");
+        BtnDataAnti.setToolTipText("Alt+D");
+        BtnDataAnti.setName("BtnDataAnti"); // NOI18N
+        BtnDataAnti.setPreferredSize(new java.awt.Dimension(185, 30));
+        BtnDataAnti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDataAntiActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnDataAnti);
+        BtnDataAnti.setBounds(765, 984, 150, 23);
+
+        BtnDataBahan.setForeground(new java.awt.Color(0, 0, 0));
+        BtnDataBahan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        BtnDataBahan.setMnemonic('D');
+        BtnDataBahan.setText("Data Bahan Habis Pakai");
+        BtnDataBahan.setToolTipText("Alt+D");
+        BtnDataBahan.setName("BtnDataBahan"); // NOI18N
+        BtnDataBahan.setPreferredSize(new java.awt.Dimension(185, 30));
+        BtnDataBahan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDataBahanActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnDataBahan);
+        BtnDataBahan.setBounds(765, 1127, 185, 23);
+
+        BtnDataBenang.setForeground(new java.awt.Color(0, 0, 0));
+        BtnDataBenang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        BtnDataBenang.setMnemonic('D');
+        BtnDataBenang.setText("Data Benang");
+        BtnDataBenang.setToolTipText("Alt+D");
+        BtnDataBenang.setName("BtnDataBenang"); // NOI18N
+        BtnDataBenang.setPreferredSize(new java.awt.Dimension(185, 30));
+        BtnDataBenang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDataBenangActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnDataBenang);
+        BtnDataBenang.setBounds(765, 1370, 125, 23);
+
+        BtnDataLain.setForeground(new java.awt.Color(0, 0, 0));
+        BtnDataLain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        BtnDataLain.setMnemonic('D');
+        BtnDataLain.setText("Data Lain-lain");
+        BtnDataLain.setToolTipText("Alt+D");
+        BtnDataLain.setName("BtnDataLain"); // NOI18N
+        BtnDataLain.setPreferredSize(new java.awt.Dimension(185, 30));
+        BtnDataLain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDataLainActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnDataLain);
+        BtnDataLain.setBounds(765, 1613, 130, 23);
 
         Scroll1.setViewportView(FormInput);
 
@@ -985,7 +1105,7 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         jLabel19.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass12.add(jLabel19);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-11-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -999,7 +1119,7 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
         panelGlass12.add(jLabel21);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-11-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1184,13 +1304,13 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
                 tampil();
                 if (Sequel.cariInteger("select count(-1) from catatan_material_operasi where no_rawat='" + TNoRw.getText() + "'") > 0) {
                     emptTeks();
-                    tampilInfus();
-                    tampilObat();
-                    tampilPsiko();
-                    tampilAnti();
-                    tampilBahan();
-                    tampilBenang();
-                    tampilLainlain();
+                    tampilInfus("kosong");
+                    tampilObat("kosong");
+                    tampilPsiko("kosong");
+                    tampilAnti("kosong");
+                    tampilBahan("kosong");
+                    tampilBenang("kosong");
+                    tampilLainlain("kosong");
                 }
             } catch (Exception e) {
                 System.out.println("Simpan Catatan Pemakaian Obat Dan Material Operasi : " + e);
@@ -1207,13 +1327,13 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         emptTeks();
         tampil();
-        tampilInfus();
-        tampilObat();
-        tampilPsiko();
-        tampilAnti();
-        tampilBahan();
-        tampilBenang();
-        tampilLainlain();
+        tampilInfus("kosong");
+        tampilObat("kosong");
+        tampilPsiko("kosong");
+        tampilAnti("kosong");
+        tampilBahan("kosong");
+        tampilBenang("kosong");
+        tampilLainlain("kosong");
 }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
@@ -1322,13 +1442,13 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
                     tampil();
                     if (Sequel.cariInteger("select count(-1) from catatan_material_operasi where no_rawat='" + TNoRw.getText() + "'") > 0) {
                         emptTeks();
-                        tampilInfus();
-                        tampilObat();
-                        tampilPsiko();
-                        tampilAnti();
-                        tampilBahan();
-                        tampilBenang();
-                        tampilLainlain();
+                        tampilInfus("kosong");
+                        tampilObat("kosong");
+                        tampilPsiko("kosong");
+                        tampilAnti("kosong");
+                        tampilBahan("kosong");
+                        tampilBenang("kosong");
+                        tampilLainlain("kosong");
                     }
                 }
             } else {
@@ -1368,6 +1488,13 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         tampil();
+        tampilInfus("kosong");
+        tampilObat("kosong");
+        tampilPsiko("kosong");
+        tampilAnti("kosong");
+        tampilBahan("kosong");
+        tampilBenang("kosong");
+        tampilLainlain("kosong");
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -1381,7 +1508,7 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
         BtnCariActionPerformed(null);
-        emptTeks();        
+        emptTeks();
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -1444,26 +1571,26 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
                 }) == true) {
                     tampil();
                     emptTeks();
-                    tampilInfus();
-                    tampilObat();
-                    tampilPsiko();
-                    tampilAnti();
-                    tampilBahan();
-                    tampilBenang();
-                    tampilLainlain();
+                    tampilInfus("kosong");
+                    tampilObat("kosong");
+                    tampilPsiko("kosong");
+                    tampilAnti("kosong");
+                    tampilBahan("kosong");
+                    tampilBenang("kosong");
+                    tampilLainlain("kosong");
                 } else {
                     JOptionPane.showMessageDialog(null, "Gagal menghapus..!!");
                 }
             } else {
                 tampil();
                 emptTeks();
-                tampilInfus();
-                tampilObat();
-                tampilPsiko();
-                tampilAnti();
-                tampilBahan();
-                tampilBenang();
-                tampilLainlain();
+                tampilInfus("kosong");
+                tampilObat("kosong");
+                tampilPsiko("kosong");
+                tampilAnti("kosong");
+                tampilBahan("kosong");
+                tampilBenang("kosong");
+                tampilLainlain("kosong");
             }
         } else {
             JOptionPane.showMessageDialog(rootPane, "Silahkan klik/pilih dulu salah satu datanya pada tabel..!!");
@@ -1559,13 +1686,13 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
-        tampilInfus();
-        tampilObat();
-        tampilPsiko();
-        tampilAnti();
-        tampilBahan();
-        tampilBenang();
-        tampilLainlain();
+        tampilInfus("kosong");
+        tampilObat("kosong");
+        tampilPsiko("kosong");
+        tampilAnti("kosong");
+        tampilBahan("kosong");
+        tampilBenang("kosong");
+        tampilLainlain("kosong");
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnHapusInfusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusInfusActionPerformed
@@ -1588,7 +1715,7 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
                     tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 0).toString()
                 }) == true) {
                     tampil();
-                    tampilInfus();
+                    tampilInfus("kosong");
                 } else {
                     JOptionPane.showMessageDialog(null, "Gagal menghapus..!!");
                 }
@@ -1621,7 +1748,7 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
                     tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 0).toString()
                 }) == true) {
                     tampil();
-                    tampilObat();
+                    tampilObat("kosong");
                 } else {
                     JOptionPane.showMessageDialog(null, "Gagal menghapus..!!");
                 }
@@ -1654,7 +1781,7 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
                     tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 0).toString()
                 }) == true) {
                     tampil();
-                    tampilPsiko();
+                    tampilPsiko("kosong");
                 } else {
                     JOptionPane.showMessageDialog(null, "Gagal menghapus..!!");
                 }
@@ -1687,7 +1814,7 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
                     tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 0).toString()
                 }) == true) {
                     tampil();
-                    tampilAnti();
+                    tampilAnti("kosong");
                 } else {
                     JOptionPane.showMessageDialog(null, "Gagal menghapus..!!");
                 }
@@ -1720,7 +1847,7 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
                     tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 0).toString()
                 }) == true) {
                     tampil();
-                    tampilBahan();
+                    tampilBahan("kosong");
                 } else {
                     JOptionPane.showMessageDialog(null, "Gagal menghapus..!!");
                 }
@@ -1753,7 +1880,7 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
                     tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 0).toString()
                 }) == true) {
                     tampil();
-                    tampilBenang();
+                    tampilBenang("kosong");
                 } else {
                     JOptionPane.showMessageDialog(null, "Gagal menghapus..!!");
                 }
@@ -1786,7 +1913,7 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
                     tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 0).toString()
                 }) == true) {
                     tampil();
-                    tampilLainlain();
+                    tampilLainlain("kosong");
                 } else {
                     JOptionPane.showMessageDialog(null, "Gagal menghapus..!!");
                 }
@@ -1809,6 +1936,111 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         master.setVisible(true);
     }//GEN-LAST:event_MnMasterMaterialActionPerformed
 
+    private void BtnDataInfusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDataInfusActionPerformed
+        x = 0;
+        for (i = 0; i < tbInfus.getRowCount(); i++) {
+            if (!tbInfus.getValueAt(i, 3).toString().equals("")) {
+                x++;
+            }
+        }
+
+        if (x > 0) {
+            if (dataInfus == 0) {
+                tampilDataInfus();
+            }
+        }        
+    }//GEN-LAST:event_BtnDataInfusActionPerformed
+
+    private void BtnDataObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDataObatActionPerformed
+        x = 0;
+        for (i = 0; i < tbObat.getRowCount(); i++) {
+            if (!tbObat.getValueAt(i, 3).toString().equals("")) {
+                x++;
+            }
+        }
+
+        if (x > 0) {
+            if (dataObat == 0) {
+                tampilDataObat();
+            }
+        }
+    }//GEN-LAST:event_BtnDataObatActionPerformed
+
+    private void BtnDataPsikoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDataPsikoActionPerformed
+        x = 0;
+        for (i = 0; i < tbPsiko.getRowCount(); i++) {
+            if (!tbPsiko.getValueAt(i, 3).toString().equals("")) {
+                x++;
+            }
+        }
+
+        if (x > 0) {
+            if (dataPsiko == 0) {
+                tampilDataPsiko();
+            }
+        }
+    }//GEN-LAST:event_BtnDataPsikoActionPerformed
+
+    private void BtnDataAntiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDataAntiActionPerformed
+        x = 0;
+        for (i = 0; i < tbAnti.getRowCount(); i++) {
+            if (!tbAnti.getValueAt(i, 3).toString().equals("")) {
+                x++;
+            }
+        }
+
+        if (x > 0) {
+            if (dataAnti == 0) {
+                tampilDataAnti();
+            }
+        }
+    }//GEN-LAST:event_BtnDataAntiActionPerformed
+
+    private void BtnDataBahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDataBahanActionPerformed
+        x = 0;
+        for (i = 0; i < tbBahan.getRowCount(); i++) {
+            if (!tbBahan.getValueAt(i, 3).toString().equals("")) {
+                x++;
+            }
+        }
+
+        if (x > 0) {
+            if (dataBahan == 0) {
+                tampilDataBahan();
+            }
+        }
+    }//GEN-LAST:event_BtnDataBahanActionPerformed
+
+    private void BtnDataBenangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDataBenangActionPerformed
+        x = 0;
+        for (i = 0; i < tbBenang.getRowCount(); i++) {
+            if (!tbBenang.getValueAt(i, 3).toString().equals("")) {
+                x++;
+            }
+        }
+
+        if (x > 0) {
+            if (dataBenang == 0) {
+                tampilDataBenang();
+            }
+        }
+    }//GEN-LAST:event_BtnDataBenangActionPerformed
+
+    private void BtnDataLainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDataLainActionPerformed
+        x = 0;
+        for (i = 0; i < tbLain.getRowCount(); i++) {
+            if (!tbLain.getValueAt(i, 3).toString().equals("")) {
+                x++;
+            }
+        }
+
+        if (x > 0) {
+            if (dataLain == 0) {
+                tampilDataLainlain();
+            }
+        }
+    }//GEN-LAST:event_BtnDataLainActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1829,6 +2061,13 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
+    private widget.Button BtnDataAnti;
+    private widget.Button BtnDataBahan;
+    private widget.Button BtnDataBenang;
+    private widget.Button BtnDataInfus;
+    private widget.Button BtnDataLain;
+    private widget.Button BtnDataObat;
+    private widget.Button BtnDataPsiko;
     private widget.Button BtnGanti;
     private widget.Button BtnHapus;
     private widget.Button BtnHapusAnti;
@@ -1894,7 +2133,7 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try {
             ps = koneksi.prepareStatement("SELECT c.*, p.no_rkm_medis, p.nm_pasien, if(p.jk='L','Laki-laki','Perempuan') jenkel, "
-                    + "date_format(p.tgl_lahir,'%d-%m-%Y') tglLahir, date_format(c.tgl_catatan,'%d-%m-%Y') tglCatatan FROM catatan_material_operasi c "
+                    + "date_format(p.tgl_lahir,'%d-%m-%Y') tglLahir, date_format(c.tgl_catatan,'%d-%m-%Y') tglCatatan, pg.nama nmPetugas FROM catatan_material_operasi c "
                     + "inner join reg_periksa rp on rp.no_rawat=c.no_rawat inner join pasien p on p.no_rkm_medis=rp.no_rkm_medis "
                     + "inner join pegawai pg on pg.nik=c.nip_petugas WHERE "
                     + "c.tgl_catatan between ? and ? and c.no_rawat LIKE ? or "
@@ -1924,7 +2163,10 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
                         rs.getString("jenkel"),
                         rs.getString("tglLahir"),
                         rs.getString("ruang_rawat"),
-                        rs.getString("tglCatatan")                        
+                        rs.getString("tglCatatan"),
+                        rs.getString("nip_petugas"),
+                        rs.getString("nmPetugas"),
+                        rs.getString("tgl_catatan")
                     });
                 }                
             } catch (Exception e) {
@@ -1946,22 +2188,55 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
     public void emptTeks() {  
         TnipPetugas.setText("-");
         TnmPetugas.setText("-");
-        chkSaya.setSelected(false);        
-        TtglCatatan.setDate(new Date());        
+        chkSaya.setSelected(false);
+        TtglCatatan.setDate(new Date());
+        
+        dataInfus = 0;
+        dataObat = 0;
+        dataPsiko = 0;
+        dataAnti = 0;
+        dataBahan = 0;
+        dataBenang = 0;
+        dataLain = 0;
+        
+        BtnDataInfus.setEnabled(false);
+        BtnDataObat.setEnabled(false);
+        BtnDataPsiko.setEnabled(false);
+        BtnDataAnti.setEnabled(false);
+        BtnDataBahan.setEnabled(false);
+        BtnDataBenang.setEnabled(false);
+        BtnDataLain.setEnabled(false);
     }
 
     private void getData() {
         chkSaya.setSelected(false);
+        wktSimpan = "";
+        dataInfus = 0;
+        dataObat = 0;
+        dataPsiko = 0;
+        dataAnti = 0;
+        dataBahan = 0;
+        dataBenang = 0;
+        dataLain = 0;
         
         if (tbCatatan.getSelectedRow() != -1) {
+            wktSimpan = tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 0).toString();
             TNoRw.setText(tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 1).toString());
             TNoRM.setText(tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 2).toString());
             TPasien.setText(tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 3).toString());
             TrgRawat.setText(tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 6).toString());        
-            TnipPetugas.setText(tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 23).toString());
-            TnmPetugas.setText(tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 57).toString());
+            Valid.SetTgl(TtglCatatan, tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 10).toString());
+            TnipPetugas.setText(tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 8).toString());
+            TnmPetugas.setText(tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 9).toString());
             
-            Valid.SetTgl(TtglCatatan, tbCatatan.getValueAt(tbCatatan.getSelectedRow(), 56).toString());            
+            BtnDataInfus.setEnabled(true);
+            BtnDataObat.setEnabled(true);
+            BtnDataPsiko.setEnabled(true);
+            BtnDataAnti.setEnabled(true);
+            BtnDataBahan.setEnabled(true);
+            BtnDataBenang.setEnabled(true);
+            BtnDataLain.setEnabled(true);
+            dataCek();
         }
     }
     
@@ -1988,14 +2263,599 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         Valid.SetTgl(DTPCari1, Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='" + norw + "'"));
     }
     
-    public void tampilInfus() {     
+    public void tampilInfus(String cek) {
         Valid.tabelKosong(tabMode1);
         try {
-            ps1 = koneksi.prepareStatement("SELECT * FROM master_infus_operasi WHERE status='Aktif' ORDER BY kd_infus");
+            if (cek.equals("kosong")) {
+                ps1 = koneksi.prepareStatement("SELECT * FROM master_infus_operasi WHERE status='Aktif' ORDER BY kd_infus");
+            } else if (cek.equals("data")) {
+                ps1 = koneksi.prepareStatement("SELECT m.kd_infus, m.nama_infus, c.ket_lain, c.jumlah, m.satuan FROM master_infus_operasi m "
+                        + "inner join catatan_material_operasi c on c.kd_material=m.kd_infus WHERE "
+                        + "m.status='Aktif' and m.kd_infus in (" + kodePilih1 + ") and c.no_rawat='" + TNoRw.getText() + "' "
+                        + "and c.waktu_simpan='" + wktSimpan + "' and c.kd_material like '%IN%' ORDER BY m.kd_infus");
+            }
             try {
                 rs1 = ps1.executeQuery();                
                 while (rs1.next()) {
-                    tabMode1.addRow(new Object[]{                        
+                    if (cek.equals("kosong")) {
+                        tabMode1.addRow(new Object[]{
+                            rs1.getString("kd_infus"),
+                            rs1.getString("nama_infus"),
+                            "", "",
+                            rs1.getString("satuan")
+                        });
+                    } else if (cek.equals("data")) {
+                        tabMode1.addRow(new Object[]{
+                            rs1.getString("kd_infus"),
+                            rs1.getString("nama_infus"),                            
+                            rs1.getString("ket_lain"), 
+                            rs1.getString("jumlah"),                            
+                            rs1.getString("satuan")
+                        });
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("tampilInfus() : " + e);
+            } finally {
+                if (rs1 != null) {
+                    rs1.close();
+                }
+                if (ps1 != null) {
+                    ps1.close();
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Notifikasi : " + e);
+        }
+    }
+    
+    public void tampilObat(String cek) {
+        Valid.tabelKosong(tabMode2);
+        try {
+            if (cek.equals("kosong")) {
+                ps2 = koneksi.prepareStatement("SELECT * FROM master_obat_operasi WHERE status='Aktif' ORDER BY kd_obat");
+            } else if (cek.equals("data")) {
+                ps2 = koneksi.prepareStatement("SELECT m.kd_obat, m.nama_obat, c.ket_lain, c.jumlah, m.satuan FROM master_obat_operasi m "
+                        + "inner join catatan_material_operasi c on c.kd_material=m.kd_obat WHERE "
+                        + "m.status='Aktif' and m.kd_obat in (" + kodePilih2 + ") and c.no_rawat='" + TNoRw.getText() + "' "
+                        + "and c.waktu_simpan='" + wktSimpan + "' and c.kd_material like '%OB%' ORDER BY m.kd_obat");
+            }
+            try {
+                rs2 = ps2.executeQuery();                
+                while (rs2.next()) {
+                    if (cek.equals("kosong")) {
+                        tabMode2.addRow(new Object[]{
+                            rs2.getString("kd_obat"),
+                            rs2.getString("nama_obat"),
+                            "", "",
+                            rs2.getString("satuan")
+                        });
+                    } else if (cek.equals("data")) {
+                        tabMode2.addRow(new Object[]{
+                            rs2.getString("kd_obat"),
+                            rs2.getString("nama_obat"),
+                            rs2.getString("ket_lain"),
+                            rs2.getString("jumlah"),
+                            rs2.getString("satuan")
+                        });
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("tampilObat() : " + e);
+            } finally {
+                if (rs2 != null) {
+                    rs2.close();
+                }
+                if (ps2 != null) {
+                    ps2.close();
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Notifikasi : " + e);
+        }
+    }
+    
+    public void tampilPsiko(String cek) {
+        Valid.tabelKosong(tabMode3);
+        try {
+            if (cek.equals("kosong")) {
+                ps3 = koneksi.prepareStatement("SELECT * FROM master_narkotika_operasi WHERE status='Aktif' ORDER BY kd_narkotika");
+            } else if (cek.equals("data")) {
+                ps3 = koneksi.prepareStatement("SELECT m.kd_narkotika, m.nama_narkotika, c.ket_lain, c.jumlah, m.satuan FROM master_narkotika_operasi m "
+                        + "inner join catatan_material_operasi c on c.kd_material=m.kd_narkotika WHERE "
+                        + "m.status='Aktif' and m.kd_narkotika in (" + kodePilih3 + ") and c.no_rawat='" + TNoRw.getText() + "' "
+                        + "and c.waktu_simpan='" + wktSimpan + "' and c.kd_material like '%PS%' ORDER BY m.kd_narkotika");
+            }
+            try {
+                rs3 = ps3.executeQuery();
+                while (rs3.next()) {
+                    if (cek.equals("kosong")) {
+                        tabMode3.addRow(new Object[]{
+                            rs3.getString("kd_narkotika"),
+                            rs3.getString("nama_narkotika"),
+                            "", "",
+                            rs3.getString("satuan")
+                        });
+                    } else if (cek.equals("data")) {
+                        tabMode3.addRow(new Object[]{
+                            rs3.getString("kd_narkotika"),
+                            rs3.getString("nama_narkotika"),
+                            rs3.getString("ket_lain"),
+                            rs3.getString("jumlah"),
+                            rs3.getString("satuan")
+                        });
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("tampilPsiko() : " + e);
+            } finally {
+                if (rs3 != null) {
+                    rs3.close();
+                }
+                if (ps3 != null) {
+                    ps3.close();
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Notifikasi : " + e);
+        }
+    }
+    
+    public void tampilAnti(String cek) {
+        Valid.tabelKosong(tabMode4);
+        try {
+            if (cek.equals("kosong")) {
+                ps4 = koneksi.prepareStatement("SELECT * FROM master_antibiotik_operasi WHERE status='Aktif' ORDER BY kd_antibiotik");
+            } else if (cek.equals("data")) {
+                ps4 = koneksi.prepareStatement("SELECT m.kd_antibiotik, m.nama_antibiotik, c.ket_lain, c.jumlah, m.satuan FROM master_antibiotik_operasi m "
+                        + "inner join catatan_material_operasi c on c.kd_material=m.kd_antibiotik WHERE "
+                        + "m.status='Aktif' and m.kd_antibiotik in (" + kodePilih4 + ") and c.no_rawat='" + TNoRw.getText() + "' "
+                        + "and c.waktu_simpan='" + wktSimpan + "' and c.kd_material like '%AN%' ORDER BY m.kd_antibiotik");
+            }
+            try {
+                rs4 = ps4.executeQuery();                
+                while (rs4.next()) {
+                    if (cek.equals("kosong")) {
+                        tabMode4.addRow(new Object[]{
+                            rs4.getString("kd_antibiotik"),
+                            rs4.getString("nama_antibiotik"),
+                            "", "",
+                            rs4.getString("satuan")
+                        });
+                    } else if (cek.equals("data")) {
+                        tabMode4.addRow(new Object[]{
+                            rs4.getString("kd_antibiotik"),
+                            rs4.getString("nama_antibiotik"),
+                            rs4.getString("ket_lain"),
+                            rs4.getString("jumlah"),
+                            rs4.getString("satuan")
+                        });
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("tampilAnti() : " + e);
+            } finally {
+                if (rs4 != null) {
+                    rs4.close();
+                }
+                if (ps4 != null) {
+                    ps4.close();
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Notifikasi : " + e);
+        }
+    }
+    
+    public void tampilBahan(String cek) {
+        Valid.tabelKosong(tabMode5);
+        try {
+            if (cek.equals("kosong")) {
+                ps5 = koneksi.prepareStatement("SELECT * FROM master_bahan_operasi WHERE status='Aktif' ORDER BY kd_bahan");
+            } else if (cek.equals("data")) {
+                ps5 = koneksi.prepareStatement("SELECT m.kd_bahan, m.nama_bahan, c.ket_lain, c.jumlah, m.satuan FROM master_bahan_operasi m "
+                        + "inner join catatan_material_operasi c on c.kd_material=m.kd_bahan WHERE "
+                        + "m.status='Aktif' and m.kd_bahan in (" + kodePilih5 + ") and c.no_rawat='" + TNoRw.getText() + "' "
+                        + "and c.waktu_simpan='" + wktSimpan + "' and c.kd_material like '%BH%' ORDER BY m.kd_bahan");
+            }
+            try {
+                rs5 = ps5.executeQuery();
+                while (rs5.next()) {
+                    if (cek.equals("kosong")) {
+                        tabMode5.addRow(new Object[]{
+                            rs5.getString("kd_bahan"),
+                            rs5.getString("nama_bahan"),
+                            "", "",
+                            rs5.getString("satuan")
+                        });
+                    } else if (cek.equals("data")) {
+                        tabMode5.addRow(new Object[]{
+                            rs5.getString("kd_bahan"),
+                            rs5.getString("nama_bahan"),
+                            rs5.getString("ket_lain"),
+                            rs5.getString("jumlah"),
+                            rs5.getString("satuan")
+                        });
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("tampilBahan() : " + e);
+            } finally {
+                if (rs5 != null) {
+                    rs5.close();
+                }
+                if (ps5 != null) {
+                    ps5.close();
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Notifikasi : " + e);
+        }
+    }
+    
+    public void tampilBenang(String cek) {
+        Valid.tabelKosong(tabMode6);
+        try {
+            if (cek.equals("kosong")) {
+                ps6 = koneksi.prepareStatement("SELECT * FROM master_benang_operasi WHERE status='Aktif' ORDER BY kd_benang");
+            } else if (cek.equals("data")) {
+                ps6 = koneksi.prepareStatement("SELECT m.kd_benang, m.nama_benang, c.ket_lain, c.jumlah, m.satuan FROM master_benang_operasi m "
+                        + "inner join catatan_material_operasi c on c.kd_material=m.kd_benang WHERE "
+                        + "m.status='Aktif' and m.kd_benang in (" + kodePilih6 + ") and c.no_rawat='" + TNoRw.getText() + "' "
+                        + "and c.waktu_simpan='" + wktSimpan + "' and c.kd_material like '%BN%' ORDER BY m.kd_benang");
+            }
+            try {
+                rs6 = ps6.executeQuery();                
+                while (rs6.next()) {
+                    if (cek.equals("kosong")) {
+                        tabMode6.addRow(new Object[]{
+                            rs6.getString("kd_benang"),
+                            rs6.getString("nama_benang"),
+                            "", "",
+                            rs6.getString("satuan")
+                        });
+                    } else if (cek.equals("data")) {
+                        tabMode6.addRow(new Object[]{
+                            rs6.getString("kd_benang"),
+                            rs6.getString("nama_benang"),
+                            rs6.getString("ket_lain"),
+                            rs6.getString("jumlah"),
+                            rs6.getString("satuan")
+                        });
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("tampilBenang() : " + e);
+            } finally {
+                if (rs6 != null) {
+                    rs6.close();
+                }
+                if (ps6 != null) {
+                    ps6.close();
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Notifikasi : " + e);
+        }
+    }
+    
+    public void tampilLainlain(String cek) {
+        Valid.tabelKosong(tabMode7);
+        try {
+            if (cek.equals("kosong")) {
+                ps7 = koneksi.prepareStatement("SELECT * FROM master_lainlain_operasi WHERE status='Aktif' ORDER BY kd_lainlain");
+            } else if (cek.equals("data")) {
+                ps7 = koneksi.prepareStatement("SELECT m.kd_lainlain, m.nama_lainlain, c.ket_lain, c.jumlah, m.satuan FROM master_lainlain_operasi m "
+                        + "inner join catatan_material_operasi c on c.kd_material=m.kd_lainlain WHERE "
+                        + "m.status='Aktif' and m.kd_lainlain in (" + kodePilih7 + ") and c.no_rawat='" + TNoRw.getText() + "' "
+                        + "and c.waktu_simpan='" + wktSimpan + "' and c.kd_material like '%LN%' ORDER BY m.kd_lainlain");
+            }
+            try {
+                rs7 = ps7.executeQuery();
+                while (rs7.next()) {
+                    if (cek.equals("kosong")) {
+                        tabMode7.addRow(new Object[]{
+                            rs7.getString("kd_lainlain"),
+                            rs7.getString("nama_lainlain"),
+                            "", "",
+                            rs7.getString("satuan")
+                        });
+                    } else if (cek.equals("data")) {
+                        tabMode7.addRow(new Object[]{
+                            rs7.getString("kd_lainlain"),
+                            rs7.getString("nama_lainlain"),
+                            rs7.getString("ket_lain"),
+                            rs7.getString("jumlah"),
+                            rs7.getString("satuan")
+                        });
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("tampilLainlain() : " + e);
+            } finally {
+                if (rs7 != null) {
+                    rs7.close();
+                }
+                if (ps7 != null) {
+                    ps7.close();
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Notifikasi : " + e);
+        }
+    }
+    
+    private void dataCek() {
+        cekInfus = 0;
+        cekObat = 0;
+        cekPsiko = 0;
+        cekAnti = 0;
+        cekBahan = 0;
+        cekBenang = 0;
+        cekLain = 0;
+        kodePilih1 = "";
+        kodePilih2 = "";
+        kodePilih3 = "";
+        kodePilih4 = "";
+        kodePilih5 = "";
+        kodePilih6 = "";
+        kodePilih7 = "";
+
+        //cek datanya
+        cekInfus = Sequel.cariInteger("select count(-1) from catatan_material_operasi where no_rawat='" + TNoRw.getText() + "' "
+                + "and waktu_simpan='" + wktSimpan + "' and kd_material like '%IN%'");
+        cekObat = Sequel.cariInteger("select count(-1) from catatan_material_operasi where no_rawat='" + TNoRw.getText() + "' "
+                + "and waktu_simpan='" + wktSimpan + "' and kd_material like '%OB%'");
+        cekPsiko = Sequel.cariInteger("select count(-1) from catatan_material_operasi where no_rawat='" + TNoRw.getText() + "' "
+                + "and waktu_simpan='" + wktSimpan + "' and kd_material like '%PS%'");
+        cekAnti = Sequel.cariInteger("select count(-1) from catatan_material_operasi where no_rawat='" + TNoRw.getText() + "' "
+                + "and waktu_simpan='" + wktSimpan + "' and kd_material like '%AN%'");
+        cekBahan = Sequel.cariInteger("select count(-1) from catatan_material_operasi where no_rawat='" + TNoRw.getText() + "' "
+                + "and waktu_simpan='" + wktSimpan + "' and kd_material like '%BH%'");
+        cekBenang = Sequel.cariInteger("select count(-1) from catatan_material_operasi where no_rawat='" + TNoRw.getText() + "' "
+                + "and waktu_simpan='" + wktSimpan + "' and kd_material like '%BN%'");
+        cekLain = Sequel.cariInteger("select count(-1) from catatan_material_operasi where no_rawat='" + TNoRw.getText() + "' "
+                + "and waktu_simpan='" + wktSimpan + "' and kd_material like '%LN%'");
+        
+        //data infus dan alat
+        if (cekInfus > 0) {
+            try {
+                psCek1 = koneksi.prepareStatement("select * from catatan_material_operasi where no_rawat='" + TNoRw.getText() + "' "
+                        + "and waktu_simpan='" + wktSimpan + "' and kd_material like '%IN%'");
+                try {
+                    rsCek1 = psCek1.executeQuery();
+                    while (rsCek1.next()) {
+                        if (kodePilih1.equals("")) {
+                            kodePilih1 = "'" + rsCek1.getString("kd_material") + "'";
+                        } else {
+                            kodePilih1 = kodePilih1 + ",'" + rsCek1.getString("kd_material") + "'";
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : " + e);
+                } finally {
+                    if (rsCek1 != null) {
+                        rsCek1.close();
+                    }
+                    if (psCek1 != null) {
+                        psCek1.close();
+                    }
+                }
+                
+            } catch (Exception e) {
+                System.out.println("Notifikasi : " + e);
+            }
+            tampilInfus("data");
+        } else {
+            tampilInfus("kosong");
+        }
+
+        //data obat anestesi
+        if (cekObat > 0) {
+            try {
+                psCek2 = koneksi.prepareStatement("select * from catatan_material_operasi where no_rawat='" + TNoRw.getText() + "' "
+                        + "and waktu_simpan='" + wktSimpan + "' and kd_material like '%OB%'");
+                try {
+                    rsCek2 = psCek2.executeQuery();
+                    while (rsCek2.next()) {
+                        if (kodePilih2.equals("")) {
+                            kodePilih2 = "'" + rsCek2.getString("kd_material") + "'";
+                        } else {
+                            kodePilih2 = kodePilih2 + ",'" + rsCek2.getString("kd_material") + "'";
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : " + e);
+                } finally {
+                    if (rsCek2 != null) {
+                        rsCek2.close();
+                    }
+                    if (psCek2 != null) {
+                        psCek2.close();
+                    }
+                }
+
+            } catch (Exception e) {
+                System.out.println("Notifikasi : " + e);
+            }
+            tampilObat("data");
+        } else {
+            tampilObat("kosong");
+        }
+        
+        //data golongan psikotropika & narkotika
+        if (cekPsiko > 0) {
+            try {
+                psCek3 = koneksi.prepareStatement("select * from catatan_material_operasi where no_rawat='" + TNoRw.getText() + "' "
+                        + "and waktu_simpan='" + wktSimpan + "' and kd_material like '%PS%'");
+                try {
+                    rsCek3 = psCek3.executeQuery();
+                    while (rsCek3.next()) {
+                        if (kodePilih3.equals("")) {
+                            kodePilih3 = "'" + rsCek3.getString("kd_material") + "'";
+                        } else {
+                            kodePilih3 = kodePilih3 + ",'" + rsCek3.getString("kd_material") + "'";
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : " + e);
+                } finally {
+                    if (rsCek3 != null) {
+                        rsCek3.close();
+                    }
+                    if (psCek3 != null) {
+                        psCek3.close();
+                    }
+                }
+
+            } catch (Exception e) {
+                System.out.println("Notifikasi : " + e);
+            }
+            tampilPsiko("data");
+        } else {
+            tampilPsiko("kosong");
+        }
+        
+        //data antibiotik
+        if (cekAnti > 0) {
+            try {
+                psCek4 = koneksi.prepareStatement("select * from catatan_material_operasi where no_rawat='" + TNoRw.getText() + "' "
+                        + "and waktu_simpan='" + wktSimpan + "' and kd_material like '%AN%'");
+                try {
+                    rsCek4 = psCek4.executeQuery();
+                    while (rsCek4.next()) {
+                        if (kodePilih4.equals("")) {
+                            kodePilih4 = "'" + rsCek4.getString("kd_material") + "'";
+                        } else {
+                            kodePilih4 = kodePilih4 + ",'" + rsCek4.getString("kd_material") + "'";
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : " + e);
+                } finally {
+                    if (rsCek4 != null) {
+                        rsCek4.close();
+                    }
+                    if (psCek4 != null) {
+                        psCek4.close();
+                    }
+                }
+
+            } catch (Exception e) {
+                System.out.println("Notifikasi : " + e);
+            }
+            tampilAnti("data");
+        } else {
+            tampilAnti("kosong");
+        }
+        
+        //data bahan habis pakai
+        if (cekBahan > 0) {
+            try {
+                psCek5 = koneksi.prepareStatement("select * from catatan_material_operasi where no_rawat='" + TNoRw.getText() + "' "
+                        + "and waktu_simpan='" + wktSimpan + "' and kd_material like '%BH%'");
+                try {
+                    rsCek5 = psCek5.executeQuery();
+                    while (rsCek5.next()) {
+                        if (kodePilih5.equals("")) {
+                            kodePilih5 = "'" + rsCek5.getString("kd_material") + "'";
+                        } else {
+                            kodePilih5 = kodePilih5 + ",'" + rsCek5.getString("kd_material") + "'";
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : " + e);
+                } finally {
+                    if (rsCek5 != null) {
+                        rsCek5.close();
+                    }
+                    if (psCek5 != null) {
+                        psCek5.close();
+                    }
+                }
+
+            } catch (Exception e) {
+                System.out.println("Notifikasi : " + e);
+            }
+            tampilBahan("data");
+        } else {
+            tampilBahan("kosong");
+        }
+        
+        //data benang
+        if (cekBenang > 0) {
+            try {
+                psCek6 = koneksi.prepareStatement("select * from catatan_material_operasi where no_rawat='" + TNoRw.getText() + "' "
+                        + "and waktu_simpan='" + wktSimpan + "' and kd_material like '%BN%'");
+                try {
+                    rsCek6 = psCek6.executeQuery();
+                    while (rsCek6.next()) {
+                        if (kodePilih6.equals("")) {
+                            kodePilih6 = "'" + rsCek6.getString("kd_material") + "'";
+                        } else {
+                            kodePilih6 = kodePilih6 + ",'" + rsCek6.getString("kd_material") + "'";
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : " + e);
+                } finally {
+                    if (rsCek6 != null) {
+                        rsCek6.close();
+                    }
+                    if (psCek6 != null) {
+                        psCek6.close();
+                    }
+                }
+
+            } catch (Exception e) {
+                System.out.println("Notifikasi : " + e);
+            }
+            tampilBenang("data");
+        } else {
+            tampilBenang("kosong");
+        }
+        
+        //data lain-lain
+        if (cekLain > 0) {
+            try {
+                psCek7 = koneksi.prepareStatement("select * from catatan_material_operasi where no_rawat='" + TNoRw.getText() + "' "
+                        + "and waktu_simpan='" + wktSimpan + "' and kd_material like '%LN%'");
+                try {
+                    rsCek7 = psCek7.executeQuery();
+                    while (rsCek7.next()) {
+                        if (kodePilih7.equals("")) {
+                            kodePilih7 = "'" + rsCek7.getString("kd_material") + "'";
+                        } else {
+                            kodePilih7 = kodePilih7 + ",'" + rsCek7.getString("kd_material") + "'";
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : " + e);
+                } finally {
+                    if (rsCek7 != null) {
+                        rsCek7.close();
+                    }
+                    if (psCek7 != null) {
+                        psCek7.close();
+                    }
+                }
+
+            } catch (Exception e) {
+                System.out.println("Notifikasi : " + e);
+            }
+            tampilLainlain("data");
+        } else {
+            tampilLainlain("kosong");
+        }
+    }
+    
+    public void tampilDataInfus() {
+        try {
+            ps1 = koneksi.prepareStatement("SELECT * FROM master_infus_operasi WHERE status='Aktif' ORDER BY kd_infus");
+            try {
+                rs1 = ps1.executeQuery();
+                while (rs1.next()) {
+                    tabMode1.addRow(new Object[]{
                         rs1.getString("kd_infus"),
                         rs1.getString("nama_infus"),
                         "", "",
@@ -2015,16 +2875,16 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         } catch (SQLException e) {
             System.out.println("Notifikasi : " + e);
         }
+        dataInfus = 1;
     }
     
-    public void tampilObat() {     
-        Valid.tabelKosong(tabMode2);
+    public void tampilDataObat() {
         try {
             ps2 = koneksi.prepareStatement("SELECT * FROM master_obat_operasi WHERE status='Aktif' ORDER BY kd_obat");
             try {
-                rs2 = ps2.executeQuery();                
+                rs2 = ps2.executeQuery();
                 while (rs2.next()) {
-                    tabMode2.addRow(new Object[]{                        
+                    tabMode2.addRow(new Object[]{
                         rs2.getString("kd_obat"),
                         rs2.getString("nama_obat"),
                         "", "",
@@ -2044,16 +2904,16 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         } catch (SQLException e) {
             System.out.println("Notifikasi : " + e);
         }
+        dataObat = 1;
     }
     
-    public void tampilPsiko() {     
-        Valid.tabelKosong(tabMode3);
+    public void tampilDataPsiko() {
         try {
             ps3 = koneksi.prepareStatement("SELECT * FROM master_narkotika_operasi WHERE status='Aktif' ORDER BY kd_narkotika");
             try {
-                rs3 = ps3.executeQuery();                
+                rs3 = ps3.executeQuery();
                 while (rs3.next()) {
-                    tabMode3.addRow(new Object[]{                        
+                    tabMode3.addRow(new Object[]{
                         rs3.getString("kd_narkotika"),
                         rs3.getString("nama_narkotika"),
                         "", "",
@@ -2073,21 +2933,22 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         } catch (SQLException e) {
             System.out.println("Notifikasi : " + e);
         }
+        dataPsiko = 1;
     }
-    
-    public void tampilAnti() {     
-        Valid.tabelKosong(tabMode4);
+
+    public void tampilDataAnti() {
         try {
             ps4 = koneksi.prepareStatement("SELECT * FROM master_antibiotik_operasi WHERE status='Aktif' ORDER BY kd_antibiotik");
             try {
-                rs4 = ps4.executeQuery();                
+                rs4 = ps4.executeQuery();
                 while (rs4.next()) {
-                    tabMode4.addRow(new Object[]{                        
+                    tabMode4.addRow(new Object[]{
                         rs4.getString("kd_antibiotik"),
                         rs4.getString("nama_antibiotik"),
                         "", "",
                         rs4.getString("satuan")
                     });
+
                 }
             } catch (Exception e) {
                 System.out.println("tampilAnti() : " + e);
@@ -2102,16 +2963,16 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         } catch (SQLException e) {
             System.out.println("Notifikasi : " + e);
         }
+        dataAnti = 1;
     }
     
-    public void tampilBahan() {     
-        Valid.tabelKosong(tabMode5);
+    public void tampilDataBahan() {
         try {
             ps5 = koneksi.prepareStatement("SELECT * FROM master_bahan_operasi WHERE status='Aktif' ORDER BY kd_bahan");
             try {
-                rs5 = ps5.executeQuery();                
+                rs5 = ps5.executeQuery();
                 while (rs5.next()) {
-                    tabMode5.addRow(new Object[]{                        
+                    tabMode5.addRow(new Object[]{
                         rs5.getString("kd_bahan"),
                         rs5.getString("nama_bahan"),
                         "", "",
@@ -2131,16 +2992,16 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         } catch (SQLException e) {
             System.out.println("Notifikasi : " + e);
         }
+        dataBahan = 1;
     }
     
-    public void tampilBenang() {     
-        Valid.tabelKosong(tabMode6);
+    public void tampilDataBenang() {
         try {
             ps6 = koneksi.prepareStatement("SELECT * FROM master_benang_operasi WHERE status='Aktif' ORDER BY kd_benang");
             try {
-                rs6 = ps6.executeQuery();                
+                rs6 = ps6.executeQuery();
                 while (rs6.next()) {
-                    tabMode6.addRow(new Object[]{                        
+                    tabMode6.addRow(new Object[]{
                         rs6.getString("kd_benang"),
                         rs6.getString("nama_benang"),
                         "", "",
@@ -2160,16 +3021,16 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         } catch (SQLException e) {
             System.out.println("Notifikasi : " + e);
         }
+        dataBenang = 1;
     }
     
-    public void tampilLainlain() {     
-        Valid.tabelKosong(tabMode7);
+    public void tampilDataLainlain() {
         try {
             ps7 = koneksi.prepareStatement("SELECT * FROM master_lainlain_operasi WHERE status='Aktif' ORDER BY kd_lainlain");
             try {
-                rs7 = ps7.executeQuery();                
+                rs7 = ps7.executeQuery();
                 while (rs7.next()) {
-                    tabMode7.addRow(new Object[]{                        
+                    tabMode7.addRow(new Object[]{
                         rs7.getString("kd_lainlain"),
                         rs7.getString("nama_lainlain"),
                         "", "",
@@ -2189,5 +3050,6 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         } catch (SQLException e) {
             System.out.println("Notifikasi : " + e);
         }
+        dataLain = 1;
     }
 }

@@ -25,7 +25,7 @@
             <Property name="iconTextGap" type="int" value="5"/>
             <Property name="name" type="java.lang.String" value="MnMasterMaterial" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[210, 26]"/>
+              <Dimension value="[195, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -217,7 +217,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="06-11-2024"/>
+                        <StringItem index="0" value="11-11-2024"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -535,7 +535,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title=" VI. Lain-lain ">
+                        <TitledBorder title=" VII. Lain-lain ">
                           <Font PropertyName="font" name="Tahoma" size="12" style="0"/>
                         </TitledBorder>
                       </Border>
@@ -734,6 +734,181 @@
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="765" y="1583" width="130" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.Button" name="BtnDataInfus">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/picture/category.png"/>
+                    </Property>
+                    <Property name="mnemonic" type="int" value="68"/>
+                    <Property name="text" type="java.lang.String" value="Data Infus &amp; Alat"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Alt+D"/>
+                    <Property name="name" type="java.lang.String" value="BtnDataInfus" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[185, 30]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnDataInfusActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="765" y="103" width="150" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.Button" name="BtnDataObat">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/picture/category.png"/>
+                    </Property>
+                    <Property name="mnemonic" type="int" value="68"/>
+                    <Property name="text" type="java.lang.String" value="Data Obat Anestesi"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Alt+D"/>
+                    <Property name="name" type="java.lang.String" value="BtnDataObat" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[185, 30]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnDataObatActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="765" y="347" width="160" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.Button" name="BtnDataPsiko">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/picture/category.png"/>
+                    </Property>
+                    <Property name="mnemonic" type="int" value="68"/>
+                    <Property name="text" type="java.lang.String" value="Data Gol. Psiko &amp; Narkotika"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Alt+D"/>
+                    <Property name="name" type="java.lang.String" value="BtnDataPsiko" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[185, 30]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnDataPsikoActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="765" y="840" width="205" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.Button" name="BtnDataAnti">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/picture/category.png"/>
+                    </Property>
+                    <Property name="mnemonic" type="int" value="68"/>
+                    <Property name="text" type="java.lang.String" value="Data Antibiotik"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Alt+D"/>
+                    <Property name="name" type="java.lang.String" value="BtnDataAnti" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[185, 30]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnDataAntiActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="765" y="984" width="150" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.Button" name="BtnDataBahan">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/picture/category.png"/>
+                    </Property>
+                    <Property name="mnemonic" type="int" value="68"/>
+                    <Property name="text" type="java.lang.String" value="Data Bahan Habis Pakai"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Alt+D"/>
+                    <Property name="name" type="java.lang.String" value="BtnDataBahan" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[185, 30]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnDataBahanActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="765" y="1127" width="185" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.Button" name="BtnDataBenang">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/picture/category.png"/>
+                    </Property>
+                    <Property name="mnemonic" type="int" value="68"/>
+                    <Property name="text" type="java.lang.String" value="Data Benang"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Alt+D"/>
+                    <Property name="name" type="java.lang.String" value="BtnDataBenang" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[185, 30]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnDataBenangActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="765" y="1370" width="125" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.Button" name="BtnDataLain">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/picture/category.png"/>
+                    </Property>
+                    <Property name="mnemonic" type="int" value="68"/>
+                    <Property name="text" type="java.lang.String" value="Data Lain-lain"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Alt+D"/>
+                    <Property name="name" type="java.lang.String" value="BtnDataLain" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[185, 30]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnDataLainActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="765" y="1613" width="130" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -992,7 +1167,7 @@
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="06-11-2024"/>
+                            <StringItem index="0" value="11-11-2024"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -1020,7 +1195,7 @@
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="06-11-2024"/>
+                            <StringItem index="0" value="11-11-2024"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
