@@ -349,6 +349,7 @@ import rekammedis.RMAsesmenRestrain;
 import rekammedis.RMAsesmenUlangResikoJatuhAnak;
 import rekammedis.RMAsesmenUlangResikoJatuhDewasa;
 import rekammedis.RMAsuhanGiziRanap;
+import rekammedis.RMCatatanPemakaianObatMaterialOperasi;
 import rekammedis.RMCeklisKeselamatanOperasi;
 import rekammedis.RMCeklisKesiapanAnestesi;
 import rekammedis.RMCeklisPraOperasi;
@@ -890,6 +891,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnCeklisKeselamatanOperasi = new widget.ButtonBig();
         btnPasienBlackList = new widget.ButtonBig();
         btnMasterCatatanMaterialOperasi = new widget.ButtonBig();
+        BtnCatatanMaterialOperasi = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6037,6 +6039,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnMasterCatatanMaterialOperasi);
 
+        BtnCatatanMaterialOperasi.setForeground(new java.awt.Color(0, 0, 0));
+        BtnCatatanMaterialOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816018_tests.png"))); // NOI18N
+        BtnCatatanMaterialOperasi.setText("Cttn. Pemakaian Obat & Material");
+        BtnCatatanMaterialOperasi.setIconTextGap(0);
+        BtnCatatanMaterialOperasi.setName("BtnCatatanMaterialOperasi"); // NOI18N
+        BtnCatatanMaterialOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        BtnCatatanMaterialOperasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCatatanMaterialOperasiActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(BtnCatatanMaterialOperasi);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6045,7 +6060,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29/10/2024" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04/11/2024" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -11935,6 +11950,19 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnMasterCatatanMaterialOperasiActionPerformed
 
+    private void BtnCatatanMaterialOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCatatanMaterialOperasiActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMCatatanPemakaianObatMaterialOperasi catatan = new RMCatatanPemakaianObatMaterialOperasi(this, false);
+        catatan.isCek();
+        catatan.emptTeks();        
+        catatan.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        catatan.setLocationRelativeTo(PanelUtama);
+        catatan.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_BtnCatatanMaterialOperasiActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -11946,6 +11974,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnCancel;
+    private widget.ButtonBig BtnCatatanMaterialOperasi;
     private widget.ButtonBig BtnClose;
     private widget.Button BtnClosePass;
     private widget.ButtonBig BtnDasboard;
@@ -12656,6 +12685,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if (akses.getkegiatan_operasi() == true) {
                 Panelmenu.add(btnAsesmenKeperawatanPerioperatif);
+                jmlmenu++;
+            }
+            
+            if (akses.getkegiatan_operasi() == true) {
+                Panelmenu.add(BtnCatatanMaterialOperasi);
                 jmlmenu++;
             }
             
@@ -14505,6 +14539,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if (akses.getpermintaan_lab() == true) {
             Panelmenu.add(btnSuratJawabanKonsulRanap);
+            jmlmenu++;
+        }
+        
+        if (akses.getkegiatan_operasi() == true) {
+            Panelmenu.add(BtnCatatanMaterialOperasi);
             jmlmenu++;
         }
         
@@ -16416,6 +16455,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if (akses.getpermintaan_lab()== true) {
             if (btnSuratJawabanKonsulRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())) {
                 Panelmenu.add(btnSuratJawabanKonsulRanap);
+                jmlmenu++;
+            }
+        }
+        
+        if (akses.getkegiatan_operasi()== true) {
+            if (BtnCatatanMaterialOperasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())) {
+                Panelmenu.add(BtnCatatanMaterialOperasi);
                 jmlmenu++;
             }
         }

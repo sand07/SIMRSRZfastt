@@ -44,7 +44,8 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
     private ResultSet rs, rs1, rs2, rs3, rs4, rs5, rs6, rs7,
             rsCek1, rsCek2, rsCek3, rsCek4, rsCek5, rsCek6, rsCek7;
     private int i = 0, x = 0, cekInfus = 0, cekObat = 0, cekPsiko = 0, cekAnti = 0, cekBahan = 0, cekBenang = 0, cekLain = 0,
-            dataInfus = 0, dataObat = 0, dataPsiko = 0, dataAnti = 0, dataBahan = 0, dataBenang = 0, dataLain = 0;
+            dataInfus = 0, dataObat = 0, dataPsiko = 0, dataAnti = 0, dataBahan = 0, dataBenang = 0, dataLain = 0,
+            cetakInfus = 0, cetakObat = 0, cetakPsiko = 0, cetakAnti = 0, cetakBahan = 0, cetakBenang = 0, cetakLain = 0;
     private DlgCariPetugas petugas = new DlgCariPetugas(null, false);
     private String wktSimpan = "", dataDipilih = "", kodePilih1 = "", kodePilih2 = "", kodePilih3 = "", kodePilih4 = "", 
             kodePilih5 = "", kodePilih6 = "", kodePilih7 = "";
@@ -1602,73 +1603,173 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         if (tbCatatan.getSelectedRow() > -1) {
             Map<String, Object> param = new HashMap<>();
             param.put("namars", akses.getnamars());
-            param.put("logo", Sequel.cariGambar("select logo_rs_warna_miring1 from setting"));
+            param.put("logo", Sequel.cariGambar("select logo from setting"));
             param.put("norm", TNoRM.getText());
             param.put("nmpasien", TPasien.getText());
             param.put("tgllahir", Sequel.cariIsi("select date_format(tgl_lahir,'%d-%m-%Y') from pasien where no_rkm_medis='" + TNoRM.getText() + "'"));
             
-//            param.put("theSignIn", cmbJam1.getSelectedItem() + ":" + cmbMnt1.getSelectedItem() + " Wita");
-//            param.put("identifikasi", cmbIdentifikasi.getSelectedItem().toString());
-//            param.put("lokasiOperasi1", cmbLokasi1.getSelectedItem().toString());
-//            param.put("prosedur1", cmbProsedur1.getSelectedItem().toString());
-//            param.put("surat", cmbSurat.getSelectedItem().toString());
-//            param.put("lokasiOperasi2", cmbLokasi2.getSelectedItem().toString());
-//            param.put("mesin", cmbMesin.getSelectedItem().toString());
-//            param.put("pulse", cmbPulse.getSelectedItem().toString());
-//            param.put("apakahPasien", cmbApakahPasien.getSelectedItem().toString());
-//            param.put("kesulitan", cmbKesulitan.getSelectedItem().toString());
-//            param.put("dan", cmbDan.getSelectedItem().toString());
-//            param.put("resiko", cmbResiko.getSelectedItem().toString());
-//            param.put("500", cmb500.getSelectedItem().toString());
-//            param.put("dua", cmbDua.getSelectedItem().toString());
-//            param.put("rencana", cmbRencana.getSelectedItem().toString());
-//            param.put("perawatSirkuler", "(" + TnmPetugas.getText() + ")");
-//            param.put("dokterAnestesi1", "(" + TnmDokterAnes1.getText() + ")");
-//            
-//            param.put("theTimeOut", cmbJam2.getSelectedItem() + ":" + cmbMnt2.getSelectedItem() + " Wita");
-//            param.put("konfirmasi", cmbKonfirmasi.getSelectedItem().toString());
-//            param.put("namaPasien", cmbNama.getSelectedItem().toString());
-//            param.put("prosedur2", cmbProsedur2.getSelectedItem().toString());
-//            param.put("lokasiDimana", cmbLokasiDimana.getSelectedItem().toString());
-//            param.put("apakahAntibiotik", cmbApakahAntibiotik.getSelectedItem().toString());
-//            param.put("cekNamaAntibiotik", cmbNamaAntibiotik.getSelectedItem().toString());
-//            param.put("cekDosisAntibiotik", cmbDosisAntibiotik.getSelectedItem().toString());            
-//            if (TnmAntibiotik.getText().equals("")) {
-//                param.put("nmAntibiotik", "- Nama Antibiotik Yang Diberikan .........");
-//            } else {
-//                param.put("nmAntibiotik", "- Nama Antibiotik Yang Diberikan : " + TnmAntibiotik.getText());
-//            }            
-//            if (TdosisAntibiotik.getText().equals("")) {
-//                param.put("dosisAntibiotik", "- Dosis Antibiotik Yang Diberikan .........");
-//            } else {
-//                param.put("dosisAntibiotik", "- Dosis Antibiotik Yang Diberikan : " + TdosisAntibiotik.getText());
-//            }            
-//            param.put("antisipasi", Tantisipasi.getText());
-//            param.put("reviewDokter", TreviewA.getText());
-//            param.put("reviewTimAnes", TreviewB.getText());
-//            param.put("cvc", Tjika.getText());
-//            param.put("reviewTimPerawat", TreviewC.getText());
-//            param.put("apakahFoto", cmbApakahFoto.getSelectedItem().toString());
-//            param.put("operator", "(" + TnmOperator.getText() + ")");
-//            param.put("dokterAnestesi2", "(" + TnmDokterAnes2.getText() + ")");
-//            param.put("perawatSirkuit1", "(" + TnmPerawatSirkuit1.getText() + ")");
-//            
-//            param.put("theSignOut", cmbJam3.getSelectedItem() + ":" + cmbMnt3.getSelectedItem() + " Wita");
-//            param.put("namaProsedur", cmbNamaProsedur.getSelectedItem().toString());
-//            param.put("instrumen", cmbInstrumen.getSelectedItem().toString());
-//            param.put("spesimen", cmbSpesimen.getSelectedItem().toString());
-//            param.put("adakah", cmbAdakah.getSelectedItem().toString());
-//            param.put("operatorDokterBedah", cmb2Operator.getSelectedItem().toString());
-//            param.put("halYang", ThalYang.getText());
-//            param.put("tglTindakan", Valid.SetTglINDONESIA(Valid.SetTgl(TtglCatatan.getSelectedItem() + "")));
-//            param.put("verifikasi", Tverifikasi.getText());
-//            param.put("perawatSirkuit2", "(" + TnmPerawatSirkuit2.getText() + ")");
-//            param.put("dokterAnestesi3", "(" + TnmDokterAnes3.getText() + ")");
+            Sequel.AutoComitFalse();
+            Sequel.queryu("delete from temporary");
+            //simpan data infus
+            cetakInfus = 0;
+            for (i = 0; i < tbInfus.getRowCount(); i++) {
+                if (!tbInfus.getValueAt(i, 3).toString().equals("")) {
+                    cetakInfus++;
+                }
+            }
 
-            Valid.MyReport("rptCeklisKeselamatanOperasi.jasper", "report", "::[ Lembar Checklist Keselamatan Operasi ]::",
-                "SELECT now() tanggal", param);
+            if (cetakInfus > 0) {
+                Sequel.menyimpan("temporary", "'0','I. Infus dan Alat','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Infus dan Alat");
+                int infus = tabMode1.getRowCount();
+                for (int r = 0; r < infus; r++) {
+                    Sequel.menyimpan("temporary", "'0','"
+                            + tabMode1.getValueAt(r, 1).toString() + "','"
+                            + tabMode1.getValueAt(r, 2).toString() + "','"
+                            + tabMode1.getValueAt(r, 3).toString() + " " + tabMode1.getValueAt(r, 4).toString() + "',"
+                            + "'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Infus dan Alat");
+                }
+            }
+            
+            //simpan data obat
+            cetakObat = 0;
+            for (i = 0; i < tbObat.getRowCount(); i++) {
+                if (!tbObat.getValueAt(i, 3).toString().equals("")) {
+                    cetakObat++;
+                }
+            }
+
+            if (cetakObat > 0) {
+                Sequel.menyimpan("temporary", "'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Obat Anestesi");
+                Sequel.menyimpan("temporary", "'0','II. Obat Anestesi','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Obat Anestesi");
+                int obat = tabMode2.getRowCount();
+                for (int r = 0; r < obat; r++) {
+                    Sequel.menyimpan("temporary", "'0','"
+                            + tabMode2.getValueAt(r, 1).toString() + "','"
+                            + tabMode2.getValueAt(r, 2).toString() + "','"
+                            + tabMode2.getValueAt(r, 3).toString() + " " + tabMode2.getValueAt(r, 4).toString() + "',"
+                            + "'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Obat Anestesi");
+                }
+            }
+            
+            //simpan data psikotropika
+            cetakPsiko = 0;
+            for (i = 0; i < tbPsiko.getRowCount(); i++) {
+                if (!tbPsiko.getValueAt(i, 3).toString().equals("")) {
+                    cetakPsiko++;
+                }
+            }
+
+            if (cetakPsiko > 0) {
+                Sequel.menyimpan("temporary", "'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Golongan Psikotropika & Narkotika");
+                Sequel.menyimpan("temporary", "'0','III. Golongan Psikotropika & Narkotika','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Golongan Psikotropika & Narkotika");
+                int psiko = tabMode3.getRowCount();
+                for (int r = 0; r < psiko; r++) {
+                    Sequel.menyimpan("temporary", "'0','"
+                            + tabMode3.getValueAt(r, 1).toString() + "','"
+                            + tabMode3.getValueAt(r, 2).toString() + "','"
+                            + tabMode3.getValueAt(r, 3).toString() + " " + tabMode3.getValueAt(r, 4).toString() + "',"
+                            + "'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Golongan Psikotropika & Narkotika");
+                }
+            }
+            
+            //simpan data antibiotik
+            cetakAnti = 0;
+            for (i = 0; i < tbAnti.getRowCount(); i++) {
+                if (!tbAnti.getValueAt(i, 3).toString().equals("")) {
+                    cetakAnti++;
+                }
+            }
+
+            if (cetakAnti > 0) {
+                Sequel.menyimpan("temporary", "'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Antibiotik");
+                Sequel.menyimpan("temporary", "'0','IV. Antibiotik','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Antibiotik");
+                int anti = tabMode4.getRowCount();
+                for (int r = 0; r < anti; r++) {
+                    Sequel.menyimpan("temporary", "'0','"
+                            + tabMode4.getValueAt(r, 1).toString() + "','"
+                            + tabMode4.getValueAt(r, 2).toString() + "','"
+                            + tabMode4.getValueAt(r, 3).toString() + " " + tabMode4.getValueAt(r, 4).toString() + "',"
+                            + "'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Antibiotik");
+                }
+            }
+            
+            //simpan data bahan
+            cetakBahan = 0;
+            for (i = 0; i < tbBahan.getRowCount(); i++) {
+                if (!tbBahan.getValueAt(i, 3).toString().equals("")) {
+                    cetakBahan++;
+                }
+            }
+
+            if (cetakBahan > 0) {
+                Sequel.menyimpan("temporary", "'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Bahan Habis Pakai");
+                Sequel.menyimpan("temporary", "'0','V. Bahan Habis Pakai','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Bahan Habis Pakai");
+                int bahan = tabMode5.getRowCount();
+                for (int r = 0; r < bahan; r++) {
+                    Sequel.menyimpan("temporary", "'0','"
+                            + tabMode5.getValueAt(r, 1).toString() + "','"
+                            + tabMode5.getValueAt(r, 2).toString() + "','"
+                            + tabMode5.getValueAt(r, 3).toString() + " " + tabMode5.getValueAt(r, 4).toString() + "',"
+                            + "'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Bahan Habis Pakai");
+                }
+            }
+            
+            //simpan data benang
+            cetakBenang = 0;
+            for (i = 0; i < tbBenang.getRowCount(); i++) {
+                if (!tbBenang.getValueAt(i, 3).toString().equals("")) {
+                    cetakBenang++;
+                }
+            }
+
+            if (cetakBenang > 0) {
+                Sequel.menyimpan("temporary", "'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Benang");
+                Sequel.menyimpan("temporary", "'0','VI. Benang','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Benang");
+                int benang = tabMode6.getRowCount();
+                for (int r = 0; r < benang; r++) {
+                    Sequel.menyimpan("temporary", "'0','"
+                            + tabMode6.getValueAt(r, 1).toString() + "','"
+                            + tabMode6.getValueAt(r, 2).toString() + "','"
+                            + tabMode6.getValueAt(r, 3).toString() + " " + tabMode6.getValueAt(r, 4).toString() + "',"
+                            + "'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Benang");
+                }
+            }
+            
+            //simpan data lainlain
+            cetakLain = 0;
+            for (i = 0; i < tbLain.getRowCount(); i++) {
+                if (!tbLain.getValueAt(i, 3).toString().equals("")) {
+                    cetakLain++;
+                }
+            }
+
+            if (cetakLain > 0) {
+                Sequel.menyimpan("temporary", "'0','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Lain-lain");
+                Sequel.menyimpan("temporary", "'0','VII. Lain-lain','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Lain-lain");
+                int lain = tabMode7.getRowCount();
+                for (int r = 0; r < lain; r++) {
+                    Sequel.menyimpan("temporary", "'0','"
+                            + tabMode7.getValueAt(r, 1).toString() + "','"
+                            + tabMode7.getValueAt(r, 2).toString() + "','"
+                            + tabMode7.getValueAt(r, 3).toString() + " " + tabMode7.getValueAt(r, 4).toString() + "',"
+                            + "'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''", "Lain-lain");
+                }
+            }
+            Sequel.AutoComitTrue();
+            param.put("tglcatatan", Valid.SetTglINDONESIA(Valid.SetTgl(TtglCatatan.getSelectedItem() + "")));
+            param.put("petugas", "(" + TnmPetugas.getText() + ")");
+
+            Valid.MyReport("rptCatatanMaterialOperasi.jasper", "report", "::[ Lembar Catatan Pemakaian Obat Dan Material Operasi ]::",
+                "select * from temporary", param);
 
             tampil();
+            tampilInfus("kosong");
+            tampilObat("kosong");
+            tampilPsiko("kosong");
+            tampilAnti("kosong");
+            tampilBahan("kosong");
+            tampilBenang("kosong");
+            tampilLainlain("kosong");
             emptTeks();
         } else {
             JOptionPane.showMessageDialog(null, "Silahkan klik/pilih salah satu datanya terlebih dulu pada tabel..!!!!");
@@ -2261,6 +2362,14 @@ public class RMCatatanPemakaianObatMaterialOperasi extends javax.swing.JDialog {
         TrgRawat.setText(ruangan);
         TCari.setText(norw);
         Valid.SetTgl(DTPCari1, Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='" + norw + "'"));
+        
+        if (akses.getadmin() == true) {
+            TnipPetugas.setText("-");
+            TnmPetugas.setText("-");
+        } else {
+            TnipPetugas.setText(akses.getkode());
+            TnmPetugas.setText(Sequel.cariIsi("select nama from pegawai where nik='" + TnipPetugas.getText() + "'"));
+        }
     }
     
     public void tampilInfus(String cek) {
