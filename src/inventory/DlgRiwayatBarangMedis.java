@@ -232,12 +232,14 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
         MnTIRiwayatSemuaDepo1 = new javax.swing.JMenuItem();
         MnTIRiwayatSemuaDepo2 = new javax.swing.JMenuItem();
         MnTIRiwayatSemuaDepo3 = new javax.swing.JMenuItem();
-        MnLapPakaiBekalFarmasi = new javax.swing.JMenuItem();
         MnLapRiwayat2 = new javax.swing.JMenu();
         MnRiwayatSetiapDepoAllPay = new javax.swing.JMenuItem();
         MnRiwayatSetiapDepoBpjs = new javax.swing.JMenuItem();
         MnRiwayatSetiapDepoUmum = new javax.swing.JMenuItem();
         MnRiwayatSetiapDepoLainnya = new javax.swing.JMenuItem();
+        MnLapPerbekalanFarm = new javax.swing.JMenu();
+        MnLapPakaiBekalFarmasiPdf = new javax.swing.JMenuItem();
+        MnLapPakaiBekalFarmasiExcel = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -443,18 +445,6 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
 
         jPopupMenu1.add(MnLapRiwayat1);
 
-        MnLapPakaiBekalFarmasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnLapPakaiBekalFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
-        MnLapPakaiBekalFarmasi.setText("Lap. Pemakaian Perbekalan Farmasi");
-        MnLapPakaiBekalFarmasi.setName("MnLapPakaiBekalFarmasi"); // NOI18N
-        MnLapPakaiBekalFarmasi.setPreferredSize(new java.awt.Dimension(60, 30));
-        MnLapPakaiBekalFarmasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnLapPakaiBekalFarmasiActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(MnLapPakaiBekalFarmasi);
-
         MnLapRiwayat2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept_page.png"))); // NOI18N
         MnLapRiwayat2.setText("Lap. Rekap Pemakaian Obat");
         MnLapRiwayat2.setToolTipText("");
@@ -515,6 +505,41 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
         MnLapRiwayat2.add(MnRiwayatSetiapDepoLainnya);
 
         jPopupMenu1.add(MnLapRiwayat2);
+
+        MnLapPerbekalanFarm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept_page.png"))); // NOI18N
+        MnLapPerbekalanFarm.setText("Lap. Pemakaian Perbekalan Farmasi");
+        MnLapPerbekalanFarm.setToolTipText("");
+        MnLapPerbekalanFarm.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnLapPerbekalanFarm.setName("MnLapPerbekalanFarm"); // NOI18N
+        MnLapPerbekalanFarm.setPreferredSize(new java.awt.Dimension(60, 30));
+
+        MnLapPakaiBekalFarmasiPdf.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnLapPakaiBekalFarmasiPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
+        MnLapPakaiBekalFarmasiPdf.setText("PDF");
+        MnLapPakaiBekalFarmasiPdf.setToolTipText("");
+        MnLapPakaiBekalFarmasiPdf.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        MnLapPakaiBekalFarmasiPdf.setName("MnLapPakaiBekalFarmasiPdf"); // NOI18N
+        MnLapPakaiBekalFarmasiPdf.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnLapPakaiBekalFarmasiPdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnLapPakaiBekalFarmasiPdfActionPerformed(evt);
+            }
+        });
+        MnLapPerbekalanFarm.add(MnLapPakaiBekalFarmasiPdf);
+
+        MnLapPakaiBekalFarmasiExcel.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnLapPakaiBekalFarmasiExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
+        MnLapPakaiBekalFarmasiExcel.setText("EXCEL");
+        MnLapPakaiBekalFarmasiExcel.setName("MnLapPakaiBekalFarmasiExcel"); // NOI18N
+        MnLapPakaiBekalFarmasiExcel.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnLapPakaiBekalFarmasiExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnLapPakaiBekalFarmasiExcelActionPerformed(evt);
+            }
+        });
+        MnLapPerbekalanFarm.add(MnLapPakaiBekalFarmasiExcel);
+
+        jPopupMenu1.add(MnLapPerbekalanFarm);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1380,43 +1405,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_MnTIRiwayatSemuaDepo0ActionPerformed
 
-    private void MnLapPakaiBekalFarmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLapPakaiBekalFarmasiActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        Map<String, Object> param = new HashMap<>();
-        param.put("namars", akses.getnamars());
-        param.put("alamatrs", akses.getalamatrs());
-        param.put("kotars", akses.getkabupatenrs());
-        param.put("propinsirs", akses.getpropinsirs());
-        param.put("kontakrs", akses.getkontakrs());
-        param.put("emailrs", akses.getemailrs());
-        param.put("logo", Sequel.cariGambar("select logo from setting"));
-        param.put("periode", "Periode Pemakaian Tgl. " + Tgl1.getSelectedItem() + " S.D " + Tgl2.getSelectedItem());
-        Valid.MyReport("rptRencanaFarmasi.jasper", "report", "::[ Laporan Rekap Pemakaian Perbekalan Farmasi ]::",
-                " SELECT a.kode_brng, a.nama_brng, IFNULL(b.h_beli,ifnull(c.h_beli,IFNULL(d.h_beli,IFNULL(e.h_beli,IFNULL(f.h_beli,IFNULL(g.h_beli, 0)))))) AS 'Harga Beli', "
-                + "IFNULL(b.jumlah, 0) AS 'R_INAP SENTRAL', "
-                + "IFNULL(c.jumlah, 0) AS 'R_INAP IGD', "
-                + "IFNULL(d.jumlah, 0) AS 'IBS', "
-                + "IFNULL(e.jumlah, 0) AS 'R_JALAN SENTRAL', "
-                + "IFNULL(f.jumlah, 0) AS 'R_JALAN IGD', "
-                + "IFNULL(g.jumlah, 0) AS 'IGD JUAL BEBAS', "
-                + "IFNULL(b.jumlah, 0) + IFNULL(c.jumlah, 0) + IFNULL(d.jumlah, 0) AS 'TOTAL R_INAP', "
-                + "IFNULL(e.jumlah, 0) + IFNULL(f.jumlah, 0) + IFNULL(g.jumlah, 0) AS 'TOTAL R_JALAN', "
-                + "IFNULL(b.jumlah, 0) + IFNULL(c.jumlah, 0) + IFNULL(d.jumlah, 0) + IFNULL(e.jumlah, 0) + IFNULL(f.jumlah, 0) + IFNULL(g.jumlah, 0) AS 'JUMLAH RI_RJ' "
-                + "FROM ((SELECT kode_brng, nama_brng FROM databarang) AS a LEFT JOIN (SELECT d.kode_brng, d.h_beli, sum(d.jml) jumlah FROM detail_pemberian_obat d "
-                + "WHERE d.tgl_perawatan BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' AND d. STATUS = 'RANAP' AND d.kd_bangsal = 'APT02' GROUP BY d.kode_brng) AS b ON b.kode_brng = a.kode_brng "
-                + "LEFT JOIN (SELECT d.kode_brng, d.h_beli, sum(d.jml) jumlah FROM detail_pemberian_obat d WHERE d.tgl_perawatan BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' AND d. STATUS = 'RANAP' "
-                + "AND d.kd_bangsal = 'APT01' GROUP BY d.kode_brng) AS c ON c.kode_brng = a.kode_brng LEFT JOIN (SELECT d.kode_brng, d.h_beli, sum(d.jml) jumlah FROM detail_pemberian_obat d "
-                + "WHERE d.tgl_perawatan BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' AND d.kd_bangsal = 'APT07' GROUP BY d.kode_brng) AS d ON d.kode_brng = a.kode_brng "
-                + "LEFT JOIN (SELECT d.kode_brng, d.h_beli, sum(d.jml) jumlah FROM detail_pemberian_obat d WHERE d.tgl_perawatan BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' AND d. STATUS = 'RALAN' "
-                + "AND d.kd_bangsal = 'APT02' GROUP BY d.kode_brng) AS e ON e.kode_brng = a.kode_brng LEFT JOIN (SELECT d.kode_brng, d.h_beli, sum(d.jml) jumlah FROM detail_pemberian_obat d "
-                + "WHERE d.tgl_perawatan BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' AND d. STATUS = 'RALAN' AND d.kd_bangsal = 'APT01' GROUP BY d.kode_brng) AS f ON f.kode_brng = a.kode_brng "
-                + "LEFT JOIN (SELECT b.kode_brng, b.nama_brng, sum(d.jumlah) jumlah, d.h_beli FROM penjualan p INNER JOIN detailjual d ON d.nota_jual = p.nota_jual "
-                + "INNER JOIN databarang b ON b.kode_brng = d.kode_brng WHERE p.tgl_jual BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' GROUP BY d.kode_brng) AS g ON g.kode_brng = a.kode_brng) "
-                //                + "Where IFNULL(b.jumlah, 0) > 0 OR IFNULL(c.jumlah, 0) > 0 OR IFNULL(d.jumlah, 0) > 0 OR IFNULL(e.jumlah, 0) > 0 OR IFNULL(f.jumlah, 0) > 0 OR IFNULL(g.jumlah, 0) > 0 "
-                + "ORDER BY a.nama_brng", param);
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_MnLapPakaiBekalFarmasiActionPerformed
-
     private void MnRiwayatSetiapDepoAllPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRiwayatSetiapDepoAllPayActionPerformed
         // TODO add your handling code here:
         dialog_simpan = "";
@@ -1525,12 +1513,84 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_filterTglItemStateChanged
 
     private void filterTglMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filterTglMouseClicked
-        
+
     }//GEN-LAST:event_filterTglMouseClicked
 
     private void filterTglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filterTglKeyPressed
-        
+
     }//GEN-LAST:event_filterTglKeyPressed
+
+    private void MnLapPakaiBekalFarmasiPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLapPakaiBekalFarmasiPdfActionPerformed
+        // TODO add your handling code here:
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Map<String, Object> param = new HashMap<>();
+        param.put("namars", akses.getnamars());
+        param.put("alamatrs", akses.getalamatrs());
+        param.put("kotars", akses.getkabupatenrs());
+        param.put("propinsirs", akses.getpropinsirs());
+        param.put("kontakrs", akses.getkontakrs());
+        param.put("emailrs", akses.getemailrs());
+        param.put("logo", Sequel.cariGambar("select logo from setting"));
+        param.put("periode", "Periode Pemakaian Tgl. " + Tgl1.getSelectedItem() + " S.D " + Tgl2.getSelectedItem());
+        Valid.MyReport("rptRencanaFarmasi.jasper", "report", "::[ Laporan Rekap Pemakaian Perbekalan Farmasi ]::",
+                " SELECT a.kode_brng, a.nama_brng, IFNULL(b.h_beli,ifnull(c.h_beli,IFNULL(d.h_beli,IFNULL(e.h_beli,IFNULL(f.h_beli,IFNULL(g.h_beli, 0)))))) AS 'Harga Beli', "
+                + "IFNULL(b.jumlah, 0) AS 'R_INAP SENTRAL', "
+                + "IFNULL(c.jumlah, 0) AS 'R_INAP IGD', "
+                + "IFNULL(d.jumlah, 0) AS 'IBS', "
+                + "IFNULL(e.jumlah, 0) AS 'R_JALAN SENTRAL', "
+                + "IFNULL(f.jumlah, 0) AS 'R_JALAN IGD', "
+                + "IFNULL(g.jumlah, 0) AS 'IGD JUAL BEBAS', "
+                + "IFNULL(b.jumlah, 0) + IFNULL(c.jumlah, 0) + IFNULL(d.jumlah, 0) AS 'TOTAL R_INAP', "
+                + "IFNULL(e.jumlah, 0) + IFNULL(f.jumlah, 0) + IFNULL(g.jumlah, 0) AS 'TOTAL R_JALAN', "
+                + "IFNULL(b.jumlah, 0) + IFNULL(c.jumlah, 0) + IFNULL(d.jumlah, 0) + IFNULL(e.jumlah, 0) + IFNULL(f.jumlah, 0) + IFNULL(g.jumlah, 0) AS 'JUMLAH RI_RJ' "
+                + "FROM ((SELECT kode_brng, nama_brng FROM databarang) AS a LEFT JOIN (SELECT d.kode_brng, d.h_beli, sum(d.jml) jumlah FROM detail_pemberian_obat d "
+                + "WHERE d.tgl_perawatan BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' AND d. STATUS = 'RANAP' AND d.kd_bangsal = 'APT02' GROUP BY d.kode_brng) AS b ON b.kode_brng = a.kode_brng "
+                + "LEFT JOIN (SELECT d.kode_brng, d.h_beli, sum(d.jml) jumlah FROM detail_pemberian_obat d WHERE d.tgl_perawatan BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' AND d. STATUS = 'RANAP' "
+                + "AND d.kd_bangsal = 'APT01' GROUP BY d.kode_brng) AS c ON c.kode_brng = a.kode_brng LEFT JOIN (SELECT d.kode_brng, d.h_beli, sum(d.jml) jumlah FROM detail_pemberian_obat d "
+                + "WHERE d.tgl_perawatan BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' AND d.kd_bangsal = 'APT07' GROUP BY d.kode_brng) AS d ON d.kode_brng = a.kode_brng "
+                + "LEFT JOIN (SELECT d.kode_brng, d.h_beli, sum(d.jml) jumlah FROM detail_pemberian_obat d WHERE d.tgl_perawatan BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' AND d. STATUS = 'RALAN' "
+                + "AND d.kd_bangsal = 'APT02' GROUP BY d.kode_brng) AS e ON e.kode_brng = a.kode_brng LEFT JOIN (SELECT d.kode_brng, d.h_beli, sum(d.jml) jumlah FROM detail_pemberian_obat d "
+                + "WHERE d.tgl_perawatan BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' AND d. STATUS = 'RALAN' AND d.kd_bangsal = 'APT01' GROUP BY d.kode_brng) AS f ON f.kode_brng = a.kode_brng "
+                + "LEFT JOIN (SELECT b.kode_brng, b.nama_brng, sum(d.jumlah) jumlah, d.h_beli FROM penjualan p INNER JOIN detailjual d ON d.nota_jual = p.nota_jual "
+                + "INNER JOIN databarang b ON b.kode_brng = d.kode_brng WHERE p.tgl_jual BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' GROUP BY d.kode_brng) AS g ON g.kode_brng = a.kode_brng) "
+                + "ORDER BY a.nama_brng", param);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnLapPakaiBekalFarmasiPdfActionPerformed
+
+    private void MnLapPakaiBekalFarmasiExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLapPakaiBekalFarmasiExcelActionPerformed
+        // TODO add your handling code here:
+        dialog_simpan = "";
+        dialog_simpan = Valid.openDialog();
+        if (!dialog_simpan.equals("the user cancelled the operation")) {
+            if (Valid.MyReportToExcelBoolean(
+                    " SELECT a.kode_brng 'Kode Obat', a.nama_brng 'Nama Obat', IFNULL(b.h_beli,ifnull(c.h_beli,IFNULL(d.h_beli,IFNULL(e.h_beli,IFNULL(f.h_beli,IFNULL(g.h_beli, 0)))))) AS 'Harga Beli', "
+                    + "IFNULL(b.jumlah, 0) AS 'RAWAT INAP SENTRAL', "
+                    + "IFNULL(c.jumlah, 0) AS 'RAWAT INAP IGD', "
+                    + "IFNULL(d.jumlah, 0) AS 'IBS', "
+                    + "IFNULL(e.jumlah, 0) AS 'RAWAT JALAN SENTRAL', "
+                    + "IFNULL(f.jumlah, 0) AS 'RAWAT JALAN IGD', "
+                    + "IFNULL(g.jumlah, 0) AS 'IGD JUAL BEBAS', "
+                    + "IFNULL(b.jumlah, 0) + IFNULL(c.jumlah, 0) + IFNULL(d.jumlah, 0) AS 'TOTAL RAWAT INAP', "
+                    + "IFNULL(e.jumlah, 0) + IFNULL(f.jumlah, 0) + IFNULL(g.jumlah, 0) AS 'TOTAL RAWAT JALAN', "
+                    + "IFNULL(b.jumlah, 0) + IFNULL(c.jumlah, 0) + IFNULL(d.jumlah, 0) + IFNULL(e.jumlah, 0) + IFNULL(f.jumlah, 0) + IFNULL(g.jumlah, 0) AS 'JUMLAH SEMUA RAWAT' "
+                    + "FROM ((SELECT kode_brng, nama_brng FROM databarang) AS a LEFT JOIN (SELECT d.kode_brng, d.h_beli, sum(d.jml) jumlah FROM detail_pemberian_obat d "
+                    + "WHERE d.tgl_perawatan BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' AND d. STATUS = 'RANAP' AND d.kd_bangsal = 'APT02' GROUP BY d.kode_brng) AS b ON b.kode_brng = a.kode_brng "
+                    + "LEFT JOIN (SELECT d.kode_brng, d.h_beli, sum(d.jml) jumlah FROM detail_pemberian_obat d WHERE d.tgl_perawatan BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' AND d. STATUS = 'RANAP' "
+                    + "AND d.kd_bangsal = 'APT01' GROUP BY d.kode_brng) AS c ON c.kode_brng = a.kode_brng LEFT JOIN (SELECT d.kode_brng, d.h_beli, sum(d.jml) jumlah FROM detail_pemberian_obat d "
+                    + "WHERE d.tgl_perawatan BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' AND d.kd_bangsal = 'APT07' GROUP BY d.kode_brng) AS d ON d.kode_brng = a.kode_brng "
+                    + "LEFT JOIN (SELECT d.kode_brng, d.h_beli, sum(d.jml) jumlah FROM detail_pemberian_obat d WHERE d.tgl_perawatan BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' AND d. STATUS = 'RALAN' "
+                    + "AND d.kd_bangsal = 'APT02' GROUP BY d.kode_brng) AS e ON e.kode_brng = a.kode_brng LEFT JOIN (SELECT d.kode_brng, d.h_beli, sum(d.jml) jumlah FROM detail_pemberian_obat d "
+                    + "WHERE d.tgl_perawatan BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' AND d. STATUS = 'RALAN' AND d.kd_bangsal = 'APT01' GROUP BY d.kode_brng) AS f ON f.kode_brng = a.kode_brng "
+                    + "LEFT JOIN (SELECT b.kode_brng, b.nama_brng, sum(d.jumlah) jumlah, d.h_beli FROM penjualan p INNER JOIN detailjual d ON d.nota_jual = p.nota_jual "
+                    + "INNER JOIN databarang b ON b.kode_brng = d.kode_brng WHERE p.tgl_jual BETWEEN '" + Valid.SetTgl(Tgl1.getSelectedItem() + "") + "' AND '" + Valid.SetTgl(Tgl2.getSelectedItem() + "") + "' GROUP BY d.kode_brng) AS g ON g.kode_brng = a.kode_brng) "
+                    + "ORDER BY a.nama_brng", dialog_simpan) == true) {
+                JOptionPane.showMessageDialog(null, "Data berhasil diexport menjadi file excel,..!!!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Data gagal diexport menjadi file excel,..!!!");
+            }
+        }
+
+    }//GEN-LAST:event_MnLapPakaiBekalFarmasiExcelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1555,7 +1615,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnPrint;
     private widget.TextBox Kd2;
     private widget.TextBox KdGudang;
-    private javax.swing.JMenuItem MnLapPakaiBekalFarmasi;
+    private javax.swing.JMenuItem MnLapPakaiBekalFarmasiExcel;
+    private javax.swing.JMenuItem MnLapPakaiBekalFarmasiPdf;
+    private javax.swing.JMenu MnLapPerbekalanFarm;
     private javax.swing.JMenu MnLapRiwayat;
     private javax.swing.JMenu MnLapRiwayat1;
     private javax.swing.JMenu MnLapRiwayat2;
@@ -1601,44 +1663,44 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void prosesCari() {
         Valid.tabelKosong(tabMode);
         try {
-            if(filterTgl.getSelectedIndex()==0){
-              ps = koneksi.prepareStatement(
-                    "select riwayat_barang_medis.kode_brng,databarang.nama_brng,"
-                    + "riwayat_barang_medis.stok_awal,riwayat_barang_medis.masuk,"
-                    + "riwayat_barang_medis.keluar,riwayat_barang_medis.stok_akhir,"
-                    + "riwayat_barang_medis.posisi,riwayat_barang_medis.tanggal,"
-                    + "riwayat_barang_medis.jam,riwayat_barang_medis.petugas,"
-                    + "riwayat_barang_medis.kd_bangsal,bangsal.nm_bangsal,"
-                    + "riwayat_barang_medis.status,riwayat_barang_medis.wkt_eks from riwayat_barang_medis "
-                    + "inner join bangsal inner join databarang on "
-                    + "riwayat_barang_medis.kode_brng=databarang.kode_brng and "
-                    + "riwayat_barang_medis.kd_bangsal=bangsal.kd_bangsal where "
-                    + "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.kode_brng like ? or "
-                    + "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and databarang.nama_brng like ? or "
-                    + "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.petugas like ? or "
-                    + "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and bangsal.nm_bangsal like ? or "
-                    + "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.kd_bangsal like ? or "
-                    + "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.status like ? order by riwayat_barang_medis.tanggal,riwayat_barang_medis.jam ");  
-            } else{
+            if (filterTgl.getSelectedIndex() == 0) {
                 ps = koneksi.prepareStatement(
-                    "select riwayat_barang_medis.kode_brng,databarang.nama_brng,"
-                    + "riwayat_barang_medis.stok_awal,riwayat_barang_medis.masuk,"
-                    + "riwayat_barang_medis.keluar,riwayat_barang_medis.stok_akhir,"
-                    + "riwayat_barang_medis.posisi,riwayat_barang_medis.tanggal,"
-                    + "riwayat_barang_medis.jam,riwayat_barang_medis.petugas,"
-                    + "riwayat_barang_medis.kd_bangsal,bangsal.nm_bangsal,"
-                    + "riwayat_barang_medis.status,riwayat_barang_medis.wkt_eks from riwayat_barang_medis "
-                    + "inner join bangsal inner join databarang on "
-                    + "riwayat_barang_medis.kode_brng=databarang.kode_brng and "
-                    + "riwayat_barang_medis.kd_bangsal=bangsal.kd_bangsal where "
-                    + "DATE_FORMAT(riwayat_barang_medis.wkt_eks,'%Y-%m-%d') between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.kode_brng like ? or "
-                    + "DATE_FORMAT(riwayat_barang_medis.wkt_eks,'%Y-%m-%d') between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and databarang.nama_brng like ? or "
-                    + "DATE_FORMAT(riwayat_barang_medis.wkt_eks,'%Y-%m-%d') between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.petugas like ? or "
-                    + "DATE_FORMAT(riwayat_barang_medis.wkt_eks,'%Y-%m-%d') between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and bangsal.nm_bangsal like ? or "
-                    + "DATE_FORMAT(riwayat_barang_medis.wkt_eks,'%Y-%m-%d') between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.kd_bangsal like ? or "
-                    + "DATE_FORMAT(riwayat_barang_medis.wkt_eks,'%Y-%m-%d') between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.status like ? order by riwayat_barang_medis.tanggal,riwayat_barang_medis.jam ");
+                        "select riwayat_barang_medis.kode_brng,databarang.nama_brng,"
+                        + "riwayat_barang_medis.stok_awal,riwayat_barang_medis.masuk,"
+                        + "riwayat_barang_medis.keluar,riwayat_barang_medis.stok_akhir,"
+                        + "riwayat_barang_medis.posisi,riwayat_barang_medis.tanggal,"
+                        + "riwayat_barang_medis.jam,riwayat_barang_medis.petugas,"
+                        + "riwayat_barang_medis.kd_bangsal,bangsal.nm_bangsal,"
+                        + "riwayat_barang_medis.status,riwayat_barang_medis.wkt_eks from riwayat_barang_medis "
+                        + "inner join bangsal inner join databarang on "
+                        + "riwayat_barang_medis.kode_brng=databarang.kode_brng and "
+                        + "riwayat_barang_medis.kd_bangsal=bangsal.kd_bangsal where "
+                        + "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.kode_brng like ? or "
+                        + "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and databarang.nama_brng like ? or "
+                        + "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.petugas like ? or "
+                        + "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and bangsal.nm_bangsal like ? or "
+                        + "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.kd_bangsal like ? or "
+                        + "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.status like ? order by riwayat_barang_medis.tanggal,riwayat_barang_medis.jam ");
+            } else {
+                ps = koneksi.prepareStatement(
+                        "select riwayat_barang_medis.kode_brng,databarang.nama_brng,"
+                        + "riwayat_barang_medis.stok_awal,riwayat_barang_medis.masuk,"
+                        + "riwayat_barang_medis.keluar,riwayat_barang_medis.stok_akhir,"
+                        + "riwayat_barang_medis.posisi,riwayat_barang_medis.tanggal,"
+                        + "riwayat_barang_medis.jam,riwayat_barang_medis.petugas,"
+                        + "riwayat_barang_medis.kd_bangsal,bangsal.nm_bangsal,"
+                        + "riwayat_barang_medis.status,riwayat_barang_medis.wkt_eks from riwayat_barang_medis "
+                        + "inner join bangsal inner join databarang on "
+                        + "riwayat_barang_medis.kode_brng=databarang.kode_brng and "
+                        + "riwayat_barang_medis.kd_bangsal=bangsal.kd_bangsal where "
+                        + "DATE_FORMAT(riwayat_barang_medis.wkt_eks,'%Y-%m-%d') between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.kode_brng like ? or "
+                        + "DATE_FORMAT(riwayat_barang_medis.wkt_eks,'%Y-%m-%d') between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and databarang.nama_brng like ? or "
+                        + "DATE_FORMAT(riwayat_barang_medis.wkt_eks,'%Y-%m-%d') between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.petugas like ? or "
+                        + "DATE_FORMAT(riwayat_barang_medis.wkt_eks,'%Y-%m-%d') between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and bangsal.nm_bangsal like ? or "
+                        + "DATE_FORMAT(riwayat_barang_medis.wkt_eks,'%Y-%m-%d') between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.kd_bangsal like ? or "
+                        + "DATE_FORMAT(riwayat_barang_medis.wkt_eks,'%Y-%m-%d') between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and riwayat_barang_medis.status like ? order by riwayat_barang_medis.tanggal,riwayat_barang_medis.jam ");
             }
-            
+
             try {
                 ps.setString(1, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
                 ps.setString(2, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
@@ -1679,7 +1741,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         rs.getString("posisi"), rs.getString("tanggal"),
                         rs.getString("jam"), rs.getString("petugas"),
                         rs.getString("kd_bangsal") + " " + rs.getString("nm_bangsal"),
-                        rs.getString("status"),rs.getString("wkt_eks")
+                        rs.getString("status"), rs.getString("wkt_eks")
                     });
                 }
             } catch (Exception e) {
