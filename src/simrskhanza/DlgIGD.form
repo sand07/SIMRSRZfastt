@@ -2245,7 +2245,7 @@
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="04-08-2024"/>
+                    <StringItem index="0" value="18-11-2024"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2755,7 +2755,7 @@
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="04-08-2024"/>
+                    <StringItem index="0" value="18-11-2024"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2959,7 +2959,7 @@
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="04-08-2024"/>
+                    <StringItem index="0" value="18-11-2024"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3291,7 +3291,7 @@
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="04-08-2024"/>
+                    <StringItem index="0" value="18-11-2024"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3378,14 +3378,6 @@
           <ComponentRef name="null"/>
         </Property>
         <Property name="name" type="java.lang.String" value="NoBalasan" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="widget.TextBox" name="KataDatang">
-      <Properties>
-        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="null"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="KataDatang" noResource="true"/>
       </Properties>
     </Component>
     <Component class="widget.TextBox" name="sepJkd">
@@ -3704,7 +3696,7 @@
                     <Property name="toolTipText" type="java.lang.String" value="Alt+B"/>
                     <Property name="name" type="java.lang.String" value="BtnBatal" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[100, 30]"/>
+                      <Dimension value="[80, 30]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -3725,7 +3717,7 @@
                     <Property name="toolTipText" type="java.lang.String" value="Alt+H"/>
                     <Property name="name" type="java.lang.String" value="BtnHapus" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[100, 30]"/>
+                      <Dimension value="[90, 30]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -3746,7 +3738,7 @@
                     <Property name="toolTipText" type="java.lang.String" value="Alt+G"/>
                     <Property name="name" type="java.lang.String" value="BtnEdit" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[100, 30]"/>
+                      <Dimension value="[90, 30]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -3767,7 +3759,7 @@
                     <Property name="toolTipText" type="java.lang.String" value="Alt+T"/>
                     <Property name="name" type="java.lang.String" value="BtnPrint" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[100, 30]"/>
+                      <Dimension value="[80, 30]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -3878,7 +3870,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="04-08-2024"/>
+                        <StringItem index="0" value="18-11-2024"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3906,7 +3898,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="04-08-2024"/>
+                        <StringItem index="0" value="18-11-2024"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -4009,7 +4001,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="No. Reg. : "/>
+                    <Property name="text" type="java.lang.String" value="No. Reg. :"/>
                     <Property name="name" type="java.lang.String" value="jLabel3" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -4067,7 +4059,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Tgl. Reg. : "/>
+                    <Property name="text" type="java.lang.String" value="Tgl. Reg. :"/>
                     <Property name="name" type="java.lang.String" value="jLabel8" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -4081,7 +4073,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="dr. IGD : "/>
+                    <Property name="text" type="java.lang.String" value="dr. IGD :"/>
                     <Property name="name" type="java.lang.String" value="jLabel13" noResource="true"/>
                   </Properties>
                   <AccessibilityProperties>
@@ -4544,7 +4536,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Spesialisasi : "/>
+                    <Property name="text" type="java.lang.String" value="Spesialisasi :"/>
                     <Property name="name" type="java.lang.String" value="jLabel27" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -4723,7 +4715,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Suku/Bangsa : "/>
+                    <Property name="text" type="java.lang.String" value="Suku/Bangsa :"/>
                     <Property name="name" type="java.lang.String" value="jLabel29" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -4751,7 +4743,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Bahasa Dipakai : "/>
+                    <Property name="text" type="java.lang.String" value="Bahasa Dipakai :"/>
                     <Property name="name" type="java.lang.String" value="jLabel40" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -4817,7 +4809,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Alasan APS : "/>
+                    <Property name="text" type="java.lang.String" value="Alasan APS :"/>
                     <Property name="name" type="java.lang.String" value="jLabel42" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -4831,7 +4823,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Keterangan APS : "/>
+                    <Property name="text" type="java.lang.String" value="Keterangan APS :"/>
                     <Property name="name" type="java.lang.String" value="jLabel43" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -4906,7 +4898,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="dr. R. Inap : "/>
+                    <Property name="text" type="java.lang.String" value="dr. R. Inap :"/>
                     <Property name="name" type="java.lang.String" value="jLabel14" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -4969,7 +4961,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Rencana : "/>
+                    <Property name="text" type="java.lang.String" value="Rencana :"/>
                     <Property name="name" type="java.lang.String" value="jLabel16" noResource="true"/>
                   </Properties>
                   <Constraints>
@@ -4983,7 +4975,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Rg. Rawat   "/>
+                    <Property name="text" type="java.lang.String" value="Rg. Rawat  "/>
                     <Property name="name" type="java.lang.String" value="jLabel19" noResource="true"/>
                   </Properties>
                   <Constraints>

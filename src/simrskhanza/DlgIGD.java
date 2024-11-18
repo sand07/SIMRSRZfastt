@@ -89,7 +89,7 @@ public final class DlgIGD extends javax.swing.JDialog {
     private double biaya = 0, cek = 0;
     private String nosisrute = "", URUTNOREG = "", alamatperujuk = "-", umur = "0", sttsumur = "Th", kdkamar = "",
             kelaminPJ = "", IPPRINTERTRACER = "", norawatAPS = "", kdAPS = "", cekSurat = "", sttsumur1 = "",
-            cekAPS = "", kdKel = "", kdKec = "", kdKab = "", diagnosa_ok = "", tglDaftar = "", tglnoRW = "",
+            cekAPS = "", kdKel = "", kdKec = "", kdKab = "", diagnosa_ok = "", tglDaftar = "", tglnoRW = "", KataDatang = "",
             validasiregistrasi = Sequel.cariIsi("select wajib_closing_kasir from set_validasi_registrasi");
     private char ESC = 27;
     // ganti kertas
@@ -912,7 +912,6 @@ public final class DlgIGD extends javax.swing.JDialog {
         cmbSttsUmur = new widget.ComboBox();
         Kd2 = new widget.TextBox();
         NoBalasan = new widget.TextBox();
-        KataDatang = new widget.TextBox();
         sepJkd = new widget.TextBox();
         sepJmp = new widget.TextBox();
         noRawatDataIGD = new widget.TextBox();
@@ -2490,7 +2489,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jLabel41.setBounds(10, 20, 120, 23);
 
         TglMati.setEditable(false);
-        TglMati.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-06-2024" }));
+        TglMati.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2024" }));
         TglMati.setDisplayFormat("dd-MM-yyyy");
         TglMati.setName("TglMati"); // NOI18N
         TglMati.setOpaque(false);
@@ -2716,7 +2715,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jLabel28.setBounds(0, 20, 110, 23);
 
         TglSurat.setEditable(false);
-        TglSurat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-06-2024" }));
+        TglSurat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2024" }));
         TglSurat.setDisplayFormat("dd-MM-yyyy");
         TglSurat.setName("TglSurat"); // NOI18N
         TglSurat.setOpaque(false);
@@ -2845,7 +2844,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jLabel45.setBounds(0, 20, 110, 23);
 
         TglSurat1.setEditable(false);
-        TglSurat1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-06-2024" }));
+        TglSurat1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2024" }));
         TglSurat1.setDisplayFormat("dd-MM-yyyy");
         TglSurat1.setName("TglSurat1"); // NOI18N
         TglSurat1.setOpaque(false);
@@ -3036,7 +3035,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jLabel59.setBounds(0, 20, 70, 23);
 
         Ttgl_lahir.setEditable(false);
-        Ttgl_lahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-06-2024" }));
+        Ttgl_lahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2024" }));
         Ttgl_lahir.setDisplayFormat("dd-MM-yyyy");
         Ttgl_lahir.setName("Ttgl_lahir"); // NOI18N
         Ttgl_lahir.setOpaque(false);
@@ -3076,9 +3075,6 @@ public final class DlgIGD extends javax.swing.JDialog {
 
         NoBalasan.setHighlighter(null);
         NoBalasan.setName("NoBalasan"); // NOI18N
-
-        KataDatang.setHighlighter(null);
-        KataDatang.setName("KataDatang"); // NOI18N
 
         sepJkd.setName("sepJkd"); // NOI18N
         sepJkd.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -3240,7 +3236,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         BtnBatal.setText("Baru");
         BtnBatal.setToolTipText("Alt+B");
         BtnBatal.setName("BtnBatal"); // NOI18N
-        BtnBatal.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnBatal.setPreferredSize(new java.awt.Dimension(80, 30));
         BtnBatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnBatalActionPerformed(evt);
@@ -3259,7 +3255,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         BtnHapus.setText("Hapus");
         BtnHapus.setToolTipText("Alt+H");
         BtnHapus.setName("BtnHapus"); // NOI18N
-        BtnHapus.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnHapus.setPreferredSize(new java.awt.Dimension(90, 30));
         BtnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnHapusActionPerformed(evt);
@@ -3278,7 +3274,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         BtnEdit.setText("Ganti");
         BtnEdit.setToolTipText("Alt+G");
         BtnEdit.setName("BtnEdit"); // NOI18N
-        BtnEdit.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnEdit.setPreferredSize(new java.awt.Dimension(90, 30));
         BtnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnEditActionPerformed(evt);
@@ -3297,7 +3293,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         BtnPrint.setText("Cetak");
         BtnPrint.setToolTipText("Alt+T");
         BtnPrint.setName("BtnPrint"); // NOI18N
-        BtnPrint.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnPrint.setPreferredSize(new java.awt.Dimension(80, 30));
         BtnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnPrintActionPerformed(evt);
@@ -3373,7 +3369,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jLabel15.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass7.add(jLabel15);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-06-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3387,7 +3383,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(24, 23));
         panelGlass7.add(jLabel17);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-06-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3443,7 +3439,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         FormInput.setLayout(null);
 
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("No. Reg. : ");
+        jLabel3.setText("No. Reg. :");
         jLabel3.setName("jLabel3"); // NOI18N
         FormInput.add(jLabel3);
         jLabel3.setBounds(0, 12, 77, 23);
@@ -3471,13 +3467,13 @@ public final class DlgIGD extends javax.swing.JDialog {
         TNoRw.setBounds(250, 12, 130, 23);
 
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Tgl. Reg. : ");
+        jLabel8.setText("Tgl. Reg. :");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
         jLabel8.setBounds(0, 42, 77, 23);
 
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("dr. IGD : ");
+        jLabel13.setText("dr. IGD :");
         jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
         jLabel13.setBounds(0, 72, 77, 23);
@@ -3715,7 +3711,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         cmbTindakan.setBounds(975, 102, 125, 23);
 
         jLabel27.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel27.setText("Spesialisasi : ");
+        jLabel27.setText("Spesialisasi :");
         jLabel27.setName("jLabel27"); // NOI18N
         FormInput.add(jLabel27);
         jLabel27.setBounds(900, 72, 70, 23);
@@ -3809,7 +3805,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         JnsnoID.setBounds(500, 12, 110, 23);
 
         jLabel29.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel29.setText("Suku/Bangsa : ");
+        jLabel29.setText("Suku/Bangsa :");
         jLabel29.setName("jLabel29"); // NOI18N
         FormInput.add(jLabel29);
         jLabel29.setBounds(396, 162, 100, 23);
@@ -3821,7 +3817,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         nmsuku.setBounds(500, 162, 160, 23);
 
         jLabel40.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel40.setText("Bahasa Dipakai : ");
+        jLabel40.setText("Bahasa Dipakai :");
         jLabel40.setName("jLabel40"); // NOI18N
         FormInput.add(jLabel40);
         jLabel40.setBounds(396, 190, 100, 23);
@@ -3867,13 +3863,13 @@ public final class DlgIGD extends javax.swing.JDialog {
         BtnBahasa.setBounds(665, 190, 28, 23);
 
         jLabel42.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel42.setText("Alasan APS : ");
+        jLabel42.setText("Alasan APS :");
         jLabel42.setName("jLabel42"); // NOI18N
         FormInput.add(jLabel42);
         jLabel42.setBounds(700, 162, 100, 23);
 
         jLabel43.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel43.setText("Keterangan APS : ");
+        jLabel43.setText("Keterangan APS :");
         jLabel43.setName("jLabel43"); // NOI18N
         FormInput.add(jLabel43);
         jLabel43.setBounds(700, 190, 100, 23);
@@ -3914,7 +3910,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         tulisan_tanggal.setBounds(81, 42, 270, 23);
 
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("dr. R. Inap : ");
+        jLabel14.setText("dr. R. Inap :");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
         jLabel14.setBounds(0, 102, 77, 23);
@@ -3945,13 +3941,13 @@ public final class DlgIGD extends javax.swing.JDialog {
         BtnDokterINAP.setBounds(380, 102, 28, 23);
 
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setText("Rencana : ");
+        jLabel16.setText("Rencana :");
         jLabel16.setName("jLabel16"); // NOI18N
         FormInput.add(jLabel16);
         jLabel16.setBounds(0, 132, 77, 23);
 
         jLabel19.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel19.setText("Rg. Rawat   ");
+        jLabel19.setText("Rg. Rawat  ");
         jLabel19.setName("jLabel19"); // NOI18N
         FormInput.add(jLabel19);
         jLabel19.setBounds(0, 147, 77, 23);
@@ -4112,6 +4108,12 @@ public final class DlgIGD extends javax.swing.JDialog {
                         break;
                 }
                 
+                if (ChkDtgSendiri.isSelected() == true) {
+                    KataDatang = "Ya";
+                } else if (ChkDtgSendiri.isSelected() == false) {
+                    KataDatang = "Tidak";
+                }
+                
                 Sequel.menyimpan("poliklinik", "?,?,?,?,?,?", 6, new String[]{"IGDK", "IGD", "0", "0","0","0"});
                 if (Sequel.menyimpantf2("reg_periksa", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 18,
                         new String[]{TNoReg.getText(), TNoRw.getText(), Sequel.cariIsi("select date(now())"), Sequel.cariIsi("SELECT TIME(NOW())"),
@@ -4119,7 +4121,7 @@ public final class DlgIGD extends javax.swing.JDialog {
                             TStatus.getText(), "Ralan", kdpnj.getText(), umur, sttsumur, akses.getkode()}) == true) {
                     UpdateUmur();
                     Sequel.menyimpan("data_igd", "'" + TNoRw.getText() + "','" + cmbTindakan.getSelectedItem().toString() + "',"
-                            + "'" + cmbTrauma.getSelectedItem().toString() + "','" + KataDatang.getText() + "',"
+                            + "'" + cmbTrauma.getSelectedItem().toString() + "','" + KataDatang + "',"
                             + "'" + cmbNonTrauma.getSelectedItem().toString() + "','" + cmbKet.getSelectedItem().toString() + "','" + kddrINAP.getText() + "' ", "Data IGD");
                     Sequel.mengedit("pasien", "no_rkm_medis='" + TNoRM.getText() + "'", "suku_bangsa='" + kdsuku.getText() + "', bahasa_pasien='" + kdbahasa.getText() + "' ");
 
@@ -4149,7 +4151,7 @@ public final class DlgIGD extends javax.swing.JDialog {
                                 TStatus.getText(), "Ralan", kdpnj.getText(), umur, sttsumur, akses.getkode()}) == true) {
                         UpdateUmur();
                         Sequel.menyimpan("data_igd", "'" + TNoRw.getText() + "','" + cmbTindakan.getSelectedItem().toString() + "',"
-                                + "'" + cmbTrauma.getSelectedItem().toString() + "','" + KataDatang.getText() + "',"
+                                + "'" + cmbTrauma.getSelectedItem().toString() + "','" + KataDatang + "',"
                                 + "'" + cmbNonTrauma.getSelectedItem().toString() + "','" + cmbKet.getSelectedItem().toString() + "','" + kddrINAP.getText() + "' ", "Data IGD");
                         Sequel.mengedit("pasien", "no_rkm_medis='" + TNoRM.getText() + "'", "suku_bangsa='" + kdsuku.getText() + "', bahasa_pasien='" + kdbahasa.getText() + "' ");
 
@@ -4179,7 +4181,7 @@ public final class DlgIGD extends javax.swing.JDialog {
                                     TStatus.getText(), "Ralan", kdpnj.getText(), umur, sttsumur, akses.getkode()}) == true) {
                             UpdateUmur();
                             Sequel.menyimpan("data_igd", "'" + TNoRw.getText() + "','" + cmbTindakan.getSelectedItem().toString() + "',"
-                                    + "'" + cmbTrauma.getSelectedItem().toString() + "','" + KataDatang.getText() + "',"
+                                    + "'" + cmbTrauma.getSelectedItem().toString() + "','" + KataDatang + "',"
                                     + "'" + cmbNonTrauma.getSelectedItem().toString() + "','" + cmbKet.getSelectedItem().toString() + "','" + kddrINAP.getText() + "' ", "Data IGD");
                             Sequel.mengedit("pasien", "no_rkm_medis='" + TNoRM.getText() + "'", "suku_bangsa='" + kdsuku.getText() + "', bahasa_pasien='" + kdbahasa.getText() + "' ");
 
@@ -4209,7 +4211,7 @@ public final class DlgIGD extends javax.swing.JDialog {
                                         TStatus.getText(), "Ralan", kdpnj.getText(), umur, sttsumur, akses.getkode()}) == true) {
                                 UpdateUmur();
                                 Sequel.menyimpan("data_igd", "'" + TNoRw.getText() + "','" + cmbTindakan.getSelectedItem().toString() + "',"
-                                        + "'" + cmbTrauma.getSelectedItem().toString() + "','" + KataDatang.getText() + "',"
+                                        + "'" + cmbTrauma.getSelectedItem().toString() + "','" + KataDatang + "',"
                                         + "'" + cmbNonTrauma.getSelectedItem().toString() + "','" + cmbKet.getSelectedItem().toString() + "','" + kddrINAP.getText() + "' ", "Data IGD");
                                 Sequel.mengedit("pasien", "no_rkm_medis='" + TNoRM.getText() + "'", "suku_bangsa='" + kdsuku.getText() + "', bahasa_pasien='" + kdbahasa.getText() + "' ");
 
@@ -4239,7 +4241,7 @@ public final class DlgIGD extends javax.swing.JDialog {
                                             TStatus.getText(), "Ralan", kdpnj.getText(), umur, sttsumur, akses.getkode()}) == true) {
                                     UpdateUmur();
                                     Sequel.menyimpan("data_igd", "'" + TNoRw.getText() + "','" + cmbTindakan.getSelectedItem().toString() + "',"
-                                            + "'" + cmbTrauma.getSelectedItem().toString() + "','" + KataDatang.getText() + "',"
+                                            + "'" + cmbTrauma.getSelectedItem().toString() + "','" + KataDatang + "',"
                                             + "'" + cmbNonTrauma.getSelectedItem().toString() + "','" + cmbKet.getSelectedItem().toString() + "','" + kddrINAP.getText() + "' ", "Data IGD");
                                     Sequel.mengedit("pasien", "no_rkm_medis='" + TNoRM.getText() + "'", "suku_bangsa='" + kdsuku.getText() + "', bahasa_pasien='" + kdbahasa.getText() + "' ");
 
@@ -4438,6 +4440,12 @@ public final class DlgIGD extends javax.swing.JDialog {
                     break;
             }
             
+            if (ChkDtgSendiri.isSelected() == true) {
+                KataDatang = "Ya";
+            } else if (ChkDtgSendiri.isSelected() == false) {
+                KataDatang = "Tidak";
+            }
+            
             cekRujuk = Sequel.cariInteger("select count(-1) from rujuk_masuk where no_rawat='" + TNoRw.getText() + "'");
             if (akses.getedit_registrasi() == true) {
                 Sequel.queryu2("update reg_periksa set no_rawat=?,no_reg=?,kd_dokter=?,no_rkm_medis=?,kd_poli=?,"
@@ -4455,10 +4463,10 @@ public final class DlgIGD extends javax.swing.JDialog {
 
                 if (noRawatDataIGD.getText().equals("")) {
                     Sequel.menyimpan("data_igd", "'" + TNoRw.getText() + "','" + cmbTindakan.getSelectedItem().toString() + "','" + cmbTrauma.getSelectedItem().toString() + "','"
-                            + KataDatang.getText() + "','" + cmbNonTrauma.getSelectedItem().toString() + "','" + cmbKet.getSelectedItem().toString() + "','" + kddrINAP.getText() + "' ", "Data IGD");
+                            + KataDatang + "','" + cmbNonTrauma.getSelectedItem().toString() + "','" + cmbKet.getSelectedItem().toString() + "','" + kddrINAP.getText() + "' ", "Data IGD");
                 } else if (!noRawatDataIGD.getText().equals("")) {
                     Sequel.mengedit("data_igd", "no_rawat='" + TNoRw.getText() + "'", "tindakan_lanjut='" + cmbTindakan.getSelectedItem().toString() + "', trauma='" + cmbTrauma.getSelectedItem().toString() + "',"
-                            + " datang_sendiri='" + KataDatang.getText() + "', non_trauma='" + cmbNonTrauma.getSelectedItem().toString() + "',"
+                            + " datang_sendiri='" + KataDatang + "', non_trauma='" + cmbNonTrauma.getSelectedItem().toString() + "',"
                             + " ket_igd='" + cmbKet.getSelectedItem().toString() + "', kd_dokter_ranap='" + kddrINAP.getText() + "' ");
                 }
 
@@ -4501,10 +4509,10 @@ public final class DlgIGD extends javax.swing.JDialog {
 
                     if (noRawatDataIGD.getText().equals("")) {
                         Sequel.menyimpan("data_igd", "'" + TNoRw.getText() + "','" + cmbTindakan.getSelectedItem().toString() + "','" + cmbTrauma.getSelectedItem().toString() + "','"
-                                + KataDatang.getText() + "','" + cmbNonTrauma.getSelectedItem().toString() + "','" + cmbKet.getSelectedItem().toString() + "','" + kddrINAP.getText() + "' ", "Data IGD");
+                                + KataDatang + "','" + cmbNonTrauma.getSelectedItem().toString() + "','" + cmbKet.getSelectedItem().toString() + "','" + kddrINAP.getText() + "' ", "Data IGD");
                     } else if (!noRawatDataIGD.getText().equals("")) {
                         Sequel.mengedit("data_igd", "no_rawat='" + TNoRw.getText() + "'", "tindakan_lanjut='" + cmbTindakan.getSelectedItem().toString() + "', trauma='" + cmbTrauma.getSelectedItem().toString() + "',"
-                                + " datang_sendiri='" + KataDatang.getText() + "', non_trauma='" + cmbNonTrauma.getSelectedItem().toString() + "',"
+                                + " datang_sendiri='" + KataDatang + "', non_trauma='" + cmbNonTrauma.getSelectedItem().toString() + "',"
                                 + " ket_igd='" + cmbKet.getSelectedItem().toString() + "', kd_dokter_ranap='" + kddrINAP.getText() + "' ");
                     }
 
@@ -5747,10 +5755,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
 
     private void ChkDtgSendiriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkDtgSendiriActionPerformed
         if (ChkDtgSendiri.isSelected() == true) {
-            KataDatang.setText("Ya");
             ChkDtgSendiri.setText("Pasien DATANG SENDIRI");
         } else if (ChkDtgSendiri.isSelected() == false) {
-            KataDatang.setText("Tidak");
             ChkDtgSendiri.setText("Pasien TIDAK Datang Sendiri");
         }
     }//GEN-LAST:event_ChkDtgSendiriActionPerformed
@@ -7021,7 +7027,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private widget.PanelBiasa FormInput;
     private widget.ComboBox JnsnoID;
     private widget.TextBox Kabupaten2;
-    private widget.TextBox KataDatang;
     private widget.TextBox Kd2;
     private widget.TextBox Kecamatan2;
     private widget.TextBox Kelurahan2;
@@ -7379,9 +7384,12 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         TNoReg.setText("");
         TNoRw.setText("");
         Kd2.setText("");
-        tulisan_tanggal.setText(Sequel.cariIsi("SELECT DATE_FORMAT(NOW(),'%d')") + " "
-                + Sequel.bulanINDONESIA("SELECT DATE_FORMAT(NOW(),'%m')") + " "
-                + Sequel.cariIsi("SELECT DATE_FORMAT(NOW(),'%Y')"));
+//        tulisan_tanggal.setText(Sequel.cariIsi("SELECT DATE_FORMAT(NOW(),'%d')") + " "
+//                + Sequel.bulanINDONESIA("SELECT DATE_FORMAT(NOW(),'%m')") + " "
+//                + Sequel.cariIsi("SELECT DATE_FORMAT(NOW(),'%Y')"));
+        
+        tulisan_tanggal.setText(Valid.SetTglINDONESIA(Sequel.cariIsi("select date(now())")));
+        
         tglDaftar = Sequel.cariIsi("SELECT DATE(NOW())");
         tglnoRW = Sequel.cariIsi("SELECT DATE_FORMAT(NOW(),'%Y/%m/%d')");
         AsalRujukan.setText("");
@@ -7402,11 +7410,12 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         JnsnoID.setEnabled(true);
         BtnPasien.setEnabled(true);
 
-        cmbTindakan.setSelectedIndex(0);
-        cmbTrauma.setSelectedIndex(0);
-        ChkDtgSendiri.setSelected(false);
-        ChkDtgSendiri.setText("Pasien TIDAK Datang Sendiri");
-        KataDatang.setText("Tidak");
+//        cmbTindakan.setSelectedIndex(0);
+//        cmbTrauma.setSelectedIndex(0);
+//        cmbNonTrauma.setSelectedIndex(0);
+//        cmbKet.setSelectedIndex(0);
+//        ChkDtgSendiri.setSelected(false);
+//        ChkDtgSendiri.setText("Pasien TIDAK Datang Sendiri");
         noSrt.setText("");
         noSrt1.setText("");
         TglSurat.setDate(new Date());
@@ -7415,17 +7424,11 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         sepJmp.setText("");
         DlgJamkesda.setVisible(false);
         DlgJampersal.setVisible(false);
-        cmbNonTrauma.setSelectedIndex(0);
-        cmbKet.setSelectedIndex(0);
         noRawatDataIGD.setText("");
         rmMati.setText("");
         kode_rujukanya.setText("");
         cekTglMati.setSelected(false);
         
-        cmbTrauma.setEditable(false);
-        cmbNonTrauma.setEditable(false);
-        cmbTindakan.setEditable(false);
-        cmbKet.setEditable(false);
         kdsuku.setText("");
         nmsuku.setText("");
         kdbahasa.setText("");
@@ -7445,6 +7448,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         norawatAPS = "";
         kdAPS = "";
         tglDaftar = "";
+        KataDatang = "";
         JnsnoID.setEnabled(false);
         BtnPasien.setEnabled(false);
                 
@@ -7503,9 +7507,9 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 cmbTindakan.setSelectedIndex(0);
                 cmbKet.setSelectedIndex(0);
             } else if (noRawatDataIGD.getText() != "") {                              
-                KataDatang.setText(Sequel.cariIsi("select datang_sendiri from data_igd where no_rawat='" + TNoRw.getText() + "' "));
+                KataDatang = Sequel.cariIsi("select datang_sendiri from data_igd where no_rawat='" + TNoRw.getText() + "' ");
 
-                if (KataDatang.getText().equals("Tidak")) {
+                if (KataDatang.equals("Tidak")) {
                     ChkDtgSendiri.setSelected(false);
                 } else {
                     ChkDtgSendiri.setSelected(true);
@@ -7667,10 +7671,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }
 
-    public void isCek() {
-        tulisan_tanggal.setText(Sequel.cariIsi("SELECT DATE_FORMAT(NOW(),'%d')") + " "
-                + Sequel.bulanINDONESIA("SELECT DATE_FORMAT(NOW(),'%m')") + " "
-                + Sequel.cariIsi("SELECT DATE_FORMAT(NOW(),'%Y')"));
+    public void isCek() {        
+        tulisan_tanggal.setText(Valid.SetTglINDONESIA(Sequel.cariIsi("select date(now())")));
         tglDaftar = Sequel.cariIsi("SELECT DATE(NOW())");
         tglnoRW = Sequel.cariIsi("SELECT DATE_FORMAT(NOW(),'%Y/%m/%d')");
         DTPCari1.setDate(new Date());
