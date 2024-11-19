@@ -17,7 +17,7 @@
       <Properties>
         <Property name="name" type="java.lang.String" value="jPopupMenu1" noResource="true"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[230, 85]"/>
+          <Dimension value="[230, 112]"/>
         </Property>
       </Properties>
 
@@ -328,7 +328,7 @@
                 </Property>
                 <Property name="name" type="java.lang.String" value="MnRiwayatSetiapDepoAllPay" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[230, 26]"/>
+                  <Dimension value="[110, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -346,7 +346,7 @@
                 <Property name="text" type="java.lang.String" value="BPJS"/>
                 <Property name="name" type="java.lang.String" value="MnRiwayatSetiapDepoBpjs" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[230, 26]"/>
+                  <Dimension value="[110, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -368,7 +368,7 @@
                 </Property>
                 <Property name="name" type="java.lang.String" value="MnRiwayatSetiapDepoUmum" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[230, 26]"/>
+                  <Dimension value="[110, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -386,7 +386,7 @@
                 <Property name="text" type="java.lang.String" value="Lainnya"/>
                 <Property name="name" type="java.lang.String" value="MnRiwayatSetiapDepoLainnya" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[230, 26]"/>
+                  <Dimension value="[110, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -426,7 +426,7 @@
                 </Property>
                 <Property name="name" type="java.lang.String" value="MnLapPakaiBekalFarmasiPdf" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[230, 26]"/>
+                  <Dimension value="[70, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -444,7 +444,7 @@
                 <Property name="text" type="java.lang.String" value="EXCEL"/>
                 <Property name="name" type="java.lang.String" value="MnLapPakaiBekalFarmasiExcel" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[230, 26]"/>
+                  <Dimension value="[70, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -526,7 +526,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="widget.Table" name="tbDokter">
+            <Component class="widget.Table" name="tbRiwayat">
               <Properties>
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
@@ -536,7 +536,7 @@
                 <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="jPopupMenu1"/>
                 </Property>
-                <Property name="name" type="java.lang.String" value="tbDokter" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="tbRiwayat" noResource="true"/>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
@@ -723,6 +723,9 @@
                   </StringArray>
                 </Property>
                 <Property name="name" type="java.lang.String" value="filterTgl" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[120, 23]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="filterTglItemStateChanged"/>

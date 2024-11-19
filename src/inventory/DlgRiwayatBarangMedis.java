@@ -57,13 +57,13 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
                 return false;
             }
         };
-        tbDokter.setModel(tabMode);
+        tbRiwayat.setModel(tabMode);
 
-        tbDokter.setPreferredScrollableViewportSize(new Dimension(800, 800));
-        tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbRiwayat.setPreferredScrollableViewportSize(new Dimension(800, 800));
+        tbRiwayat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (int i = 0; i < 12; i++) {
-            TableColumn column = tbDokter.getColumnModel().getColumn(i);
+            TableColumn column = tbRiwayat.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(230);
             } else if (i == 1) {
@@ -90,7 +90,7 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
                 column.setPreferredWidth(230);
             }
         }
-        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
+        tbRiwayat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TCari.setDocument(new batasInput((byte) 100).getKata(TCari));
         if (koneksiDB.cariCepat().equals("aktif")) {
@@ -242,7 +242,7 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
         MnLapPakaiBekalFarmasiExcel = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
-        tbDokter = new widget.Table();
+        tbRiwayat = new widget.Table();
         panelisi4 = new widget.panelisi();
         label17 = new widget.Label();
         kdbar = new widget.TextBox();
@@ -271,7 +271,7 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
         Kd2.setPreferredSize(new java.awt.Dimension(207, 23));
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
-        jPopupMenu1.setPreferredSize(new java.awt.Dimension(230, 85));
+        jPopupMenu1.setPreferredSize(new java.awt.Dimension(230, 112));
 
         MnLapRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept_page.png"))); // NOI18N
         MnLapRiwayat.setText("Lap. Rekap Total Riwayat");
@@ -458,7 +458,7 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
         MnRiwayatSetiapDepoAllPay.setToolTipText("");
         MnRiwayatSetiapDepoAllPay.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         MnRiwayatSetiapDepoAllPay.setName("MnRiwayatSetiapDepoAllPay"); // NOI18N
-        MnRiwayatSetiapDepoAllPay.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnRiwayatSetiapDepoAllPay.setPreferredSize(new java.awt.Dimension(110, 26));
         MnRiwayatSetiapDepoAllPay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRiwayatSetiapDepoAllPayActionPerformed(evt);
@@ -470,7 +470,7 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
         MnRiwayatSetiapDepoBpjs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         MnRiwayatSetiapDepoBpjs.setText("BPJS");
         MnRiwayatSetiapDepoBpjs.setName("MnRiwayatSetiapDepoBpjs"); // NOI18N
-        MnRiwayatSetiapDepoBpjs.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnRiwayatSetiapDepoBpjs.setPreferredSize(new java.awt.Dimension(110, 26));
         MnRiwayatSetiapDepoBpjs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRiwayatSetiapDepoBpjsActionPerformed(evt);
@@ -484,7 +484,7 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
         MnRiwayatSetiapDepoUmum.setToolTipText("");
         MnRiwayatSetiapDepoUmum.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         MnRiwayatSetiapDepoUmum.setName("MnRiwayatSetiapDepoUmum"); // NOI18N
-        MnRiwayatSetiapDepoUmum.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnRiwayatSetiapDepoUmum.setPreferredSize(new java.awt.Dimension(110, 26));
         MnRiwayatSetiapDepoUmum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRiwayatSetiapDepoUmumActionPerformed(evt);
@@ -496,7 +496,7 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
         MnRiwayatSetiapDepoLainnya.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         MnRiwayatSetiapDepoLainnya.setText("Lainnya");
         MnRiwayatSetiapDepoLainnya.setName("MnRiwayatSetiapDepoLainnya"); // NOI18N
-        MnRiwayatSetiapDepoLainnya.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnRiwayatSetiapDepoLainnya.setPreferredSize(new java.awt.Dimension(110, 26));
         MnRiwayatSetiapDepoLainnya.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRiwayatSetiapDepoLainnyaActionPerformed(evt);
@@ -519,7 +519,7 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
         MnLapPakaiBekalFarmasiPdf.setToolTipText("");
         MnLapPakaiBekalFarmasiPdf.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         MnLapPakaiBekalFarmasiPdf.setName("MnLapPakaiBekalFarmasiPdf"); // NOI18N
-        MnLapPakaiBekalFarmasiPdf.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnLapPakaiBekalFarmasiPdf.setPreferredSize(new java.awt.Dimension(70, 26));
         MnLapPakaiBekalFarmasiPdf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLapPakaiBekalFarmasiPdfActionPerformed(evt);
@@ -531,7 +531,7 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
         MnLapPakaiBekalFarmasiExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         MnLapPakaiBekalFarmasiExcel.setText("EXCEL");
         MnLapPakaiBekalFarmasiExcel.setName("MnLapPakaiBekalFarmasiExcel"); // NOI18N
-        MnLapPakaiBekalFarmasiExcel.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnLapPakaiBekalFarmasiExcel.setPreferredSize(new java.awt.Dimension(70, 26));
         MnLapPakaiBekalFarmasiExcel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLapPakaiBekalFarmasiExcelActionPerformed(evt);
@@ -558,8 +558,8 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
-        tbDokter.setAutoCreateRowSorter(true);
-        tbDokter.setModel(new javax.swing.table.DefaultTableModel(
+        tbRiwayat.setAutoCreateRowSorter(true);
+        tbRiwayat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -570,10 +570,10 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik kanan untuk memilih laporan yang akan dicetak");
-        tbDokter.setComponentPopupMenu(jPopupMenu1);
-        tbDokter.setName("tbDokter"); // NOI18N
-        scrollPane1.setViewportView(tbDokter);
+        tbRiwayat.setToolTipText("Silahkan klik kanan untuk memilih laporan yang akan dicetak");
+        tbRiwayat.setComponentPopupMenu(jPopupMenu1);
+        tbRiwayat.setName("tbRiwayat"); // NOI18N
+        scrollPane1.setViewportView(tbRiwayat);
 
         internalFrame1.add(scrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -667,6 +667,7 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
         filterTgl.setForeground(new java.awt.Color(0, 0, 0));
         filterTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tanggal Transaksi", "Tanggal Input" }));
         filterTgl.setName("filterTgl"); // NOI18N
+        filterTgl.setPreferredSize(new java.awt.Dimension(120, 23));
         filterTgl.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 filterTglItemStateChanged(evt);
@@ -1521,7 +1522,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_filterTglKeyPressed
 
     private void MnLapPakaiBekalFarmasiPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLapPakaiBekalFarmasiPdfActionPerformed
-        // TODO add your handling code here:
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         Map<String, Object> param = new HashMap<>();
         param.put("namars", akses.getnamars());
@@ -1657,7 +1657,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi4;
     private widget.ScrollPane scrollPane1;
-    private widget.Table tbDokter;
+    private widget.Table tbRiwayat;
     // End of variables declaration//GEN-END:variables
 
     private void prosesCari() {
