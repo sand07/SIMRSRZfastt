@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="517" leftMargin="39" rightMargin="39" topMargin="39" bottomMargin="35">
 	<property name="ireport.zoom" value="1.6105100000000017"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="426"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -482,15 +482,4 @@ MARTAPURA]]></text>
 			</staticText>
 		</band>
 	</title>
-	<pageFooter>
-		<band height="15">
-			<staticText>
-				<reportElement x="0" y="0" width="517" height="13"/>
-				<textElement textAlignment="Left" lineSpacing="Single">
-					<font fontName="Tahoma" size="9" isBold="false" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[*) Surat keterangan ini tidak untuk Surat Keterangan Bebas Covid-19]]></text>
-			</staticText>
-		</band>
-	</pageFooter>
 </jasperReport>
