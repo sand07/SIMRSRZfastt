@@ -4662,7 +4662,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     pembi = "";
                     kdpnjg = "";
                     flag = "";
-                    asesmen = "";                    
+                    asesmen = "";
+                    jkel = "";
 
                     //tanggal kejadian untuk disimpan ke database
                     if (LakaLantas.getSelectedIndex() == 1 || LakaLantas.getSelectedIndex() == 2 || LakaLantas.getSelectedIndex() == 3) {
@@ -4843,17 +4844,10 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                 + "dpjpLayan='" + KddpjpLayan.getText() + "', "
                                 + "nmdpjpLayan='" + nmdpjpLayan.getText() + "', "
                                 + "nmKelasNaiknya='" + nmKlsNaik.getText() + "'");
-                   
-                        Sequel.mengedit("rujuk_masuk", "no_rawat='" + TNoRw.getText() + "'",
-                                "no_rawat='" + TNoRw.getText() + "', "
-                                + "perujuk='" + NmPpkRujukan.getText() + "',"
-                                + "no_rujuk='" + NoRujukan.getText() + "', "
-                                + "kd_rujukan='" + Sequel.cariIsi("select kd_rujukan from master_nama_rujukan "
-                                        + "where status='1' and kode_faskes_bpjs='" + KdPpkRujukan.getText() + "'") + "'");
                         
+                        gantiDataYangLain();
                         emptTeks();
                         tampil();
-
                     } else {
                         JOptionPane.showMessageDialog(null, nameNode.path("message").asText());
                     }
@@ -9301,5 +9295,80 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 kdNaikKls.getText(), pembi, pngJwb.getText(), tujuanKun.getSelectedItem().toString(), flag, kdpnjg, asesmen, KddpjpLayan.getText(), nmdpjpLayan.getText(), requestJson
             });
         }        
+    }
+
+    private void gantiDataYangLain() {
+        if (JK.getText().equals("Laki-laki")) {
+            jkel = "L";
+        } else {
+            jkel = "P";
+        }
+
+        Sequel.queryu2("update reg_periksa set kd_dokter=?, kd_poli=? where no_rawat=?", 3,
+                new String[]{Sequel.cariIsi("select kd_dokter_rs from mapping_dokter where kd_dokter_bpjs='" + KddpjpLayan.getText() + "'"), KdPoli.getText(),
+                    TNoRw.getText()
+                });
+
+        Sequel.mengedit("booking_registrasi", "no_rawat='" + TNoRw.getText() + "'",
+                "kd_dokter='" + Sequel.cariIsi("select kd_dokter_rs from mapping_dokter where kd_dokter_bpjs='" + KddpjpLayan.getText() + "'") + "', "
+                + "kd_poli='" + KdPoli.getText() + "'");
+
+        Sequel.mengedit("kelengkapan_booking_sep_bpjs", "no_rawat='" + TNoRw.getText() + "'",
+                "tglrujukan='" + Valid.SetTgl(TanggalRujuk.getSelectedItem() + "") + "', "
+                + "no_rujukan='" + NoRujukan.getText() + "',"
+                + "kdppkrujukan='" + KdPpkRujukan.getText() + "', "
+                + "nmppkrujukan='" + rujukanSEP.getText() + "',"
+                + "kdppkpelayanan='" + KdPPK.getText() + "',"
+                + "nmppkpelayanan='" + NmPPK.getText() + "',"
+                + "jnspelayanan='" + JenisPelayanan.getSelectedItem().toString().substring(0, 1) + "',"
+                + "diagawal='" + KdPenyakit.getText() + "',"
+                + "nmdiagnosaawal='" + NmPenyakit.getText().replace("'", "''") + "',"
+                + "kdpolitujuan='" + KdPoli1.getText() + "',"
+                + "nmpolitujuan='" + NmPoli1.getText() + "',"
+                + "klsrawat='" + hakKelas.getSelectedItem().toString().substring(0, 1) + "',"
+                + "lakalantas='" + LakaLantas.getSelectedItem().toString().substring(0, 1) + "',"
+                + "lokasilaka='" + LokasiLaka.getText() + "',"
+                + "user='" + user + "',"
+                + "nomr='" + TNoRM.getText() + "',"
+                + "nama_pasien='" + TPasien.getText().replace("'", "''") + "',"
+                + "tanggal_lahir='" + TglLahir.getText() + "',"
+                + "peserta='" + JenisPeserta.getText() + "',"
+                + "jkel='" + jkel + "',"
+                + "no_kartu='" + NoKartu.getText() + "',"
+                + "asal_rujukan='" + AsalRujukan.getSelectedItem().toString() + "',"
+                + "eksekutif='" + Eksekutif.getSelectedItem().toString() + "',"
+                + "cob='" + COB.getSelectedItem().toString() + "',"
+                + "notelep='" + NoTelp.getText() + "',"
+                + "katarak='" + KasusKatarak.getSelectedItem().toString() + "',"
+                + "tglkkl='" + tglkkl + "',"
+                + "keterangankkl='" + Ket.getText() + "',"
+                + "suplesi='" + suplesi.getSelectedItem().toString() + "',"
+                + "no_sep_suplesi='" + NoSEPSuplesi.getText() + "',"
+                + "kdprop='" + KdProv.getText() + "',"
+                + "nmprop='" + NmProv.getText() + "',"
+                + "kdkab='" + KdKab.getText() + "',"
+                + "nmkab='" + NmKab.getText() + "',"
+                + "kdkec='" + KdKec.getText() + "',"
+                + "nmkec='" + NmKec.getText() + "',"
+                + "noskdp='" + noSurat.getText() + "',"
+                + "kddpjp='" + Kddpjp.getText() + "',"
+                + "nmdpdjp='" + NmDPJP.getText() + "',"
+                + "rujukan_masuknya='" + NmPpkRujukan.getText() + "',"
+                + "klsRawatHak='" + hakKelas.getSelectedItem().toString().substring(0, 1) + "',"
+                + "pembiayaan='" + pembi + "',"
+                + "penanggungJawab='" + pngJwb.getText() + "',"
+                + "tujuanKunjungan='" + tujuanKun.getSelectedItem() + "',"
+                + "flagProcedur='" + flag + "',"
+                + "kdPenunjang='" + kdpnjg + "',"
+                + "assesmentPel='" + asesmen + "',"
+                + "dpjpLayan='" + KddpjpLayan.getText() + "',"
+                + "nmdpjpLayan='" + nmdpjpLayan.getText() + "' ");
+
+        Sequel.mengedit("rujuk_masuk", "no_rawat='" + TNoRw.getText() + "'",
+                "no_rawat='" + TNoRw.getText() + "', "
+                + "perujuk='" + NmPpkRujukan.getText() + "',"
+                + "no_rujuk='" + NoRujukan.getText() + "', "
+                + "kd_rujukan='" + Sequel.cariIsi("select kd_rujukan from master_nama_rujukan "
+                        + "where status='1' and kode_faskes_bpjs='" + KdPpkRujukan.getText() + "'") + "'");
     }
 }
