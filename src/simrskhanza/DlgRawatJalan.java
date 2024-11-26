@@ -6927,7 +6927,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                             + "nadi='" + TNadi.getText() + "',respirasi='" + TRespirasi.getText() + "',"
                                             + "tinggi='" + TTinggi.getText() + "',berat='" + TBerat.getText() + "',"
                                             + "gcs='" + TGCS.getText() + "',alergi='" + TAlergi.getText() + "',alergi='" + TAlergi.getText() + "',"
-                                            + "diagnosa='" + TDiagnosa.getText() + "',rencana_follow_up='" + TRncanaFolow.getText() + "',"
+                                            + "diagnosa='" + TDiagnosa.getText().stripTrailing() + "',rencana_follow_up='" + TRncanaFolow.getText() + "',"
                                             + "rincian_tindakan='" + TRincianTindakan.getText() + "',terapi='" + TTerapi.getText() + "',"
                                             + "stts_prmrj='" + prmrj + "',spo2='" + Tspo2.getText() + "'");
 
@@ -6994,7 +6994,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                             + "keluhan='" + TKeluhan1.getText() + "',pemeriksaan='" + TPemeriksaan1.getText() + "',"
                                             + "nadi='" + TNadi1.getText() + "',respirasi='" + TRespirasi1.getText() + "',"
                                             + "tinggi='" + TTinggi1.getText() + "',berat='" + TBerat1.getText() + "',imun_ke='" + cmbImun1.getSelectedItem().toString() + "',"
-                                            + "gcs='" + TGCS1.getText() + "',alergi='" + TAlergi1.getText() + "',diagnosa='" + TDiagnosa1.getText() + "',"
+                                            + "gcs='" + TGCS1.getText() + "',alergi='" + TAlergi1.getText() + "',diagnosa='" + TDiagnosa1.getText().stripTrailing() + "',"
                                             + "rencana_follow_up='" + TRncanaFolow1.getText() + "',nip='" + kdptg1.getText() + "',"
                                             + "rincian_tindakan='" + TRincianTindakan1.getText() + "',terapi='" + TTerapi1.getText() + "',spo2='" + Tspo21.getText() + "',"
                                             + "kesadaran='" + Tkesadaran.getText() + "', lingkar_perut='" + TlingkarPerut.getText() + "'");
@@ -13927,7 +13927,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     if (Sequel.menyimpantf("pemeriksaan_ralan", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Data", 21, new String[]{
                         TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
                         TSuhu.getText(), TTensi.getText(), TNadi.getText(), TRespirasi.getText(), TTinggi.getText(), TBerat.getText(), TGCS.getText(),
-                        TKeluhan.getText(), TPemeriksaan.getText(), TAlergi.getText(), cmbImun.getSelectedItem().toString(), TDiagnosa.getText(), KdDok.getText(),
+                        TKeluhan.getText(), TPemeriksaan.getText(), TAlergi.getText(), cmbImun.getSelectedItem().toString(), TDiagnosa.getText().stripLeading(), KdDok.getText(),
                         TRncanaFolow.getText(), TRincianTindakan.getText(), TTerapi.getText(), prmrj, Tspo2.getText()
                     }) == true) {
                         Sequel.mengedit("pasien", "no_rkm_medis='" + TNoRM.getText() + "'", "tinggi_badan='" + TTinggi.getText() + "'");
@@ -13999,7 +13999,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
                 TSuhu1.getText(), TTensi1.getText(), TNadi1.getText(), TRespirasi1.getText(), TTinggi1.getText(),
                 TBerat1.getText(), TGCS1.getText(), TKeluhan1.getText(), TPemeriksaan1.getText(), TAlergi1.getText(),
-                cmbImun1.getSelectedItem().toString(), TDiagnosa1.getText(), KdDok.getText(), TRncanaFolow1.getText(),
+                cmbImun1.getSelectedItem().toString(), TDiagnosa1.getText().stripTrailing(), KdDok.getText(), TRncanaFolow1.getText(),
                 kdptg1.getText(), TRincianTindakan1.getText(), TTerapi1.getText(), Tspo21.getText(), Tkesadaran.getText(), TlingkarPerut.getText()
             });
 
