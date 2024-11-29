@@ -3702,11 +3702,6 @@ public final class DlgIGD extends javax.swing.JDialog {
                 cmbTindakanActionPerformed(evt);
             }
         });
-        cmbTindakan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cmbTindakanKeyPressed(evt);
-            }
-        });
         FormInput.add(cmbTindakan);
         cmbTindakan.setBounds(975, 102, 125, 23);
 
@@ -3719,11 +3714,6 @@ public final class DlgIGD extends javax.swing.JDialog {
         cmbTrauma.setForeground(new java.awt.Color(0, 0, 0));
         cmbTrauma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "KLL", "K. KERJA", "K. RT", "LAIN - LAIN" }));
         cmbTrauma.setName("cmbTrauma"); // NOI18N
-        cmbTrauma.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cmbTraumaKeyPressed(evt);
-            }
-        });
         FormInput.add(cmbTrauma);
         cmbTrauma.setBounds(975, 42, 110, 23);
 
@@ -3751,13 +3741,8 @@ public final class DlgIGD extends javax.swing.JDialog {
         jLabel38.setBounds(900, 42, 70, 23);
 
         cmbNonTrauma.setForeground(new java.awt.Color(0, 0, 0));
-        cmbNonTrauma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "P. DALAM", "BEDAH", "ANAK", "PARU", "SYARAF", "JANTUNG", "THT", "MATA", "KEBIDANAN", "KULIT & KELAMIN" }));
+        cmbNonTrauma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "P. DALAM", "BEDAH", "ANAK", "PARU", "SYARAF", "JANTUNG", "THT", "MATA", "KEBIDANAN", "KULIT & KELAMIN", "JIWA" }));
         cmbNonTrauma.setName("cmbNonTrauma"); // NOI18N
-        cmbNonTrauma.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cmbNonTraumaKeyPressed(evt);
-            }
-        });
         FormInput.add(cmbNonTrauma);
         cmbNonTrauma.setBounds(975, 72, 120, 23);
 
@@ -3773,11 +3758,6 @@ public final class DlgIGD extends javax.swing.JDialog {
         cmbKet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbKetActionPerformed(evt);
-            }
-        });
-        cmbKet.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cmbKetKeyPressed(evt);
             }
         });
         FormInput.add(cmbKet);
@@ -5745,14 +5725,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnMeninggalActionPerformed
 
-    private void cmbTindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbTindakanKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbTindakanKeyPressed
-
-    private void cmbTraumaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbTraumaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbTraumaKeyPressed
-
     private void ChkDtgSendiriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkDtgSendiriActionPerformed
         if (ChkDtgSendiri.isSelected() == true) {
             ChkDtgSendiri.setText("Pasien DATANG SENDIRI");
@@ -5953,14 +5925,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private void BtnCtkJkdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCtkJkdKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnCtkJkdKeyPressed
-
-    private void cmbNonTraumaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbNonTraumaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbNonTraumaKeyPressed
-
-    private void cmbKetKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbKetKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbKetKeyPressed
 
     private void cmbTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTindakanActionPerformed
         if (cmbTindakan.getSelectedItem().equals("RAWAT INAP")) {

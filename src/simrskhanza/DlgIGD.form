@@ -2245,7 +2245,7 @@
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="18-11-2024"/>
+                    <StringItem index="0" value="29-11-2024"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2755,7 +2755,7 @@
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="18-11-2024"/>
+                    <StringItem index="0" value="29-11-2024"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2959,7 +2959,7 @@
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="18-11-2024"/>
+                    <StringItem index="0" value="29-11-2024"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3291,7 +3291,7 @@
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="18-11-2024"/>
+                    <StringItem index="0" value="29-11-2024"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3870,7 +3870,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="18-11-2024"/>
+                        <StringItem index="0" value="29-11-2024"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3898,7 +3898,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="18-11-2024"/>
+                        <StringItem index="0" value="29-11-2024"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -4523,7 +4523,6 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbTindakanActionPerformed"/>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cmbTindakanKeyPressed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -4561,9 +4560,6 @@
                     </Property>
                     <Property name="name" type="java.lang.String" value="cmbTrauma" noResource="true"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cmbTraumaKeyPressed"/>
-                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="975" y="42" width="110" height="23"/>
@@ -4621,7 +4617,7 @@
                       <Color blue="0" green="0" red="0" type="rgb"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="11">
+                      <StringArray count="12">
                         <StringItem index="0" value="-"/>
                         <StringItem index="1" value="P. DALAM"/>
                         <StringItem index="2" value="BEDAH"/>
@@ -4633,13 +4629,11 @@
                         <StringItem index="8" value="MATA"/>
                         <StringItem index="9" value="KEBIDANAN"/>
                         <StringItem index="10" value="KULIT &amp; KELAMIN"/>
+                        <StringItem index="11" value="JIWA"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="cmbNonTrauma" noResource="true"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cmbNonTraumaKeyPressed"/>
-                  </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="975" y="72" width="120" height="23"/>
@@ -4677,7 +4671,6 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbKetActionPerformed"/>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cmbKetKeyPressed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
