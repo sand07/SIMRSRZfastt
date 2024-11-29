@@ -11840,7 +11840,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 
     private void MnLapStatusGZAnakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLapStatusGZAnakActionPerformed
         RMAsuhanGiziRanap statusgz = new RMAsuhanGiziRanap(null, false);
-        statusgz.WindowLapStatusGZanak.setSize(363, 143);
+        statusgz.WindowLapStatusGZanak.setSize(363, 165);
         statusgz.WindowLapStatusGZanak.setLocationRelativeTo(internalFrame1);        
         statusgz.WindowLapStatusGZanak.setVisible(true);
         Sequel.cariIsiComboDB("SELECT nm_gedung FROM bangsal WHERE nm_gedung<>'-' GROUP BY nm_gedung ORDER BY nm_gedung", statusgz.cmbGedung1);
