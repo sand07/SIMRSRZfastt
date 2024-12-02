@@ -1041,6 +1041,13 @@ public class DlgDashboardEresep extends javax.swing.JDialog {
                 param.put("kontakrs", akses.getkontakrs());
                 param.put("emailrs", akses.getemailrs());
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
+
+                if (Sequel.cariInteger("select count(-1) from bridging_sep where no_rawat='" + norawat + "' and jnspelayanan='2'") == 0) {
+                    param.put("nosep", "-");
+                } else {
+                    param.put("nosep", Sequel.cariIsi("select no_sep from bridging_sep where no_rawat='" + norawat + "' and jnspelayanan='2' order by tglsep desc limit 1"));
+                }
+
                 Valid.MyReport("rptResepRalan.jasper", "report", "::[ Resep Dokter Poliklinik/Unit Rawat Jalan Kertas HVS/A5 ]::",
                         " select c.no_rawat, pl.nm_poli, d.nm_dokter, CONCAT('Martapura, ',DATE_FORMAT(c.tgl_perawatan,'%d/%m/%Y')) tgl_resep, c.nama_obat, "
                         + "r.no_rkm_medis, p.nm_pasien, CONCAT(r.umurdaftar,' ',r.sttsumur) umur, "

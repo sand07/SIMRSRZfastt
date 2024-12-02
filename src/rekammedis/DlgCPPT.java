@@ -10059,7 +10059,16 @@ public class DlgCPPT extends javax.swing.JDialog {
                         } else {
                             sttsgz3 = "";
                         }
-                        cekSttsGizi = "Status Gizi : \n" + sttsgz1 + sttsgz2 + sttsgz3;
+
+                        //cek klasifikasi imt
+                        if (rs6.getString("klasifikasi_imt").equals("Berdasarkan Kemenkes RI")) {
+                            cekSttsGizi = "Klasifikasi IMT (" + rs6.getString("klasifikasi_imt") + "), Status Gizi : " + rs6.getString("status_gizi") + "\n" + sttsgz1 + sttsgz2 + sttsgz3;
+                        } else if (rs6.getString("klasifikasi_imt").equals("Berdasarkan CDC")) {
+                            cekSttsGizi = "Klasifikasi IMT (" + rs6.getString("klasifikasi_imt") + "), Persentase CDC : " + rs6.getString("persentase_cdc") + " %, Status Gizi : " + rs6.getString("status_gizi") + "\n" + sttsgz1 + sttsgz2 + sttsgz3;
+                        } else {
+                            cekSttsGizi = "Status Gizi : " + rs6.getString("status_gizi") + "\n" + sttsgz1 + sttsgz2 + sttsgz3;
+                        }
+                        
                     } else {
                         cekSttsGizi = "";
                     }

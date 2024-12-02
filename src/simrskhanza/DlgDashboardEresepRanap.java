@@ -1027,6 +1027,13 @@ public class DlgDashboardEresepRanap extends javax.swing.JDialog {
                 param.put("kontakrs", akses.getkontakrs());
                 param.put("emailrs", akses.getemailrs());
                 param.put("logo", Sequel.cariGambar("select logo from setting"));
+
+                if (Sequel.cariInteger("select count(-1) from bridging_sep where no_rawat='" + norawat + "' and jnspelayanan='1'") == 0) {
+                    param.put("nosep", "-");
+                } else {
+                    param.put("nosep", Sequel.cariIsi("select no_sep from bridging_sep where no_rawat='" + norawat + "' and jnspelayanan='1' order by tglsep desc limit 1"));
+                }
+
                 param.put("ruangan", Sequel.cariIsi("select b.nm_bangsal from kamar_inap ki inner join kamar k on k.kd_kamar=ki.kd_kamar "
                         + "inner join bangsal b on b.kd_bangsal=k.kd_bangsal where ki.no_rawat='" + norawat + "' "
                         + "order by ki.tgl_masuk desc, ki.jam_masuk desc limit 1") + " (Resep : " + jenisResep + " - " + resepPulang + ")");
