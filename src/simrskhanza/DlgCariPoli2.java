@@ -53,28 +53,34 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"Kode Unit","Nama Unit","Registrasi Baru","Registrasi Lama"};
-        tabMode=new DefaultTableModel(null,row){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        Object[] row = {"Kode Unit", "Nama Unit", "Registrasi Baru", "Registrasi Lama", "No. Telpon"};
+        tabMode = new DefaultTableModel(null, row) {
+            @Override
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                return false;
+            }
         };
-        tbKamar.setModel(tabMode);
-        //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
-        tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
-        tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 4; i++) {
-            TableColumn column = tbKamar.getColumnModel().getColumn(i);
-            if(i==0){
+        tbPoliklinik.setModel(tabMode);
+        tbPoliklinik.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbPoliklinik.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (int i = 0; i < 5; i++) {
+            TableColumn column = tbPoliklinik.getColumnModel().getColumn(i);
+            if (i == 0) {
                 column.setPreferredWidth(90);
-            }else if(i==1){
+            } else if (i == 1) {
                 column.setPreferredWidth(300);
-            }else if(i==2){
+            } else if (i == 2) {
                 column.setPreferredWidth(120);
-            }else if(i==3){
+            } else if (i == 3) {
                 column.setPreferredWidth(120);
+            } else if (i == 4) {
+                column.setPreferredWidth(100);
             }
         }
-        tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
+        tbPoliklinik.setDefaultRenderer(Object.class, new WarnaTable());
+
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -100,7 +106,7 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
 
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
-        tbKamar = new widget.Table();
+        tbPoliklinik = new widget.Table();
         panelisi3 = new widget.panelisi();
         label9 = new widget.Label();
         TCari = new widget.TextBox();
@@ -127,21 +133,20 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setForeground(new java.awt.Color(0, 0, 0));
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbKamar.setName("tbKamar"); // NOI18N
-        tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbPoliklinik.setAutoCreateRowSorter(true);
+        tbPoliklinik.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPoliklinik.setName("tbPoliklinik"); // NOI18N
+        tbPoliklinik.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbKamarMouseClicked(evt);
+                tbPoliklinikMouseClicked(evt);
             }
         });
-        tbKamar.addKeyListener(new java.awt.event.KeyAdapter() {
+        tbPoliklinik.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbKamarKeyPressed(evt);
+                tbPoliklinikKeyPressed(evt);
             }
         });
-        Scroll.setViewportView(tbKamar);
+        Scroll.setViewportView(tbPoliklinik);
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
@@ -260,7 +265,7 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnKeluar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            tbKamar.requestFocus();
+            tbPoliklinik.requestFocus();
         }
 }//GEN-LAST:event_TCariKeyPressed
 
@@ -289,13 +294,13 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
-    private void tbKamarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKamarMouseClicked
+    private void tbPoliklinikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPoliklinikMouseClicked
         if(tabMode.getRowCount()!=0){
             if(evt.getClickCount()==2){
                 dispose();
             }
         }
-}//GEN-LAST:event_tbKamarMouseClicked
+}//GEN-LAST:event_tbPoliklinikMouseClicked
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         dispose();
@@ -313,7 +318,7 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
         
     }//GEN-LAST:event_BtnTambahActionPerformed
 
-    private void tbKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamarKeyPressed
+    private void tbPoliklinikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPoliklinikKeyPressed
         if(tabMode.getRowCount()!=0){
             if(evt.getKeyCode()==KeyEvent.VK_SPACE){
                 dispose();
@@ -322,7 +327,7 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
                 TCari.requestFocus();
             }
         }
-    }//GEN-LAST:event_tbKamarKeyPressed
+    }//GEN-LAST:event_tbPoliklinikKeyPressed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         emptTeks();
@@ -356,14 +361,14 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
     private widget.Label label10;
     private widget.Label label9;
     private widget.panelisi panelisi3;
-    private widget.Table tbKamar;
+    private widget.Table tbPoliklinik;
     // End of variables declaration//GEN-END:variables
 
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try {
             ps=koneksi.prepareStatement(
-                    "select poliklinik.kd_poli,poliklinik.nm_poli,poliklinik.registrasi,poliklinik.registrasilama "+
+                    "select poliklinik.kd_poli,poliklinik.nm_poli,poliklinik.registrasi,poliklinik.registrasilama,poliklinik.no_tlp "+
                     "from poliklinik inner join jadwal inner join dokter on poliklinik.kd_poli=jadwal.kd_poli "+
                     "and dokter.kd_dokter=jadwal.kd_dokter "+
                     "where jadwal.hari_kerja=? and poliklinik.kd_poli like ?  or "+
@@ -400,7 +405,13 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
                 ps.setString(4,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery(); 
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)});
+                    tabMode.addRow(new Object[]{
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5)
+                    });
                 }  
             }catch(Exception ex){
                 System.out.println(ex);
@@ -417,19 +428,17 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
         }
         LCount.setText(""+tabMode.getRowCount());
     }
-    
-    
 
     public void emptTeks() {   
         TCari.requestFocus();
     }
   
     public JTable getTable(){
-        return tbKamar;
+        return tbPoliklinik;
     }
     
     public void isCek(){        
-        if (akses.getkode().equals("Admin Utama")) {
+        if (akses.getadmin() == true) {
             BtnTambah.setEnabled(true);
         } else {
             BtnTambah.setEnabled(false);

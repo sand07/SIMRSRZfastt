@@ -40,10 +40,10 @@ import javax.swing.table.TableColumn;
  */
 public final class DlgPoli extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
-    private validasi Valid=new validasi();
-    private Connection koneksi=koneksiDB.condb();
-    private int i=0;
+    private sekuel Sequel = new sekuel();
+    private validasi Valid = new validasi();
+    private Connection koneksi = koneksiDB.condb();
+    private int i = 0;
     private PreparedStatement stat;
     private ResultSet rs;
     private String cekonline = "", cekERM = "";
@@ -57,32 +57,35 @@ public final class DlgPoli extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        Object[] row={"P","Kode Unit","Nama Unit","Registrasi Baru","Registrasi Lama","Status Online","Status e-RM"};
-        tabMode=new DefaultTableModel(null,row){
-             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+        Object[] row = {"P", "Kode Unit", "Nama Unit", "Registrasi Baru", "Registrasi Lama", "Status Online", 
+            "Status e-RM", "No. Telpon"};
+        tabMode = new DefaultTableModel(null, row) {
+            @Override
+            public boolean isCellEditable(int rowIndex, int colIndex) {
                 boolean a = false;
-                if (colIndex==0) {
-                    a=true;
+                if (colIndex == 0) {
+                    a = true;
                 }
                 return a;
             }
             Class[] types = new Class[]{
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class,
-                java.lang.Double.class, java.lang.Double.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Double.class, java.lang.Double.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class
             };
 
             @Override
             public Class getColumnClass(int columnIndex) {
                 return types[columnIndex];
-             }
+            }
         };
-        tbKamar.setModel(tabMode);
-        //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
-        tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
-        tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 7; i++) {
-            TableColumn column = tbKamar.getColumnModel().getColumn(i);
+        tbPoliklinik.setModel(tabMode);
+        tbPoliklinik.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbPoliklinik.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 8; i++) {
+            TableColumn column = tbPoliklinik.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(20);
             } else if (i == 1) {
@@ -97,15 +100,19 @@ public final class DlgPoli extends javax.swing.JDialog {
                 column.setPreferredWidth(100);
             } else if (i == 6) {
                 column.setPreferredWidth(100);
+            } else if (i == 7) {
+                column.setPreferredWidth(100);
             }
         }
-        tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
+        tbPoliklinik.setDefaultRenderer(Object.class, new WarnaTable());
         
-        Kd.setDocument(new batasInput((byte)5).getKata(Kd));
-        By.setDocument(new batasInput((byte)13).getOnlyAngka(By));
-        ByLm.setDocument(new batasInput((byte)13).getOnlyAngka(ByLm));
-        Nm.setDocument(new batasInput((byte)50).getKata(Nm));
-        TCari.setDocument(new batasInput((byte)100).getKata(TCari));        
+        Kd.setDocument(new batasInput((byte) 5).getKata(Kd));
+        By.setDocument(new batasInput((byte) 13).getOnlyAngka(By));
+        ByLm.setDocument(new batasInput((byte) 13).getOnlyAngka(ByLm));
+        Nm.setDocument(new batasInput((byte) 50).getKata(Nm));
+        TnoTelp.setDocument(new batasInput((byte) 16).getOnlyAngka(TnoTelp));
+        TCari.setDocument(new batasInput((byte) 100).getKata(TCari));
+        
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -131,7 +138,7 @@ public final class DlgPoli extends javax.swing.JDialog {
         Kd2 = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
-        tbKamar = new widget.Table();
+        tbPoliklinik = new widget.Table();
         panelisi4 = new widget.panelisi();
         label34 = new widget.Label();
         label32 = new widget.Label();
@@ -145,6 +152,8 @@ public final class DlgPoli extends javax.swing.JDialog {
         label35 = new widget.Label();
         label37 = new widget.Label();
         statusERM = new widget.ComboBox();
+        label38 = new widget.Label();
+        TnoTelp = new widget.TextBox();
         jPanel1 = new javax.swing.JPanel();
         panelisi3 = new widget.panelisi();
         label9 = new widget.Label();
@@ -178,27 +187,27 @@ public final class DlgPoli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3), "::[ Data Poliklinik/Unit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3), "::[ Data Poliklinik/Unit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbKamar.setName("tbKamar"); // NOI18N
-        tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbPoliklinik.setAutoCreateRowSorter(true);
+        tbPoliklinik.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPoliklinik.setName("tbPoliklinik"); // NOI18N
+        tbPoliklinik.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbKamarMouseClicked(evt);
+                tbPoliklinikMouseClicked(evt);
             }
         });
-        tbKamar.addKeyListener(new java.awt.event.KeyAdapter() {
+        tbPoliklinik.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbKamarKeyPressed(evt);
+                tbPoliklinikKeyPressed(evt);
             }
         });
-        Scroll.setViewportView(tbKamar);
+        Scroll.setViewportView(tbPoliklinik);
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
@@ -221,7 +230,6 @@ public final class DlgPoli extends javax.swing.JDialog {
         label32.setBounds(194, 12, 110, 23);
 
         Kd.setForeground(new java.awt.Color(0, 0, 0));
-        Kd.setHighlighter(null);
         Kd.setName("Kd"); // NOI18N
         Kd.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -233,7 +241,6 @@ public final class DlgPoli extends javax.swing.JDialog {
 
         By.setForeground(new java.awt.Color(0, 0, 0));
         By.setText("0");
-        By.setHighlighter(null);
         By.setName("By"); // NOI18N
         By.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -251,7 +258,6 @@ public final class DlgPoli extends javax.swing.JDialog {
         label36.setBounds(0, 42, 85, 23);
 
         Nm.setForeground(new java.awt.Color(0, 0, 0));
-        Nm.setHighlighter(null);
         Nm.setName("Nm"); // NOI18N
         Nm.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -259,7 +265,7 @@ public final class DlgPoli extends javax.swing.JDialog {
             }
         });
         panelisi4.add(Nm);
-        Nm.setBounds(89, 42, 528, 23);
+        Nm.setBounds(89, 42, 319, 23);
 
         label33.setForeground(new java.awt.Color(0, 0, 0));
         label33.setText("Registrasi Lama :");
@@ -270,7 +276,6 @@ public final class DlgPoli extends javax.swing.JDialog {
 
         ByLm.setForeground(new java.awt.Color(0, 0, 0));
         ByLm.setText("0");
-        ByLm.setHighlighter(null);
         ByLm.setName("ByLm"); // NOI18N
         ByLm.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -283,24 +288,8 @@ public final class DlgPoli extends javax.swing.JDialog {
         statusOL.setForeground(new java.awt.Color(0, 0, 0));
         statusOL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Non Aktif", "Aktif" }));
         statusOL.setName("statusOL"); // NOI18N
-        statusOL.setOpaque(false);
-        statusOL.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                statusOLItemStateChanged(evt);
-            }
-        });
-        statusOL.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                statusOLMouseClicked(evt);
-            }
-        });
-        statusOL.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                statusOLKeyPressed(evt);
-            }
-        });
         panelisi4.add(statusOL);
-        statusOL.setBounds(710, 12, 75, 23);
+        statusOL.setBounds(710, 12, 80, 23);
 
         label35.setForeground(new java.awt.Color(0, 0, 0));
         label35.setText("Status e-RM :");
@@ -319,24 +308,26 @@ public final class DlgPoli extends javax.swing.JDialog {
         statusERM.setForeground(new java.awt.Color(0, 0, 0));
         statusERM.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Non Aktif", "Aktif" }));
         statusERM.setName("statusERM"); // NOI18N
-        statusERM.setOpaque(false);
-        statusERM.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                statusERMItemStateChanged(evt);
-            }
-        });
-        statusERM.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                statusERMMouseClicked(evt);
-            }
-        });
-        statusERM.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                statusERMKeyPressed(evt);
-            }
-        });
         panelisi4.add(statusERM);
-        statusERM.setBounds(710, 42, 75, 23);
+        statusERM.setBounds(710, 42, 80, 23);
+
+        label38.setForeground(new java.awt.Color(0, 0, 0));
+        label38.setText("No. Telpon :");
+        label38.setName("label38"); // NOI18N
+        label38.setPreferredSize(new java.awt.Dimension(35, 23));
+        panelisi4.add(label38);
+        label38.setBounds(413, 42, 100, 23);
+
+        TnoTelp.setForeground(new java.awt.Color(0, 0, 0));
+        TnoTelp.setText("0");
+        TnoTelp.setName("TnoTelp"); // NOI18N
+        TnoTelp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TnoTelpKeyPressed(evt);
+            }
+        });
+        panelisi4.add(TnoTelp);
+        TnoTelp.setBounds(517, 42, 100, 23);
 
         internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
@@ -561,6 +552,8 @@ public final class DlgPoli extends javax.swing.JDialog {
             Valid.textKosong(ByLm, "Biaya Registrasi Pasien Lama");
         } else if (Nm.getText().trim().equals("")) {
             Valid.textKosong(Nm, "Nama Unit");
+        } else if (TnoTelp.getText().trim().equals("")) {
+            Valid.textKosong(TnoTelp, "No. Telpon");
         } else {
             if (statusOL.getSelectedItem().toString().equals("Non Aktif")) {
                 cekonline = "0";
@@ -579,7 +572,8 @@ public final class DlgPoli extends javax.swing.JDialog {
                     + By.getText() + "','"
                     + ByLm.getText() + "','"
                     + cekonline + "','" 
-                    + cekERM + "'", "Kode Unit");
+                    + cekERM + "','" 
+                    + TnoTelp.getText() + "'", "Kode Unit");
             BtnCariActionPerformed(evt);
             emptTeks();
         }
@@ -604,9 +598,9 @@ public final class DlgPoli extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        for (i = 0; i < tbKamar.getRowCount(); i++) {
-            if (tbKamar.getValueAt(i, 0).toString().equals("true")) {
-                Sequel.meghapus("poliklinik", "kd_poli", tbKamar.getValueAt(i, 1).toString());
+        for (i = 0; i < tbPoliklinik.getRowCount(); i++) {
+            if (tbPoliklinik.getValueAt(i, 0).toString().equals("true")) {
+                Sequel.meghapus("poliklinik", "kd_poli", tbPoliklinik.getValueAt(i, 1).toString());
             }
         }
         BtnCariActionPerformed(evt);
@@ -628,6 +622,8 @@ public final class DlgPoli extends javax.swing.JDialog {
             Valid.textKosong(By, "Biaya");
         } else if (Nm.getText().trim().equals("")) {
             Valid.textKosong(Nm, "Nama Unit");
+        } else if (TnoTelp.getText().trim().equals("")) {
+            Valid.textKosong(TnoTelp, "No. Telpon");
         } else {
             if (statusOL.getSelectedItem().toString().equals("Non Aktif")) {
                 cekonline = "0";
@@ -643,7 +639,8 @@ public final class DlgPoli extends javax.swing.JDialog {
             
             Valid.editTable(tabMode, "poliklinik", "kd_poli", Kd2, "registrasi='" + By.getText()
                     + "',nm_poli='" + Nm.getText() + "',registrasilama='" + ByLm.getText()
-                    + "',kd_poli='" + Kd.getText() + "',status_online='" + cekonline + "',status_erm='" + cekERM + "'");
+                    + "',kd_poli='" + Kd.getText() + "',status_online='" + cekonline + "',status_erm='" + cekERM 
+                    + "',no_tlp='" + TnoTelp.getText() + "'");
             if (tabMode.getRowCount() != 0) {
                 BtnCariActionPerformed(evt);
             }
@@ -652,9 +649,9 @@ public final class DlgPoli extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnEditActionPerformed(null);
-        }else{
+        } else {
             Valid.pindah(evt, BtnHapus, BtnPrint);
         }
 }//GEN-LAST:event_BtnEditKeyPressed
@@ -714,9 +711,9 @@ public final class DlgPoli extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnCariActionPerformed(null);
-        }else{
+        } else {
             Valid.pindah(evt, TCari, BtnAll);
         }
 }//GEN-LAST:event_BtnCariKeyPressed
@@ -734,16 +731,16 @@ public final class DlgPoli extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
-    private void tbKamarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKamarMouseClicked
+    private void tbPoliklinikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPoliklinikMouseClicked
         if(tabMode.getRowCount()!=0){
             try {
                 getData();
             } catch (java.lang.NullPointerException e) {
             }
         }
-}//GEN-LAST:event_tbKamarMouseClicked
+}//GEN-LAST:event_tbPoliklinikMouseClicked
 
-    private void tbKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamarKeyPressed
+    private void tbPoliklinikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPoliklinikKeyPressed
         if(tabMode.getRowCount()!=0){
             if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
                 try {
@@ -752,7 +749,7 @@ public final class DlgPoli extends javax.swing.JDialog {
                 }
             }
         }
-}//GEN-LAST:event_tbKamarKeyPressed
+}//GEN-LAST:event_tbPoliklinikKeyPressed
 
 private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyPressed
    Valid.pindah(evt,Kd,By);
@@ -767,32 +764,12 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }//GEN-LAST:event_formWindowOpened
 
     private void ByLmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ByLmKeyPressed
-        Valid.pindah(evt,By,BtnSimpan);
+        Valid.pindah(evt,By,TnoTelp);
     }//GEN-LAST:event_ByLmKeyPressed
 
-    private void statusOLItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_statusOLItemStateChanged
-
-    }//GEN-LAST:event_statusOLItemStateChanged
-
-    private void statusOLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_statusOLMouseClicked
-
-    }//GEN-LAST:event_statusOLMouseClicked
-
-    private void statusOLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_statusOLKeyPressed
-
-    }//GEN-LAST:event_statusOLKeyPressed
-
-    private void statusERMItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_statusERMItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_statusERMItemStateChanged
-
-    private void statusERMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_statusERMMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_statusERMMouseClicked
-
-    private void statusERMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_statusERMKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_statusERMKeyPressed
+    private void TnoTelpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TnoTelpKeyPressed
+        Valid.pindah(evt,ByLm,BtnSimpan);
+    }//GEN-LAST:event_TnoTelpKeyPressed
 
     /**
     * @param args the command line arguments
@@ -827,6 +804,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private widget.TextBox Nm;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
+    private widget.TextBox TnoTelp;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JPanel jPanel1;
     private widget.Label label10;
@@ -836,22 +814,23 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private widget.Label label35;
     private widget.Label label36;
     private widget.Label label37;
+    private widget.Label label38;
     private widget.Label label9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
     private widget.ComboBox statusERM;
     private widget.ComboBox statusOL;
-    private widget.Table tbKamar;
+    private widget.Table tbPoliklinik;
     // End of variables declaration//GEN-END:variables
 
     private void tampil(String order) {
         String sql = "";
         if (TCari.getText().equals("")) {
-            sql = "select kd_poli, nm_poli, registrasi,registrasilama, if(status_online='0','Non Aktif','Aktif') online, if(status_erm='0','Non Aktif','Aktif') erm "
+            sql = "select kd_poli, nm_poli, registrasi,registrasilama, if(status_online='0','Non Aktif','Aktif') online, if(status_erm='0','Non Aktif','Aktif') erm, no_tlp "
                     + "from poliklinik " + order;
         } else if (!TCari.getText().equals("")) {
-            sql = "select kd_poli, nm_poli, registrasi,registrasilama, if(status_online='0','Non Aktif','Aktif') online, if(status_erm='0','Non Aktif','Aktif') erm "
+            sql = "select kd_poli, nm_poli, registrasi,registrasilama, if(status_online='0','Non Aktif','Aktif') online, if(status_erm='0','Non Aktif','Aktif') erm, no_tlp "
                     + " from poliklinik where kd_poli like '%" + TCari.getText().trim() + "%' or "
                     + " if(status_online='0','Non Aktif','Aktif') like '%" + TCari.getText().trim() + "%' or "
                     + " if(status_erm='0','Non Aktif','Aktif') like '%" + TCari.getText().trim() + "%' or "
@@ -873,7 +852,8 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
                         rs.getDouble(3),
                         rs.getDouble(4),
                         rs.getString(5),
-                        rs.getString(6)
+                        rs.getString(6),
+                        rs.getString(7)
                     });
                 }
             } catch (SQLException e) {
@@ -903,20 +883,22 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
         statusERM.setSelectedIndex(0);
         Kd.requestFocus();        
         Valid.autoNomer("poliklinik","U",4,Kd);
+        TnoTelp.setText("0");
     }
 
     private void getData() {
         cekonline = "";
         cekERM = "";
         
-        if(tbKamar.getSelectedRow()!= -1){
-            Kd.setText(tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString());
-            Kd2.setText(tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString());
-            Nm.setText(tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString());
-            By.setText(Valid.SetAngka2(Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString())));
-            ByLm.setText(Valid.SetAngka2(Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString())));
-            statusOL.setSelectedItem(tbKamar.getValueAt(tbKamar.getSelectedRow(), 5).toString());
-            statusERM.setSelectedItem(tbKamar.getValueAt(tbKamar.getSelectedRow(), 6).toString());
+        if(tbPoliklinik.getSelectedRow()!= -1){
+            Kd.setText(tbPoliklinik.getValueAt(tbPoliklinik.getSelectedRow(),1).toString());
+            Kd2.setText(tbPoliklinik.getValueAt(tbPoliklinik.getSelectedRow(),1).toString());
+            Nm.setText(tbPoliklinik.getValueAt(tbPoliklinik.getSelectedRow(),2).toString());
+            By.setText(Valid.SetAngka2(Double.parseDouble(tbPoliklinik.getValueAt(tbPoliklinik.getSelectedRow(),3).toString())));
+            ByLm.setText(Valid.SetAngka2(Double.parseDouble(tbPoliklinik.getValueAt(tbPoliklinik.getSelectedRow(),4).toString())));
+            statusOL.setSelectedItem(tbPoliklinik.getValueAt(tbPoliklinik.getSelectedRow(), 5).toString());
+            statusERM.setSelectedItem(tbPoliklinik.getValueAt(tbPoliklinik.getSelectedRow(), 6).toString());
+            TnoTelp.setText(tbPoliklinik.getValueAt(tbPoliklinik.getSelectedRow(),7).toString());
 
             if (statusOL.getSelectedItem().toString().equals("Non Aktif")) {
                 cekonline = "0";

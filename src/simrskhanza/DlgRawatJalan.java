@@ -7087,7 +7087,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                         + "nadi='" + TNadi.getText() + "',respirasi='" + TRespirasi.getText() + "',"
                                         + "tinggi='" + TTinggi.getText() + "',berat='" + TBerat.getText() + "',"
                                         + "gcs='" + TGCS.getText() + "',alergi='" + TAlergi.getText() + "',alergi='" + TAlergi.getText() + "',"
-                                        + "diagnosa='" + TDiagnosa.getText() + "',rencana_follow_up='" + TRncanaFolow.getText() + "',"
+                                        + "diagnosa='" + TDiagnosa.getText().stripTrailing() + "',rencana_follow_up='" + TRncanaFolow.getText() + "',"
                                         + "rincian_tindakan='" + TRincianTindakan.getText() + "'");
 
                                 Sequel.mengedit("pasien", "no_rkm_medis='" + TNoRM.getText() + "'", "tinggi_badan='" + TTinggi.getText() + "'");
@@ -13934,7 +13934,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     if (Sequel.menyimpantf("pemeriksaan_ralan", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Data", 21, new String[]{
                         TNoRw.getText(), Valid.SetTgl(DTPTgl.getSelectedItem() + ""), cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem(),
                         TSuhu.getText(), TTensi.getText(), TNadi.getText(), TRespirasi.getText(), TTinggi.getText(), TBerat.getText(), TGCS.getText(),
-                        TKeluhan.getText(), TPemeriksaan.getText(), TAlergi.getText(), cmbImun.getSelectedItem().toString(), TDiagnosa.getText().stripLeading(), KdDok.getText(),
+                        TKeluhan.getText(), TPemeriksaan.getText(), TAlergi.getText(), cmbImun.getSelectedItem().toString(), TDiagnosa.getText().stripTrailing(), KdDok.getText(),
                         TRncanaFolow.getText(), TRincianTindakan.getText(), TTerapi.getText(), prmrj, Tspo2.getText()
                     }) == true) {
                         Sequel.mengedit("pasien", "no_rkm_medis='" + TNoRM.getText() + "'", "tinggi_badan='" + TTinggi.getText() + "'");

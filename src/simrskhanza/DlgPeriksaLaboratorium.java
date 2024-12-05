@@ -1317,8 +1317,10 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
                         
                         if (status.equals("Ranap")) {
                             Sequel.mengedit("bangsal", "nm_gedung='" + nmgedung + "'", "no_tlp='" + TnoTlpnFaskes.getText() + "'");
+                        } else {
+                            Sequel.mengedit("poliklinik", "kd_poli='" + kdFaskes.getText() + "'", "no_tlp='" + TnoTlpnFaskes.getText() + "'");
                         }
-
+ 
                         if (!kdUnit.equals(kdFaskes.getText())) {
                             Sequel.mengedit("master_nama_rujukan", "kd_rujukan='" + kdFaskes.getText() + "'", "no_tlp='" + TnoTlpnFaskes.getText() + "'");
                         }
@@ -1330,6 +1332,8 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
 
                     if (status.equals("Ranap")) {
                         Sequel.mengedit("bangsal", "nm_gedung='" + nmgedung + "'", "no_tlp='" + TnoTlpnFaskes.getText() + "'");
+                    } else {
+                        Sequel.mengedit("poliklinik", "kd_poli='" + kdFaskes.getText() + "'", "no_tlp='" + TnoTlpnFaskes.getText() + "'");
                     }
 
                     if (!kdUnit.equals(kdFaskes.getText())) {
