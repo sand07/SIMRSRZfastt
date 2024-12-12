@@ -118,6 +118,7 @@ public class DlgRMEranap extends javax.swing.JDialog {
         FormInput = new widget.PanelBiasa();
         BtnAsesmenRestrain = new widget.ButtonBig();
         BtnObservasiRestrain = new widget.ButtonBig();
+        BtnAsesmenMedikBedah = new widget.ButtonBig();
         BtnAsesmenMedikDewasa = new widget.ButtonBig();
         BtnAsesmenMedikAnak = new widget.ButtonBig();
         BtnAsesmenKeperawatanDewasa = new widget.ButtonBig();
@@ -343,6 +344,20 @@ public class DlgRMEranap extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnObservasiRestrain);
+
+        BtnAsesmenMedikBedah.setForeground(new java.awt.Color(0, 0, 0));
+        BtnAsesmenMedikBedah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/medical_record.png"))); // NOI18N
+        BtnAsesmenMedikBedah.setText("Asesmen Medik Bedah");
+        BtnAsesmenMedikBedah.setToolTipText("");
+        BtnAsesmenMedikBedah.setIconTextGap(0);
+        BtnAsesmenMedikBedah.setName("BtnAsesmenMedikBedah"); // NOI18N
+        BtnAsesmenMedikBedah.setPreferredSize(new java.awt.Dimension(200, 90));
+        BtnAsesmenMedikBedah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAsesmenMedikBedahActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnAsesmenMedikBedah);
 
         BtnAsesmenMedikDewasa.setForeground(new java.awt.Color(0, 0, 0));
         BtnAsesmenMedikDewasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/medical_record.png"))); // NOI18N
@@ -1609,6 +1624,27 @@ public class DlgRMEranap extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnCatatanMaterialActionPerformed
 
+    private void BtnAsesmenMedikBedahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAsesmenMedikBedahActionPerformed
+        if (TNoRW.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Maaf, Silahkan anda pilih dulu salah satu datanya pada tabel...!!!");
+        } else {            
+            if (akses.getadmin() == true) {
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                akses.setform("DlgRMEranap");
+                RMAsesmenMedikBedahRanap form = new RMAsesmenMedikBedahRanap(null, false);
+                form.emptTeks();
+                form.isCek();
+                form.setNoRm(TNoRW.getText(), nmUnit.getText());
+                form.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            } else {
+                JOptionPane.showMessageDialog(null, "Masih dalam proses dikerjakan...!!!");
+            }            
+        }
+    }//GEN-LAST:event_BtnAsesmenMedikBedahActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1630,6 +1666,7 @@ public class DlgRMEranap extends javax.swing.JDialog {
     private widget.ButtonBig BtnAsesmenKeperawatanDewasa;
     private widget.ButtonBig BtnAsesmenKeperawatanPerioperatif;
     private widget.ButtonBig BtnAsesmenMedikAnak;
+    private widget.ButtonBig BtnAsesmenMedikBedah;
     private widget.ButtonBig BtnAsesmenMedikDewasa;
     private widget.ButtonBig BtnAsesmenPraSedasi;
     private widget.ButtonBig BtnAsesmenPreInduksi;
@@ -1694,6 +1731,7 @@ public class DlgRMEranap extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void isCek() {
+        BtnAsesmenMedikBedah.setEnabled(akses.getasesmen_medik_bedah_ranap());
         BtnAsesmenMedikDewasa.setEnabled(akses.getasesmen_medik_dewasa_ranap());
         BtnAsesmenMedikAnak.setEnabled(akses.getasesmen_medik_anak_ranap());
         BtnAsesmenKeperawatanDewasa.setEnabled(akses.getcppt());
@@ -1749,6 +1787,14 @@ public class DlgRMEranap extends javax.swing.JDialog {
     }
 
     private void tombolCek(String norawat) {
+        if (Sequel.cariInteger("select count(-1) from asesmen_medik_bedah_ranap where no_rawat='" + norawat + "'") == 0) {
+            BtnAsesmenMedikBedah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/medical_record_merah.png")));
+            BtnAsesmenMedikBedah.setToolTipText("Asesmen Medik Bedah BELUM diisi oleh dokter..!!!");
+        } else {
+            BtnAsesmenMedikBedah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/medical_record.png")));
+            BtnAsesmenMedikBedah.setToolTipText("Asesmen Medik Bedah SUDAH diisi oleh dokter..!!!");
+        }
+        
         if (Sequel.cariInteger("select count(-1) from asesmen_medik_dewasa_ranap where no_rawat='" + norawat + "'") == 0) {
             BtnAsesmenMedikDewasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/medical_record_merah.png")));
             BtnAsesmenMedikDewasa.setToolTipText("Asesmen Medik Dewasa BELUM diisi oleh dokter..!!!");

@@ -331,6 +331,7 @@ import rekammedis.RMAsesmenKeperawatanAnakRanap;
 import rekammedis.RMAsesmenKeperawatanDewasaRanap;
 import rekammedis.RMAsesmenKeperawatanPerioperatif;
 import rekammedis.RMAsesmenMedikAnakRanap;
+import rekammedis.RMAsesmenMedikBedahRanap;
 import rekammedis.RMPenilaianAwalKeperawatanIGDrz;
 import rekammedis.RMPenilaianAwalKeperawatanKebidanan;
 import rekammedis.RMPenilaianAwalKeperawatanRalan;
@@ -891,7 +892,8 @@ public class frmUtama extends javax.swing.JFrame {
         btnCeklisKeselamatanOperasi = new widget.ButtonBig();
         btnPasienBlackList = new widget.ButtonBig();
         btnMasterCatatanMaterialOperasi = new widget.ButtonBig();
-        BtnCatatanMaterialOperasi = new widget.ButtonBig();
+        btnCatatanMaterialOperasi = new widget.ButtonBig();
+        btnAsesmenMedikBedahRanap = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6039,18 +6041,31 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnMasterCatatanMaterialOperasi);
 
-        BtnCatatanMaterialOperasi.setForeground(new java.awt.Color(0, 0, 0));
-        BtnCatatanMaterialOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816018_tests.png"))); // NOI18N
-        BtnCatatanMaterialOperasi.setText("Cttn. Pemakaian Obat & Material");
-        BtnCatatanMaterialOperasi.setIconTextGap(0);
-        BtnCatatanMaterialOperasi.setName("BtnCatatanMaterialOperasi"); // NOI18N
-        BtnCatatanMaterialOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
-        BtnCatatanMaterialOperasi.addActionListener(new java.awt.event.ActionListener() {
+        btnCatatanMaterialOperasi.setForeground(new java.awt.Color(0, 0, 0));
+        btnCatatanMaterialOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816018_tests.png"))); // NOI18N
+        btnCatatanMaterialOperasi.setText("Cttn. Pemakaian Obat & Material");
+        btnCatatanMaterialOperasi.setIconTextGap(0);
+        btnCatatanMaterialOperasi.setName("btnCatatanMaterialOperasi"); // NOI18N
+        btnCatatanMaterialOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCatatanMaterialOperasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCatatanMaterialOperasiActionPerformed(evt);
+                btnCatatanMaterialOperasiActionPerformed(evt);
             }
         });
-        Panelmenu.add(BtnCatatanMaterialOperasi);
+        Panelmenu.add(btnCatatanMaterialOperasi);
+
+        btnAsesmenMedikBedahRanap.setForeground(new java.awt.Color(0, 0, 0));
+        btnAsesmenMedikBedahRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/mp_viewer.png"))); // NOI18N
+        btnAsesmenMedikBedahRanap.setText("Asesmen Medik Bedah Rawat Inap");
+        btnAsesmenMedikBedahRanap.setIconTextGap(0);
+        btnAsesmenMedikBedahRanap.setName("btnAsesmenMedikBedahRanap"); // NOI18N
+        btnAsesmenMedikBedahRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAsesmenMedikBedahRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAsesmenMedikBedahRanapActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnAsesmenMedikBedahRanap);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -6060,7 +6075,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04/11/2024" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/11/2024" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -11950,7 +11965,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnMasterCatatanMaterialOperasiActionPerformed
 
-    private void BtnCatatanMaterialOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCatatanMaterialOperasiActionPerformed
+    private void btnCatatanMaterialOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCatatanMaterialOperasiActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         RMCatatanPemakaianObatMaterialOperasi catatan = new RMCatatanPemakaianObatMaterialOperasi(this, false);
@@ -11961,7 +11976,21 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         catatan.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_BtnCatatanMaterialOperasiActionPerformed
+    }//GEN-LAST:event_btnCatatanMaterialOperasiActionPerformed
+
+    private void btnAsesmenMedikBedahRanapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsesmenMedikBedahRanapActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMAsesmenMedikBedahRanap aplikasi = new RMAsesmenMedikBedahRanap(this, false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setTampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnAsesmenMedikBedahRanapActionPerformed
 
     /**
      * @param args the command line arguments
@@ -11974,7 +12003,6 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnCancel;
-    private widget.ButtonBig BtnCatatanMaterialOperasi;
     private widget.ButtonBig BtnClose;
     private widget.Button BtnClosePass;
     private widget.ButtonBig BtnDasboard;
@@ -12024,6 +12052,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnAsesmenKeperawatanDewasa;
     private widget.ButtonBig btnAsesmenKeperawatanPerioperatif;
     private widget.ButtonBig btnAsesmenMedikAnakRanap;
+    private widget.ButtonBig btnAsesmenMedikBedahRanap;
     private widget.ButtonBig btnAsesmenMedikDewasaRanap;
     private widget.ButtonBig btnAsesmenMedikObstetriRalan;
     private widget.ButtonBig btnAsesmenPraSedasi;
@@ -12052,6 +12081,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnBulananHAIsRanap;
     private widget.ButtonBig btnCPPT;
     private widget.ButtonBig btnCashFlow;
+    private widget.ButtonBig btnCatatanMaterialOperasi;
     private widget.ButtonBig btnCatatanPasien;
     private widget.ButtonBig btnCatatanTindakanKeperawatan;
     private widget.ButtonBig btnCekBPJSDiagnosa;
@@ -12689,7 +12719,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }
             
             if (akses.getkegiatan_operasi() == true) {
-                Panelmenu.add(BtnCatatanMaterialOperasi);
+                Panelmenu.add(btnCatatanMaterialOperasi);
                 jmlmenu++;
             }
             
@@ -12740,6 +12770,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if (akses.getresep_dokter()== true) {
                 Panelmenu.add(btnAsesmenPreInduksi);
+                jmlmenu++;
+            }
+            
+            if (akses.getasesmen_medik_bedah_ranap()== true) {
+                Panelmenu.add(btnAsesmenMedikBedahRanap);
                 jmlmenu++;
             }
             
@@ -14543,7 +14578,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         }
         
         if (akses.getkegiatan_operasi() == true) {
-            Panelmenu.add(BtnCatatanMaterialOperasi);
+            Panelmenu.add(btnCatatanMaterialOperasi);
             jmlmenu++;
         }
         
@@ -14675,6 +14710,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
         
+        if (akses.getasesmen_medik_bedah_ranap() == true) {
+            Panelmenu.add(btnAsesmenMedikBedahRanap);
+            jmlmenu++;
+        }
+
         if (akses.getasesmen_medik_dewasa_ranap() == true) {
             Panelmenu.add(btnAsesmenMedikDewasaRanap);
             jmlmenu++;
@@ -16460,8 +16500,8 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         }
         
         if (akses.getkegiatan_operasi()== true) {
-            if (BtnCatatanMaterialOperasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())) {
-                Panelmenu.add(BtnCatatanMaterialOperasi);
+            if (btnCatatanMaterialOperasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())) {
+                Panelmenu.add(btnCatatanMaterialOperasi);
                 jmlmenu++;
             }
         }
@@ -16637,6 +16677,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if (akses.getpemberian_obat()== true) {
             if (btnPetugasPelaksanaPemberianObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())) {
                 Panelmenu.add(btnPetugasPelaksanaPemberianObat);
+                jmlmenu++;
+            }
+        }
+        
+        if (akses.getasesmen_medik_bedah_ranap()== true) {
+            if (btnAsesmenMedikBedahRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())) {
+                Panelmenu.add(btnAsesmenMedikBedahRanap);
                 jmlmenu++;
             }
         }
