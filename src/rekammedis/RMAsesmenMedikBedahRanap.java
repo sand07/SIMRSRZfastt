@@ -68,13 +68,20 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         initComponents();
         
         tabMode = new DefaultTableModel(null, new Object[]{
-            "No. Rawat", "Kode Restrain", "No. RM", "Nama Pasien", "Tgl. Pengkajian", "Jam", "Perawat/Bidan", "Ruang Perawatan",
-            "tgl_asesmen", "jam_asesmen", "compos", "apatis", "delirium", "somnolen", "sopor", "koma", "gcs_e", "gcs_m", "gcs_v",
-            "tensi", "nadi", "suhu", "napas", "skala_nyeri", "obs_gelisah", "obs_kooperatif", "obs_ketidakmampuan", "klinis_diri_sendiri",
-            "klinis_orang_lain", "klinis_gagal", "res_non_farmakologi", "res_tempat_tidur", "res_pergelangan_tangan", "res_tangan_kiri",
-            "res_tangan_kanan", "res_pergelangan_kaki", "res_kaki_kiri", "res_kaki_kanan", "res_lainlain", "res_farmakologi", 
-            "kalimat_res_farmakologi", "kajian_1_jam", "kajian_2_jam", "kajian_lanjutan_2_jam", "kajian_lanjutan_4_jam", "obs_tanda", "obs_lanjutan",
-            "menjelaskan_alasan", "menjelaskan_kriteria", "menjelaskan_informasi", "nip_petugas"
+            "No. Rawat", "No. RM", "Nama Pasien", "Tgl. Asesmen", "Jam", "Verifikasi DPJP", "Ruang Perawatan",
+            "riwayat", "riw_alergi", "riw_medikasi", "riw_penyakit_lain", "makanan_terakhir", "cek_pengaruh_napza", "cek_pengaruh_alkohol", "jenis_napza",
+            "jenis_alkohol", "kejadian_lain", "pejalan_kaki", "sepeda_gayung", "sepeda_motor", "mobil", "ket_pejalan_kaki", "ket_sepeda_gayung", "ket_sepeda_motor",
+            "ket_mobil", "jatuh", "ket_jatuh", "pohon", "gedung", "lainnya_jatuh", "ket_lain_jatuh", "luka_tembak", "luka_tusuk", "luka_hancur", "luka_bakar", "lainnya_luka",
+            "ket_lain_luka", "pelindung_leher", "alat_bantu_nafas", "infus", "pengobatan", "ket_pelindung_leher", "ket_alat_bantu_nafas", "ket_infus", "ket_pengobatan",
+            "lain_tindakan", "airway", "trachea", "airway_resusitasi", "airway_reevaluasi", "dada_simetris", "sesak_nafas", "respirasi", "krepitasi", "suara_kanan",
+            "kanan_jelas", "kanan_ronchi", "kanan_menurun", "kanan_wheezing", "suara_kiri", "kiri_jelas", "kiri_ronchi", "kiri_menurun", "kiri_wheezing", "saturasi",
+            "suhu_ruangan", "nrm", "nazal_canule", "lain_pada", "ket_lain_pada", "breathing_asesmen", "breathing_resusitasi", "breathing_reevaluasi", "tensi", "nadi",
+            "kuat", "lemah", "reguler", "ireguler", "suhu_axila", "suhu_rectal", "temp_hangat", "temp_panas", "temp_dingin", "kulit_normal", "kulit_kering", "kulit_lembab_basah",
+            "circulation_asesmen", "circulation_resusitasi", "circulation_reevaluasi", "frekuensi_pernafasan", "usaha_bernafas", "tekanan_darah", "pengisian_kapiler",
+            "gcs", "alert", "verbal", "pain", "unresponsive", "exposure", "pupil_kanan", "pupil_kiri", "kanan_cepat", "kanan_konstriksi", "kanan_lambat", "kanan_dilatasi",
+            "kanan_tak_bereaksi", "kiri_cepat", "kiri_konstriksi", "kiri_lambat", "kiri_dilatasi", "kiri_tak_bereaksi", "laserasi", "abrasi", "hematoma", "kontusio", "dislokasi",
+            "luka_dingin", "lokasi_luka_tembak", "lokasi_luka_tusuk", "lokasi_luka_bakar", "edema", "amputasi", "avulse", "nyeri", "fraktur_terbuka", "fraktur_tertutup",
+            "lokasi_lain", "ket_lokasi_lain", "deskripsi_anamnesis", "tgl_asesmen", "jam_asesmen", "nip_dpjp", "waktu_simpan"
         }) {
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -83,24 +90,25 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         tbAsesmen.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbAsesmen.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 51; i++) {
+        for (i = 0; i < 134; i++) {
             TableColumn column = tbAsesmen.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(105);
             } else if (i == 1) {
-                column.setPreferredWidth(100);
-            } else if (i == 2) {
                 column.setPreferredWidth(65);
-            } else if (i == 3) {
+            } else if (i == 2) {
                 column.setPreferredWidth(250);
+            } else if (i == 3) {
+                column.setPreferredWidth(80);
             } else if (i == 4) {
-                column.setPreferredWidth(100);
-            } else if (i == 5) {
                 column.setPreferredWidth(60);
+            } else if (i == 5) {
+                column.setPreferredWidth(250);
             } else if (i == 6) {
                 column.setPreferredWidth(250);
             } else if (i == 7) {
-                column.setPreferredWidth(250);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             } else if (i == 8) {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -230,7 +238,259 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
             } else if (i == 50) {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
-            } 
+            } else if (i == 51) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 52) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 53) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 54) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 55) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 56) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 57) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 58) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 59) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 60) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 61) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 62) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 63) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 64) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 65) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 66) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 67) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 68) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 69) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 70) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 71) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 71) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 72) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 73) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 74) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 75) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 76) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 77) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 78) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 79) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 80) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 81) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 82) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 83) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 84) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 85) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 86) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 87) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 88) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 89) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 90) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 91) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 92) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 93) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 94) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 95) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 96) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 97) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 98) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 99) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 100) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 101) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 102) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 103) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 104) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 105) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 106) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 107) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 108) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 109) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 110) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 111) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 112) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 113) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 114) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 115) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 116) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 117) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 118) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 119) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 120) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 121) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 122) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 123) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 124) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 125) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 126) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 127) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 128) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 129) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 130) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 131) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 132) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            } else if (i == 133) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }
         }
         tbAsesmen.setDefaultRenderer(Object.class, new WarnaTable()); 
         
@@ -786,7 +1046,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         jLabel30.setPreferredSize(new java.awt.Dimension(60, 23));
         internalFrame17.add(jLabel30);
 
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2024" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-12-2024" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -800,7 +1060,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         jLabel31.setPreferredSize(new java.awt.Dimension(23, 23));
         internalFrame17.add(jLabel31);
 
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2024" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-12-2024" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -1227,7 +1487,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         FormInput.add(jLabel12);
         jLabel12.setBounds(218, 2200, 60, 23);
 
-        TtglAsesmen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2024" }));
+        TtglAsesmen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-12-2024" }));
         TtglAsesmen.setDisplayFormat("dd-MM-yyyy");
         TtglAsesmen.setName("TtglAsesmen"); // NOI18N
         TtglAsesmen.setOpaque(false);
@@ -1480,7 +1740,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(chkPejalan);
-        chkPejalan.setBounds(145, 234, 110, 23);
+        chkPejalan.setBounds(145, 234, 105, 23);
 
         chkSepedaGayung.setBackground(new java.awt.Color(255, 255, 250));
         chkSepedaGayung.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 250)));
@@ -1499,7 +1759,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(chkSepedaGayung);
-        chkSepedaGayung.setBounds(145, 262, 110, 23);
+        chkSepedaGayung.setBounds(145, 262, 105, 23);
 
         chkSepedaMotor.setBackground(new java.awt.Color(255, 255, 250));
         chkSepedaMotor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 250)));
@@ -1518,7 +1778,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(chkSepedaMotor);
-        chkSepedaMotor.setBounds(145, 290, 110, 23);
+        chkSepedaMotor.setBounds(145, 290, 105, 23);
 
         chkMobil.setBackground(new java.awt.Color(255, 255, 250));
         chkMobil.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 250)));
@@ -1537,35 +1797,35 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(chkMobil);
-        chkMobil.setBounds(145, 318, 110, 23);
+        chkMobil.setBounds(145, 318, 105, 23);
 
         jLabel26.setForeground(new java.awt.Color(0, 0, 0));
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setText("X");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
-        jLabel26.setBounds(260, 234, 15, 23);
+        jLabel26.setBounds(252, 234, 15, 23);
 
         jLabel27.setForeground(new java.awt.Color(0, 0, 0));
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setText("X");
         jLabel27.setName("jLabel27"); // NOI18N
         FormInput.add(jLabel27);
-        jLabel27.setBounds(260, 262, 15, 23);
+        jLabel27.setBounds(252, 262, 15, 23);
 
         jLabel28.setForeground(new java.awt.Color(0, 0, 0));
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("X");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
-        jLabel28.setBounds(260, 290, 15, 23);
+        jLabel28.setBounds(252, 290, 15, 23);
 
         jLabel29.setForeground(new java.awt.Color(0, 0, 0));
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel29.setText("X");
         jLabel29.setName("jLabel29"); // NOI18N
         FormInput.add(jLabel29);
-        jLabel29.setBounds(260, 318, 15, 23);
+        jLabel29.setBounds(252, 318, 15, 23);
 
         TPejalan.setForeground(new java.awt.Color(0, 0, 0));
         TPejalan.setName("TPejalan"); // NOI18N
@@ -1575,7 +1835,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(TPejalan);
-        TPejalan.setBounds(279, 234, 450, 23);
+        TPejalan.setBounds(269, 234, 460, 23);
 
         TSepedaGayung.setForeground(new java.awt.Color(0, 0, 0));
         TSepedaGayung.setName("TSepedaGayung"); // NOI18N
@@ -1585,7 +1845,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(TSepedaGayung);
-        TSepedaGayung.setBounds(279, 262, 450, 23);
+        TSepedaGayung.setBounds(269, 262, 460, 23);
 
         TSepedaMotor.setForeground(new java.awt.Color(0, 0, 0));
         TSepedaMotor.setName("TSepedaMotor"); // NOI18N
@@ -1595,7 +1855,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(TSepedaMotor);
-        TSepedaMotor.setBounds(279, 290, 450, 23);
+        TSepedaMotor.setBounds(269, 290, 460, 23);
 
         TMobil.setForeground(new java.awt.Color(0, 0, 0));
         TMobil.setName("TMobil"); // NOI18N
@@ -1605,7 +1865,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(TMobil);
-        TMobil.setBounds(279, 318, 450, 23);
+        TMobil.setBounds(269, 318, 460, 23);
 
         jLabel75.setForeground(new java.awt.Color(0, 0, 0));
         jLabel75.setText("Kecelakaan Lainnya :");
@@ -2590,7 +2850,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         jLabel107.setText("Score :");
         jLabel107.setName("jLabel107"); // NOI18N
         FormInput.add(jLabel107);
-        jLabel107.setBounds(325, 1186, 50, 23);
+        jLabel107.setBounds(305, 1186, 50, 23);
 
         TskorA.setEditable(false);
         TskorA.setForeground(new java.awt.Color(0, 0, 0));
@@ -2598,7 +2858,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         TskorA.setText("0");
         TskorA.setName("TskorA"); // NOI18N
         FormInput.add(TskorA);
-        TskorA.setBounds(379, 1186, 50, 23);
+        TskorA.setBounds(359, 1186, 50, 23);
 
         jLabel108.setForeground(new java.awt.Color(0, 0, 0));
         jLabel108.setText("B. Usaha Bernafas :");
@@ -2622,7 +2882,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         jLabel109.setText("Score :");
         jLabel109.setName("jLabel109"); // NOI18N
         FormInput.add(jLabel109);
-        jLabel109.setBounds(325, 1214, 50, 23);
+        jLabel109.setBounds(305, 1214, 50, 23);
 
         TskorB.setEditable(false);
         TskorB.setForeground(new java.awt.Color(0, 0, 0));
@@ -2630,7 +2890,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         TskorB.setText("0");
         TskorB.setName("TskorB"); // NOI18N
         FormInput.add(TskorB);
-        TskorB.setBounds(379, 1214, 50, 23);
+        TskorB.setBounds(359, 1214, 50, 23);
 
         jLabel110.setForeground(new java.awt.Color(0, 0, 0));
         jLabel110.setText("C. Tekanan Darah :");
@@ -2654,7 +2914,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         jLabel111.setText("Score :");
         jLabel111.setName("jLabel111"); // NOI18N
         FormInput.add(jLabel111);
-        jLabel111.setBounds(325, 1242, 50, 23);
+        jLabel111.setBounds(305, 1242, 50, 23);
 
         TskorC.setEditable(false);
         TskorC.setForeground(new java.awt.Color(0, 0, 0));
@@ -2662,7 +2922,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         TskorC.setText("0");
         TskorC.setName("TskorC"); // NOI18N
         FormInput.add(TskorC);
-        TskorC.setBounds(379, 1242, 50, 23);
+        TskorC.setBounds(359, 1242, 50, 23);
 
         jLabel112.setForeground(new java.awt.Color(0, 0, 0));
         jLabel112.setText("D. Pengisian Kapiler :");
@@ -2686,7 +2946,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         jLabel113.setText("Score :");
         jLabel113.setName("jLabel113"); // NOI18N
         FormInput.add(jLabel113);
-        jLabel113.setBounds(325, 1270, 50, 23);
+        jLabel113.setBounds(305, 1270, 50, 23);
 
         TskorD.setEditable(false);
         TskorD.setForeground(new java.awt.Color(0, 0, 0));
@@ -2694,7 +2954,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         TskorD.setText("0");
         TskorD.setName("TskorD"); // NOI18N
         FormInput.add(TskorD);
-        TskorD.setBounds(379, 1270, 50, 23);
+        TskorD.setBounds(359, 1270, 50, 23);
 
         jLabel114.setForeground(new java.awt.Color(0, 0, 0));
         jLabel114.setText("E. Glasgow Coma Score (GCS) :");
@@ -2718,7 +2978,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         jLabel115.setText("Score :");
         jLabel115.setName("jLabel115"); // NOI18N
         FormInput.add(jLabel115);
-        jLabel115.setBounds(325, 1298, 50, 23);
+        jLabel115.setBounds(305, 1298, 50, 23);
 
         TskorE.setEditable(false);
         TskorE.setForeground(new java.awt.Color(0, 0, 0));
@@ -2726,13 +2986,13 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         TskorE.setText("0");
         TskorE.setName("TskorE"); // NOI18N
         FormInput.add(TskorE);
-        TskorE.setBounds(379, 1298, 50, 23);
+        TskorE.setBounds(359, 1298, 50, 23);
 
         jLabel116.setForeground(new java.awt.Color(0, 0, 0));
         jLabel116.setText("Total Trauma Score (A+B+C+D+E) :");
         jLabel116.setName("jLabel116"); // NOI18N
         FormInput.add(jLabel116);
-        jLabel116.setBounds(0, 1326, 375, 23);
+        jLabel116.setBounds(0, 1326, 355, 23);
 
         TskorTotal.setEditable(false);
         TskorTotal.setForeground(new java.awt.Color(0, 0, 0));
@@ -2740,7 +3000,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         TskorTotal.setText("0");
         TskorTotal.setName("TskorTotal"); // NOI18N
         FormInput.add(TskorTotal);
-        TskorTotal.setBounds(379, 1326, 50, 23);
+        TskorTotal.setBounds(359, 1326, 50, 23);
 
         jLabel117.setForeground(new java.awt.Color(0, 0, 0));
         jLabel117.setText("D. Disability");
@@ -3315,7 +3575,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         jLabel134.setText("Deskripsi / Penjelasan Anamnesis dan Pemeriksaan Fisik :");
         jLabel134.setName("jLabel134"); // NOI18N
         FormInput.add(jLabel134);
-        jLabel134.setBounds(380, 1974, 280, 23);
+        jLabel134.setBounds(389, 1974, 280, 23);
 
         scrollPane15.setName("scrollPane15"); // NOI18N
 
@@ -3332,7 +3592,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         scrollPane15.setViewportView(Tdeskripsi);
 
         FormInput.add(scrollPane15);
-        scrollPane15.setBounds(389, 2002, 380, 190);
+        scrollPane15.setBounds(389, 1995, 380, 200);
 
         jLabel135.setForeground(new java.awt.Color(0, 0, 0));
         jLabel135.setText("Yang Melakukan Pengkajian :");
@@ -3519,7 +3779,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setEditable(false);
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-12-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3534,7 +3794,7 @@ public final class RMAsesmenMedikBedahRanap extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setEditable(false);
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-12-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
